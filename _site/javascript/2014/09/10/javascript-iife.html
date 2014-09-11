@@ -1,0 +1,131 @@
+<html>
+  <head>
+      <meta charset="utf8" />
+  </head>
+  <body>
+  <link href="/css/bootstrap.css" rel="stylesheet">
+<style>
+  body {
+    padding-top: 60px;
+  }
+  .layout-footer {
+    border-top:solid 1px #ddd;
+    padding-top: 8px;
+    margin-top: 20px;
+  }
+  .post__thumbnail {
+    max-width: 60px;
+  }
+</style>
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Gui</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a class="brand" href="/">Home</a></li>
+        <li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container">
+  <h2 class="content">Expressão de Função Imediatamente-Invocada</h2>
+<img src="/media/javascript.png" />
+ 
+<p>Em inglês o termo é IIFE - Immediately-Invoked Function Expression. Também é conhecido como Self-Invoked anonymous function.</p>
+
+<h4 id="introduo">Introdução</h4>
+<p>Em javascript, quando invocamos uma função criamos um novo contexto de execução. Todas as variáveis e funções que existam dentro deste contexto não podem ser acedidas por contextos paternos.
+Isto é útil para termos privacidade dentro desse contexto sem poluir o resto.</p>
+
+<pre><code>function registarVisita() {
+    var i = 0;
+    return function() {
+        console.log(++1);
+    };
+}
+
+var test = registerVisita();
+test(); // log: 1
+test(); // log: 2
+
+var test2 = registerVisita();
+test2(); // log: 1
+test3(); // log: 2
+
+test(); // log 3
+</code></pre>
+
+<p>i; // Erro de Referência - i não está defenido, apenas existe dentro de registarVisita</p>
+
+<p>As funções test e test2 apenas são executadas quando as invocamos.
+Quando defenimos uma função <code>function foo() {}</code> our <code>var foo = function(){}</code> temos um identificador para a função, que invocamos usando parêntises à frente
+Mesmo que só chamemos a função test uma vez temos de ter a referência para depois invocarmos a função</p>
+
+<pre><code>var foo = function() { }
+</code></pre>
+
+<p>No entanto, senão passarmos nenhum identificador para a função é lançada uma excepção</p>
+
+<pre><code>function() { }();
+</code></pre>
+
+<p>Quando o parser encontra a palavra <strong>function</strong> num scope global ou dentro de uma função, trata-o como uma declaração de função (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Statement</a>) não como uma expressão de função (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function">Function</a>).
+Como não está explicito que a função é uma expressão, o parser pensa que é uma declaração de função e espera que a palavra <strong>function</strong> seja seguida do nome, em vez de (. Isto é porque uma função requer um nome.</p>
+
+<h4 id="iife">IIFE</h4>
+<p>Se colocarmos tudo dentro de parêntises, o parser vai esperar uma expressão de função em vez de uma declaração. Isto é porque em javascript parêntises não podem conter statments.
+Quando o parser encontra a palavra <strong>function</strong>, sabe que tem de o parse como uma expressão e não declaração.
+Ambos os exemplos podem ser utilizados para criar-mos a mesma privacidade dos primeiros exemplos dentro do contexto da função</p>
+
+<pre><code>// Recomendação do Crockford (http://www.crockford.com/)
+(function() { 
+}());
+
+// Também funciona
+(function() {
+
+})();
+</code></pre>
+
+<p>Como o objectivo dos parênteses é separar as expressões das declarações de funções, eles podem ser omitidos quando o parser já espera uma expressão</p>
+
+<pre><code>var i = function() { return 1; }(); 
+</code></pre>
+
+<p>No entanto devemos usá-los quando estamos a atribuir, por uma questão de convenção.
+Os parêntises também são úteis para quem começa a ler o início da função já saber que ela imediatamente executada.</p>
+
+<h3 id="fontes">Fontes</h3>
+
+<ul>
+  <li>http://benalman.com/news/2010/11/immediately-invoked-function-expression/</li>
+</ul>
+
+
+</div>
+<div class="layout-footer">
+<div class="container">
+This website was proudly developed with <a href="http://jekyllrb.com">Jekyll</a>
+</div>
+</div>
+</body>
+</html>

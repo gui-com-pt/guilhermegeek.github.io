@@ -1,0 +1,121 @@
+<html>
+  <head>
+      <meta charset="utf8" />
+  </head>
+  <body>
+  <link href="/css/bootstrap.css" rel="stylesheet">
+<style>
+  body {
+    padding-top: 60px;
+  }
+  .layout-footer {
+    border-top:solid 1px #ddd;
+    padding-top: 8px;
+    margin-top: 20px;
+  }
+  .post__thumbnail {
+    max-width: 60px;
+  }
+</style>
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Gui</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a class="brand" href="/">Home</a></li>
+        <li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container">
+  <h2 class="content">AngularJS and dynamic forms</h2>
+<img src="/media/angular-thumb.jpg" />
+ 
+<p>There’re situations where i have to do things dynamically in angular.</p>
+
+<p>I’ll show a simple example. We’ve a contact form, billing form and delivery form. Both forms have common fields. I want to copy the common data from contact to others forms</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h3&gt;</span>Contact<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">novalidate</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;contact.name&quot;</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Nick Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;contact.nickName&quot;</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Address<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;contact.address&quot;</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;copyContactForm()&quot;</span><span class="nt">&gt;</span>Copy to others forms<span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="nt">&lt;h3&gt;</span>Delivery<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">novalidate</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;delivery.name&quot;</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Address<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;delivery.address&quot;</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="nt">&lt;h3&gt;</span>Billing<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">novalidate</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;billing.name&quot;</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Address<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;billing.address&quot;</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">primForm</span> <span class="o">=</span> <span class="s1">&#39;contact&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">secForms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;billing&#39;</span><span class="p">,</span> <span class="s1">&#39;delivery&#39;</span><span class="p">];</span>
+
+<span class="nx">$scope</span><span class="p">.</span><span class="nx">copyContactForm</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="c1">// Loop through contact object properties</span>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">$scope</span><span class="p">[</span><span class="nx">primForm</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Loop through secondary forms</span>
+        <span class="nx">angular</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">secForms</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">bValue</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// acess the secondary form, property. Assign the original value from primForm property</span>
+            <span class="nx">$scope</span><span class="p">[</span><span class="nx">bValue</span><span class="p">][</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span></code></pre></div>
+
+</div>
+<div class="layout-footer">
+<div class="container">
+This website was proudly developed with <a href="http://jekyllrb.com">Jekyll</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+---
+layout: default
+---
+<div class="container">
+<div class="jumbotron" style="position: relative;">
+<a href="http://stackoverflow.com/users/365383/guilherme-cardoso" style="position: absolute; right: 0; top: 0;">
+<img src="http://stackoverflow.com/users/flair/365383.png" width="208" height="58" alt="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+</a>
+<p>Hi,<br>
+I'm Gui and i write programming code.</p>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+<div class="col-xs-9">
+
+{% for post in site.posts %}
+<div class="media">
+  <a class="pull-left" href="{{post.url}}">
+    <img class="media-object post__thumbnail" src="{{ post.image }}" alt="Logo">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="{{post.url}}">{{ post.title }}</a></h4>
+    {{ post.excerpt }}
+  </div>
+</div>
+{% endfor %}
+
+</div>
+<div class="col-xs-3">
+	<h4>Últimos</h4>
+	<ul>
+	{% for category in site.categories %}
+  <li><a name="{{ category | first }}">{{ category | first }}</a>
+    <ul>
+    {% for posts in category %}
+      {% for post in posts %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+</ul>
+<h4>Must check</h4>
+<ul>
+<li><a href="https://isleaked.com">https://isleaked.com</a></li>
+</ul>
+</div>
+</div>
+</div>

@@ -1,0 +1,206 @@
+<html>
+  <head>
+      <meta charset="utf8" />
+  </head>
+  <body>
+  <link href="/css/bootstrap.css" rel="stylesheet">
+<style>
+  body {
+    padding-top: 60px;
+  }
+  .layout-footer {
+    border-top:solid 1px #ddd;
+    padding-top: 8px;
+    margin-top: 20px;
+  }
+  .post__thumbnail {
+    max-width: 60px;
+  }
+</style>
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Gui</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a class="brand" href="/">Home</a></li>
+        <li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container">
+  <h2 class="content">AngularJS - Introdução</h2>
+<img src="/media/angular-thumb.jpg" />
+ 
+<h1 id="criar-uma-aplicao-web-e-mobile-com-angularjs">Criar uma aplicação web e mobile com angularjs</h1>
+<p>Cada módulo é configurado com o método <strong>config</strong>. Nesta fase não temos acesso a $rootScope porque ainda não foi criada.</p>
+
+<p>Nesta fase o próprio url não foi traduzido para um controller sequer. É ideal para carregar depêndencias também.
+O método <strong>run</strong> inicia a aplicação e já tem acesso à $rootScope. </p>
+
+<pre><code>    angular.
+        module('biblia').
+        config([function(){
+        }].
+        run(['$rootScope', '$http', function($rootScope, $http) {
+            $rootScope
+        });
+</code></pre>
+
+<h4 id="services-e-factories">Services e factories</h4>
+<p>Um service retorna sempre uma nova instância fazendo uso de <strong>new</strong>. 
+Uma factory age como um singleton, uma instância única que é partilhada</p>
+
+<pre><code>    angular.module('biblia').service('bibliaSvc', ['$rootScope', '$http', function($rootScope, $http) {
+            var books = ['genesis', 'exodo'];
+            return {
+                getVersions: function(){
+
+                },
+                find: function(version, phrase) {
+
+                },
+                getChapter: function(version, book, chapter) {
+
+                },
+                getVerse: function(version, book, chapter, verse) {
+
+                },
+                findVerses: function(version, book, chapter, verseFrom, verseTo) {
+                    $http.get('/bible-online.com/query?book=' + book + '&amp;chapter=' + chapter + '&amp;from=' + verseFrom + '&amp;verseTo=' + verseTo)
+                        .result.then(function(res) {
+
+                        }, function(res) {
+
+                        });
+                }
+            };
+
+        }).
+        controller('homeCtrl', ['bibleSvc', '$scope', function(bibleSvc, $scope) {
+            $scope.find = function() {
+                bibleSvc.findVerses($scope.version, $scope.book, $sc)
+            };
+        });
+</code></pre>
+
+<p>Esta é a estrutura que adopto em projectos maiores, em que eu sei que vou usar várias views parciais e até os controladores têm sempre um service associado.</p>
+
+<ul>
+  <li>app
+    <ul>
+      <li>biblia
+        <ul>
+          <li>pesquisar.html</li>
+          <li>pesquisar.js</li>
+          <li>pesquisar-livros.html</li>
+          <li>editar.html</li>
+          <li>editar.js</li>
+          <li>service.js</li>
+          <li>module.js</li>
+        </ul>
+      </li>
+      <li>inicio
+        <ul>
+          <li>inicio.html</li>
+          <li>inicio.js</li>
+        </ul>
+      </li>
+      <li>contacto
+        <ul>
+          <li>contacto.html</li>
+          <li>contacto.js</li>
+        </ul>
+      </li>
+      <li>comuns
+        <ul>
+          <li>publicidade
+            <ul>
+              <li>normal.html</li>
+              <li>normal.js</li>
+              <li>service.js</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>module</li>
+    </ul>
+  </li>
+  <li>tests</li>
+  <li>bower_components</li>
+</ul>
+
+<p>Eu divido em módulos quando se trata de uma entidade do dominio da aplicação. Por exemplo num blog, teria o modulo <strong>blog</strong>, <strong>blog.artigo</strong> e <strong>blog.tutorial</strong>.
+Quando crio um novo módulo para componentes deste gênero faço os roteamentos, configurações dos serviços, dentro do <strong>config</strong> de cada módulo. Ajuda também a manter o código</p>
+
+<h3 id="controller">Controller</h3>
+
+<p>Por vezes dou por mim a validar dados e lógica num controller, ou até mesmo a utilizar terceiros recursos como consumir apis.
+Há código que lida directamente com os objectos na $scope como uma função que ordene uma lista ou que actualize dados na view. Se usarmos uma factory, como se trata de uma instância os controllers podem usar a factory e partilharem a mesma instância.</p>
+
+<h3 id="brodcasting-and-emit">Brodcasting and Emit</h3>
+<p>Tanto o <strong>$broadcast</strong> como o <strong>$emit</strong> implementam uma arquitectura de eventos, a diferença está na direcção da propagação no esquema do angular.</p>
+
+<ul>
+  <li>$brodcast - Emite um evento a todos os descendentes. No caso de $rootScope.$broadcast propaga todos os pontos que acessadam ao $rootScope como o controllers e directives.</li>
+  <li>$emit - Emite um evento a todos os parentes.</li>
+</ul>
+
+<p>Exemplo
+A nossa aplicação vai ligar-se por uma websocket a um servidor. Esse servidor vai publicar novas notícias.
+A aplicação mostra as notícias no controller noticiaCtrl e a directive ultimaNoticia mostra a noticia mais recentes.
+Quando o servidor publicar uma nova notícia, a nossa aplicação vai receber esse evento e propagar no evento publicar. </p>
+
+<pre><code>angular.module('biblia').run(['websocket', function(websocket) {
+    websock.onMessage(function(res) {
+
+    });
+}]);
+
+angular.module('biblia').controller('noticiasCtrl', ['$scope', '$rootScope', function(res) {
+    $scope.$on('publicar', function(res) {
+        $scope.$apply(function() {
+            $scope.noticias.push(res.noticia);
+        });
+    });
+}]);
+
+angular.module('biblia').directive('ultimaNoticia', [function() {
+    return {
+        link: function(attr, elem, scope) {
+            scope.$on('publicar', function(res) {
+                scope.nome = res.noticia.nome;
+                scope.imagemUrl = res.noticia.imagemUrl;
+                scope.uri = res.noticia.uri;
+            });
+        }
+    };
+}]);
+</code></pre>
+
+</div>
+<div class="layout-footer">
+<div class="container">
+This website was proudly developed with <a href="http://jekyllrb.com">Jekyll</a>
+</div>
+</div>
+</body>
+</html>

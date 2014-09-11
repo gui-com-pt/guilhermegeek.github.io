@@ -1,0 +1,126 @@
+<html>
+  <head>
+      <meta charset="utf8" />
+  </head>
+  <body>
+  <link href="/css/bootstrap.css" rel="stylesheet">
+<style>
+  body {
+    padding-top: 60px;
+  }
+  .layout-footer {
+    border-top:solid 1px #ddd;
+    padding-top: 8px;
+    margin-top: 20px;
+  }
+  .post__thumbnail {
+    max-width: 60px;
+  }
+</style>
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Gui</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a class="brand" href="/">Home</a></li>
+        <li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container">
+  <h2 class="content">CSS e LESS</h2>
+<img src="/media/less.jpg" />
+ 
+<p>Qualquer folha de estilos que tenhamos, podemos compilar com less e é gerado um resultado igual.
+Isto é bom para projectos já existentes, onde podemos começar a fazer implementações a tirar partido do less sem termos de remudelar todo o código já usado.</p>
+
+<h4 id="mixins">Mixins</h4>
+
+<p>Se precisas de desenvolver aplicações e websites podes criar um conjunto de funções que partilhes nos projectos. Um pacote bower ou um simples ficheiro .css</p>
+
+<ul>
+  <li>Código compatível - Aqui é que tiramos realmente proveito! Para aplicar uma sombra, em vez de escrever-mos .shadow, .webkit-shadow, etc criamos um método que o faça, receba variáveis para tamanhos e cores</li>
+  <li>Grelha - Eu gosto de esquematizar o design em grelhas. Não obrigo a seguir sempre este padrão mas para os containers e elementos principais do layout aplico (cabecários, barras laterais, etc).</li>
+</ul>
+
+<h4 id="grelha-do-bootstrap">Grelha do Bootstrap</h4>
+<p>Eu não gosto de definir os tamanhos dos elementos no html. Acho uma má prática.</p>
+
+<ul>
+  <li>Numa aplicação grande em que uses sempre o mesmos tamanho para os formulários (ex: col-xs-7), quando fores alterar o tamanho vais fazê-lo em todas as páginas.</li>
+  <li>Simplesmente não me parece bem. Prefiro defenir isto em css e não usar classes </li>
+</ul>
+
+<p>Com less, podemos fazê-lo a usar as mixins do Bootstrap. Por exemplo:</p>
+
+<pre><code>&lt;div class="ex-container"&gt;
+    &lt;div class="sidebar"&gt;
+
+    &lt;/div&gt;
+    &lt;div class="content"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+.ex-container {
+    .container; /* não chamamos um método mas aplicamos a class ``container`` neste elemento */
+
+    .sidebar {
+        .make-xs-col(3);
+    }
+    .content {
+        .make-xs-col(9);
+    }
+}
+</code></pre>
+
+<p>É aqui que o less é pior que sass. <strong>links</strong></p>
+
+<h3 id="cores">Cores</h3>
+
+<p>O Bootstrap é um excelente exemplo para definir-mos as variáveis das cores.
+Usar variáveis como marca, marca-invertida, etc permite-nos aplicar as mesmas cores em vários componentes a seguir um padrão de UX.</p>
+
+<pre><code>@cor-preto-escuro: #666666;
+@cor-marca: #EEEEEE;
+@cor-marca-invertida: #DDDDDD;
+
+@texto-cor: @cor-preto-escuro;
+
+body {
+    color: @texto-cor;
+}
+.component_noticias {
+    .cabecario {
+        background-color: @cor-marca;
+        color: @cor-marca-invertida;
+    }
+}
+</code></pre>
+
+</div>
+<div class="layout-footer">
+<div class="container">
+This website was proudly developed with <a href="http://jekyllrb.com">Jekyll</a>
+</div>
+</div>
+</body>
+</html>
