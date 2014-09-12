@@ -2,9 +2,6 @@
 layout: default
 comments: true
 ---
-      <meta property="og:url" content="{{ post.url }}"></meta>
-      <meta property="og:title" content="{{ post.title }}"></meta>
-            <meta property="og:description" content="{{ post.excerpt }}"></meta>
 <h2 class="content">{{page.title}}</h2>
 <img src="{{ page.image }}" />
  
