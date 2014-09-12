@@ -4,10 +4,7 @@
       <meta charset="utf8" />
       <title>Gui</title>
       <meta property="og:locale" content="en_US">
-      <meta property="og:url" content="">
-      <meta property="og:title" content="">
       <meta property="og:site_name" content="Gui">
-      <meta property="og:description" content="">
       <meta property="og:image" content="/media/gui_avatar.jpg">
       <meta property="og:image:type" content="image/jpg">
   </head>
@@ -56,7 +53,10 @@
 </div>
 
 <div class="container">
-  <h2 class="content">SMTP local mail server</h2>
+        <meta property="og:url" content="">
+      <meta property="og:title" content="">
+            <meta property="og:description" content="">
+<h2 class="content">SMTP local mail server</h2>
 <img src="/media/python.png" />
  
 <h1 id="local-mail-server-for-tests">Local mail server for tests</h1>
@@ -93,6 +93,19 @@ The default port is 25</p>
 <h3 id="getting-ready-for-production">Getting ready for production</h3>
 <p>This is how i strucutre my projects configurations. The default configurations is in a file like <code>default-settings.php</code>. In my case the default-settings is set from a prent library. Then i’ve the <code>local-settings.php</code> wich is ignored and never sent to the git repository. This file return a array that’ll replace the default settings.</p>
 
+<div class="clearfix">
+	  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
 </div>
 <div class="layout-footer">
 <div class="container">
