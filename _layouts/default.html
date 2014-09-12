@@ -1,6 +1,14 @@
 <html>
   <head>
       <meta charset="utf8" />
+      <title>{{ site.name }}</title>
+      <meta property="og:locale" content="en_US">
+      <meta property="og:url" content="{{ post.url }}">
+      <meta property="og:title" content="{{ post.title }}">
+      <meta property="og:site_name" content="{{ site.name }}">
+      <meta property="og:description" content="{{ post.excerpt }}">
+      <meta property="og:image" content="/media/gui_avatar.jpg">
+      <meta property="og:image:type" content="image/jpg">
   </head>
   <body>
   <link href="/css/bootstrap.css" rel="stylesheet">
