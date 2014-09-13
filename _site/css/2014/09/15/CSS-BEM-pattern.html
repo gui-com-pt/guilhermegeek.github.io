@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+  <head>
+      <meta charset="utf8" />
+      <title>Gui: Introdução ao padrão BEM em CSS</title>
+      <meta name="description" content="Escolher nomes para as classes com lógica e seguindo um padrão recomendado, que ajuda a manutenção da folha de estilo e evita a poluição com nomes repetidos">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="Introdução ao padrão BEM em CSS">
+      <meta property="og:image" content="/media/less.jpg">
+      <!--<meta property="og:image:type" content="image/jpg">-->
+      <meta property="og:url" content="/css/2014/09/15/CSS-BEM-pattern.html">
+      <meta property="og:title" content="Introdução ao padrão BEM em CSS">
+      <meta property="og:description" content="Escolher nomes para as classes com lógica e seguindo um padrão recomendado, que ajuda a manutenção da folha de estilo e evita a poluição com nomes repetidos">
+  </head>
+  <body>
+  <link href="/css/bootstrap.css" rel="stylesheet">
+<style>
+  body {
+    padding-top: 60px;
+  }
+  .layout-footer {
+    border-top:solid 1px #ddd;
+    padding-top: 8px;
+    margin-top: 20px;
+  }
+  .post__thumbnail {
+    max-width: 60px;
+  }
+</style>
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Gui</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a class="brand" href="/">Home</a></li>
+        <li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container">
+  <h2 class="content">Introdução ao padrão BEM em CSS</h2>
+<img src="/media/less.jpg" />
+ 
+<p>Primeiro, porque precisamos de uma metadalogia para CSS sequer? Vamos a exemplos</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;left&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;main_list&quot;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;highlithed&quot;</span><span class="nt">&gt;</span>first<span class="nt">&lt;/li&gt;</span>
+		<span class="nt">&lt;li&gt;</span>second<span class="nt">&lt;/li&gt;</span>
+	<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>News<span class="nt">&lt;/h4&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;body&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>Isto é muito comum e normalmente traduz-se numa folha de estilo semelhante a:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.news</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news</span> <span class="nc">.left</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news</span> <span class="nc">.left.hidden</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news</span> <span class="nc">.main_list</span> <span class="p">{}</span>
+<span class="nc">.news</span> <span class="nc">.highlighted</span> <span class="p">{}</span>
+<span class="nc">.news</span> <span class="nc">.header</span> <span class="p">{}</span>
+<span class="nc">.news</span> <span class="nc">.body</span> <span class="p">{}</span></code></pre></div>
+
+<p>Num projecto pequeno onde apenas tu trabalhem no frontend isto não vai gerar confusão, mas se ficar complexo e cada página tiver uma folha de isto corres o risco de usar um .news, .left sem querer e afectar o resto do código. Sabes que o news indica o módulo, o componente principal (utilizador, noticias, etc) mas o restante é apenas atribuir nomes diferentes para não entrarem em colisão. E chega o ponto em que poluíste o contexto e já tens classes em elementos que não querias.</p>
+
+<p>O que mais adoro em código é padrões e arquitecturas e para este caso temos o BEM - Block Element Modifier</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news__left&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;news__main_list&quot;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;news__main_list_item--highlithed&quot;</span><span class="nt">&gt;</span>first<span class="nt">&lt;/li&gt;</span>
+		<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;news__main_list_item&quot;</span><span class="nt">&gt;</span>second<span class="nt">&lt;/li&gt;</span>
+	<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news__right&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">&quot;news__header&quot;</span><span class="nt">&gt;</span>News<span class="nt">&lt;/h4&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news__body&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.news</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news__left</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news__left--hiden</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news__main_list</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news__main_list_item--highlighted</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news__header</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nc">.news__body</span> <span class="p">{</span> <span class="p">}</span></code></pre></div>
+
+<p>É mais rápido porque o browser não precisa de lidar com duas classes e bastante mais ligível!</p>
+
+<ul>
+  <li><strong>.news</strong> O block representa um componente. </li>
+  <li><strong>.news__left</strong> O elemento é o elemento em si que estamos a trabalhar, seja um botão, uma caixa de texto, um texto diferente do resto. O conjunto de elementos formam o componente (apesar de o componente puder usar outros estilos comuns)</li>
+  <li><strong>.news__main_list_item–hightlighted</strong> O modificador pode alterar o estado do bloco, neste exemplo do elemento até.</li>
+</ul>
+
+<p>O padrão é usar __ para separar o bloco e elemento e – para representar um estado diferente.</p>
+
+<p>Cada classe pertence a um elemento e torna tudo muito mais simples. Programadores adoram este tipo de conceitos trazidos para o lado do cliente, torna tudo mais organizado :)</p>
+
+<p>Uma pequena nota, porque usar a class horrível news__main_list_item–highlithed e não fazer simplesmente .news__main_list li? Gosto de abstrair a folha de estilo o quanto possível da DOM. Neste caso é uma lista mas pode ser reaproveitado para outro elemento numa div por exemplo.</p>
+
+<p>Se formos a ver no primeiro exemplo que mostrei, as classes não fazem muito sentido e não encontramos uma ligação entre elas que nos indiquem que pertencem ao mesmo bloco ou grupo. A menos que estivessem juntas na folha de estilo e comentadas, tería dificuldades.</p>
+
+<p>A seguir o BEM ou outro padrão qualquer com que te identifiques, mesmo que seja muito diferente e pouco convencional, só o facto de seguires um padrão já é muito bom e torna tudo uniformizado, dás nomes seguindo uma lógica.</p>
+
+<h3 id="feio">É feio!</h3>
+
+<p>Ok é justo, compreendo que á primeira vista .layout-container__right_sidebar–hidden seja grande e feio.
+Mas eu em programação no servidor também uso getParentDetailsStatus e recurso-me a usar abreviaturas ou palavras mais curtas só para não ficar feio. Mesmo no PHP que não compilamos o código, é praticamente insigificante para o interpretador e mesmo que seja mais tarde podes minificar tudo. </p>
+
+<div class="clearfix">
+	  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+</div>
+<div class="layout-footer">
+<div class="container">
+This website was proudly developed with <a href="http://jekyllrb.com">Jekyll</a>
+</div>
+</div>
+</body>
+</html>

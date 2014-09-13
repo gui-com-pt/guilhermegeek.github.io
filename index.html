@@ -6,12 +6,10 @@ layout: default
 <a href="http://stackoverflow.com/users/365383/guilherme-cardoso" style="position: absolute; right: 0; top: 0;">
 <img src="http://stackoverflow.com/users/flair/365383.png" width="208" height="58" alt="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
 </a>
-<p>I'm Gui. I've 23 years old and i live in a small city in Portugal.<br>
-I write software code and try to hack it. 
-<br>Most of my work is done on servers but i also work with clientside solutions.</p>
+<p>This is not a website, just a few drafts im writting to publish soon.</p>
 <br>
 <p>As you may notice i'm not a designer.<br>
-This site is <a href="http://github.com/guilhermegeek/guilhermegeek.github.io">under development (available at github)</a>, not even beta. Only matters the content.</p>
+<a href="http://github.com/guilhermegeek/guilhermegeek.github.io">Under development (available at github)</a>, not even beta.</p>
 </div>
 </div>
 
@@ -34,10 +32,8 @@ This site is <a href="http://github.com/guilhermegeek/guilhermegeek.github.io">u
 
 </div>
 <div class="col-xs-3">
-  <h4>Últimos</h4>
-  <ul>
   {% for category in site.categories %}
-  <li><a name="{{ category | first }}">{{ category | first }}</a>
+  <h4>{{ category | first }}</h4>
     <ul>
     {% for posts in category %}
       {% for post in posts %}
@@ -45,9 +41,7 @@ This site is <a href="http://github.com/guilhermegeek/guilhermegeek.github.io">u
       {% endfor %}
     {% endfor %}
     </ul>
-  </li>
 {% endfor %}
-</ul>
 <h4>Must check</h4>
 <ul>
 <li><a href="https://isleaked.com">https://isleaked.com</a></li>
