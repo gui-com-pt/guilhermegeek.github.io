@@ -1,3 +1,12 @@
+---
+title: Manage Webhosting
+layout: post_entry
+image: /media/angular-thumb.jpg
+excerpt: Gerir um serviço de alojamento web. Configurar servidores, soluções gratuítas
+categories:
+ webhosting
+---
+
 ### PHP e extensões
 Praticamente todas as distribuições com instaladores de pacotes conseguem instalar o PHP, MySQL e Apache mas nós precisamos de controlar as versões dos programas e não depender de terceiros para compilar o código.
 Eu gosto de compilar o PHP de raíz, assim como o nginx e MySQL. Ainda são muitas as dependências que temos de instalar (muitas de raíz também).
