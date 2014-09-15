@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/smtp/test/2014/10/10/smtp-local-server.html</loc>
+    
+    <lastmod>2014-10-10T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/less/2014/10/10/css-and-less-introduction.html</loc>
+    
+    <lastmod>2014-10-10T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</loc>
+    
+    <lastmod>2014-09-15T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</loc>
+    
+    <lastmod>2014-09-15T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/archive.html</loc>
+    <lastmod>2014-09-15T10:52:12+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/</loc>
+    <lastmod>2014-09-15T10:52:12+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  
+  
+</urlset>

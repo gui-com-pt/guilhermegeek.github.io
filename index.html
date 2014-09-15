@@ -2,19 +2,6 @@
 layout: default
 ---
 <div class="container">
-<div class="jumbotron" style="position: relative;">
-<a href="http://stackoverflow.com/users/365383/guilherme-cardoso" style="position: absolute; right: 0; top: 0;">
-<img src="http://stackoverflow.com/users/flair/365383.png" width="208" height="58" alt="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
-</a>
-<p>This is not a website, just a few drafts im writting to publish soon.</p>
-<br>
-<p>As you may notice i'm not a designer.<br>
-<a href="http://github.com/guilhermegeek/guilhermegeek.github.io">Under development (available at github)</a>, not even beta.</p>
-</div>
-</div>
-
-
-<div class="container">
 <div class="row">
 <div class="col-xs-9">
 
@@ -32,16 +19,15 @@ layout: default
 
 </div>
 <div class="col-xs-3">
-  {% for category in site.categories %}
-  <h4>{{ category | first }}</h4>
-    <ul>
-    {% for posts in category %}
-      {% for post in posts %}
-        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    {% endfor %}
-    </ul>
-{% endfor %}
+<div class="clearfix">
+<a href="http://stackoverflow.com/users/365383/guilherme-cardoso">
+<img src="http://stackoverflow.com/users/flair/365383.png" width="208" height="58" alt="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+</a>
+</div>
+<div class="clearfix">
+<a class="twitter-timeline" href="https://twitter.com/guilhermeGeek" data-widget-id="511452075822030849">Tweets by @guilhermeGeek</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
 <h4>Must check</h4>
 <ul>
 <li><a href="https://isleaked.com">https://isleaked.com</a></li>

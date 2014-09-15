@@ -2,8 +2,10 @@
 title:            Guilherme Cardoso
 tagline:          'Software Programmer'
 description:      'My personal website and blog.'
-url:              http://guilhermegeek.github.io
+url:              http://guilhermecardoso.pt
 name: 'Gui'
+gems:
+  - jekyll-sitemap
 pages_list:       
   About: '/about'
   Archive: '/archive'
