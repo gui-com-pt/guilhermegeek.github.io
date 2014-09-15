@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Gui</title>
+		<description>My personal website and blog.</description>		
+		<link>http://guilhermecardoso.pt</link>
+		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>SMTP local mail server</title>
+				<description>&lt;h1 id=&quot;local-mail-server-for-tests&quot;&gt;Local mail server for tests&lt;/h1&gt;
+
+&lt;p&gt;When you’re dealing with emails providers, it’s a good pratice to keep the connection information in a configuration place. Allow it to set the encription, username, etc. Like this&lt;/p&gt;
+
+&lt;p&gt;$array = array(
+‘smtp.hostname’ =&amp;gt; ‘localhost’,
+‘smtp.port’ =&amp;gt; 25
+/*
+ * Null for no authenticated
+ * Availables: ssl, tsl
+ */
+‘smtp.security’ =&amp;gt; null,
+‘smtp.username’ =&amp;gt; ‘’,
+‘smtp.password’ =&amp;gt; ‘’
+);&lt;/p&gt;
+
+&lt;p&gt;If you’re using some framework you can put the configuration in the IOC (if any), or in the default framework configuration.
+For online email providers you’ve greate services like mail chimp or even the windows live and gmail services. 
+Howerever you’ll not want to keep testing the emails always with your provider, you may even get considered as spammer.&lt;/p&gt;
+
+&lt;p&gt;For Windows you can install smtp4dev
+A greate tool i’ve used for a few time while i work with MS. It tracks the emails and if you’ve any email client it shows up there.&lt;/p&gt;
+
+&lt;p&gt;For linux i recommend the python mail server. It’s a simple server that output the messages in console, you get the plain text of email.
+For me it’s usefull because i always like to inspect the entire email (headers, etc).&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+python -m smtpd -n -c DebuggingServer localhost:26
+&lt;/code&gt;
+The default port is 25&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-ready-for-production&quot;&gt;Getting ready for production&lt;/h3&gt;
+&lt;p&gt;This is how i strucutre my projects configurations. The default configurations is in a file like &lt;code&gt;default-settings.php&lt;/code&gt;. In my case the default-settings is set from a prent library. Then i’ve the &lt;code&gt;local-settings.php&lt;/code&gt; wich is ignored and never sent to the git repository. This file return a array that’ll replace the default settings.&lt;/p&gt;
+</description>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/smtp/test/2014/10/10/smtp-local-server.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/smtp/test/2014/10/10/smtp-local-server.html</guid>
+			</item>
+		
+			<item>
+				<title>CSS e LESS</title>
+				<description>&lt;p&gt;Qualquer folha de estilos que tenhamos, podemos compilar com less e é gerado um resultado igual.
+Isto é bom para projectos já existentes, onde podemos começar a fazer implementações a tirar partido do less sem termos de remudelar todo o código já usado.&lt;/p&gt;
+
+&lt;h4 id=&quot;mixins&quot;&gt;Mixins&lt;/h4&gt;
+
+&lt;p&gt;Se precisas de desenvolver aplicações e websites podes criar um conjunto de funções que partilhes nos projectos. Um pacote bower ou um simples ficheiro .css&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Código compatível - Aqui é que tiramos realmente proveito! Para aplicar uma sombra, em vez de escrever-mos .shadow, .webkit-shadow, etc criamos um método que o faça, receba variáveis para tamanhos e cores&lt;/li&gt;
+  &lt;li&gt;Grelha - Eu gosto de esquematizar o design em grelhas. Não obrigo a seguir sempre este padrão mas para os containers e elementos principais do layout aplico (cabecários, barras laterais, etc).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;grelha-do-bootstrap&quot;&gt;Grelha do Bootstrap&lt;/h4&gt;
+&lt;p&gt;Eu não gosto de definir os tamanhos dos elementos no html. Acho uma má prática.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Numa aplicação grande em que uses sempre o mesmos tamanho para os formulários (ex: col-xs-7), quando fores alterar o tamanho vais fazê-lo em todas as páginas.&lt;/li&gt;
+  &lt;li&gt;Simplesmente não me parece bem. Prefiro defenir isto em css e não usar classes &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Com less, podemos fazê-lo a usar as mixins do Bootstrap. Por exemplo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;ex-container&quot;&amp;gt;
+    &amp;lt;div class=&quot;sidebar&quot;&amp;gt;
+
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;content&quot;&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+
+.ex-container {
+    .container; /* não chamamos um método mas aplicamos a class ``container`` neste elemento */
+
+    .sidebar {
+        .make-xs-col(3);
+    }
+    .content {
+        .make-xs-col(9);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;É aqui que o less é pior que sass. &lt;strong&gt;links&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cores&quot;&gt;Cores&lt;/h3&gt;
+
+&lt;p&gt;O Bootstrap é um excelente exemplo para definir-mos as variáveis das cores.
+Usar variáveis como marca, marca-invertida, etc permite-nos aplicar as mesmas cores em vários componentes a seguir um padrão de UX.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@cor-preto-escuro: #666666;
+@cor-marca: #EEEEEE;
+@cor-marca-invertida: #DDDDDD;
+
+@texto-cor: @cor-preto-escuro;
+
+body {
+    color: @texto-cor;
+}
+.component_noticias {
+    .cabecario {
+        background-color: @cor-marca;
+        color: @cor-marca-invertida;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/less/2014/10/10/css-and-less-introduction.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/less/2014/10/10/css-and-less-introduction.html</guid>
+			</item>
+		
+			<item>
+				<title>Gerir um servidor de alojamento</title>
+				<description>&lt;h3 id=&quot;php-e-extenses&quot;&gt;PHP e extensões&lt;/h3&gt;
+&lt;p&gt;Praticamente todas as distribuições com instaladores de pacotes conseguem instalar o PHP, MySQL e Apache mas nós precisamos de controlar as versões dos programas e não depender de terceiros para compilar o código.
+Eu gosto de compilar o PHP de raíz, assim como o nginx e MySQL. Ainda são muitas as dependências que temos de instalar (muitas de raíz também).&lt;/p&gt;
+
+&lt;p&gt;As extensões também as compilo. O PECL é muito util para instalar extensões e até tem versões recentes, senão te sentires à vontade no unix é sempre uma boa alternativa.&lt;/p&gt;
+
+&lt;p&gt;É útil ter várias instâncias do PHP a correr com versões diferentes. É preciso instalá-lo em versões diferentes mas é útil pois nem todos os projectos suportam a 5.5 com mais funções deprecadas.
+O ideal é puxar o código do GIT, fazer checkout da versão desejada e compilar o código do genero ./configure –prefix=/opt/php/5.5 &amp;amp;&amp;amp; make &amp;amp;&amp;amp; install
+Assim temos mais constrolo das instalações e até mesmo para as configurações podemos criar uma estrutura semelhante.(php.ini)&lt;/p&gt;
+
+&lt;h3 id=&quot;servios&quot;&gt;Serviços&lt;/h3&gt;
+
+&lt;p&gt;Cpanel e WHM&lt;/p&gt;
+
+&lt;p&gt;O WHM é um serviço pago. Uma solução desenvolvida para configurar uma máquina como servidor web.
+É muito comum nas soluções de alojamento disponíveis porque já têem instaladores para CMS como o Wordpress e Jooma, instalam logo o PHPMyadmin para gerir o MySQL, contas FTP, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;conta&quot;&gt;Conta&lt;/h3&gt;
+
+&lt;p&gt;Quando alugamos um servidor dedicado ou mesmo partilhado, a entidade que o configura costuma entregar ao cliente um utilizador e password desse servidor. Não adicionam este utilizador ao grupo &lt;strong&gt;sudo&lt;/strong&gt; nem muito menos vão dar a conta root e manterem a manutentação, mas instalam os programas e configuram tudo o que é necessário.&lt;/p&gt;
+
+&lt;p&gt;Recomendo os seguintes softwares a serem instalados&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;htop - uma melhoria do &lt;strong&gt;top&lt;/strong&gt; que já vem disponível, permite ver o consumo detalhado de cada processo e o estado geral dos recursos do servidor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;scripts&quot;&gt;Scripts&lt;/h3&gt;
+
+&lt;p&gt;O CPanel e semelhantes trazem opções de backup limitadas. O que mais gosto de fazer é escrever o código e pensar eu na forma como a informação vai ser guardada.&lt;/p&gt;
+
+&lt;p&gt;De 7 em 7 dias um backup completo do conteúdo público de todas as contas (/www), das base de dados e email.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+
+#START
+TIME=`date +&quot;%d-%m-%Y-%H-%M-%S&quot;` # day-month-year-hour-minute-second. Ie: 30-04-2014-14-49-47
+FILENAME=&quot;backup-$TIME.tar.gz&quot; # file name is combined with the date
+SRCDIR=&quot;/var/www&quot; # source directory
+DESDIR=&quot;/var/backups&quot; # destination directory
+tar -cpzf $DESDIR/$FILENAME $SRCDIR # compress the source directory and saves the compress archive in destination
+#END
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1 vez por dia copiar apenas a base de dados&lt;/p&gt;
+
+</description>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</guid>
+			</item>
+		
+			<item>
+				<title>Introdução ao padrão BEM em CSS</title>
+				<description>&lt;p&gt;Primeiro, porque precisamos de uma metadalogia para CSS sequer? Vamos a exemplos&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;left&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main_list&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;highlithed&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;first&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;second&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;right&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;header&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;News&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Isto é muito comum e normalmente traduz-se numa folha de estilo semelhante a:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.left.hidden&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.main_list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.highlighted&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.header&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Num projecto pequeno onde apenas tu trabalhem no frontend isto não vai gerar confusão, mas se ficar complexo e cada página tiver uma folha de isto corres o risco de usar um .news, .left sem querer e afectar o resto do código. Sabes que o news indica o módulo, o componente principal (utilizador, noticias, etc) mas o restante é apenas atribuir nomes diferentes para não entrarem em colisão. E chega o ponto em que poluíste o contexto e já tens classes em elementos que não querias.&lt;/p&gt;
+
+&lt;p&gt;O que mais adoro em código é padrões e arquitecturas e para este caso temos o BEM - Block Element Modifier&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__left&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__main_list&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__main_list_item--highlithed&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;first&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__main_list_item&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;second&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__right&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__header&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;News&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__body&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news__left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news__left--hiden&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news__main_list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news__main_list_item--highlighted&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news__header&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.news__body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;É mais rápido porque o browser não precisa de lidar com duas classes e bastante mais ligível!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;.news&lt;/strong&gt; O block representa um componente. &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;.news__left&lt;/strong&gt; O elemento é o elemento em si que estamos a trabalhar, seja um botão, uma caixa de texto, um texto diferente do resto. O conjunto de elementos formam o componente (apesar de o componente puder usar outros estilos comuns)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;.news__main_list_item–hightlighted&lt;/strong&gt; O modificador pode alterar o estado do bloco, neste exemplo do elemento até.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O padrão é usar __ para separar o bloco e elemento e – para representar um estado diferente.&lt;/p&gt;
+
+&lt;p&gt;Cada classe pertence a um elemento e torna tudo muito mais simples. Programadores adoram este tipo de conceitos trazidos para o lado do cliente, torna tudo mais organizado :)&lt;/p&gt;
+
+&lt;p&gt;Uma pequena nota, porque usar a class horrível news__main_list_item–highlithed e não fazer simplesmente .news__main_list li? Gosto de abstrair a folha de estilo o quanto possível da DOM. Neste caso é uma lista mas pode ser reaproveitado para outro elemento numa div por exemplo.&lt;/p&gt;
+
+&lt;p&gt;Se formos a ver no primeiro exemplo que mostrei, as classes não fazem muito sentido e não encontramos uma ligação entre elas que nos indiquem que pertencem ao mesmo bloco ou grupo. A menos que estivessem juntas na folha de estilo e comentadas, tería dificuldades.&lt;/p&gt;
+
+&lt;p&gt;A seguir o BEM ou outro padrão qualquer com que te identifiques, mesmo que seja muito diferente e pouco convencional, só o facto de seguires um padrão já é muito bom e torna tudo uniformizado, dás nomes seguindo uma lógica.&lt;/p&gt;
+
+&lt;h3 id=&quot;feio&quot;&gt;É feio!&lt;/h3&gt;
+
+&lt;p&gt;Ok é justo, compreendo que á primeira vista .layout-container__right_sidebar–hidden seja grande e feio.
+Mas eu em programação no servidor também uso getParentDetailsStatus e recurso-me a usar abreviaturas ou palavras mais curtas só para não ficar feio. Mesmo no PHP que não compilamos o código, é praticamente insigificante para o interpretador e mesmo que seja mais tarde podes minificar tudo. &lt;/p&gt;
+</description>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</guid>
+			</item>
+		
+			<item>
+				<title>Expressão de Função Imediatamente-Invocada</title>
+				<description>&lt;p&gt;Em inglês o termo é IIFE - Immediately-Invoked Function Expression. Também é conhecido como Self-Invoked anonymous function.&lt;/p&gt;
+
+&lt;h4 id=&quot;introduo&quot;&gt;Introdução&lt;/h4&gt;
+&lt;p&gt;Em javascript, quando invocamos uma função criamos um novo contexto de execução. Todas as variáveis e funções que existam dentro deste contexto não podem ser acedidas por contextos paternos.
+Isto é útil para termos privacidade dentro desse contexto sem poluir o resto.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function registarVisita() {
+    var i = 0;
+    return function() {
+        console.log(++1);
+    };
+}
+
+var test = registerVisita();
+test(); // log: 1
+test(); // log: 2
+
+var test2 = registerVisita();
+test2(); // log: 1
+test3(); // log: 2
+
+test(); // log 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;i; // Erro de Referência - i não está defenido, apenas existe dentro de registarVisita&lt;/p&gt;
+
+&lt;p&gt;As funções test e test2 apenas são executadas quando as invocamos.
+Quando defenimos uma função &lt;code&gt;function foo() {}&lt;/code&gt; our &lt;code&gt;var foo = function(){}&lt;/code&gt; temos um identificador para a função, que invocamos usando parêntises à frente
+Mesmo que só chamemos a função test uma vez temos de ter a referência para depois invocarmos a função&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var foo = function() { }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;No entanto, senão passarmos nenhum identificador para a função é lançada uma excepção&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function() { }();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Quando o parser encontra a palavra &lt;strong&gt;function&lt;/strong&gt; num scope global ou dentro de uma função, trata-o como uma declaração de função (&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function&quot;&gt;Statement&lt;/a&gt;) não como uma expressão de função (&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function&quot;&gt;Function&lt;/a&gt;).
+Como não está explicito que a função é uma expressão, o parser pensa que é uma declaração de função e espera que a palavra &lt;strong&gt;function&lt;/strong&gt; seja seguida do nome, em vez de (. Isto é porque uma função requer um nome.&lt;/p&gt;
+
+&lt;h4 id=&quot;iife&quot;&gt;IIFE&lt;/h4&gt;
+&lt;p&gt;Se colocarmos tudo dentro de parêntises, o parser vai esperar uma expressão de função em vez de uma declaração. Isto é porque em javascript parêntises não podem conter statments.
+Quando o parser encontra a palavra &lt;strong&gt;function&lt;/strong&gt;, sabe que tem de o parse como uma expressão e não declaração.
+Ambos os exemplos podem ser utilizados para criar-mos a mesma privacidade dos primeiros exemplos dentro do contexto da função&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Recomendação do Crockford (http://www.crockford.com/)
+(function() { 
+}());
+
+// Também funciona
+(function() {
+
+})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Como o objectivo dos parênteses é separar as expressões das declarações de funções, eles podem ser omitidos quando o parser já espera uma expressão&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var i = function() { return 1; }(); 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;No entanto devemos usá-los quando estamos a atribuir, por uma questão de convenção.
+Os parêntises também são úteis para quem começa a ler o início da função já saber que ela imediatamente executada.&lt;/p&gt;
+
+&lt;h3 id=&quot;fontes&quot;&gt;Fontes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://benalman.com/news/2010/11/immediately-invoked-function-expression/&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</guid>
+			</item>
+		
+			<item>
+				<title>AngularJS - Introdução</title>
+				<description>&lt;h1 id=&quot;criar-uma-aplicao-web-e-mobile-com-angularjs&quot;&gt;Criar uma aplicação web e mobile com angularjs&lt;/h1&gt;
+&lt;p&gt;Cada módulo é configurado com o método &lt;strong&gt;config&lt;/strong&gt;. Nesta fase não temos acesso a $rootScope porque ainda não foi criada.&lt;/p&gt;
+
+&lt;p&gt;Nesta fase o próprio url não foi traduzido para um controller sequer. É ideal para carregar depêndencias também.
+O método &lt;strong&gt;run&lt;/strong&gt; inicia a aplicação e já tem acesso à $rootScope. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    angular.
+        module(&#39;biblia&#39;).
+        config([function(){
+        }].
+        run([&#39;$rootScope&#39;, &#39;$http&#39;, function($rootScope, $http) {
+            $rootScope
+        });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;services-e-factories&quot;&gt;Services e factories&lt;/h4&gt;
+&lt;p&gt;Um service retorna sempre uma nova instância fazendo uso de &lt;strong&gt;new&lt;/strong&gt;. 
+Uma factory age como um singleton, uma instância única que é partilhada&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    angular.module(&#39;biblia&#39;).service(&#39;bibliaSvc&#39;, [&#39;$rootScope&#39;, &#39;$http&#39;, function($rootScope, $http) {
+            var books = [&#39;genesis&#39;, &#39;exodo&#39;];
+            return {
+                getVersions: function(){
+
+                },
+                find: function(version, phrase) {
+
+                },
+                getChapter: function(version, book, chapter) {
+
+                },
+                getVerse: function(version, book, chapter, verse) {
+
+                },
+                findVerses: function(version, book, chapter, verseFrom, verseTo) {
+                    $http.get(&#39;/bible-online.com/query?book=&#39; + book + &#39;&amp;amp;chapter=&#39; + chapter + &#39;&amp;amp;from=&#39; + verseFrom + &#39;&amp;amp;verseTo=&#39; + verseTo)
+                        .result.then(function(res) {
+
+                        }, function(res) {
+
+                        });
+                }
+            };
+
+        }).
+        controller(&#39;homeCtrl&#39;, [&#39;bibleSvc&#39;, &#39;$scope&#39;, function(bibleSvc, $scope) {
+            $scope.find = function() {
+                bibleSvc.findVerses($scope.version, $scope.book, $sc)
+            };
+        });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Esta é a estrutura que adopto em projectos maiores, em que eu sei que vou usar várias views parciais e até os controladores têm sempre um service associado.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;app
+    &lt;ul&gt;
+      &lt;li&gt;biblia
+        &lt;ul&gt;
+          &lt;li&gt;pesquisar.html&lt;/li&gt;
+          &lt;li&gt;pesquisar.js&lt;/li&gt;
+          &lt;li&gt;pesquisar-livros.html&lt;/li&gt;
+          &lt;li&gt;editar.html&lt;/li&gt;
+          &lt;li&gt;editar.js&lt;/li&gt;
+          &lt;li&gt;service.js&lt;/li&gt;
+          &lt;li&gt;module.js&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;inicio
+        &lt;ul&gt;
+          &lt;li&gt;inicio.html&lt;/li&gt;
+          &lt;li&gt;inicio.js&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;contacto
+        &lt;ul&gt;
+          &lt;li&gt;contacto.html&lt;/li&gt;
+          &lt;li&gt;contacto.js&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;comuns
+        &lt;ul&gt;
+          &lt;li&gt;publicidade
+            &lt;ul&gt;
+              &lt;li&gt;normal.html&lt;/li&gt;
+              &lt;li&gt;normal.js&lt;/li&gt;
+              &lt;li&gt;service.js&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;module&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;tests&lt;/li&gt;
+  &lt;li&gt;bower_components&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Eu divido em módulos quando se trata de uma entidade do dominio da aplicação. Por exemplo num blog, teria o modulo &lt;strong&gt;blog&lt;/strong&gt;, &lt;strong&gt;blog.artigo&lt;/strong&gt; e &lt;strong&gt;blog.tutorial&lt;/strong&gt;.
+Quando crio um novo módulo para componentes deste gênero faço os roteamentos, configurações dos serviços, dentro do &lt;strong&gt;config&lt;/strong&gt; de cada módulo. Ajuda também a manter o código&lt;/p&gt;
+
+&lt;h3 id=&quot;controller&quot;&gt;Controller&lt;/h3&gt;
+
+&lt;p&gt;Por vezes dou por mim a validar dados e lógica num controller, ou até mesmo a utilizar terceiros recursos como consumir apis.
+Há código que lida directamente com os objectos na $scope como uma função que ordene uma lista ou que actualize dados na view. Se usarmos uma factory, como se trata de uma instância os controllers podem usar a factory e partilharem a mesma instância.&lt;/p&gt;
+
+&lt;h3 id=&quot;brodcasting-and-emit&quot;&gt;Brodcasting and Emit&lt;/h3&gt;
+&lt;p&gt;Tanto o &lt;strong&gt;$broadcast&lt;/strong&gt; como o &lt;strong&gt;$emit&lt;/strong&gt; implementam uma arquitectura de eventos, a diferença está na direcção da propagação no esquema do angular.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$brodcast - Emite um evento a todos os descendentes. No caso de $rootScope.$broadcast propaga todos os pontos que acessadam ao $rootScope como o controllers e directives.&lt;/li&gt;
+  &lt;li&gt;$emit - Emite um evento a todos os parentes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Exemplo
+A nossa aplicação vai ligar-se por uma websocket a um servidor. Esse servidor vai publicar novas notícias.
+A aplicação mostra as notícias no controller noticiaCtrl e a directive ultimaNoticia mostra a noticia mais recentes.
+Quando o servidor publicar uma nova notícia, a nossa aplicação vai receber esse evento e propagar no evento publicar. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;angular.module(&#39;biblia&#39;).run([&#39;websocket&#39;, function(websocket) {
+    websock.onMessage(function(res) {
+
+    });
+}]);
+
+angular.module(&#39;biblia&#39;).controller(&#39;noticiasCtrl&#39;, [&#39;$scope&#39;, &#39;$rootScope&#39;, function(res) {
+    $scope.$on(&#39;publicar&#39;, function(res) {
+        $scope.$apply(function() {
+            $scope.noticias.push(res.noticia);
+        });
+    });
+}]);
+
+angular.module(&#39;biblia&#39;).directive(&#39;ultimaNoticia&#39;, [function() {
+    return {
+        link: function(attr, elem, scope) {
+            scope.$on(&#39;publicar&#39;, function(res) {
+                scope.nome = res.noticia.nome;
+                scope.imagemUrl = res.noticia.imagemUrl;
+                scope.uri = res.noticia.uri;
+            });
+        }
+    };
+}]);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</guid>
+			</item>
+		
+			<item>
+				<title>AngularJS and dynamic forms</title>
+				<description>&lt;p&gt;There’re situations where i have to do things dynamically in angular.&lt;/p&gt;
+
+&lt;p&gt;I’ll show a simple example. We’ve a contact form, billing form and delivery form. Both forms have common fields. I want to copy the common data from contact to others forms&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Contact&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;novalidate&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;contact.name&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Nick Name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;contact.nickName&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Address&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;contact.address&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;copyContactForm()&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Copy to others forms&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Delivery&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;novalidate&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;delivery.name&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Address&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;delivery.address&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Billing&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;novalidate&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;billing.name&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Address&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;billing.address&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;primForm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;contact&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;secForms&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;billing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;delivery&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;copyContactForm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Loop through contact object properties&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;primForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Loop through secondary forms&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;secForms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// acess the secondary form, property. Assign the original value from primForm property&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</guid>
+			</item>
+		
+	</channel>
+</rss>
