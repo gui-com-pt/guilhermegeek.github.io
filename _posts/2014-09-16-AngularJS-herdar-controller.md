@@ -56,3 +56,6 @@ function adultsController = function($scope, bibleService, $state) {
 	};
 };
 {% endhighlight%}
+
+Eu utilizei isto num contexto em que o baseController já era em si um controller herdado mas a utilizar o ui-router. 
+Desta forma registas o kidsController e adultsController como dois controladores independentes um do outro, mas com as mesmas dependências.

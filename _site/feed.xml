@@ -164,6 +164,9 @@ body {
 		&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;svc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextDailyStudy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 	&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Eu utilizei isto num contexto em que o baseController já era em si um controller herdado mas a utilizar o ui-router. 
+Desta forma registas o kidsController e adultsController como dois controladores independentes um do outro, mas com as mesmas dependências.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</link>
