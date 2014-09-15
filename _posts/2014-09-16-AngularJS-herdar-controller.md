@@ -19,7 +19,7 @@ function baseController = function($scope, bibleService, $state) {
 		$state.go('home'); 
 	};
 };
-{% endhighlight}
+{% endhighlight%}
 
 {% highlight javascript %}
 function kidsController = function($scope) {
@@ -40,7 +40,7 @@ function kidsController = function($scope) {
 	};
 };
 
-{% endhighlight}
+{% endhighlight%}
 
 {% highlight javascript %}
 function adultsController = function($scope, bibleService, $state) {
@@ -55,4 +55,4 @@ function adultsController = function($scope, bibleService, $state) {
 		$scope.svc.nextDailyStudy();
 	};
 };
-{% endhighlight}
+{% endhighlight%}

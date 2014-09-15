@@ -19,6 +19,14 @@
   </url>
   
   <url>
+    <loc>http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</loc>
+    
+    <lastmod>2014-09-16T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</loc>
     
     <lastmod>2014-09-15T00:00:00+01:00</lastmod>
@@ -61,14 +69,14 @@
   
   <url>
     <loc>http://guilhermecardoso.pt/archive.html</loc>
-    <lastmod>2014-09-15T16:55:30+01:00</lastmod>
+    <lastmod>2014-09-15T21:22:27+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://guilhermecardoso.pt/</loc>
-    <lastmod>2014-09-15T16:55:30+01:00</lastmod>
+    <lastmod>2014-09-15T21:22:27+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
