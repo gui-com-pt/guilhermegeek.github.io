@@ -6,7 +6,8 @@ image: /media/less.jpg
 categories: css
 ---
 
-Primeiro, porque precisamos de uma metadalogia para CSS sequer? Vamos a exemplos
+Primeiro, porque precisamos de uma metadalogia para CSS sequer? 
+Vamos a um exemplo, um widget da última noticia repetido várias vezes na mesma página:
 
 {% highlight html %}
 <div class="news">
@@ -36,8 +37,9 @@ Isto é muito comum e normalmente traduz-se numa folha de estilo semelhante a:
 {% endhighlight %}
 
 
-Num projecto pequeno onde apenas tu trabalhem no frontend isto não vai gerar confusão, mas se ficar complexo e cada página tiver uma folha de isto corres o risco de usar um .news, .left sem querer e afectar o resto do código. Sabes que o news indica o módulo, o componente principal (utilizador, noticias, etc) mas o restante é apenas atribuir nomes diferentes para não entrarem em colisão. E chega o ponto em que poluíste o contexto e já tens classes em elementos que não querias.
+Num projecto pequeno onde apenas tu trabalhes no frontend isto não vai gerar confusão, mas se ficar complexo e cada página tiver uma folha de isto corres o risco de usar um .news, .left sem querer e afectar o resto do código. Sabes que o news indica o módulo, o componente principal (utilizador, noticias, etc) mas o restante é apenas atribuir nomes diferentes para não entrarem em colisão. E chega o ponto em que poluíste o contexto e já tens classes em elementos que não querias.
 
+Se trabalhares com alguém então precisam de ter uma metadologia para seguirem em comum, ou pelo menos um padrão defenido com certa lógica.
 
 O que mais adoro em código é padrões e arquitecturas e para este caso temos o BEM - Block Element Modifier
 
@@ -78,7 +80,12 @@ O padrão é usar __ para separar o bloco e elemento e -- para representar um es
 
 Cada classe pertence a um elemento e torna tudo muito mais simples. Programadores adoram este tipo de conceitos trazidos para o lado do cliente, torna tudo mais organizado :)
 
-Uma pequena nota, porque usar a class horrível news__main_list_item--highlithed e não fazer simplesmente .news__main_list li? Gosto de abstrair a folha de estilo o quanto possível da DOM. Neste caso é uma lista mas pode ser reaproveitado para outro elemento numa div por exemplo.
+<img src="/media/posts/head-marked2.jpg" />
+
+Créditos da imagem: Smashing Magazine
+
+
+Uma pequena nota, porque usar a class horrível news__main_list_item--highlithed e não fazer simplesmente .news__main_list li? Gosto de abstrair a folha de estilo o quanto possível do tipo de elemento do DOM. Neste caso é uma lista mas pode ser reaproveitado para outro elemento numa div por exemplo, isto mais a passar paginas de web para mobile.
 
 
 Se formos a ver no primeiro exemplo que mostrei, as classes não fazem muito sentido e não encontramos uma ligação entre elas que nos indiquem que pertencem ao mesmo bloco ou grupo. A menos que estivessem juntas na folha de estilo e comentadas, tería dificuldades.
