@@ -4,6 +4,7 @@ tagline:          'Software Programmer'
 description:      'My personal website and blog.'
 url:              http://guilhermecardoso.pt
 name: 'Gui'
+comments: true
 gems:
   - jekyll-sitemap
 pages_list:       
