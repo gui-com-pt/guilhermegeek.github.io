@@ -7,12 +7,14 @@ layout: default
 
 <div class="clearfix">
 {% for post in site.posts %}
-<div class="media">
+<div class="media post__list">
   <a class="pull-left" href="{{post.url}}">
     <img class="media-object post__thumbnail" src="{{ post.image }}" alt="Logo">
   </a>
   <div class="media-body">
+  	<span class="media-date">{{ post.date | date: "%-d %B %Y" }}</span>
     <h4 class="media-heading"><a href="{{post.url}}">{{ post.title }}</a></h4>
+
     {{ post.excerpt }}
   </div>
 </div>
