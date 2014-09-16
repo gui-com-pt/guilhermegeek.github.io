@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+  <head>
+      <meta charset="utf8" />
+      <title>Gui: Fazer debug em PHP com Vim, Vdebug e Xdebug</title>
+      <meta name="description" content="Fazer debug a código remoto através de uma ligação SSH, evaluar expressões, etc">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="Fazer debug em PHP com Vim, Vdebug e Xdebug">
+      <meta property="og:image" content="/media/php.jpg">
+      <!--<meta property="og:image:type" content="image/jpg">-->
+      <meta property="og:url" content="/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html">
+      <meta property="og:title" content="Fazer debug em PHP com Vim, Vdebug e Xdebug">
+      <meta property="og:description" content="Fazer debug a código remoto através de uma ligação SSH, evaluar expressões, etc">
+      <link href="/css/bootstrap.css" rel="stylesheet">
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/guilhermecardoso">
+      <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-41887317-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+      <style>
+        body {
+          padding-top: 60px;
+        }
+        .layout-footer {
+          border-top:solid 1px #ddd;
+          padding-top: 8px;
+          margin-top: 20px;
+          text-align: center;;
+        }
+        .post__thumbnail {
+          max-width: 60px;
+        }
+
+        .media-date {
+          float: right;
+          color: #666666;
+        }
+
+        .post__list {
+          border-bottom: solid 1px #CCCCCC;
+          padding-bottom: 10px;
+        }
+
+        .post__list h4 a, .post__list h4 a:hover, .post__list h4 a:focus {
+          text-decoration: none;
+        }
+
+        /*
+         * syntax.css
+         */
+        .post > .highlight .lineno { color: #ccc; display:inline-block; padding: 0 5px; border-right:1px solid #ccc; }
+        .post > .highlight pre code { display: block; white-space: pre; overflow-x: auto; word-wrap: normal; }
+      </style>
+      <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="/css/syntax.css" rel="stylesheet">
+      <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Gui</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a class="brand" href="/">Blog</a></li>
+        <li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container">
+  <h2 class="content">Fazer debug em PHP com Vim, Vdebug e Xdebug</h2>
+<img src="/media/php.jpg" />
+ 
+<p>Utilizar apenas a linha de comandos para evaluar uma expressão enquanto fazemos debug numa ligação SSH?</p>
+
+<p><img src="/media/posts/vim_vdebug1.jpg" class="img-responsive" /></p>
+
+<p>Neste artigo vou explicar como fazê-lo.</p>
+
+<h3 id="xdebug">Xdebug</h3>
+<p>O Xdebug é um debugger opensource muito utilizado, se programas em PHP possivelmente já está instalado no pc de desenvolvimento.
+IDE’s como o PHPStorm ou NetBens têm grandes funcionalidades de debugging mas vamos alcançar o mesmo com a linha de comandos a usar o vim.</p>
+
+<h3 id="vim">Vim</h3>
+
+<p>O vim é fantástico! Ao longo de tantos anos continua a ter uma presença muito forte no mundo unix e todo o programador o conhece.</p>
+
+<pre><code>sudo apt-get install vim
+</code></pre>
+
+<p>Precisas de confirmar que o vim foi instalado com as flags +signs  e +python, para isso corre
+	vim
+	:version</p>
+
+<p>Analisa o registo e caso não tenha instalado segue este tutorial: </p>
+
+<h3 id="vdebug">Vdebug</h3>
+<p>O Vdebug é um plugin para o vim que permite fazer debug a vário código, não apenas PHP!
+O mais fácil para instalares o Vdebug é adicioná-lo nas configuração do vim, em ~/.vimrc (cria este arquivo caso não exista)</p>
+
+<pre><code>Plugin 'joonty/vdebug'
+</code></pre>
+
+<p>Depois corre este comando para instalares o plugin
+	vim +PluginInstall +qall</p>
+
+<p>Por defeito o Xdebug é configurado na porta 9000 e o Vdebug está à espera disso. Caso corras o Xdebug noutra porta tens de o indicar no ~/.vimrc</p>
+
+<pre><code>let g:vdebug_options = {}
+let g:vdebug_options["port"] = 9001
+</code></pre>
+
+<p>A documentação do Vdebug é excelente, basta veres o índice da ajuda e tens uma noção das funcionalidades principais e comandos existentes.
+Para veres a documentação
+	vim
+	:help Vdebug</p>
+
+<p>Primeiro vais ter de iniciar o debugger para esperar por uma ligação. Esta ligação é activada pela chave passada no XDEBUG_SESSION_START. Esta chave é definida no URL e depois na cookies. O Vdebug aceita qualquer chave aqui, independentemente da que especifiques no ficheiro php.ini do php5-fpm.
+Entra no vim (linha de comandos: vim) e carrega no F5. Aparece a mensagem:</p>
+
+<pre><code>Waiting for a connection (Ctrl-C to cancel, this message will self-destruct in 20  seconds...)
+</code></pre>
+
+<p>Agora num browser entra em http://localhost/?XDEBUG_SESSION_START=jesus_loves_you (neste caso a porta 80, se usares outra diferente altera).
+Isto vai abrir 4 janelas diferentes. Na esquerda o ficheiro a ser visto e á direita as variáveis locais, variáveis observadas e o output do debugger.</p>
+
+<p>Os comandos principais são:</p>
+
+<ul>
+  <li>F2 - Próximo</li>
+</ul>
+
+<div class="clearfix">
+	  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+
+<div class="comments">
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guilhermecardoso'; 
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+</div>
+
+</div>
+<div class="layout-footer">
+<div class="container">
+<a href="http://github.com/guilhermegeek/guilhermegeek.github.io">guilhermegeek.github.io</a> was proudly developed with <a href="http://jekyllrb.com">Jekyll</a> 
+</div>
+</div>
+</body>
+</html>

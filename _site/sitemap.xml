@@ -27,6 +27,14 @@
   </url>
   
   <url>
+    <loc>http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</loc>
+    
+    <lastmod>2014-09-15T00:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</loc>
     
     <lastmod>2014-09-15T00:00:00+01:00</lastmod>
@@ -69,14 +77,14 @@
   
   <url>
     <loc>http://guilhermecardoso.pt/archive.html</loc>
-    <lastmod>2014-09-16T13:06:27+01:00</lastmod>
+    <lastmod>2014-09-17T00:07:42+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://guilhermecardoso.pt/</loc>
-    <lastmod>2014-09-16T13:06:27+01:00</lastmod>
+    <lastmod>2014-09-17T00:07:42+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

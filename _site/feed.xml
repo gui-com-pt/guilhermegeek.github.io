@@ -174,6 +174,72 @@ Desta forma registas o kidsController e adultsController como dois controladores
 			</item>
 		
 			<item>
+				<title>Fazer debug em PHP com Vim, Vdebug e Xdebug</title>
+				<description>&lt;p&gt;Utilizar apenas a linha de comandos para evaluar uma expressão enquanto fazemos debug numa ligação SSH?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/posts/vim_vdebug1.jpg&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Neste artigo vou explicar como fazê-lo.&lt;/p&gt;
+
+&lt;h3 id=&quot;xdebug&quot;&gt;Xdebug&lt;/h3&gt;
+&lt;p&gt;O Xdebug é um debugger opensource muito utilizado, se programas em PHP possivelmente já está instalado no pc de desenvolvimento.
+IDE’s como o PHPStorm ou NetBens têm grandes funcionalidades de debugging mas vamos alcançar o mesmo com a linha de comandos a usar o vim.&lt;/p&gt;
+
+&lt;h3 id=&quot;vim&quot;&gt;Vim&lt;/h3&gt;
+
+&lt;p&gt;O vim é fantástico! Ao longo de tantos anos continua a ter uma presença muito forte no mundo unix e todo o programador o conhece.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install vim
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Precisas de confirmar que o vim foi instalado com as flags +signs  e +python, para isso corre
+	vim
+	:version&lt;/p&gt;
+
+&lt;p&gt;Analisa o registo e caso não tenha instalado segue este tutorial: &lt;/p&gt;
+
+&lt;h3 id=&quot;vdebug&quot;&gt;Vdebug&lt;/h3&gt;
+&lt;p&gt;O Vdebug é um plugin para o vim que permite fazer debug a vário código, não apenas PHP!
+O mais fácil para instalares o Vdebug é adicioná-lo nas configuração do vim, em ~/.vimrc (cria este arquivo caso não exista)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Plugin &#39;joonty/vdebug&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Depois corre este comando para instalares o plugin
+	vim +PluginInstall +qall&lt;/p&gt;
+
+&lt;p&gt;Por defeito o Xdebug é configurado na porta 9000 e o Vdebug está à espera disso. Caso corras o Xdebug noutra porta tens de o indicar no ~/.vimrc&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let g:vdebug_options = {}
+let g:vdebug_options[&quot;port&quot;] = 9001
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A documentação do Vdebug é excelente, basta veres o índice da ajuda e tens uma noção das funcionalidades principais e comandos existentes.
+Para veres a documentação
+	vim
+	:help Vdebug&lt;/p&gt;
+
+&lt;p&gt;Primeiro vais ter de iniciar o debugger para esperar por uma ligação. Esta ligação é activada pela chave passada no XDEBUG_SESSION_START. Esta chave é definida no URL e depois na cookies. O Vdebug aceita qualquer chave aqui, independentemente da que especifiques no ficheiro php.ini do php5-fpm.
+Entra no vim (linha de comandos: vim) e carrega no F5. Aparece a mensagem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Waiting for a connection (Ctrl-C to cancel, this message will self-destruct in 20  seconds...)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Agora num browser entra em http://localhost/?XDEBUG_SESSION_START=jesus_loves_you (neste caso a porta 80, se usares outra diferente altera).
+Isto vai abrir 4 janelas diferentes. Na esquerda o ficheiro a ser visto e á direita as variáveis locais, variáveis observadas e o output do debugger.&lt;/p&gt;
+
+&lt;p&gt;Os comandos principais são:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;F2 - Próximo&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</guid>
+			</item>
+		
+			<item>
 				<title>Gerir um servidor de alojamento</title>
 				<description>&lt;h3 id=&quot;php-e-extenses&quot;&gt;PHP e extensões&lt;/h3&gt;
 &lt;p&gt;Praticamente todas as distribuições com instaladores de pacotes conseguem instalar o PHP, MySQL e Apache mas nós precisamos de controlar as versões dos programas e não depender de terceiros para compilar o código.
