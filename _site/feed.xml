@@ -200,6 +200,80 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 			</item>
 		
 			<item>
+				<title>Ataque brute force</title>
+				<description>&lt;p&gt;Um ataque brute-force (ataque de força bruta!) é o ataque mais simples que podemos fazer para descubrir as credenciais de uma conta. &lt;/p&gt;
+
+&lt;p&gt;Ao contrário de exploits que envolvem trabaho de investigação ou outras técnicas mais avançadas, um ataque brute-force apenas envolve a tentativa exaustiva de adivinhar a password. &lt;/p&gt;
+
+&lt;p&gt;Estes ataques podem ser rápidos, demorados ou mesmo barrados pelo servidor.
+Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acabam por usar passwords comuns como:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;asdasd123123&lt;/li&gt;
+  &lt;li&gt;123*123&lt;/li&gt;
+  &lt;li&gt;zxcvbnm123&lt;/li&gt;
+  &lt;li&gt;mysecretpassword&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Estas são as primeiras tentativas, passwords comuns. No caso de um alvo local (um site de Portugal) podemos usar palavras em Português.&lt;/p&gt;
+
+&lt;p&gt;Com uma lista com password pré defenidas fazemos um ataque de dicionários. Usamos várias palavras e podemos usar separadores como &lt;strong&gt;_&lt;/strong&gt; ou &lt;strong&gt;@&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Passwords mais complexas com minúscuas/maiúsculas, caracteres especiais ou palavras sem sentido são mais demoradas de apanhar mas mesmo assim é tudo uma questão de tempo (se não houver resposta de defesa).&lt;/p&gt;
+
+&lt;h3 id=&quot;ataque&quot;&gt;Ataque&lt;/h3&gt;
+
+&lt;p&gt;Para realizar o ataque há vários softwares existentes e até mesmo escrever um script em python ou javascript é simples. Vê os projectos para este fim que estão publicados no github: https://github.com/search?utf8=%E2%9C%93&amp;amp;q=brute+force&lt;/p&gt;
+
+&lt;p&gt;O processo consiste em:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Obter uma password&lt;/li&gt;
+  &lt;li&gt;Fazer um pedido de autenticação (normalmente um HTTP POST)&lt;/li&gt;
+  &lt;li&gt;Ler a resposta &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para conhecer-mos a resposta que deveríamos receber numa autenticação com sucesso, podemos criar uma conta nesse sistema e inspecionar o pedido HTTP. Senão houver acesso ao registo, podes usar o código da resposta HTTP (&amp;gt;400 consideras erro), faz várias tentativas e considera como correcta qualquer resposta que não a que recebes nas tentativas erradas (aqui corres o risco de respostas de outros erros).&lt;/p&gt;
+
+&lt;p&gt;Em sistemas já conhecidos como o Wordpress este processo é simplificado.&lt;/p&gt;
+
+&lt;p&gt;Podem ser usados vários servidores virtuais (melhor, computadores infectados) para simularem um cluster na tentativa de autenticação. Uma base de dados em redis onde metamos 30GB em memória e todos os servidores fazem as tentativas com essa base de dados, vai-se removendo à medida que se faz get e não há resposta positiva.&lt;/p&gt;
+
+&lt;p&gt;Um servidor com 32GB de RAM arranjas por 33 euros mensais, e cada vps 2 ou 3 euros mensais. &lt;/p&gt;
+
+&lt;h3 id=&quot;listas&quot;&gt;Listas&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://www.moehre.org/bruteforce.html&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gerar-uma-lista&quot;&gt;Gerar uma lista&lt;/h3&gt;
+
+&lt;p&gt;Há palavras e numeros que podemos usar para gerir uma lista. Mesmo que seja uma lista pequena usamos antes de um ataque mais global.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Aniversário e de parentes próximos&lt;/li&gt;
+  &lt;li&gt;Nome e de parentes próximos&lt;/li&gt;
+  &lt;li&gt;Cidade natal&lt;/li&gt;
+  &lt;li&gt;Gostos pessoais (motas, mulheres, marijuana, mar, golf, etc)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para gerares esta lista podes usar o Apligen: http://apligen.sourceforge.net/&lt;/p&gt;
+
+&lt;h3 id=&quot;referncias&quot;&gt;Referências&lt;/h3&gt;
+
+&lt;p&gt;Artigos interessantes para dar seguimento ao que escrevi&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://www.troyhunt.com/2011/07/science-of-password-selection.html&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</guid>
+			</item>
+		
+			<item>
 				<title>Actualizações do Sistema Operativo e Softwares</title>
 				<description>&lt;p&gt;Já estou habituado a usar pc’s que logo no arranque mostram avisos de actualizações e os proprietários simplesmente me dizem “Ah ignora isso, se puderes remove essas mensagens. Não quero actualizar nada, é sempre a mesma coisa”. Partilhas da mesma opinião? Isto é para ti.&lt;/p&gt;
 
