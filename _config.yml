@@ -3,7 +3,7 @@ title:            Guilherme Cardoso
 tagline:          'Software Programmer'
 description:      'My personal website and blog.'
 url:              http://guilhermecardoso.pt
-name: 'Gui'
+name: 'Guilherme Cardoso'
 comments: true
 gems:
   - jekyll-sitemap
