@@ -95,6 +95,32 @@ Há muitos temas excelentes a nível de design mas fracos na programação e que
 			</item>
 		
 			<item>
+				<title>Bitcoin</title>
+				<description>&lt;p&gt;O Bitcoin é uma moeda virtual que utiliza a rede peer to peer (o mesmo que utilizas quando sacas um torrent). Neste sistema não existe uma autoridade centralizada que controle as transacções, como uma entidade bancária por exemplo.
+É utilizado um sistema de banco de dados distribuídos espalhados pelos nós da rede p2p para registar as transacções, e com ciptografia utiliza funções de segurança como aseguir que bitcoins só podem ser usados pelo dono.&lt;/p&gt;
+
+&lt;p&gt;O que significa isto? Ninguém é dono do Bitcoin e caramba, o próprio código fonte é livre!&lt;/p&gt;
+
+&lt;p&gt;No mundo do hacking isto é aquilo que precisas para alugar servidores e outros recursos anonimanente. Tens de passar sempre pelo processo de obter as Bitcoins mas há imensas formas e vários serviços de confiança.&lt;/p&gt;
+
+&lt;p&gt;Apesar de apenas ter um formato digital, uma bitcoin é considerado um activo no sentido económico. Tem valor, valor esse que não pode ser inflacionado da mesma forma que o Euro quando se imprimem mais notas por exemplo.&lt;/p&gt;
+
+&lt;h3 id=&quot;como-usar&quot;&gt;Como usar&lt;/h3&gt;
+
+&lt;p&gt;Ao contrário de uma conta bancária onde a entidade é que tem o dinheiro, com o bitcoin tu armazenas a moeda no teu computador, numa pen drive (cuidado, demasiado casos de acidentes!!) ou até mesmo num serviço de alojamento de bitcoins online.&lt;/p&gt;
+
+&lt;p&gt;Em Portugal já há soluções para comprar bitcoins.&lt;/p&gt;
+
+&lt;h3 id=&quot;como-funciona&quot;&gt;Como funciona&lt;/h3&gt;
+
+&lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
+</description>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
+			</item>
+		
+			<item>
 				<title>Herdar controllers no AngularJS</title>
 				<description>&lt;p&gt;Tenho usado directivas como o angular-wizard para fazer uma página com etapas. É muito semelhante a usar páginas parciais com o ui-router, tens um controller principal e os herdeiros herdam a $scope&lt;/p&gt;
 
