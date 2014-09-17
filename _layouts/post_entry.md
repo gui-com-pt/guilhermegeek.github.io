@@ -4,7 +4,7 @@ comments: true
 ---
 <div class="clearfix">
 <img src="{{ page.image }}" class="post-entry__thumbnail" />
-<h2 class="content">{{page.title}}</h2>
+<h2 class="content">{{page.title}} <a href="#" onclick="fbShare('{{page.url}}')">F</a></h2>
 </div>
  
 {{ content }}
