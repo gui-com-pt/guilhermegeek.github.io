@@ -7,6 +7,93 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>IDEs - Softwares para programar</title>
+				<description>&lt;h3 id=&quot;visual-studio&quot;&gt;Visual Studio&lt;/h3&gt;
+
+&lt;p&gt;Linguagens: VB e C#, C++, F#&lt;/p&gt;
+
+&lt;p&gt;O Visual Studio sempre foi campeão a nível de IDEs, se tiveres um bom pc consegues tirar partido de funcionalidades muito boas. &lt;/p&gt;
+
+&lt;p&gt;O &lt;a href=&quot;http://www.jetbrains.com/resharper/&quot;&gt;Resharper&lt;/a&gt; é um plugin excelente, a caixa de sugestões que apresenta enquanto escreves código (syntax highlighting) não se compara a qualquer outro IDE. A revisão de código é muito boa assim como as opções de refacturar o código. Sem dúvida que ajuda a reduzir o tempo de desenvolvimento. &lt;/p&gt;
+
+&lt;p&gt;Não é gratuíto mas já foi crackado, e o google é amigo.&lt;/p&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.nuget.org/&quot;&gt;Nuget&lt;/a&gt; é o gestor de pacotes usado em .NET. O Visual Studio tem a integração com ele e resolve as dependências de vários projectos. &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-vs1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;monodevelop&quot;&gt;MonoDevelop&lt;/h3&gt;
+
+&lt;p&gt;Linguagens: C#&lt;/p&gt;
+
+&lt;p&gt;O MonoDevelop é um IDE complicado. Ele é opensource e é usado em Linux para programar C# a utilizar o mono. Eu utilizo-o porque é mais que suficiente para programar em C#, apesar de não se comparar ao Visual Studio é muito bom e também tem vários plugins que instalados melhoram a experiência de utilizador.&lt;/p&gt;
+
+&lt;p&gt;O problema da existência dele para mim é o seu descendente, o Xamarin Studio. É muito bom, compatível com Windows, Linux e Mac e até o comparo ao Visual Studio em muitas funcionalidades e vantagens mas infelizmente uma desvantagem é o preço dele, daí usar o MonoDevelop.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-monodevelop4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;xamarin-studio&quot;&gt;Xamarin Studio&lt;/h3&gt;
+
+&lt;p&gt;Linguagens: C#&lt;/p&gt;
+
+&lt;p&gt;Já vi muitas opiniões polémicas em relação ao que a Xamarin representa mas a verdade é que tem soluções para desenvolvimento rápido para aplicações mobile por exemplo. O mono continua a ser opensource e é usado em bastantes projectos também graças ao suporte que a Xamarin tem dado ao desenvolvimento do mono. A nível de compatibilidade suporta o C# 5 asincrono mas não é compatível com algumas funcionalidades do mvc e possivelmente outras soluções desenvolvidas por terceiros.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-xamarin5.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;phpstorm&quot;&gt;PHPStorm&lt;/h3&gt;
+
+&lt;p&gt;O IDE que neste momento utilizo para programar em PHP. É da mesma equipa do Resharper para o Visual Studio, daí facilmente me ter adaptado.&lt;/p&gt;
+
+&lt;p&gt;O problema é o consumo de recursos para programar com ele. Num portátil com 4GB de ram e um processador fraco dual core AMD A1 não dá para trabalhar com ele.&lt;/p&gt;
+
+&lt;p&gt;No entanto se tiveres um bom pc é semelhante ao Visual Studio a nível de experiência de utilizador. O facto de não ter soluções e cada projecto ser um programa separado fazia-me impressão a início mas até é melhor desde que o pc aguente.&lt;/p&gt;
+
+&lt;p&gt;Não é gratuíto mas já foi crackado, e o google é amigo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-phpstorm2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;netbeans&quot;&gt;NetBeans&lt;/h3&gt;
+
+&lt;p&gt;É um IDE completo mas para mim inferir ao PHPStorm. A única vantagem que vi-a era abrir vários projectos em simultâneo.&lt;/p&gt;
+
+&lt;p&gt;A integração com o Xdebug é simples, tem suporte a git e também tem bons plugins para melhorar a experiência de utilizador.&lt;/p&gt;
+
+&lt;p&gt;No meu portátil tornou-se demasiado lento porque tinha abertos 4 ou 5 projectos na workspace e já consumia muitos recursos.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-netbeans6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;geany&quot;&gt;Geany&lt;/h3&gt;
+
+&lt;p&gt;Utilizo o Geany para programar no portátil (é um portátil lento). É mais rápido que o Netbeans.&lt;/p&gt;
+
+&lt;p&gt;O Geany é leve também por não ter demasiadas funcionalidades. O bom é que existem vários plugins que permitem torná-lo mais completo sem perder a qualidade de desempenho. Por exemplo, para fazer-mos debug a código temos de instalar o &lt;a href=&quot;http://plugins.geany.org/debugger.html&quot;&gt;Plugin Debugger&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-geanydebugger3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;vim&quot;&gt;Vim&lt;/h3&gt;
+
+&lt;p&gt;O vim tanto pode ser aquele editor de acesso rápido que temos numa shell para editar ficheiros como pode ser usado para programar scripts e fazer debug por exemplo (&lt;a href=&quot;https://www.guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html&quot;&gt;Fazer debug em PHP com Vim, Vdebug e Xdebug&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Quando se trata de sites que tenho de alterar num servidor remoto mas que nem sequer é controlado por git ou subversion eu apenas uso o vim. Havia uma altura que o fazia por FTP para puder alterar num IDE mas bem configurado o vim até cria as tabs com 4 espaços por exemplo, e altera as cores para uma syntax de programação.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/vim_vdebug1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;icecoder&quot;&gt;ICECoder&lt;/h3&gt;
+
+&lt;p&gt;Aqui está uma surpresa interessante! Testei-o e é muito bom para algo desenvolvido em javascript e PHP, com as suas limitações claro.&lt;/p&gt;
+
+&lt;p&gt;É muito recomendado para enviar para servidores remotos e fazer assim alterações do código por um browser mas com cautela, é sempre preferível evitar as vulnerabilidades no servidor de produção.&lt;/p&gt;
+
+&lt;p&gt;Além da password que ele tem eu preferia proteger o directorio com utilizador e password também. Não querendo falar mal do projecto claro, é segurança apenas.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
+			</item>
+		
+			<item>
 				<title>Invadir um site Wordpress - métodos e exemplos</title>
 				<description>&lt;h3 id=&quot;verso&quot;&gt;Versão&lt;/h3&gt;
 
@@ -217,7 +304,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 &lt;p&gt;Estas são as primeiras tentativas, passwords comuns. No caso de um alvo local (um site de Portugal) podemos usar palavras em Português.&lt;/p&gt;
 
-&lt;p&gt;Com uma lista com password pré defenidas fazemos um ataque de dicionários. Usamos várias palavras e podemos usar separadores como &lt;strong&gt;_&lt;/strong&gt; ou &lt;strong&gt;@&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Com uma lista com password pré defenidasf azemos um ataque de dicionários. Usamos várias palavras e podemos usar separadores como &lt;strong&gt;_&lt;/strong&gt; ou &lt;strong&gt;@&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Passwords mais complexas com minúscuas/maiúsculas, caracteres especiais ou palavras sem sentido são mais demoradas de apanhar mas mesmo assim é tudo uma questão de tempo (se não houver resposta de defesa).&lt;/p&gt;
 
@@ -245,6 +332,9 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 &lt;ul&gt;
   &lt;li&gt;http://www.moehre.org/bruteforce.html&lt;/li&gt;
+  &lt;li&gt;http://packetstormsecurity.com/Crackers/wordlists/&lt;/li&gt;
+  &lt;li&gt;http://trac.kismac-ng.org/wiki/wordlists&lt;/li&gt;
+  &lt;li&gt;https://wiki.skullsecurity.org/Passwords&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;gerar-uma-lista&quot;&gt;Gerar uma lista&lt;/h3&gt;

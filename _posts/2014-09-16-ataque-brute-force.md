@@ -20,7 +20,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 Estas são as primeiras tentativas, passwords comuns. No caso de um alvo local (um site de Portugal) podemos usar palavras em Português.
 
-Com uma lista com password pré defenidas fazemos um ataque de dicionários. Usamos várias palavras e podemos usar separadores como **_** ou **@**.
+Com uma lista com password pré defenidasf azemos um ataque de dicionários. Usamos várias palavras e podemos usar separadores como **_** ou **@**.
 
 Passwords mais complexas com minúscuas/maiúsculas, caracteres especiais ou palavras sem sentido são mais demoradas de apanhar mas mesmo assim é tudo uma questão de tempo (se não houver resposta de defesa).
 
@@ -46,6 +46,9 @@ Um servidor com 32GB de RAM arranjas por 33 euros mensais, e cada vps 2 ou 3 eur
 ### Listas
 
  * http://www.moehre.org/bruteforce.html
+ * http://packetstormsecurity.com/Crackers/wordlists/
+ * http://trac.kismac-ng.org/wiki/wordlists
+ * https://wiki.skullsecurity.org/Passwords
 
 
 ### Gerar uma lista
