@@ -4,7 +4,7 @@ comments: true
 ---
 <div class="clearfix">
 <img src="{{ page.image }}" class="post-entry__thumbnail" />
-<h2 class="content">{{page.title}} <a href="#" onclick="fbShare('{{page.url}}')">F</a></h2>
+<h2 class="content">{{page.title}}</h2>
 </div>
  
 {{ content }}
@@ -33,8 +33,6 @@ comments: true
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
 </div>
 {% endif %}
