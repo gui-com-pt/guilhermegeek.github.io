@@ -2,8 +2,10 @@
 layout: default
 comments: true
 ---
+<div class="clearfix">
+<img src="{{ page.image }}" class="post-entry__thumbnail" />
 <h2 class="content">{{page.title}}</h2>
-<img src="{{ page.image }}" />
+</div>
  
 {{ content }}
 <div class="clearfix">

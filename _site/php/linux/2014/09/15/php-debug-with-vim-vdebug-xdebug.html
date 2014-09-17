@@ -50,6 +50,10 @@
           text-decoration: none;
         }
 
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
         /*
          * syntax.css
          */
@@ -86,8 +90,10 @@
 </div>
 
 <div class="container">
-  <h2 class="content">Fazer debug em PHP com Vim, Vdebug e Xdebug</h2>
-<img src="/media/php.jpg" />
+  <div class="clearfix">
+<img src="/media/php.jpg" class="post-entry__thumbnail" />
+<h2 class="content">Fazer debug em PHP com Vim, Vdebug e Xdebug</h2>
+</div>
  
 <p>Utilizar apenas a linha de comandos para evaluar uma expressão enquanto fazemos debug numa ligação SSH?</p>
 

@@ -7,117 +7,91 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>SMTP local mail server</title>
-				<description>&lt;h1 id=&quot;local-mail-server-for-tests&quot;&gt;Local mail server for tests&lt;/h1&gt;
+				<title>Invadir um site Wordpress - métodos e exemplos</title>
+				<description>&lt;h3 id=&quot;verso&quot;&gt;Versão&lt;/h3&gt;
 
-&lt;p&gt;When you’re dealing with emails providers, it’s a good pratice to keep the connection information in a configuration place. Allow it to set the encription, username, etc. Like this&lt;/p&gt;
+&lt;p&gt;Há vulnerabilidades conhecidas no código principal do Wordpress. Não são muitas mas andam aí e são fáceis de apanhar!&lt;/p&gt;
 
-&lt;p&gt;$array = array(
-‘smtp.hostname’ =&amp;gt; ‘localhost’,
-‘smtp.port’ =&amp;gt; 25
-/*
- * Null for no authenticated
- * Availables: ssl, tsl
- */
-‘smtp.security’ =&amp;gt; null,
-‘smtp.username’ =&amp;gt; ‘’,
-‘smtp.password’ =&amp;gt; ‘’
-);&lt;/p&gt;
+&lt;p&gt;Para descubrires a versão do wordpress procura a tag &lt;strong&gt;generator&lt;/strong&gt; na página retornada (ver código fonte do browser…).&lt;/p&gt;
 
-&lt;p&gt;If you’re using some framework you can put the configuration in the IOC (if any), or in the default framework configuration.
-For online email providers you’ve greate services like mail chimp or even the windows live and gmail services. 
-Howerever you’ll not want to keep testing the emails always with your provider, you may even get considered as spammer.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;generator&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;WordPress 3.9.2&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;For Windows you can install smtp4dev
-A greate tool i’ve used for a few time while i work with MS. It tracks the emails and if you’ve any email client it shows up there.&lt;/p&gt;
+&lt;p&gt;A maioria das instalações contém o ficheiro readme.html que tem de ser removido depois de instalado o Wordpress. Também podemos ver a versão por aí.&lt;/p&gt;
 
-&lt;p&gt;For linux i recommend the python mail server. It’s a simple server that output the messages in console, you get the plain text of email.
-For me it’s usefull because i always like to inspect the entire email (headers, etc).&lt;/p&gt;
+&lt;p&gt;O próximo passo é saber a versão dos plugins. Podemos fazer um método passivo e fazer pedidos http aos ficheiros do plugin que procuramos, podemos também ver a resposta do http se é 200 para existente ou 404 para não encontrado.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;
-python -m smtpd -n -c DebuggingServer localhost:26
-&lt;/code&gt;
-The default port is 25&lt;/p&gt;
+&lt;p&gt;@todo - vou indicar alguns scripts com base de dados actualizadas que podemos usar para tornar o método aggressivo.&lt;/p&gt;
 
-&lt;h3 id=&quot;getting-ready-for-production&quot;&gt;Getting ready for production&lt;/h3&gt;
-&lt;p&gt;This is how i strucutre my projects configurations. The default configurations is in a file like &lt;code&gt;default-settings.php&lt;/code&gt;. In my case the default-settings is set from a prent library. Then i’ve the &lt;code&gt;local-settings.php&lt;/code&gt; wich is ignored and never sent to the git repository. This file return a array that’ll replace the default settings.&lt;/p&gt;
-</description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/smtp/test/2014/10/10/smtp-local-server.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/smtp/test/2014/10/10/smtp-local-server.html</guid>
-			</item>
-		
-			<item>
-				<title>CSS e LESS</title>
-				<description>&lt;p&gt;Qualquer folha de estilos que tenhamos, podemos compilar com less e é gerado um resultado igual.
-Isto é bom para projectos já existentes, onde podemos começar a fazer implementações a tirar partido do less sem termos de remudelar todo o código já usado.&lt;/p&gt;
+&lt;p&gt;Daqui iremos usar vulnerabilidades para os plugins encontrados, mas isso mais à frente.&lt;/p&gt;
 
-&lt;h4 id=&quot;mixins&quot;&gt;Mixins&lt;/h4&gt;
+&lt;h3 id=&quot;utilizadores&quot;&gt;Utilizadores&lt;/h3&gt;
 
-&lt;p&gt;Se precisas de desenvolver aplicações e websites podes criar um conjunto de funções que partilhes nos projectos. Um pacote bower ou um simples ficheiro .css&lt;/p&gt;
+&lt;p&gt;O método que vamos seguir para atacar as contas vai ser brute force. Uma tentativa em massava de autenticação com várias passwords pré defenidas.
+O Wordpress permite saber quem é cada utilizador pelo seu id&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Código compatível - Aqui é que tiramos realmente proveito! Para aplicar uma sombra, em vez de escrever-mos .shadow, .webkit-shadow, etc criamos um método que o faça, receba variáveis para tamanhos e cores&lt;/li&gt;
-  &lt;li&gt;Grelha - Eu gosto de esquematizar o design em grelhas. Não obrigo a seguir sempre este padrão mas para os containers e elementos principais do layout aplico (cabecários, barras laterais, etc).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;grelha-do-bootstrap&quot;&gt;Grelha do Bootstrap&lt;/h4&gt;
-&lt;p&gt;Eu não gosto de definir os tamanhos dos elementos no html. Acho uma má prática.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Numa aplicação grande em que uses sempre o mesmos tamanho para os formulários (ex: col-xs-7), quando fores alterar o tamanho vais fazê-lo em todas as páginas.&lt;/li&gt;
-  &lt;li&gt;Simplesmente não me parece bem. Prefiro defenir isto em css e não usar classes &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Com less, podemos fazê-lo a usar as mixins do Bootstrap. Por exemplo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;ex-container&quot;&amp;gt;
-    &amp;lt;div class=&quot;sidebar&quot;&amp;gt;
-
-    &amp;lt;/div&amp;gt;
-    &amp;lt;div class=&quot;content&quot;&amp;gt;
-    &amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-
-.ex-container {
-    .container; /* não chamamos um método mas aplicamos a class ``container`` neste elemento */
-
-    .sidebar {
-        .make-xs-col(3);
-    }
-    .content {
-        .make-xs-col(9);
-    }
-}
+&lt;pre&gt;&lt;code&gt;http://guilhermecardoso.pt/?author=1 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;É aqui que o less é pior que sass. &lt;strong&gt;links&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Se estiver configurado para URLs amigáveis, o pedido retorna um redireccionamento indicando o nickname no url&lt;/p&gt;
 
-&lt;h3 id=&quot;cores&quot;&gt;Cores&lt;/h3&gt;
-
-&lt;p&gt;O Bootstrap é um excelente exemplo para definir-mos as variáveis das cores.
-Usar variáveis como marca, marca-invertida, etc permite-nos aplicar as mesmas cores em vários componentes a seguir um padrão de UX.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@cor-preto-escuro: #666666;
-@cor-marca: #EEEEEE;
-@cor-marca-invertida: #DDDDDD;
-
-@texto-cor: @cor-preto-escuro;
-
-body {
-    color: @texto-cor;
-}
-.component_noticias {
-    .cabecario {
-        background-color: @cor-marca;
-        color: @cor-marca-invertida;
-    }
-}
+&lt;pre&gt;&lt;code&gt;http://guilhermecardoso.pt/author/gui
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Além do método de brute force há outras formas de obter as credências.
+Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sorte de não ter nenhum certificado SSL um rastreio do pedido http indica o utilizador e password. Da mesma forma podem ser usados keyloggers mas ou o instalas no mesmo computador que a pessoa que vai aceder ao site, ou dentro da mesma rede usas um exploit para instalar o keylogger (redes públicas com WindowsXP e softwares como o Java e Internet Explorer desactualizados são indicadas).&lt;/p&gt;
+
+&lt;p&gt;De volta aos utilizadores, se te autenticares com um utilizador existente e uma password inválida o Wordpress é nosso amigo e avisa-nos que a conta existe.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/posts/wordpress-hack1.png&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ferramentas&quot;&gt;Ferramentas&lt;/h3&gt;
+
+&lt;p&gt;As ferramentas e scripts que aqui vou indicar são código aberto e é espetacular encontrá-las no github, só demonstra a verdadeira liberdade do opensource :)&lt;/p&gt;
+
+&lt;h4 id=&quot;httpwpscanorg&quot;&gt;http://wpscan.org/&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Login com brute force&lt;/li&gt;
+  &lt;li&gt;Análise de plugins e temas com vulnerabilidades conhecidas&lt;/li&gt;
+  &lt;li&gt;Indicar lista de utilizadores&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Um pequeno exemplo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ruby wpscan.rb -u 192.241.xx.x68 --threads 20 --wordlist 500worst.txt --username testadmin
+
+********* SNIP ******************
+
+[+] Starting the password brute forcer
+
+  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
+[+] Finished at Thu Jul 18 03:39:02 2013
+[+] Elapsed time: 00:01:16
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Admirado pelas 500 passwords num minuto e 16 segundos? Isto é numa VPS fraca na digital ocean que me custa 3.5 euros mensais. Servidores mais rápidos e infrastruturas maiores permitem-te resultados melhores. Em caso de ips bloqueados ou outras defesas que sejam aplicadas podes recorrer a uma rede: várias máquinas com uma lista curta de passwords a fazerem tentativas aleatórias para não serem bloqueadas por exemplo.&lt;/p&gt;
+
+&lt;h4 id=&quot;nmap&quot;&gt;Nmap&lt;/h4&gt;
+
+&lt;p&gt;Esta ferramenta aparece no Matrix! Ela não serve apenas para procurar portas abertas, diz-nos bastante mais que isso.&lt;/p&gt;
+
+&lt;p&gt;@todo mostrar exemplos de scripts ecs :)&lt;/p&gt;
+
+&lt;h3 id=&quot;vulnerabilidades&quot;&gt;Vulnerabilidades&lt;/h3&gt;
+
+&lt;p&gt;As vulnerabilidades que estas ferramentas e scripts utilizam são erros ou falhas existentes no código. Estes erros e falhas podem permitir:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enviar uma shell para o servidor e aceder a ela (vai efectuar acções no servidor como compressão de directorios e enviar por ftp, descubrir passwords em ficheiros de configuração, etc). Esta vulnerabilidade é comum em anexo de uploads que não validam correctamente o pedido.&lt;/li&gt;
+  &lt;li&gt;Injecção de código SQL. URLs do gênero /wp-content/plugins/exemplo/ficheiro.php?id=3534 são usados para injectar código SQL, ou seja, substituir o id por algo que interpretado pela base de dados faça algo que não deveria. Isto ocorre também por má validação&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
+Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/less/2014/10/10/css-and-less-introduction.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/less/2014/10/10/css-and-less-introduction.html</guid>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
 		
 			<item>
@@ -381,6 +355,47 @@ Mas eu em programação no servidor também uso getParentDetailsStatus e recurso
 			</item>
 		
 			<item>
+				<title>SMTP local mail server</title>
+				<description>&lt;h1 id=&quot;local-mail-server-for-tests&quot;&gt;Local mail server for tests&lt;/h1&gt;
+
+&lt;p&gt;When you’re dealing with emails providers, it’s a good pratice to keep the connection information in a configuration place. Allow it to set the encription, username, etc. Like this&lt;/p&gt;
+
+&lt;p&gt;$array = array(
+‘smtp.hostname’ =&amp;gt; ‘localhost’,
+‘smtp.port’ =&amp;gt; 25
+/*
+ * Null for no authenticated
+ * Availables: ssl, tsl
+ */
+‘smtp.security’ =&amp;gt; null,
+‘smtp.username’ =&amp;gt; ‘’,
+‘smtp.password’ =&amp;gt; ‘’
+);&lt;/p&gt;
+
+&lt;p&gt;If you’re using some framework you can put the configuration in the IOC (if any), or in the default framework configuration.
+For online email providers you’ve greate services like mail chimp or even the windows live and gmail services. 
+Howerever you’ll not want to keep testing the emails always with your provider, you may even get considered as spammer.&lt;/p&gt;
+
+&lt;p&gt;For Windows you can install smtp4dev
+A greate tool i’ve used for a few time while i work with MS. It tracks the emails and if you’ve any email client it shows up there.&lt;/p&gt;
+
+&lt;p&gt;For linux i recommend the python mail server. It’s a simple server that output the messages in console, you get the plain text of email.
+For me it’s usefull because i always like to inspect the entire email (headers, etc).&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+python -m smtpd -n -c DebuggingServer localhost:26
+&lt;/code&gt;
+The default port is 25&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-ready-for-production&quot;&gt;Getting ready for production&lt;/h3&gt;
+&lt;p&gt;This is how i strucutre my projects configurations. The default configurations is in a file like &lt;code&gt;default-settings.php&lt;/code&gt;. In my case the default-settings is set from a prent library. Then i’ve the &lt;code&gt;local-settings.php&lt;/code&gt; wich is ignored and never sent to the git repository. This file return a array that’ll replace the default settings.&lt;/p&gt;
+</description>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</guid>
+			</item>
+		
+			<item>
 				<title>Expressão de Função Imediatamente-Invocada</title>
 				<description>&lt;p&gt;Em inglês o termo é IIFE - Immediately-Invoked Function Expression. Também é conhecido como Self-Invoked anonymous function.&lt;/p&gt;
 
@@ -456,6 +471,79 @@ Os parêntises também são úteis para quem começa a ler o início da função
 				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</guid>
+			</item>
+		
+			<item>
+				<title>CSS e LESS</title>
+				<description>&lt;p&gt;Qualquer folha de estilos que tenhamos, podemos compilar com less e é gerado um resultado igual.
+Isto é bom para projectos já existentes, onde podemos começar a fazer implementações a tirar partido do less sem termos de remudelar todo o código já usado.&lt;/p&gt;
+
+&lt;h4 id=&quot;mixins&quot;&gt;Mixins&lt;/h4&gt;
+
+&lt;p&gt;Se precisas de desenvolver aplicações e websites podes criar um conjunto de funções que partilhes nos projectos. Um pacote bower ou um simples ficheiro .css&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Código compatível - Aqui é que tiramos realmente proveito! Para aplicar uma sombra, em vez de escrever-mos .shadow, .webkit-shadow, etc criamos um método que o faça, receba variáveis para tamanhos e cores&lt;/li&gt;
+  &lt;li&gt;Grelha - Eu gosto de esquematizar o design em grelhas. Não obrigo a seguir sempre este padrão mas para os containers e elementos principais do layout aplico (cabecários, barras laterais, etc).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;grelha-do-bootstrap&quot;&gt;Grelha do Bootstrap&lt;/h4&gt;
+&lt;p&gt;Eu não gosto de definir os tamanhos dos elementos no html. Acho uma má prática.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Numa aplicação grande em que uses sempre o mesmos tamanho para os formulários (ex: col-xs-7), quando fores alterar o tamanho vais fazê-lo em todas as páginas.&lt;/li&gt;
+  &lt;li&gt;Simplesmente não me parece bem. Prefiro defenir isto em css e não usar classes &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Com less, podemos fazê-lo a usar as mixins do Bootstrap. Por exemplo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;ex-container&quot;&amp;gt;
+    &amp;lt;div class=&quot;sidebar&quot;&amp;gt;
+
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;content&quot;&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+
+.ex-container {
+    .container; /* não chamamos um método mas aplicamos a class ``container`` neste elemento */
+
+    .sidebar {
+        .make-xs-col(3);
+    }
+    .content {
+        .make-xs-col(9);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;É aqui que o less é pior que sass. &lt;strong&gt;links&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cores&quot;&gt;Cores&lt;/h3&gt;
+
+&lt;p&gt;O Bootstrap é um excelente exemplo para definir-mos as variáveis das cores.
+Usar variáveis como marca, marca-invertida, etc permite-nos aplicar as mesmas cores em vários componentes a seguir um padrão de UX.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@cor-preto-escuro: #666666;
+@cor-marca: #EEEEEE;
+@cor-marca-invertida: #DDDDDD;
+
+@texto-cor: @cor-preto-escuro;
+
+body {
+    color: @texto-cor;
+}
+.component_noticias {
+    .cabecario {
+        background-color: @cor-marca;
+        color: @cor-marca-invertida;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</guid>
 			</item>
 		
 			<item>

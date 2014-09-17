@@ -50,6 +50,10 @@
           text-decoration: none;
         }
 
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
         /*
          * syntax.css
          */
@@ -86,8 +90,10 @@
 </div>
 
 <div class="container">
-  <h2 class="content">AngularJS - Introdução</h2>
-<img src="/media/angular-thumb.jpg" />
+  <div class="clearfix">
+<img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
+<h2 class="content">AngularJS - Introdução</h2>
+</div>
  
 <h1 id="criar-uma-aplicao-web-e-mobile-com-angularjs">Criar uma aplicação web e mobile com angularjs</h1>
 <p>Cada módulo é configurado com o método <strong>config</strong>. Nesta fase não temos acesso a $rootScope porque ainda não foi criada.</p>

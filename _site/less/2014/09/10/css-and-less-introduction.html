@@ -8,7 +8,7 @@
       <meta property="og:site_name" content="CSS e LESS">
       <meta property="og:image" content="/media/less.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/less/2014/10/10/css-and-less-introduction.html">
+      <meta property="og:url" content="/less/2014/09/10/css-and-less-introduction.html">
       <meta property="og:title" content="CSS e LESS">
       <meta property="og:description" content="Introdução a CSS com LESS utilizando o Bootstrap">
       <link href="/css/bootstrap.css" rel="stylesheet">
@@ -50,6 +50,10 @@
           text-decoration: none;
         }
 
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
         /*
          * syntax.css
          */
@@ -86,8 +90,10 @@
 </div>
 
 <div class="container">
-  <h2 class="content">CSS e LESS</h2>
-<img src="/media/less.jpg" />
+  <div class="clearfix">
+<img src="/media/less.jpg" class="post-entry__thumbnail" />
+<h2 class="content">CSS e LESS</h2>
+</div>
  
 <p>Qualquer folha de estilos que tenhamos, podemos compilar com less e é gerado um resultado igual.
 Isto é bom para projectos já existentes, onde podemos começar a fazer implementações a tirar partido do less sem termos de remudelar todo o código já usado.</p>

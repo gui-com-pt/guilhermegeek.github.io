@@ -50,6 +50,10 @@
           text-decoration: none;
         }
 
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
         /*
          * syntax.css
          */
@@ -86,8 +90,10 @@
 </div>
 
 <div class="container">
-  <h2 class="content">Introdução ao padrão BEM em CSS</h2>
-<img src="/media/less.jpg" />
+  <div class="clearfix">
+<img src="/media/less.jpg" class="post-entry__thumbnail" />
+<h2 class="content">Introdução ao padrão BEM em CSS</h2>
+</div>
  
 <p>Primeiro, porque precisamos de uma metadalogia para CSS sequer? 
 Vamos a um exemplo, um widget da última noticia repetido várias vezes na mesma página:</p>

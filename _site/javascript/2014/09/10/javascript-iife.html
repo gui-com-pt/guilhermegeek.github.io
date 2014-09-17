@@ -50,6 +50,10 @@
           text-decoration: none;
         }
 
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
         /*
          * syntax.css
          */
@@ -86,8 +90,10 @@
 </div>
 
 <div class="container">
-  <h2 class="content">Expressão de Função Imediatamente-Invocada</h2>
-<img src="/media/javascript.png" />
+  <div class="clearfix">
+<img src="/media/javascript.png" class="post-entry__thumbnail" />
+<h2 class="content">Expressão de Função Imediatamente-Invocada</h2>
+</div>
  
 <p>Em inglês o termo é IIFE - Immediately-Invoked Function Expression. Também é conhecido como Self-Invoked anonymous function.</p>
 

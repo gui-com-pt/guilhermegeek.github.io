@@ -50,6 +50,10 @@
           text-decoration: none;
         }
 
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
         /*
          * syntax.css
          */
@@ -86,8 +90,10 @@
 </div>
 
 <div class="container">
-  <h2 class="content">Herdar controllers no AngularJS</h2>
-<img src="/media/javascript.png" />
+  <div class="clearfix">
+<img src="/media/javascript.png" class="post-entry__thumbnail" />
+<h2 class="content">Herdar controllers no AngularJS</h2>
+</div>
  
 <p>Tenho usado directivas como o angular-wizard para fazer uma página com etapas. É muito semelhante a usar páginas parciais com o ui-router, tens um controller principal e os herdeiros herdam a $scope</p>
 

@@ -50,6 +50,10 @@
           text-decoration: none;
         }
 
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
         /*
          * syntax.css
          */
@@ -86,8 +90,10 @@
 </div>
 
 <div class="container">
-  <h2 class="content">AngularJS and dynamic forms</h2>
-<img src="/media/angular-thumb.jpg" />
+  <div class="clearfix">
+<img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
+<h2 class="content">AngularJS and dynamic forms</h2>
+</div>
  
 <p>There’re situations where i have to do things dynamically in angular.</p>
 
