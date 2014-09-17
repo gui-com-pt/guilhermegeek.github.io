@@ -76,3 +76,8 @@ Exemplo: allintitle:Gui
 ### +
 
 ### -
+
+
+# exploit-db 
+
+A Offensive Security lançou um projecto no exploit-db.com 

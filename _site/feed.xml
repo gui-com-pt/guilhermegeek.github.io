@@ -254,6 +254,10 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 &lt;h3 id=&quot;section-4&quot;&gt;+&lt;/h3&gt;
 
 &lt;h3 id=&quot;section-5&quot;&gt;-&lt;/h3&gt;
+
+&lt;h1 id=&quot;exploit-db&quot;&gt;exploit-db&lt;/h1&gt;
+
+&lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
 				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
@@ -330,12 +334,17 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 &lt;h3 id=&quot;listas&quot;&gt;Listas&lt;/h3&gt;
 
+&lt;p&gt;Passwords brute-force&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;http://www.moehre.org/bruteforce.html&lt;/li&gt;
   &lt;li&gt;http://packetstormsecurity.com/Crackers/wordlists/&lt;/li&gt;
   &lt;li&gt;http://trac.kismac-ng.org/wiki/wordlists&lt;/li&gt;
   &lt;li&gt;https://wiki.skullsecurity.org/Passwords&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;WPA-PSK
+ * http://www.renderlab.net/projects/WPA-tables/&lt;/p&gt;
 
 &lt;h3 id=&quot;gerar-uma-lista&quot;&gt;Gerar uma lista&lt;/h3&gt;
 

@@ -45,10 +45,15 @@ Um servidor com 32GB de RAM arranjas por 33 euros mensais, e cada vps 2 ou 3 eur
 
 ### Listas
 
+Passwords brute-force
+
  * http://www.moehre.org/bruteforce.html
  * http://packetstormsecurity.com/Crackers/wordlists/
  * http://trac.kismac-ng.org/wiki/wordlists
  * https://wiki.skullsecurity.org/Passwords
+
+WPA-PSK
+ * http://www.renderlab.net/projects/WPA-tables/
 
 
 ### Gerar uma lista
