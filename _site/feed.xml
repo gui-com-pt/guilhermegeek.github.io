@@ -95,6 +95,85 @@ Há muitos temas excelentes a nível de design mas fracos na programação e que
 			</item>
 		
 			<item>
+				<title>Google Hacking Database</title>
+				<description>&lt;p&gt;“Utilizar o Google para encontrar técnicos idiotas” - diz tudo. Google dorks são idiotas encontrados através do Google, sites mal configurados com ficheiros públicos que não deveriam ser.&lt;/p&gt;
+
+&lt;p&gt;Como é que os dorks são encontrados através do Google? A seguinte pesquisa:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://www.google.pt/search?q=filetype:png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Retorna todos os ficheiros do tipo png. Agora vamos passar para um ficheiro mais interessante: &lt;strong&gt;.sql&lt;/strong&gt;. Vamos pesquisar apenas em sites com a extensão .gov&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://www.google.com/search?q=filetype:sql%20site:gov%20and%20%22insert%20into%22
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nesta pesquisa além da extensão do ficheiro ser .sql e a do domínio .gov, também estamos a incluir ficheiros que contenham explicitamente insert into
+Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso público que foram encontrados pelos bots da Google&lt;/p&gt;
+
+&lt;p&gt;Algo muito comum neste tipo de pesquisa para script kiddies costuma ser procurar shell já enviados para os servidores. Alguém já explorou o servidor, enviou uma shell e o Google ainda a indexa para nós sabermos onde encontrá-la!&lt;/p&gt;
+
+&lt;p&gt;O &lt;strong&gt;exploit-db&lt;/strong&gt; tem um arquivo dedicado a dorks do Google. Podes escolher vários tipos de Dorks como mensagens de erro, ficheiros que contenham passwords, etc. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://www.exploit-db.com/google-dorks/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;dorks&quot;&gt;Dorks&lt;/h2&gt;
+
+&lt;h3 id=&quot;site&quot;&gt;site&lt;/h3&gt;
+&lt;p&gt;Restringe a pesquisa ao domínio especificado. &lt;/p&gt;
+
+&lt;p&gt;Exemplo: site:guilhermecardoso.pt&lt;/p&gt;
+
+&lt;h3 id=&quot;inurl&quot;&gt;inurl&lt;/h3&gt;
+&lt;p&gt;Restringue os resultados a links que contenham palavras específicas no URL. &lt;/p&gt;
+
+&lt;p&gt;Exemplo: inurl:wp-admin&lt;/p&gt;
+
+&lt;h3 id=&quot;intitle&quot;&gt;intitle&lt;/h3&gt;
+&lt;p&gt;Títulos que contenham palavras específicas.&lt;/p&gt;
+
+&lt;p&gt;Exemplo: intitle:Portugal&lt;/p&gt;
+
+&lt;h3 id=&quot;allintitle&quot;&gt;allintitle&lt;/h3&gt;
+&lt;p&gt;Semelhante ao &lt;strong&gt;intitle&lt;/strong&gt; mas corresponde exactamente ao título, enquanto que o intitle procura apenas palavras especificas.&lt;/p&gt;
+
+&lt;p&gt;Exemplo: allintitle:Gui&lt;/p&gt;
+
+&lt;h3 id=&quot;allinurl&quot;&gt;allinurl&lt;/h3&gt;
+
+&lt;h3 id=&quot;cache&quot;&gt;cache&lt;/h3&gt;
+
+&lt;h3 id=&quot;numrange&quot;&gt;numrange&lt;/h3&gt;
+
+&lt;h3 id=&quot;filetype-or-ext&quot;&gt;filetype or ext&lt;/h3&gt;
+
+&lt;h3 id=&quot;link&quot;&gt;link&lt;/h3&gt;
+
+&lt;h3 id=&quot;inanchor&quot;&gt;inanchor&lt;/h3&gt;
+
+&lt;h3 id=&quot;allintext&quot;&gt;allintext&lt;/h3&gt;
+
+&lt;h3 id=&quot;intext&quot;&gt;intext&lt;/h3&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;*&lt;/h3&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;**&lt;/h3&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;.&lt;/h3&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;|&lt;/h3&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;+&lt;/h3&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;-&lt;/h3&gt;
+</description>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
+			</item>
+		
+			<item>
 				<title>Bitcoin</title>
 				<description>&lt;p&gt;O Bitcoin é uma moeda virtual que utiliza a rede peer to peer (o mesmo que utilizas quando sacas um torrent). Neste sistema não existe uma autoridade centralizada que controle as transacções, como uma entidade bancária por exemplo.
 É utilizado um sistema de banco de dados distribuídos espalhados pelos nós da rede p2p para registar as transacções, e com ciptografia utiliza funções de segurança como aseguir que bitcoins só podem ser usados pelo dono.&lt;/p&gt;
