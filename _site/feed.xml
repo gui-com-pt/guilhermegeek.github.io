@@ -7,6 +7,40 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Repositório de software</title>
+				<description>&lt;p&gt;Nós utilizamos gestor de pacotes como o apt e yum para instalar pacotes sem termos de fazer a instalação manual ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install. &lt;/p&gt;
+
+&lt;p&gt;As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.&lt;/p&gt;
+
+&lt;p&gt;Agora começa a ser mais comum quem distribui o software disponibilizar um repositório público que podes adicionar e confirar pois são os proprietários do código a disponibilizar os pacotes. &lt;/p&gt;
+
+&lt;p&gt;Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.&lt;/p&gt;
+
+&lt;h3 id=&quot;chaves&quot;&gt;Chaves&lt;/h3&gt;
+
+&lt;p&gt;Quando adicionamos um novo repositório ao gestor de software vamos permitir que esse distribuidor instale o código que quiser.&lt;/p&gt;
+
+&lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gpg --keyserver pgpkeys.mit.edu --recv-key C514AF8E4BA401C3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;E adicioná-la com apt-key add ficheiro-da-chave.key&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gpg -a --export C514AF8E4BA401C3 | apt-key add -
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
+			</item>
+		
+			<item>
 				<title>IDEs - Softwares para programar</title>
 				<description>&lt;h3 id=&quot;visual-studio&quot;&gt;Visual Studio&lt;/h3&gt;
 
@@ -29,6 +63,10 @@
 &lt;p&gt;O MonoDevelop é um IDE complicado. Ele é opensource e é usado em Linux para programar C# a utilizar o mono. Eu utilizo-o porque é mais que suficiente para programar em C#, apesar de não se comparar ao Visual Studio é muito bom e também tem vários plugins que instalados melhoram a experiência de utilizador.&lt;/p&gt;
 
 &lt;p&gt;O problema da existência dele para mim é o seu descendente, o Xamarin Studio. É muito bom, compatível com Windows, Linux e Mac e até o comparo ao Visual Studio em muitas funcionalidades e vantagens mas infelizmente uma desvantagem é o preço dele, daí usar o MonoDevelop.&lt;/p&gt;
+
+&lt;p&gt;Para Linux a Xamarin está a publicar pacotes de instalação oficiais para o mono que agora devemos usar em vez dos desactualizados da distrubuição ou de outras PPAs que não são da Xamarim.&lt;/p&gt;
+
+&lt;p&gt;Para o Monodevelop eles não mantêm pacotes, isto porque lhes interessa o Xamarin. Eu uso a PPA do tpokorra para o Monodevelop. Já usava antes para o mono e normalmente era a mais actualizada e de confiança.&lt;/p&gt;
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-monodevelop4.png&quot; /&gt;&lt;/p&gt;
 
