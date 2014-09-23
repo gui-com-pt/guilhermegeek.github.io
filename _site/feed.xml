@@ -7,14 +7,167 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Arquitecturas e Padrões em software</title>
+				<description>&lt;p&gt;Esta é a minha área favorita e nem que escrever! Para já mantenho tudo neste artigo, depois logo se vê&lt;/p&gt;
+
+&lt;h4 id=&quot;php&quot;&gt;PHP&lt;/h4&gt;
+
+&lt;p&gt;Começar com um exemplo simples. Uma aplicação com as seguintes entidades:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Utilizador&lt;/li&gt;
+  &lt;li&gt;Mensagem&lt;/li&gt;
+  &lt;li&gt;Artigos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O que esta aplicação mais vai ter são operações CRUD - create, read, update e delete. Dividir uma aplicação em camadas tem vantagens.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserRepository implements IRepository {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	protected $dbContext;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;dbContext = $ioc[&amp;#39;database&amp;#39;]-&amp;gt;getDbContext(&amp;#39;App\Domain\User&amp;#39;));&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function get($id){&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		return $dbContext-&amp;gt;get($id);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserService : BaseService {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	protected $userRepository;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		parent::__construct($ioc);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;userRepository = new \App\Data\UserRepository($ioc);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function get($id) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		try {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$user = $this-&amp;gt;userRepository-&amp;gt;get($id);&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;			if(is_null($user)) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;				throw new UserNotFoundException($user);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;			$userBuilder = new \App\Services\UserBuilder($user);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$userBuilder-&amp;gt;build();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$userDto = $userBuilder-&amp;gt;getDto();&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;			return $userDto;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		catch(MissingArgumentException $ex) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$response = \App\Services\ErrorProvider::getResponse($ex);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			return $response;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;class UserApi : RestBase {
+	protected $userBusiness;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public function __construct($ioc) {
+	parent::__construct($ioc);
+	$this-&amp;gt;userBusiness = new \App\Business\UserBusiness($ioc);
+}
+
+public function get(){
+	$id = $this-&amp;gt;app-&amp;gt;request()-&amp;gt;params('id');
+	if(empty($id)) {
+		throw new ArgumentMissingExpcetion('id');
+	}
+
+	$user = $this-&amp;gt;userBusiness-&amp;gt;get($id);
+
+	return array('code' =&amp;gt; 200, 'result' =&amp;gt; $user);
+} }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Agora falta declarar os pontos de acesso á API. Eu uso o Slim em projectos PHP apenas para isto, mas há outras micro frameworks melhores.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;$app = new \Slim\Slim();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;$ioc = \App\Services\IocContainer();&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;$app-&amp;gt;get(&amp;#39;/api/user&amp;#39;, function() use($ioc) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	$ioc[&amp;#39;userApi&amp;#39;]-&amp;gt;get();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;$app-&amp;gt;run();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</guid>
+			</item>
+		
+			<item>
+				<title>Lidar com erros e excepções</title>
+				<description>&lt;p&gt;Lembro-me de ter publicado alguns sites que mandavam o relatório das excepções como resultado sempre que alguma coisa corria mal.&lt;/p&gt;
+
+&lt;p&gt;Eu utilizo excepções para lidar com erros e validações da aplicação. Por exemplo, para validação de entrade de dados (classes DTO que uso e populo dinamicamente com funções auxiliares e alguma refactoração) eu não vou criar uma excepção diferente para cada tipo de erro que possa existir como MinLengthException, NumericLowerException, etc.&lt;/p&gt;
+
+&lt;p&gt;Preferia usar algo assim&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserConfirmException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$userId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$trace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;userId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$trace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;userId&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUserId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;userId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Neste caso como valido campos dinâmicos:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BaseRest&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;confirm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserConfirmValidator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AbstractValidator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;assert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$validated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SomeLibrary&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$validate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UserConfirmException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$validate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;errorTrace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
+</description>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</guid>
+			</item>
+		
+			<item>
 				<title>Repositório de software</title>
-				<description>&lt;p&gt;Nós utilizamos gestor de pacotes como o apt e yum para instalar pacotes sem termos de fazer a instalação manual ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install. &lt;/p&gt;
+				<description>&lt;p&gt;Nós utilizamos gestor de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install. &lt;/p&gt;
 
 &lt;p&gt;As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.&lt;/p&gt;
 
 &lt;p&gt;Agora começa a ser mais comum quem distribui o software disponibilizar um repositório público que podes adicionar e confirar pois são os proprietários do código a disponibilizar os pacotes. &lt;/p&gt;
 
-&lt;p&gt;Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.&lt;/p&gt;
+&lt;p&gt;Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.
+Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.13 já requirido por muitos softwares recentes. Eu utilizo a distruibuição Kali num portátil de desenvolvimento e bem sei a dor de cabeça que isto deu!&lt;/p&gt;
 
 &lt;h3 id=&quot;chaves&quot;&gt;Chaves&lt;/h3&gt;
 
@@ -22,7 +175,7 @@
 
 &lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
@@ -35,7 +188,7 @@
 &lt;pre&gt;&lt;code&gt;gpg -a --export C514AF8E4BA401C3 | apt-key add -
 &lt;/code&gt;&lt;/pre&gt;
 </description>
-				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
@@ -126,7 +279,7 @@
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 17 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
 			</item>
@@ -189,7 +342,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 
 [+] Starting the password brute forcer
 
-  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
+  Brute forcing user 'testadmin' with 500 passwords... 100% complete.
 [+] Finished at Thu Jul 18 03:39:02 2013
 [+] Elapsed time: 00:01:16
 &lt;/code&gt;&lt;/pre&gt;
@@ -214,7 +367,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 &lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
 Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
@@ -297,7 +450,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
@@ -323,7 +476,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
 			</item>
@@ -405,7 +558,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
   &lt;li&gt;http://www.troyhunt.com/2011/07/science-of-password-selection.html&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</guid>
 			</item>
@@ -422,7 +575,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 &lt;p&gt;Tenho encontrado computadores com versões ancestrais do Internet Explorer e Flash que até nem se actualizam por causa de permissões de contas, firewall a bloquear portas, etc. Isto sim, é um prato bem servido a quem tem más intenções&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</guid>
 			</item>
@@ -475,7 +628,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 &lt;p&gt;Eu utilizei isto num contexto em que o baseController já era em si um controller herdado mas a utilizar o ui-router. 
 Desta forma registas o kidsController e adultsController como dois controladores independentes um do outro, mas com as mesmas dependências.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</guid>
 			</item>
@@ -509,7 +662,7 @@ IDE’s como o PHPStorm ou NetBens têm grandes funcionalidades de debugging mas
 &lt;p&gt;O Vdebug é um plugin para o vim que permite fazer debug a vário código, não apenas PHP!
 O mais fácil para instalares o Vdebug é adicioná-lo nas configuração do vim, em ~/.vimrc (cria este arquivo caso não exista)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Plugin &#39;joonty/vdebug&#39;
+&lt;pre&gt;&lt;code&gt;Plugin 'joonty/vdebug'
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Depois corre este comando para instalares o plugin
@@ -541,7 +694,7 @@ Isto vai abrir 4 janelas diferentes. Na esquerda o ficheiro a ser visto e á dir
   &lt;li&gt;F2 - Próximo&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</guid>
 			</item>
@@ -595,7 +748,7 @@ tar -cpzf $DESDIR/$FILENAME $SRCDIR # compress the source directory and saves th
 &lt;p&gt;1 vez por dia copiar apenas a base de dados&lt;/p&gt;
 
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</guid>
 			</item>
@@ -682,7 +835,7 @@ Vamos a um exemplo, um widget da última noticia repetido várias vezes na mesma
 &lt;p&gt;Ok é justo, compreendo que á primeira vista .layout-container__right_sidebar–hidden seja grande e feio.
 Mas eu em programação no servidor também uso getParentDetailsStatus e recurso-me a usar abreviaturas ou palavras mais curtas só para não ficar feio. Mesmo no PHP que não compilamos o código, é praticamente insigificante para o interpretador e mesmo que seja mais tarde podes minificar tudo. &lt;/p&gt;
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</guid>
 			</item>
@@ -723,7 +876,7 @@ The default port is 25&lt;/p&gt;
 &lt;h3 id=&quot;getting-ready-for-production&quot;&gt;Getting ready for production&lt;/h3&gt;
 &lt;p&gt;This is how i strucutre my projects configurations. The default configurations is in a file like &lt;code&gt;default-settings.php&lt;/code&gt;. In my case the default-settings is set from a prent library. Then i’ve the &lt;code&gt;local-settings.php&lt;/code&gt; wich is ignored and never sent to the git repository. This file return a array that’ll replace the default settings.&lt;/p&gt;
 </description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</guid>
 			</item>
@@ -801,7 +954,7 @@ Os parêntises também são úteis para quem começa a ler o início da função
 &lt;/ul&gt;
 
 </description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</guid>
 			</item>
@@ -874,7 +1027,7 @@ body {
 }
 &lt;/code&gt;&lt;/pre&gt;
 </description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</guid>
 			</item>
@@ -888,10 +1041,10 @@ body {
 O método &lt;strong&gt;run&lt;/strong&gt; inicia a aplicação e já tem acesso à $rootScope. &lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    angular.
-        module(&#39;biblia&#39;).
+        module('biblia').
         config([function(){
         }].
-        run([&#39;$rootScope&#39;, &#39;$http&#39;, function($rootScope, $http) {
+        run(['$rootScope', '$http', function($rootScope, $http) {
             $rootScope
         });
 &lt;/code&gt;&lt;/pre&gt;
@@ -900,8 +1053,8 @@ O método &lt;strong&gt;run&lt;/strong&gt; inicia a aplicação e já tem acesso
 &lt;p&gt;Um service retorna sempre uma nova instância fazendo uso de &lt;strong&gt;new&lt;/strong&gt;. 
 Uma factory age como um singleton, uma instância única que é partilhada&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;    angular.module(&#39;biblia&#39;).service(&#39;bibliaSvc&#39;, [&#39;$rootScope&#39;, &#39;$http&#39;, function($rootScope, $http) {
-            var books = [&#39;genesis&#39;, &#39;exodo&#39;];
+&lt;pre&gt;&lt;code&gt;    angular.module('biblia').service('bibliaSvc', ['$rootScope', '$http', function($rootScope, $http) {
+            var books = ['genesis', 'exodo'];
             return {
                 getVersions: function(){
 
@@ -916,7 +1069,7 @@ Uma factory age como um singleton, uma instância única que é partilhada&lt;/p
 
                 },
                 findVerses: function(version, book, chapter, verseFrom, verseTo) {
-                    $http.get(&#39;/bible-online.com/query?book=&#39; + book + &#39;&amp;amp;chapter=&#39; + chapter + &#39;&amp;amp;from=&#39; + verseFrom + &#39;&amp;amp;verseTo=&#39; + verseTo)
+                    $http.get('/bible-online.com/query?book=' + book + '&amp;amp;chapter=' + chapter + '&amp;amp;from=' + verseFrom + '&amp;amp;verseTo=' + verseTo)
                         .result.then(function(res) {
 
                         }, function(res) {
@@ -926,7 +1079,7 @@ Uma factory age como um singleton, uma instância única que é partilhada&lt;/p
             };
 
         }).
-        controller(&#39;homeCtrl&#39;, [&#39;bibleSvc&#39;, &#39;$scope&#39;, function(bibleSvc, $scope) {
+        controller('homeCtrl', ['bibleSvc', '$scope', function(bibleSvc, $scope) {
             $scope.find = function() {
                 bibleSvc.findVerses($scope.version, $scope.book, $sc)
             };
@@ -1000,24 +1153,24 @@ A nossa aplicação vai ligar-se por uma websocket a um servidor. Esse servidor 
 A aplicação mostra as notícias no controller noticiaCtrl e a directive ultimaNoticia mostra a noticia mais recentes.
 Quando o servidor publicar uma nova notícia, a nossa aplicação vai receber esse evento e propagar no evento publicar. &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;biblia&#39;).run([&#39;websocket&#39;, function(websocket) {
+&lt;pre&gt;&lt;code&gt;angular.module('biblia').run(['websocket', function(websocket) {
     websock.onMessage(function(res) {
 
     });
 }]);
 
-angular.module(&#39;biblia&#39;).controller(&#39;noticiasCtrl&#39;, [&#39;$scope&#39;, &#39;$rootScope&#39;, function(res) {
-    $scope.$on(&#39;publicar&#39;, function(res) {
+angular.module('biblia').controller('noticiasCtrl', ['$scope', '$rootScope', function(res) {
+    $scope.$on('publicar', function(res) {
         $scope.$apply(function() {
             $scope.noticias.push(res.noticia);
         });
     });
 }]);
 
-angular.module(&#39;biblia&#39;).directive(&#39;ultimaNoticia&#39;, [function() {
+angular.module('biblia').directive('ultimaNoticia', [function() {
     return {
         link: function(attr, elem, scope) {
-            scope.$on(&#39;publicar&#39;, function(res) {
+            scope.$on('publicar', function(res) {
                 scope.nome = res.noticia.nome;
                 scope.imagemUrl = res.noticia.imagemUrl;
                 scope.uri = res.noticia.uri;
@@ -1027,7 +1180,7 @@ angular.module(&#39;biblia&#39;).directive(&#39;ultimaNoticia&#39;, [function() 
 }]);
 &lt;/code&gt;&lt;/pre&gt;
 </description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</guid>
 			</item>
@@ -1095,7 +1248,7 @@ angular.module(&#39;biblia&#39;).directive(&#39;ultimaNoticia&#39;, [function() 
     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 </description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</guid>
 			</item>

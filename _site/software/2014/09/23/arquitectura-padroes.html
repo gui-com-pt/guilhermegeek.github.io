@@ -2,14 +2,14 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Guilherme Cardoso Repositório de software</title>
+      <title>Guilherme Cardoso Arquitecturas e Padrões em software</title>
       <meta name="description" content="">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="Repositório de software">
-      <meta property="og:image" content="/media/php.jpg">
+      <meta property="og:site_name" content="Arquitecturas e Padrões em software">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/ide/software/2014/09/18/linux-software-versoes-chaves.html">
-      <meta property="og:title" content="Repositório de software">
+      <meta property="og:url" content="/software/2014/09/23/arquitectura-padroes.html">
+      <meta property="og:title" content="Arquitecturas e Padrões em software">
       <meta property="og:description" content="">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
@@ -127,37 +127,98 @@
 
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
-<img src="/media/php.jpg" class="post-entry__thumbnail" />
-<h2 class="content">Repositório de software</h2>
+<img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
+<h2 class="content">Arquitecturas e Padrões em software</h2>
 </div>
  
-<p>Nós utilizamos gestor de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure &amp;&amp; make &amp;&amp; make install. </p>
+<p>Esta é a minha área favorita e nem que escrever! Para já mantenho tudo neste artigo, depois logo se vê</p>
 
-<p>As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.</p>
+<h4 id="php">PHP</h4>
 
-<p>Agora começa a ser mais comum quem distribui o software disponibilizar um repositório público que podes adicionar e confirar pois são os proprietários do código a disponibilizar os pacotes. </p>
+<p>Começar com um exemplo simples. Uma aplicação com as seguintes entidades:</p>
 
-<p>Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.
-Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.13 já requirido por muitos softwares recentes. Eu utilizo a distruibuição Kali num portátil de desenvolvimento e bem sei a dor de cabeça que isto deu!</p>
+<ul>
+  <li>Utilizador</li>
+  <li>Mensagem</li>
+  <li>Artigos</li>
+</ul>
 
-<h3 id="chaves">Chaves</h3>
+<p>O que esta aplicação mais vai ter são operações CRUD - create, read, update e delete. Dividir uma aplicação em camadas tem vantagens.</p>
 
-<p>Quando adicionamos um novo repositório ao gestor de software vamos permitir que esse distribuidor instale o código que quiser.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">class UserRepository implements IRepository {</span>
+<span class="x">	</span>
+<span class="x">	protected $dbContext;</span>
 
-<p>Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:</p>
+<span class="x">	public function __construct($ioc) {</span>
+<span class="x">		$this-&gt;dbContext = $ioc[&#39;database&#39;]-&gt;getDbContext(&#39;App\Domain\User&#39;));</span>
+<span class="x">	}</span>
 
-<pre><code>W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+<span class="x">	public function get($id){</span>
+<span class="x">		return $dbContext-&gt;get($id);</span>
+<span class="x">	}</span>
+
+<span class="x">}</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">class UserService : BaseService {</span>
+<span class="x">	</span>
+<span class="x">	protected $userRepository;</span>
+
+<span class="x">	public function __construct($ioc) {</span>
+<span class="x">		parent::__construct($ioc);</span>
+<span class="x">		$this-&gt;userRepository = new \App\Data\UserRepository($ioc);</span>
+<span class="x">	}</span>
+
+<span class="x">	public function get($id) {</span>
+<span class="x">		try {</span>
+<span class="x">			$user = $this-&gt;userRepository-&gt;get($id);</span>
+
+<span class="x">			if(is_null($user)) {</span>
+<span class="x">				throw new UserNotFoundException($user);</span>
+<span class="x">			}</span>
+
+<span class="x">			$userBuilder = new \App\Services\UserBuilder($user);</span>
+<span class="x">			$userBuilder-&gt;build();</span>
+<span class="x">			$userDto = $userBuilder-&gt;getDto();</span>
+
+<span class="x">			return $userDto;</span>
+<span class="x">		}</span>
+<span class="x">		catch(MissingArgumentException $ex) {</span>
+<span class="x">			$response = \App\Services\ErrorProvider::getResponse($ex);</span>
+<span class="x">			return $response;</span>
+<span class="x">		}</span>
+<span class="x">	}</span>
+<span class="x">}</span></code></pre></div>
+
+<p>class UserApi : RestBase {
+	protected $userBusiness;</p>
+
+<pre><code>public function __construct($ioc) {
+	parent::__construct($ioc);
+	$this-&gt;userBusiness = new \App\Business\UserBusiness($ioc);
+}
+
+public function get(){
+	$id = $this-&gt;app-&gt;request()-&gt;params('id');
+	if(empty($id)) {
+		throw new ArgumentMissingExpcetion('id');
+	}
+
+	$user = $this-&gt;userBusiness-&gt;get($id);
+
+	return array('code' =&gt; 200, 'result' =&gt; $user);
+} }
 </code></pre>
 
-<p>Neste exemplo temos de fazer download da chave</p>
+<p>Agora falta declarar os pontos de acesso á API. Eu uso o Slim em projectos PHP apenas para isto, mas há outras micro frameworks melhores.</p>
 
-<pre><code>gpg --keyserver pgpkeys.mit.edu --recv-key C514AF8E4BA401C3
-</code></pre>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$app = new \Slim\Slim();</span>
+<span class="x">$ioc = \App\Services\IocContainer();</span>
 
-<p>E adicioná-la com apt-key add ficheiro-da-chave.key</p>
+<span class="x">$app-&gt;get(&#39;/api/user&#39;, function() use($ioc) {</span>
+<span class="x">	$ioc[&#39;userApi&#39;]-&gt;get();</span>
+<span class="x">});</span>
 
-<pre><code>gpg -a --export C514AF8E4BA401C3 | apt-key add -
-</code></pre>
+<span class="x">$app-&gt;run();</span></code></pre></div>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
