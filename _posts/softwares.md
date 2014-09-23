@@ -13,4 +13,7 @@ http://www.arachni-scanner.com/
 http://portswigger.net/
 
 https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
- 
+
+http://dirk-loss.de/python-tools.htm
+
+http://corelabs.coresecurity.com/index.php?module=Wiki&action=list&type=tool
