@@ -2,14 +2,14 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Guilherme Cardoso Lidar com erros e excepções</title>
+      <title>Guilherme Cardoso C#, Mono e Linux</title>
       <meta name="description" content="">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="Lidar com erros e excepções">
+      <meta property="og:site_name" content="C#, Mono e Linux">
       <meta property="og:image" content="/media/angular-thumb.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/software/2014/09/22/errors-and-exceptions.html">
-      <meta property="og:title" content="Lidar com erros e excepções">
+      <meta property="og:url" content="/c%23/mono/2014/09/15/csharp-mono-linux.html">
+      <meta property="og:title" content="C#, Mono e Linux">
       <meta property="og:description" content="">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
@@ -128,62 +128,10 @@
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
 <img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
-<h2 class="content">Lidar com erros e excepções</h2>
+<h2 class="content">C#, Mono e Linux</h2>
 </div>
  
-<p>Lembro-me de ter publicado alguns sites que mandavam o relatório das excepções como resultado sempre que alguma coisa corria mal.</p>
-
-<p>Eu utilizo excepções para lidar com erros e validações da aplicação. Por exemplo, para validação de entrade de dados (classes DTO que uso e populo dinamicamente com funções auxiliares e alguma refactoração) eu não vou criar uma excepção diferente para cada tipo de erro que possa existir como MinLengthException, NumericLowerException, etc.</p>
-
-<p>Preferia usar algo assim</p>
-
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="k">class</span> <span class="nc">UserNotConfirmedException</span> <span class="o">:</span> <span class="nx">Exception</span> <span class="p">{</span>
-	<span class="k">protected</span> <span class="nv">$userId</span><span class="p">;</span>
-
-	<span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$trace</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span> <span class="o">=</span> <span class="nv">$trace</span><span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">];</span>
-	<span class="p">}</span>
-
-	<span class="k">public</span> <span class="k">function</span> <span class="nf">getUserId</span><span class="p">(){</span>
-		<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-<p>Neste caso como valido campos dinâmicos:</p>
-
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="k">class</span> <span class="nc">UserService</span> <span class="o">:</span> <span class="nx">BaseRest</span> <span class="p">{</span>
-	
-	<span class="k">public</span> <span class="k">function</span> <span class="nf">confirm</span><span class="p">(){</span>
-		<span class="nv">$validator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserConfirmValidator</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">);</span>
-		<span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">assert</span><span class="p">();</span>
-	<span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="k">class</span> <span class="nc">UserConfirmValidator</span> <span class="o">:</span> <span class="nx">AbstractValidator</span> <span class="p">{</span>
-	
-	<span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span> <span class="o">=</span> <span class="nv">$request</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">()</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">SomeLibrary</span><span class="o">::</span><span class="na">validate</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">);</span>
-	<span class="p">}</span>
-
-	<span class="k">public</span> <span class="k">function</span> <span class="nf">assert</span><span class="p">(){</span>
-		<span class="nv">$validate</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">()</span> 
-		<span class="k">if</span><span class="p">(</span><span class="nv">$validate</span><span class="o">-&gt;</span><span class="na">hasError</span><span class="p">())</span> <span class="p">{</span>
-			<span class="k">throw</span> <span class="k">new</span> <span class="nx">UserNotConfirmedException</span><span class="p">(</span><span class="nv">$validate</span><span class="o">-&gt;</span><span class="na">errorTrace</span><span class="p">())</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-<p>O método assert vai invocar a excepção</p>
+<p>Aqui não há muito a acrescentar que já não esteja estapando no Google. Vou mostrar algumas bibliotecas e projectos compatíveis como mono, dar exemplos de como lido com problemas de dependências e dicas gerais como utilizar o fastcgiserver, várias versões do .NET, etc</p>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
