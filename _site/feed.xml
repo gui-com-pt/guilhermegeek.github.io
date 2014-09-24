@@ -96,6 +96,18 @@ public function get(){
 &lt;span class=&quot;x&quot;&gt;});&lt;/span&gt;
 
 &lt;span class=&quot;x&quot;&gt;$app-&amp;gt;run();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Este seria o ficheiro index.php ou api.php fora da biblioteca. A ideia aqui é manter apenas um ficheiro na pasta onde a aplicação está publicada (tipica /var/www). Este ficheiro consume a biblioteca, essa biblioteca que é carregada por PSR está noutra pasta mais protegida.&lt;/p&gt;
+
+&lt;p&gt;A biblioteca é composta por&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;API - Classes que consomem a biblioteca&lt;/li&gt;
+  &lt;li&gt;Serviços - Classes de negócio, consomem recursos como repositórios de base de dados, validam entradas do utilizador, etc&lt;/li&gt;
+  &lt;li&gt;Data &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
