@@ -1077,6 +1077,74 @@ Os parêntises também são úteis para quem começa a ler o início da função
 			</item>
 		
 			<item>
+				<title>GIT</title>
+				<description>&lt;p&gt;O Git é utilizador para controlo de versões de software. &lt;/p&gt;
+
+&lt;p&gt;Ele foi criado pelo Linus Trovald para distruibuir a Kernel do Linux, um mecanismo bom para actualizar a Kernel, variar entre as versões existentes e implementar código proposto por programadores.&lt;/p&gt;
+
+&lt;p&gt;Neste momento o GIT é utilizador por diversos projectos e ganhou mais popularidade quando começaram a existir serviços tão bons como o Github ou Bitbucket! Eles dão-nos espaço gratuíto e mantêm o código fonte num servidor, com interfaces web para gerir tudo, criar ramos, dar permissões a utilizadores, etc.&lt;/p&gt;
+
+&lt;p&gt;Eu utilizo para gerir projectos e código em geral que escrevo. Mesmo que não seja código publicado, tê-lo versonado com GIT ou outro sistema é excelente porque tens acesso a alterações que foram feitas, a comparações de código. &lt;/p&gt;
+
+&lt;h3 id=&quot;repositrios&quot;&gt;Repositórios&lt;/h3&gt;
+
+&lt;p&gt;Para explicar a estrutura do Git começou por introduzir os repositórios. Um repositório é um directorio onde todas as alterações realizadas são registadas. É a pasta onde vais meter o código, ficheiros de documentação ou scripts de compilação. &lt;/p&gt;
+
+&lt;p&gt;No mesmo repositório podes manter vários projectos, eles mesmos a representarem-se como repositórios. Eu prefiro separá-los para ter página da Wiki e Gestão de Erros associados aos projectos em separado.&lt;/p&gt;
+
+&lt;h3 id=&quot;estrutura&quot;&gt;Estrutura&lt;/h3&gt;
+
+&lt;p&gt;O Git está organizado em três árvores:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Working directory - contém os arquivos vigentes&lt;/li&gt;
+  &lt;li&gt;Index - dados temporários&lt;/li&gt;
+  &lt;li&gt;HEAD - última confirmação realizada&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para criarmos um repositório novo usamos &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Para puxarmos um repositório já existente&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/guilhermegeek/guilhermegeek.github.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Quando adicionamos, removemos ou editamos um ficheiro dentro de um repositório, as mudanças ficam no &lt;strong&gt;Index&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add -A
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Para adicionar ficheiros ocultos:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add -A .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Uma alteração contém um ou mais ficheiros que foram adicionados, editados ou removidos após o repositório ter sido actualizado. Ao adicionar-mos os ficheiros á alteração eles ficam no &lt;strong&gt;HEAD&lt;/strong&gt; mas ainda não estão no repositório remoto, estão localmente.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -m 'Im fixing the bug founded in CV0023 by Marthin'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O parametro m indica uma mensagem a associar à alteração. É importante usar sempre uma mensagem descrivita, simples e lógica que outro programador que nunca tenha trabalhado neste projecto entenda.&lt;/p&gt;
+
+&lt;p&gt;Quando enviamos pela primeira vez para o repositório temos de indicar o ramo, neste exemplo master&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Também podemos criar um novo repositório num servidor git apartir do nosso repositório local, no caso de não ter sido clonado&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add origin https://links
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/git.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/git.html</guid>
+			</item>
+		
+			<item>
 				<title>CSS e LESS</title>
 				<description>&lt;p&gt;Qualquer folha de estilos que tenhamos, podemos compilar com less e é gerado um resultado igual.
 Isto é bom para projectos já existentes, onde podemos começar a fazer implementações a tirar partido do less sem termos de remudelar todo o código já usado.&lt;/p&gt;
@@ -1147,159 +1215,6 @@ body {
 				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</guid>
-			</item>
-		
-			<item>
-				<title>AngularJS - Introdução</title>
-				<description>&lt;h1 id=&quot;criar-uma-aplicao-web-e-mobile-com-angularjs&quot;&gt;Criar uma aplicação web e mobile com angularjs&lt;/h1&gt;
-&lt;p&gt;Cada módulo é configurado com o método &lt;strong&gt;config&lt;/strong&gt;. Nesta fase não temos acesso a $rootScope porque ainda não foi criada.&lt;/p&gt;
-
-&lt;p&gt;Nesta fase o próprio url não foi traduzido para um controller sequer. É ideal para carregar depêndencias também.
-O método &lt;strong&gt;run&lt;/strong&gt; inicia a aplicação e já tem acesso à $rootScope. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    angular.
-        module('biblia').
-        config([function(){
-        }].
-        run(['$rootScope', '$http', function($rootScope, $http) {
-            $rootScope
-        });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;services-e-factories&quot;&gt;Services e factories&lt;/h4&gt;
-&lt;p&gt;Um service retorna sempre uma nova instância fazendo uso de &lt;strong&gt;new&lt;/strong&gt;. 
-Uma factory age como um singleton, uma instância única que é partilhada&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    angular.module('biblia').service('bibliaSvc', ['$rootScope', '$http', function($rootScope, $http) {
-            var books = ['genesis', 'exodo'];
-            return {
-                getVersions: function(){
-
-                },
-                find: function(version, phrase) {
-
-                },
-                getChapter: function(version, book, chapter) {
-
-                },
-                getVerse: function(version, book, chapter, verse) {
-
-                },
-                findVerses: function(version, book, chapter, verseFrom, verseTo) {
-                    $http.get('/bible-online.com/query?book=' + book + '&amp;amp;chapter=' + chapter + '&amp;amp;from=' + verseFrom + '&amp;amp;verseTo=' + verseTo)
-                        .result.then(function(res) {
-
-                        }, function(res) {
-
-                        });
-                }
-            };
-
-        }).
-        controller('homeCtrl', ['bibleSvc', '$scope', function(bibleSvc, $scope) {
-            $scope.find = function() {
-                bibleSvc.findVerses($scope.version, $scope.book, $sc)
-            };
-        });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Esta é a estrutura que adopto em projectos maiores, em que eu sei que vou usar várias views parciais e até os controladores têm sempre um service associado.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;app
-    &lt;ul&gt;
-      &lt;li&gt;biblia
-        &lt;ul&gt;
-          &lt;li&gt;pesquisar.html&lt;/li&gt;
-          &lt;li&gt;pesquisar.js&lt;/li&gt;
-          &lt;li&gt;pesquisar-livros.html&lt;/li&gt;
-          &lt;li&gt;editar.html&lt;/li&gt;
-          &lt;li&gt;editar.js&lt;/li&gt;
-          &lt;li&gt;service.js&lt;/li&gt;
-          &lt;li&gt;module.js&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;inicio
-        &lt;ul&gt;
-          &lt;li&gt;inicio.html&lt;/li&gt;
-          &lt;li&gt;inicio.js&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;contacto
-        &lt;ul&gt;
-          &lt;li&gt;contacto.html&lt;/li&gt;
-          &lt;li&gt;contacto.js&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;comuns
-        &lt;ul&gt;
-          &lt;li&gt;publicidade
-            &lt;ul&gt;
-              &lt;li&gt;normal.html&lt;/li&gt;
-              &lt;li&gt;normal.js&lt;/li&gt;
-              &lt;li&gt;service.js&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;module&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;tests&lt;/li&gt;
-  &lt;li&gt;bower_components&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Eu divido em módulos quando se trata de uma entidade do dominio da aplicação. Por exemplo num blog, teria o modulo &lt;strong&gt;blog&lt;/strong&gt;, &lt;strong&gt;blog.artigo&lt;/strong&gt; e &lt;strong&gt;blog.tutorial&lt;/strong&gt;.
-Quando crio um novo módulo para componentes deste gênero faço os roteamentos, configurações dos serviços, dentro do &lt;strong&gt;config&lt;/strong&gt; de cada módulo. Ajuda também a manter o código&lt;/p&gt;
-
-&lt;h3 id=&quot;controller&quot;&gt;Controller&lt;/h3&gt;
-
-&lt;p&gt;Por vezes dou por mim a validar dados e lógica num controller, ou até mesmo a utilizar terceiros recursos como consumir apis.
-Há código que lida directamente com os objectos na $scope como uma função que ordene uma lista ou que actualize dados na view. Se usarmos uma factory, como se trata de uma instância os controllers podem usar a factory e partilharem a mesma instância.&lt;/p&gt;
-
-&lt;h3 id=&quot;brodcasting-and-emit&quot;&gt;Brodcasting and Emit&lt;/h3&gt;
-&lt;p&gt;Tanto o &lt;strong&gt;$broadcast&lt;/strong&gt; como o &lt;strong&gt;$emit&lt;/strong&gt; implementam uma arquitectura de eventos, a diferença está na direcção da propagação no esquema do angular.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;$brodcast - Emite um evento a todos os descendentes. No caso de $rootScope.$broadcast propaga todos os pontos que acessadam ao $rootScope como o controllers e directives.&lt;/li&gt;
-  &lt;li&gt;$emit - Emite um evento a todos os parentes.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Exemplo
-A nossa aplicação vai ligar-se por uma websocket a um servidor. Esse servidor vai publicar novas notícias.
-A aplicação mostra as notícias no controller noticiaCtrl e a directive ultimaNoticia mostra a noticia mais recentes.
-Quando o servidor publicar uma nova notícia, a nossa aplicação vai receber esse evento e propagar no evento publicar. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module('biblia').run(['websocket', function(websocket) {
-    websock.onMessage(function(res) {
-
-    });
-}]);
-
-angular.module('biblia').controller('noticiasCtrl', ['$scope', '$rootScope', function(res) {
-    $scope.$on('publicar', function(res) {
-        $scope.$apply(function() {
-            $scope.noticias.push(res.noticia);
-        });
-    });
-}]);
-
-angular.module('biblia').directive('ultimaNoticia', [function() {
-    return {
-        link: function(attr, elem, scope) {
-            scope.$on('publicar', function(res) {
-                scope.nome = res.noticia.nome;
-                scope.imagemUrl = res.noticia.imagemUrl;
-                scope.uri = res.noticia.uri;
-            });
-        }
-    };
-}]);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</guid>
 			</item>
 		
 	</channel>
