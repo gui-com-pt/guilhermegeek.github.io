@@ -7,14 +7,271 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Programação - Introdução</title>
+				<description>&lt;p&gt;“Que linguagem de programação me aconselhas?” ou “Isso de programador é que é vida, passar o dia todo sentado” já fazem parte do meu quotidiano.&lt;/p&gt;
+
+&lt;p&gt;Neste artigo quero fazer uma breve introdução a linguagens de programação e ao que esta carreira representa.&lt;/p&gt;
+
+&lt;h3 id=&quot;linguagens&quot;&gt;Linguagens&lt;/h3&gt;
+
+&lt;p&gt;Eu comecei a programar em TCL e depois fiquei uns anos a programar para web com PHP e C#. Há cerca de 1/2 anos comecei a lidar mais com linguagens como Python e shell que me têm ajudado a evoluir bastante enquanto programador.&lt;/p&gt;
+
+&lt;h4 id=&quot;php--hack&quot;&gt;PHP + Hack&lt;/h4&gt;
+
+&lt;p&gt;Hack, yes! Grande prenda da equipa do Facebook, esta linguagem é baseada no PHP mas muito mais direccionada a OOO.&lt;/p&gt;
+
+&lt;p&gt;Para mim as principais vantagens são os tipos anónimos e funções com o retorno definido, por exemplo&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @return User&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Em PHP é assim que consigo ter o IDE a utilizar a auto completação. Tenho de anotar a função com o retorno. Em hack a história é outra&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;bibliotecas-e-frameworks&quot;&gt;Bibliotecas e Frameworks&lt;/h4&gt;
+
+&lt;p&gt;Para mim isto era a única razão pela qual fiquei tanto tempo no .NET, por causa das bibliotecas que temos disponíveis. &lt;/p&gt;
+
+&lt;p&gt;Isto tem bastante peso na escolha de uma linguagem para determinado projecto. Vai ser opensource? Temos disponibilidade do cliente para pagar serviços de desenvolvimento? Está em questão a compatibilidade entre plataformas?&lt;/p&gt;
+
+&lt;p&gt;O ServiceStack é um excelente exemplo de como uma framework pode ser o suficiente para matar um projecto. Até há pouco tempo esta framework era opensource mas sempre com a licença BSD. Uma framework excelente direccionada a webservices e com metadologias e propostas de desenho muito boas mesmo.&lt;/p&gt;
+
+&lt;p&gt;Na actualização da versão 3 para 4 alteraram os planos, passou a ser e apenas a versão 3 se manteve como BSD. O que aconteceu a quem tem projectos suportados nesta framework? São clientes da 4 ou vão ter de fazer um fork da 3 :)&lt;/p&gt;
+
+&lt;p&gt;Já me aconteceu utilizar bibliotecas que já nem eram mantidas, ou que secalhar não são tão boas quanto isso. Podem ter uma API que utilizemos sem problema e satisfaça as necessidades mas o código sofrer de má programação. &lt;/p&gt;
+
+&lt;h3 id=&quot;programador&quot;&gt;Programador&lt;/h3&gt;
+
+&lt;p&gt;Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!&lt;/p&gt;
+
+</description>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
+			</item>
+		
+			<item>
+				<title>Arquitecturas e Padrões em software</title>
+				<description>&lt;p&gt;Esta é a minha área favorita e nem que escrever! Para já mantenho tudo neste artigo, depois logo se vê&lt;/p&gt;
+
+&lt;h4 id=&quot;php&quot;&gt;PHP&lt;/h4&gt;
+
+&lt;p&gt;Começar com um exemplo simples. Uma aplicação com as seguintes entidades:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Utilizador&lt;/li&gt;
+  &lt;li&gt;Mensagem&lt;/li&gt;
+  &lt;li&gt;Artigos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O que esta aplicação mais vai ter são operações CRUD - create, read, update e delete. Dividir uma aplicação em camadas tem vantagens.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserRepository implements IRepository {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	protected $dbContext;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;dbContext = $ioc[&amp;#39;database&amp;#39;]-&amp;gt;getDbContext(&amp;#39;App\Domain\User&amp;#39;));&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function get($id){&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		return $dbContext-&amp;gt;get($id);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserService : BaseService {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	protected $userRepository;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		parent::__construct($ioc);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;userRepository = new \App\Data\UserRepository($ioc);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function get($id) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		try {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$this-&amp;gt;baseValidator-&amp;gt;assertId($id); // If id is invalid, throw exception&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$user = $this-&amp;gt;userRepository-&amp;gt;get($id);&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;			if(is_null($user)) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;				throw new UserNotFoundException($user);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;			$userBuilder = new \App\Services\UserBuilder($user);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$userBuilder-&amp;gt;build();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$userDto = $userBuilder-&amp;gt;getDto();&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;			return $userDto;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		catch(MissingArgumentException $ex) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$response = \App\Services\ErrorProvider::getResponse($ex);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			return $response;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Quando chamo a função assertId(). Ela vai validar o id e asegurar que é válido. Isto não significa que ele exista pois este tipo de função não recorre a recursos, apenas realiza uma validação.&lt;/p&gt;
+
+&lt;p&gt;No caso de ser inválido então invoca uma excepção, por exemplo InvalidIdException. Esta excepção não vamos estar a apanhar em cada função das APIs como é o exemplo do userService-&amp;gt;get().&lt;/p&gt;
+
+&lt;p&gt;Estas função lidamos numa camada superior. O ideal é a BaseService ter um função que lide com excepções globais como o exemplo da InvalidException. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserApi : RestBase {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	protected $userBusiness;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		parent::__construct($ioc);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;userBusiness = new \App\Business\UserBusiness($ioc);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function get(){&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		$id = $this-&amp;gt;app-&amp;gt;request()-&amp;gt;params(&amp;#39;id&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		if(empty($id)) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			throw new ArgumentMissingExpcetion(&amp;#39;id&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;		$user = $this-&amp;gt;userBusiness-&amp;gt;get($id);&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;		return array(&amp;#39;code&amp;#39; =&amp;gt; 200, &amp;#39;result&amp;#39; =&amp;gt; $user);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora falta declarar os pontos de acesso á API. Eu uso o Slim em projectos PHP apenas para isto, mas há outras micro frameworks melhores.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;$app = new \Slim\Slim();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;$ioc = \App\Services\IocContainer();&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;$app-&amp;gt;get(&amp;#39;/api/user&amp;#39;, function() use($ioc) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	$ioc[&amp;#39;userApi&amp;#39;]-&amp;gt;get();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;$app-&amp;gt;run();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Este seria o ficheiro index.php ou api.php fora da biblioteca. A ideia aqui é manter apenas um ficheiro na pasta onde a aplicação está publicada (tipica /var/www). Este ficheiro consume a biblioteca, essa biblioteca que é carregada por PSR está noutra pasta mais protegida.&lt;/p&gt;
+
+&lt;p&gt;A biblioteca é composta por&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;API - Classes que consomem a biblioteca&lt;/li&gt;
+  &lt;li&gt;Serviços - Classes de negócio, consomem recursos como repositórios de base de dados, validam entradas do utilizador, etc&lt;/li&gt;
+  &lt;li&gt;Data &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
+</description>
+				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</guid>
+			</item>
+		
+			<item>
+				<title>Lidar com erros e excepções</title>
+				<description>&lt;p&gt;Lembro-me de ter publicado alguns sites que mandavam o relatório das excepções como resultado sempre que alguma coisa corria mal.&lt;/p&gt;
+
+&lt;p&gt;Eu utilizo excepções para lidar com erros e validações da aplicação. Por exemplo, para validação de entrade de dados (classes DTO que uso e populo dinamicamente com funções auxiliares e alguma refactoração) eu não vou criar uma excepção diferente para cada tipo de erro que possa existir como MinLengthException, NumericLowerException, etc.&lt;/p&gt;
+
+&lt;p&gt;Preferia usar algo assim&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserNotConfirmedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$userId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$trace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;userId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$trace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;userId&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUserId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;userId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Neste caso como valido campos dinâmicos:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BaseRest&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;confirm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$validator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UserConfirmValidator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserConfirmValidator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AbstractValidator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SomeLibrary&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;assert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$validate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$validate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UserNotConfirmedException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$validate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;errorTrace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
+</description>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</guid>
+			</item>
+		
+			<item>
+				<title>DNS Spoofing</title>
+				<description>&lt;p&gt;DNS spoofing também é conhecido como DNS cache poising ou envenenamento de cache DNS.&lt;/p&gt;
+
+&lt;p&gt;Um computador numa rede usa um servidor DNS fornecido pela rede local (um router) ou um provedor de internet (Vodafone, MEO, etc) para traduzir os domínios que acedemos em endereço IP. Esta técnica de penetração	 tem como objectivo alterar as DNS a que os utilizadores de uma rede se estão a ligar, para que os possamos redireccionar para um site falso ou tantas outras coisas como adulterar respostas de outros sites.&lt;/p&gt;
+
+&lt;p&gt;Vamos estudar o caso de um café com um Router instalado pela malta da PT.&lt;/p&gt;
+
+&lt;p&gt;Se forem aqueles da thomson com a 3!play como password de Administrador ou qualquer outro que não tenha sido alterada a password de fábrica e esteja disponível o acesso ao Router é fácil.&lt;/p&gt;
+
+&lt;p&gt;Senão há alternativas como rocurar por vulnerabilidades existentes para o router em questão e modelo (há ferramentas que fazem o trace ao router para obter esta informação). Um ataque brute-force também é resposta claro.&lt;/p&gt;
+
+&lt;p&gt;Com o acesso ao aparelho só precisamos de alterar o servidor DNS que ele consome. Esse servidor DNS vão ser o nosso PC ou um servidor que tenhamos que faça de proxy e lide com o tráfego da melhor forma que entender.&lt;/p&gt;
+
+&lt;h3 id=&quot;dnsspoof&quot;&gt;dnsspoof&lt;/h3&gt;
+
+&lt;p&gt;Há formas mais fáceis de realizar estes ataques, por exemplo se já estivermos dentro da rede mas não tenhamos acesso à administração do router (por exemplo crackamos a WEP apenas).&lt;/p&gt;
+
+&lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
+</description>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</guid>
+			</item>
+		
+			<item>
 				<title>Repositório de software</title>
-				<description>&lt;p&gt;Nós utilizamos gestor de pacotes como o apt e yum para instalar pacotes sem termos de fazer a instalação manual ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install. &lt;/p&gt;
+				<description>&lt;p&gt;Em Linux utilizamos gestores de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install. Eles instalam as dependências necessárias o que pode ser bom ou não, já dei por mim a perder horas por causa de dependências em falta.&lt;/p&gt;
 
 &lt;p&gt;As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.&lt;/p&gt;
 
 &lt;p&gt;Agora começa a ser mais comum quem distribui o software disponibilizar um repositório público que podes adicionar e confirar pois são os proprietários do código a disponibilizar os pacotes. &lt;/p&gt;
 
-&lt;p&gt;Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.&lt;/p&gt;
+&lt;p&gt;Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.
+Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.13 já requirido por muitos softwares recentes. Eu utilizo a distruibuição Kali num portátil de desenvolvimento e bem sei a dor de cabeça que isto deu!&lt;/p&gt;
 
 &lt;h3 id=&quot;chaves&quot;&gt;Chaves&lt;/h3&gt;
 
@@ -22,7 +279,7 @@
 
 &lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
@@ -34,8 +291,12 @@
 
 &lt;pre&gt;&lt;code&gt;gpg -a --export C514AF8E4BA401C3 | apt-key add -
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;origem&quot;&gt;Origem&lt;/h3&gt;
+
+&lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
 </description>
-				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
@@ -126,7 +387,7 @@
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 17 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
 			</item>
@@ -189,7 +450,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 
 [+] Starting the password brute forcer
 
-  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
+  Brute forcing user 'testadmin' with 500 passwords... 100% complete.
 [+] Finished at Thu Jul 18 03:39:02 2013
 [+] Elapsed time: 00:01:16
 &lt;/code&gt;&lt;/pre&gt;
@@ -214,7 +475,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 &lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
 Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
@@ -297,7 +558,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
@@ -323,7 +584,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
 			</item>
@@ -405,7 +666,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
   &lt;li&gt;http://www.troyhunt.com/2011/07/science-of-password-selection.html&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</guid>
 			</item>
@@ -422,7 +683,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 &lt;p&gt;Tenho encontrado computadores com versões ancestrais do Internet Explorer e Flash que até nem se actualizam por causa de permissões de contas, firewall a bloquear portas, etc. Isto sim, é um prato bem servido a quem tem más intenções&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</guid>
 			</item>
@@ -475,7 +736,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 &lt;p&gt;Eu utilizei isto num contexto em que o baseController já era em si um controller herdado mas a utilizar o ui-router. 
 Desta forma registas o kidsController e adultsController como dois controladores independentes um do outro, mas com as mesmas dependências.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</guid>
 			</item>
@@ -509,7 +770,7 @@ IDE’s como o PHPStorm ou NetBens têm grandes funcionalidades de debugging mas
 &lt;p&gt;O Vdebug é um plugin para o vim que permite fazer debug a vário código, não apenas PHP!
 O mais fácil para instalares o Vdebug é adicioná-lo nas configuração do vim, em ~/.vimrc (cria este arquivo caso não exista)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Plugin &#39;joonty/vdebug&#39;
+&lt;pre&gt;&lt;code&gt;Plugin 'joonty/vdebug'
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Depois corre este comando para instalares o plugin
@@ -541,7 +802,7 @@ Isto vai abrir 4 janelas diferentes. Na esquerda o ficheiro a ser visto e á dir
   &lt;li&gt;F2 - Próximo&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</guid>
 			</item>
@@ -595,9 +856,18 @@ tar -cpzf $DESDIR/$FILENAME $SRCDIR # compress the source directory and saves th
 &lt;p&gt;1 vez por dia copiar apenas a base de dados&lt;/p&gt;
 
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</guid>
+			</item>
+		
+			<item>
+				<title>C#, Mono e Linux</title>
+				<description>&lt;p&gt;Aqui não há muito a acrescentar que já não esteja estapando no Google. Vou mostrar algumas bibliotecas e projectos compatíveis como mono, dar exemplos de como lido com problemas de dependências e dicas gerais como utilizar o fastcgiserver, várias versões do .NET, etc&lt;/p&gt;
+</description>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/c%23/mono/2014/09/15/csharp-mono-linux.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/c%23/mono/2014/09/15/csharp-mono-linux.html</guid>
 			</item>
 		
 			<item>
@@ -682,7 +952,7 @@ Vamos a um exemplo, um widget da última noticia repetido várias vezes na mesma
 &lt;p&gt;Ok é justo, compreendo que á primeira vista .layout-container__right_sidebar–hidden seja grande e feio.
 Mas eu em programação no servidor também uso getParentDetailsStatus e recurso-me a usar abreviaturas ou palavras mais curtas só para não ficar feio. Mesmo no PHP que não compilamos o código, é praticamente insigificante para o interpretador e mesmo que seja mais tarde podes minificar tudo. &lt;/p&gt;
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</guid>
 			</item>
@@ -723,7 +993,7 @@ The default port is 25&lt;/p&gt;
 &lt;h3 id=&quot;getting-ready-for-production&quot;&gt;Getting ready for production&lt;/h3&gt;
 &lt;p&gt;This is how i strucutre my projects configurations. The default configurations is in a file like &lt;code&gt;default-settings.php&lt;/code&gt;. In my case the default-settings is set from a prent library. Then i’ve the &lt;code&gt;local-settings.php&lt;/code&gt; wich is ignored and never sent to the git repository. This file return a array that’ll replace the default settings.&lt;/p&gt;
 </description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</guid>
 			</item>
@@ -801,9 +1071,77 @@ Os parêntises também são úteis para quem começa a ler o início da função
 &lt;/ul&gt;
 
 </description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</guid>
+			</item>
+		
+			<item>
+				<title>GIT</title>
+				<description>&lt;p&gt;O Git é utilizador para controlo de versões de software. &lt;/p&gt;
+
+&lt;p&gt;Ele foi criado pelo Linus Trovald para distruibuir a Kernel do Linux, um mecanismo bom para actualizar a Kernel, variar entre as versões existentes e implementar código proposto por programadores.&lt;/p&gt;
+
+&lt;p&gt;Neste momento o GIT é utilizador por diversos projectos e ganhou mais popularidade quando começaram a existir serviços tão bons como o Github ou Bitbucket! Eles dão-nos espaço gratuíto e mantêm o código fonte num servidor, com interfaces web para gerir tudo, criar ramos, dar permissões a utilizadores, etc.&lt;/p&gt;
+
+&lt;p&gt;Eu utilizo para gerir projectos e código em geral que escrevo. Mesmo que não seja código publicado, tê-lo versonado com GIT ou outro sistema é excelente porque tens acesso a alterações que foram feitas, a comparações de código. &lt;/p&gt;
+
+&lt;h3 id=&quot;repositrios&quot;&gt;Repositórios&lt;/h3&gt;
+
+&lt;p&gt;Para explicar a estrutura do Git começou por introduzir os repositórios. Um repositório é um directorio onde todas as alterações realizadas são registadas. É a pasta onde vais meter o código, ficheiros de documentação ou scripts de compilação. &lt;/p&gt;
+
+&lt;p&gt;No mesmo repositório podes manter vários projectos, eles mesmos a representarem-se como repositórios. Eu prefiro separá-los para ter página da Wiki e Gestão de Erros associados aos projectos em separado.&lt;/p&gt;
+
+&lt;h3 id=&quot;estrutura&quot;&gt;Estrutura&lt;/h3&gt;
+
+&lt;p&gt;O Git está organizado em três árvores:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Working directory - contém os arquivos vigentes&lt;/li&gt;
+  &lt;li&gt;Index - dados temporários&lt;/li&gt;
+  &lt;li&gt;HEAD - última confirmação realizada&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para criarmos um repositório novo usamos &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Para puxarmos um repositório já existente&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/guilhermegeek/guilhermegeek.github.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Quando adicionamos, removemos ou editamos um ficheiro dentro de um repositório, as mudanças ficam no &lt;strong&gt;Index&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add -A
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Para adicionar ficheiros ocultos:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add -A .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Uma alteração contém um ou mais ficheiros que foram adicionados, editados ou removidos após o repositório ter sido actualizado. Ao adicionar-mos os ficheiros á alteração eles ficam no &lt;strong&gt;HEAD&lt;/strong&gt; mas ainda não estão no repositório remoto, estão localmente.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -m 'Im fixing the bug founded in CV0023 by Marthin'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O parametro m indica uma mensagem a associar à alteração. É importante usar sempre uma mensagem descrivita, simples e lógica que outro programador que nunca tenha trabalhado neste projecto entenda.&lt;/p&gt;
+
+&lt;p&gt;Quando enviamos pela primeira vez para o repositório temos de indicar o ramo, neste exemplo master&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Também podemos criar um novo repositório num servidor git apartir do nosso repositório local, no caso de não ter sido clonado&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add origin https://links
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/git.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/git.html</guid>
 			</item>
 		
 			<item>
@@ -874,230 +1212,9 @@ body {
 }
 &lt;/code&gt;&lt;/pre&gt;
 </description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</guid>
-			</item>
-		
-			<item>
-				<title>AngularJS - Introdução</title>
-				<description>&lt;h1 id=&quot;criar-uma-aplicao-web-e-mobile-com-angularjs&quot;&gt;Criar uma aplicação web e mobile com angularjs&lt;/h1&gt;
-&lt;p&gt;Cada módulo é configurado com o método &lt;strong&gt;config&lt;/strong&gt;. Nesta fase não temos acesso a $rootScope porque ainda não foi criada.&lt;/p&gt;
-
-&lt;p&gt;Nesta fase o próprio url não foi traduzido para um controller sequer. É ideal para carregar depêndencias também.
-O método &lt;strong&gt;run&lt;/strong&gt; inicia a aplicação e já tem acesso à $rootScope. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    angular.
-        module(&#39;biblia&#39;).
-        config([function(){
-        }].
-        run([&#39;$rootScope&#39;, &#39;$http&#39;, function($rootScope, $http) {
-            $rootScope
-        });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;services-e-factories&quot;&gt;Services e factories&lt;/h4&gt;
-&lt;p&gt;Um service retorna sempre uma nova instância fazendo uso de &lt;strong&gt;new&lt;/strong&gt;. 
-Uma factory age como um singleton, uma instância única que é partilhada&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    angular.module(&#39;biblia&#39;).service(&#39;bibliaSvc&#39;, [&#39;$rootScope&#39;, &#39;$http&#39;, function($rootScope, $http) {
-            var books = [&#39;genesis&#39;, &#39;exodo&#39;];
-            return {
-                getVersions: function(){
-
-                },
-                find: function(version, phrase) {
-
-                },
-                getChapter: function(version, book, chapter) {
-
-                },
-                getVerse: function(version, book, chapter, verse) {
-
-                },
-                findVerses: function(version, book, chapter, verseFrom, verseTo) {
-                    $http.get(&#39;/bible-online.com/query?book=&#39; + book + &#39;&amp;amp;chapter=&#39; + chapter + &#39;&amp;amp;from=&#39; + verseFrom + &#39;&amp;amp;verseTo=&#39; + verseTo)
-                        .result.then(function(res) {
-
-                        }, function(res) {
-
-                        });
-                }
-            };
-
-        }).
-        controller(&#39;homeCtrl&#39;, [&#39;bibleSvc&#39;, &#39;$scope&#39;, function(bibleSvc, $scope) {
-            $scope.find = function() {
-                bibleSvc.findVerses($scope.version, $scope.book, $sc)
-            };
-        });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Esta é a estrutura que adopto em projectos maiores, em que eu sei que vou usar várias views parciais e até os controladores têm sempre um service associado.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;app
-    &lt;ul&gt;
-      &lt;li&gt;biblia
-        &lt;ul&gt;
-          &lt;li&gt;pesquisar.html&lt;/li&gt;
-          &lt;li&gt;pesquisar.js&lt;/li&gt;
-          &lt;li&gt;pesquisar-livros.html&lt;/li&gt;
-          &lt;li&gt;editar.html&lt;/li&gt;
-          &lt;li&gt;editar.js&lt;/li&gt;
-          &lt;li&gt;service.js&lt;/li&gt;
-          &lt;li&gt;module.js&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;inicio
-        &lt;ul&gt;
-          &lt;li&gt;inicio.html&lt;/li&gt;
-          &lt;li&gt;inicio.js&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;contacto
-        &lt;ul&gt;
-          &lt;li&gt;contacto.html&lt;/li&gt;
-          &lt;li&gt;contacto.js&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;comuns
-        &lt;ul&gt;
-          &lt;li&gt;publicidade
-            &lt;ul&gt;
-              &lt;li&gt;normal.html&lt;/li&gt;
-              &lt;li&gt;normal.js&lt;/li&gt;
-              &lt;li&gt;service.js&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;module&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;tests&lt;/li&gt;
-  &lt;li&gt;bower_components&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Eu divido em módulos quando se trata de uma entidade do dominio da aplicação. Por exemplo num blog, teria o modulo &lt;strong&gt;blog&lt;/strong&gt;, &lt;strong&gt;blog.artigo&lt;/strong&gt; e &lt;strong&gt;blog.tutorial&lt;/strong&gt;.
-Quando crio um novo módulo para componentes deste gênero faço os roteamentos, configurações dos serviços, dentro do &lt;strong&gt;config&lt;/strong&gt; de cada módulo. Ajuda também a manter o código&lt;/p&gt;
-
-&lt;h3 id=&quot;controller&quot;&gt;Controller&lt;/h3&gt;
-
-&lt;p&gt;Por vezes dou por mim a validar dados e lógica num controller, ou até mesmo a utilizar terceiros recursos como consumir apis.
-Há código que lida directamente com os objectos na $scope como uma função que ordene uma lista ou que actualize dados na view. Se usarmos uma factory, como se trata de uma instância os controllers podem usar a factory e partilharem a mesma instância.&lt;/p&gt;
-
-&lt;h3 id=&quot;brodcasting-and-emit&quot;&gt;Brodcasting and Emit&lt;/h3&gt;
-&lt;p&gt;Tanto o &lt;strong&gt;$broadcast&lt;/strong&gt; como o &lt;strong&gt;$emit&lt;/strong&gt; implementam uma arquitectura de eventos, a diferença está na direcção da propagação no esquema do angular.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;$brodcast - Emite um evento a todos os descendentes. No caso de $rootScope.$broadcast propaga todos os pontos que acessadam ao $rootScope como o controllers e directives.&lt;/li&gt;
-  &lt;li&gt;$emit - Emite um evento a todos os parentes.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Exemplo
-A nossa aplicação vai ligar-se por uma websocket a um servidor. Esse servidor vai publicar novas notícias.
-A aplicação mostra as notícias no controller noticiaCtrl e a directive ultimaNoticia mostra a noticia mais recentes.
-Quando o servidor publicar uma nova notícia, a nossa aplicação vai receber esse evento e propagar no evento publicar. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;biblia&#39;).run([&#39;websocket&#39;, function(websocket) {
-    websock.onMessage(function(res) {
-
-    });
-}]);
-
-angular.module(&#39;biblia&#39;).controller(&#39;noticiasCtrl&#39;, [&#39;$scope&#39;, &#39;$rootScope&#39;, function(res) {
-    $scope.$on(&#39;publicar&#39;, function(res) {
-        $scope.$apply(function() {
-            $scope.noticias.push(res.noticia);
-        });
-    });
-}]);
-
-angular.module(&#39;biblia&#39;).directive(&#39;ultimaNoticia&#39;, [function() {
-    return {
-        link: function(attr, elem, scope) {
-            scope.$on(&#39;publicar&#39;, function(res) {
-                scope.nome = res.noticia.nome;
-                scope.imagemUrl = res.noticia.imagemUrl;
-                scope.uri = res.noticia.uri;
-            });
-        }
-    };
-}]);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</guid>
-			</item>
-		
-			<item>
-				<title>AngularJS and dynamic forms</title>
-				<description>&lt;p&gt;There’re situations where i have to do things dynamically in angular.&lt;/p&gt;
-
-&lt;p&gt;I’ll show a simple example. We’ve a contact form, billing form and delivery form. Both forms have common fields. I want to copy the common data from contact to others forms&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Contact&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;novalidate&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;contact.name&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Nick Name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;contact.nickName&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Address&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;contact.address&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;copyContactForm()&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Copy to others forms&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Delivery&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;novalidate&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;delivery.name&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Address&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;delivery.address&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Billing&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;novalidate&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;billing.name&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Address&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;billing.address&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;primForm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;contact&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;secForms&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;billing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;delivery&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;copyContactForm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Loop through contact object properties&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;primForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// Loop through secondary forms&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;secForms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// acess the secondary form, property. Assign the original value from primForm property&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-</description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</guid>
 			</item>
 		
 	</channel>

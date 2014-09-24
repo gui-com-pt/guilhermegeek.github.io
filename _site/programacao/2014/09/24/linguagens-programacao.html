@@ -2,14 +2,14 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Guilherme Cardoso Repositório de software</title>
+      <title>Guilherme Cardoso Programação - Introdução</title>
       <meta name="description" content="">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="Repositório de software">
-      <meta property="og:image" content="/media/php.jpg">
+      <meta property="og:site_name" content="Programação - Introdução">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/ide/software/2014/09/18/linux-software-versoes-chaves.html">
-      <meta property="og:title" content="Repositório de software">
+      <meta property="og:url" content="/programacao/2014/09/24/linguagens-programacao.html">
+      <meta property="og:title" content="Programação - Introdução">
       <meta property="og:description" content="">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
@@ -127,41 +127,57 @@
 
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
-<img src="/media/php.jpg" class="post-entry__thumbnail" />
-<h2 class="content">Repositório de software</h2>
+<img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
+<h2 class="content">Programação - Introdução</h2>
 </div>
  
-<p>Em Linux utilizamos gestores de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure &amp;&amp; make &amp;&amp; make install. Eles instalam as dependências necessárias o que pode ser bom ou não, já dei por mim a perder horas por causa de dependências em falta.</p>
+<p>“Que linguagem de programação me aconselhas?” ou “Isso de programador é que é vida, passar o dia todo sentado” já fazem parte do meu quotidiano.</p>
 
-<p>As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.</p>
+<p>Neste artigo quero fazer uma breve introdução a linguagens de programação e ao que esta carreira representa.</p>
 
-<p>Agora começa a ser mais comum quem distribui o software disponibilizar um repositório público que podes adicionar e confirar pois são os proprietários do código a disponibilizar os pacotes. </p>
+<h3 id="linguagens">Linguagens</h3>
 
-<p>Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.
-Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.13 já requirido por muitos softwares recentes. Eu utilizo a distruibuição Kali num portátil de desenvolvimento e bem sei a dor de cabeça que isto deu!</p>
+<p>Eu comecei a programar em TCL e depois fiquei uns anos a programar para web com PHP e C#. Há cerca de 1/2 anos comecei a lidar mais com linguagens como Python e shell que me têm ajudado a evoluir bastante enquanto programador.</p>
 
-<h3 id="chaves">Chaves</h3>
+<h4 id="php--hack">PHP + Hack</h4>
 
-<p>Quando adicionamos um novo repositório ao gestor de software vamos permitir que esse distribuidor instale o código que quiser.</p>
+<p>Hack, yes! Grande prenda da equipa do Facebook, esta linguagem é baseada no PHP mas muito mais direccionada a OOO.</p>
 
-<p>Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:</p>
+<p>Para mim as principais vantagens são os tipos anónimos e funções com o retorno definido, por exemplo</p>
 
-<pre><code>W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
-</code></pre>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<p>Neste exemplo temos de fazer download da chave</p>
+<span class="sd">/**</span>
+<span class="sd"> * @return User</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">getUser</span><span class="p">(){</span>
+	<span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
 
-<pre><code>gpg --keyserver pgpkeys.mit.edu --recv-key C514AF8E4BA401C3
-</code></pre>
+<p>Em PHP é assim que consigo ter o IDE a utilizar a auto completação. Tenho de anotar a função com o retorno. Em hack a história é outra</p>
 
-<p>E adicioná-la com apt-key add ficheiro-da-chave.key</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?</span><span class="nx">h</span>
 
-<pre><code>gpg -a --export C514AF8E4BA401C3 | apt-key add -
-</code></pre>
+<span class="k">function</span> <span class="nf">User</span> <span class="nx">getUser</span><span class="p">(){</span>
+	<span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
 
-<h3 id="origem">Origem</h3>
+<h4 id="bibliotecas-e-frameworks">Bibliotecas e Frameworks</h4>
 
-<p>A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.</p>
+<p>Para mim isto era a única razão pela qual fiquei tanto tempo no .NET, por causa das bibliotecas que temos disponíveis. </p>
+
+<p>Isto tem bastante peso na escolha de uma linguagem para determinado projecto. Vai ser opensource? Temos disponibilidade do cliente para pagar serviços de desenvolvimento? Está em questão a compatibilidade entre plataformas?</p>
+
+<p>O ServiceStack é um excelente exemplo de como uma framework pode ser o suficiente para matar um projecto. Até há pouco tempo esta framework era opensource mas sempre com a licença BSD. Uma framework excelente direccionada a webservices e com metadologias e propostas de desenho muito boas mesmo.</p>
+
+<p>Na actualização da versão 3 para 4 alteraram os planos, passou a ser e apenas a versão 3 se manteve como BSD. O que aconteceu a quem tem projectos suportados nesta framework? São clientes da 4 ou vão ter de fazer um fork da 3 :)</p>
+
+<p>Já me aconteceu utilizar bibliotecas que já nem eram mantidas, ou que secalhar não são tão boas quanto isso. Podem ter uma API que utilizemos sem problema e satisfaça as necessidades mas o código sofrer de má programação. </p>
+
+<h3 id="programador">Programador</h3>
+
+<p>Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!</p>
+
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>

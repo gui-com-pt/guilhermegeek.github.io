@@ -2,14 +2,14 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Guilherme Cardoso Repositório de software</title>
+      <title>Guilherme Cardoso Lidar com erros e excepções</title>
       <meta name="description" content="">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="Repositório de software">
-      <meta property="og:image" content="/media/php.jpg">
+      <meta property="og:site_name" content="Lidar com erros e excepções">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/ide/software/2014/09/18/linux-software-versoes-chaves.html">
-      <meta property="og:title" content="Repositório de software">
+      <meta property="og:url" content="/software/2014/09/22/errors-and-exceptions.html">
+      <meta property="og:title" content="Lidar com erros e excepções">
       <meta property="og:description" content="">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
@@ -127,41 +127,63 @@
 
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
-<img src="/media/php.jpg" class="post-entry__thumbnail" />
-<h2 class="content">Repositório de software</h2>
+<img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
+<h2 class="content">Lidar com erros e excepções</h2>
 </div>
  
-<p>Em Linux utilizamos gestores de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure &amp;&amp; make &amp;&amp; make install. Eles instalam as dependências necessárias o que pode ser bom ou não, já dei por mim a perder horas por causa de dependências em falta.</p>
+<p>Lembro-me de ter publicado alguns sites que mandavam o relatório das excepções como resultado sempre que alguma coisa corria mal.</p>
 
-<p>As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.</p>
+<p>Eu utilizo excepções para lidar com erros e validações da aplicação. Por exemplo, para validação de entrade de dados (classes DTO que uso e populo dinamicamente com funções auxiliares e alguma refactoração) eu não vou criar uma excepção diferente para cada tipo de erro que possa existir como MinLengthException, NumericLowerException, etc.</p>
 
-<p>Agora começa a ser mais comum quem distribui o software disponibilizar um repositório público que podes adicionar e confirar pois são os proprietários do código a disponibilizar os pacotes. </p>
+<p>Preferia usar algo assim</p>
 
-<p>Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.
-Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.13 já requirido por muitos softwares recentes. Eu utilizo a distruibuição Kali num portátil de desenvolvimento e bem sei a dor de cabeça que isto deu!</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<h3 id="chaves">Chaves</h3>
+<span class="k">class</span> <span class="nc">UserNotConfirmedException</span> <span class="o">:</span> <span class="nx">Exception</span> <span class="p">{</span>
+	<span class="k">protected</span> <span class="nv">$userId</span><span class="p">;</span>
 
-<p>Quando adicionamos um novo repositório ao gestor de software vamos permitir que esse distribuidor instale o código que quiser.</p>
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$trace</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span> <span class="o">=</span> <span class="nv">$trace</span><span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">];</span>
+	<span class="p">}</span>
 
-<p>Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:</p>
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getUserId</span><span class="p">(){</span>
+		<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
-<pre><code>W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
-</code></pre>
+<p>Neste caso como valido campos dinâmicos:</p>
 
-<p>Neste exemplo temos de fazer download da chave</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<pre><code>gpg --keyserver pgpkeys.mit.edu --recv-key C514AF8E4BA401C3
-</code></pre>
+<span class="k">class</span> <span class="nc">UserService</span> <span class="o">:</span> <span class="nx">BaseRest</span> <span class="p">{</span>
+	
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">confirm</span><span class="p">(){</span>
+		<span class="nv">$validator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserConfirmValidator</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">);</span>
+		<span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">assert</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
-<p>E adicioná-la com apt-key add ficheiro-da-chave.key</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<pre><code>gpg -a --export C514AF8E4BA401C3 | apt-key add -
-</code></pre>
+<span class="k">class</span> <span class="nc">UserConfirmValidator</span> <span class="o">:</span> <span class="nx">AbstractValidator</span> <span class="p">{</span>
+	
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span> <span class="o">=</span> <span class="nv">$request</span><span class="p">;</span>
+	<span class="p">}</span>
 
-<h3 id="origem">Origem</h3>
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">SomeLibrary</span><span class="o">::</span><span class="na">validate</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">);</span>
+	<span class="p">}</span>
 
-<p>A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.</p>
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">assert</span><span class="p">(){</span>
+		<span class="nv">$validate</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">()</span> 
+		<span class="k">if</span><span class="p">(</span><span class="nv">$validate</span><span class="o">-&gt;</span><span class="na">hasError</span><span class="p">())</span> <span class="p">{</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nx">UserNotConfirmedException</span><span class="p">(</span><span class="nv">$validate</span><span class="o">-&gt;</span><span class="na">errorTrace</span><span class="p">())</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>O método assert vai invocar a excepção</p>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
