@@ -38,6 +38,7 @@ class UserRepository implements IRepository {
 }
 {% endhighlight %}
 
+
 {% highlight php %}
 class UserService : BaseService {
 	
@@ -50,6 +51,7 @@ class UserService : BaseService {
 
 	public function get($id) {
 		try {
+			$this->baseValidator->assertId($id); // If id is invalid, throw exception
 			$user = $this->userRepository->get($id);
 
 			if(is_null($user)) {
@@ -68,10 +70,15 @@ class UserService : BaseService {
 		}
 	}
 }
-
-
 {% endhighlight %}
 
+Quando chamo a função assertId(). Ela vai validar o id e asegurar que é válido. Isto não significa que ele exista pois este tipo de função não recorre a recursos, apenas realiza uma validação.
+
+No caso de ser inválido então invoca uma excepção, por exemplo InvalidIdException. Esta excepção não vamos estar a apanhar em cada função das APIs como é o exemplo do userService->get().
+
+Estas função lidamos numa camada superior. O ideal é a BaseService ter um função que lide com excepções globais como o exemplo da InvalidException. 
+
+{% highlight php %}
 class UserApi : RestBase {
 	protected $userBusiness;
 

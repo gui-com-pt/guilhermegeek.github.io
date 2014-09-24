@@ -7,7 +7,7 @@ categories:
  ide software
 ---
 
-Nós utilizamos gestor de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure && make && make install. 
+Em Linux utilizamos gestores de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure && make && make install. Eles instalam as dependências necessárias o que pode ser bom ou não, já dei por mim a perder horas por causa de dependências em falta.
 
 
 As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.
@@ -33,3 +33,8 @@ Neste exemplo temos de fazer download da chave
 E adicioná-la com apt-key add ficheiro-da-chave.key
 
 	gpg -a --export C514AF8E4BA401C3 | apt-key add -
+
+
+### Origem
+
+A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.
