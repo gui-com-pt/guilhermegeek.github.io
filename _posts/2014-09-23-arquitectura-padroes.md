@@ -99,7 +99,7 @@ class UserApi : RestBase {
 	}
 }
 
-
+{% endhighlight %}
 Agora falta declarar os pontos de acesso á API. Eu uso o Slim em projectos PHP apenas para isto, mas há outras micro frameworks melhores.
 
 {% highlight php %}

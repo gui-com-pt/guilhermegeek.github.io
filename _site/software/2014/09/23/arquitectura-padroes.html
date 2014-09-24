@@ -170,6 +170,7 @@
 
 <span class="x">	public function get($id) {</span>
 <span class="x">		try {</span>
+<span class="x">			$this-&gt;baseValidator-&gt;assertId($id); // If id is invalid, throw exception</span>
 <span class="x">			$user = $this-&gt;userRepository-&gt;get($id);</span>
 
 <span class="x">			if(is_null($user)) {</span>
@@ -189,25 +190,31 @@
 <span class="x">	}</span>
 <span class="x">}</span></code></pre></div>
 
-<p>class UserApi : RestBase {
-	protected $userBusiness;</p>
+<p>Quando chamo a função assertId(). Ela vai validar o id e asegurar que é válido. Isto não significa que ele exista pois este tipo de função não recorre a recursos, apenas realiza uma validação.</p>
 
-<pre><code>public function __construct($ioc) {
-	parent::__construct($ioc);
-	$this-&gt;userBusiness = new \App\Business\UserBusiness($ioc);
-}
+<p>No caso de ser inválido então invoca uma excepção, por exemplo InvalidIdException. Esta excepção não vamos estar a apanhar em cada função das APIs como é o exemplo do userService-&gt;get().</p>
 
-public function get(){
-	$id = $this-&gt;app-&gt;request()-&gt;params('id');
-	if(empty($id)) {
-		throw new ArgumentMissingExpcetion('id');
-	}
+<p>Estas função lidamos numa camada superior. O ideal é a BaseService ter um função que lide com excepções globais como o exemplo da InvalidException. </p>
 
-	$user = $this-&gt;userBusiness-&gt;get($id);
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">class UserApi : RestBase {</span>
+<span class="x">	protected $userBusiness;</span>
 
-	return array('code' =&gt; 200, 'result' =&gt; $user);
-} }
-</code></pre>
+<span class="x">	public function __construct($ioc) {</span>
+<span class="x">		parent::__construct($ioc);</span>
+<span class="x">		$this-&gt;userBusiness = new \App\Business\UserBusiness($ioc);</span>
+<span class="x">	}</span>
+
+<span class="x">	public function get(){</span>
+<span class="x">		$id = $this-&gt;app-&gt;request()-&gt;params(&#39;id&#39;);</span>
+<span class="x">		if(empty($id)) {</span>
+<span class="x">			throw new ArgumentMissingExpcetion(&#39;id&#39;);</span>
+<span class="x">		}</span>
+
+<span class="x">		$user = $this-&gt;userBusiness-&gt;get($id);</span>
+
+<span class="x">		return array(&#39;code&#39; =&gt; 200, &#39;result&#39; =&gt; $user);</span>
+<span class="x">	}</span>
+<span class="x">}</span></code></pre></div>
 
 <p>Agora falta declarar os pontos de acesso á API. Eu uso o Slim em projectos PHP apenas para isto, mas há outras micro frameworks melhores.</p>
 

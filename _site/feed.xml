@@ -7,6 +7,60 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Programação - Introdução</title>
+				<description>&lt;p&gt;“Que linguagem de programação me aconselhas?” ou “Isso de programador é que é vida, passar o dia todo sentado” já fazem parte do meu quotidiano.&lt;/p&gt;
+
+&lt;p&gt;Neste artigo quero fazer uma breve introdução a linguagens de programação e ao que esta carreira representa.&lt;/p&gt;
+
+&lt;h3 id=&quot;linguagens&quot;&gt;Linguagens&lt;/h3&gt;
+
+&lt;p&gt;Eu comecei a programar em TCL e depois fiquei uns anos a programar para web com PHP e C#. Há cerca de 1/2 anos comecei a lidar mais com linguagens como Python e shell que me têm ajudado a evoluir bastante enquanto programador.&lt;/p&gt;
+
+&lt;h4 id=&quot;php--hack&quot;&gt;PHP + Hack&lt;/h4&gt;
+
+&lt;p&gt;Hack, yes! Grande prenda da equipa do Facebook, esta linguagem é baseada no PHP mas muito mais direccionada a OOO.&lt;/p&gt;
+
+&lt;p&gt;Para mim as principais vantagens são os tipos anónimos e funções com o retorno definido, por exemplo&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @return User&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Em PHP é assim que consigo ter o IDE a utilizar a auto completação. Tenho de anotar a função com o retorno. Em hack a história é outra&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;bibliotecas-e-frameworks&quot;&gt;Bibliotecas e Frameworks&lt;/h4&gt;
+
+&lt;p&gt;Para mim isto era a única razão pela qual fiquei tanto tempo no .NET, por causa das bibliotecas que temos disponíveis. &lt;/p&gt;
+
+&lt;p&gt;Isto tem bastante peso na escolha de uma linguagem para determinado projecto. Vai ser opensource? Temos disponibilidade do cliente para pagar serviços de desenvolvimento? Está em questão a compatibilidade entre plataformas?&lt;/p&gt;
+
+&lt;p&gt;O ServiceStack é um excelente exemplo de como uma framework pode ser o suficiente para matar um projecto. Até há pouco tempo esta framework era opensource mas sempre com a licença BSD. Uma framework excelente direccionada a webservices e com metadologias e propostas de desenho muito boas mesmo.&lt;/p&gt;
+
+&lt;p&gt;Na actualização da versão 3 para 4 alteraram os planos, passou a ser e apenas a versão 3 se manteve como BSD. O que aconteceu a quem tem projectos suportados nesta framework? São clientes da 4 ou vão ter de fazer um fork da 3 :)&lt;/p&gt;
+
+&lt;p&gt;Já me aconteceu utilizar bibliotecas que já nem eram mantidas, ou que secalhar não são tão boas quanto isso. Podem ter uma API que utilizemos sem problema e satisfaça as necessidades mas o código sofrer de má programação. &lt;/p&gt;
+
+&lt;h3 id=&quot;programador&quot;&gt;Programador&lt;/h3&gt;
+
+&lt;p&gt;Semelhantemente a um doutor que é especializado em determinadas áreas um programador também o é. Especializa-se &lt;/p&gt;
+</description>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
+			</item>
+		
+			<item>
 				<title>Arquitecturas e Padrões em software</title>
 				<description>&lt;p&gt;Esta é a minha área favorita e nem que escrever! Para já mantenho tudo neste artigo, depois logo se vê&lt;/p&gt;
 
@@ -47,6 +101,7 @@
 
 &lt;span class=&quot;x&quot;&gt;	public function get($id) {&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;		try {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			$this-&amp;gt;baseValidator-&amp;gt;assertId($id); // If id is invalid, throw exception&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;			$user = $this-&amp;gt;userRepository-&amp;gt;get($id);&lt;/span&gt;
 
 &lt;span class=&quot;x&quot;&gt;			if(is_null($user)) {&lt;/span&gt;
@@ -66,25 +121,31 @@
 &lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;class UserApi : RestBase {
-	protected $userBusiness;&lt;/p&gt;
+&lt;p&gt;Quando chamo a função assertId(). Ela vai validar o id e asegurar que é válido. Isto não significa que ele exista pois este tipo de função não recorre a recursos, apenas realiza uma validação.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;public function __construct($ioc) {
-	parent::__construct($ioc);
-	$this-&amp;gt;userBusiness = new \App\Business\UserBusiness($ioc);
-}
+&lt;p&gt;No caso de ser inválido então invoca uma excepção, por exemplo InvalidIdException. Esta excepção não vamos estar a apanhar em cada função das APIs como é o exemplo do userService-&amp;gt;get().&lt;/p&gt;
 
-public function get(){
-	$id = $this-&amp;gt;app-&amp;gt;request()-&amp;gt;params('id');
-	if(empty($id)) {
-		throw new ArgumentMissingExpcetion('id');
-	}
+&lt;p&gt;Estas função lidamos numa camada superior. O ideal é a BaseService ter um função que lide com excepções globais como o exemplo da InvalidException. &lt;/p&gt;
 
-	$user = $this-&amp;gt;userBusiness-&amp;gt;get($id);
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserApi : RestBase {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	protected $userBusiness;&lt;/span&gt;
 
-	return array('code' =&amp;gt; 200, 'result' =&amp;gt; $user);
-} }
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		parent::__construct($ioc);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;userBusiness = new \App\Business\UserBusiness($ioc);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;	public function get(){&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		$id = $this-&amp;gt;app-&amp;gt;request()-&amp;gt;params(&amp;#39;id&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		if(empty($id)) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;			throw new ArgumentMissingExpcetion(&amp;#39;id&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;		$user = $this-&amp;gt;userBusiness-&amp;gt;get($id);&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;		return array(&amp;#39;code&amp;#39; =&amp;gt; 200, &amp;#39;result&amp;#39; =&amp;gt; $user);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Agora falta declarar os pontos de acesso á API. Eu uso o Slim em projectos PHP apenas para isto, mas há outras micro frameworks melhores.&lt;/p&gt;
 
@@ -171,8 +232,33 @@ public function get(){
 			</item>
 		
 			<item>
+				<title>DNS Spoofing</title>
+				<description>&lt;p&gt;DNS spoofing também é conhecido como DNS cache poising ou envenenamento de cache DNS.&lt;/p&gt;
+
+&lt;p&gt;Um computador numa rede usa um servidor DNS fornecido pela rede local (um router) ou um provedor de internet (Vodafone, MEO, etc) para traduzir os domínios que acedemos em endereço IP. Esta técnica de penetração	 tem como objectivo alterar as DNS a que os utilizadores de uma rede se estão a ligar, para que os possamos redireccionar para um site falso ou tantas outras coisas como adulterar respostas de outros sites.&lt;/p&gt;
+
+&lt;p&gt;Vamos estudar o caso de um café com um Router instalado pela malta da PT.&lt;/p&gt;
+
+&lt;p&gt;Se forem aqueles da thomson com a 3!play como password de Administrador ou qualquer outro que não tenha sido alterada a password de fábrica e esteja disponível o acesso ao Router é fácil.&lt;/p&gt;
+
+&lt;p&gt;Senão há alternativas como rocurar por vulnerabilidades existentes para o router em questão e modelo (há ferramentas que fazem o trace ao router para obter esta informação). Um ataque brute-force também é resposta claro.&lt;/p&gt;
+
+&lt;p&gt;Com o acesso ao aparelho só precisamos de alterar o servidor DNS que ele consome. Esse servidor DNS vão ser o nosso PC ou um servidor que tenhamos que faça de proxy e lide com o tráfego da melhor forma que entender.&lt;/p&gt;
+
+&lt;h3 id=&quot;dnsspoof&quot;&gt;dnsspoof&lt;/h3&gt;
+
+&lt;p&gt;Há formas mais fáceis de realizar estes ataques, por exemplo se já estivermos dentro da rede mas não tenhamos acesso à administração do router (por exemplo crackamos a WEP apenas).&lt;/p&gt;
+
+&lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
+</description>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</guid>
+			</item>
+		
+			<item>
 				<title>Repositório de software</title>
-				<description>&lt;p&gt;Nós utilizamos gestor de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install. &lt;/p&gt;
+				<description>&lt;p&gt;Em Linux utilizamos gestores de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install. Eles instalam as dependências necessárias o que pode ser bom ou não, já dei por mim a perder horas por causa de dependências em falta.&lt;/p&gt;
 
 &lt;p&gt;As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.&lt;/p&gt;
 
@@ -199,6 +285,10 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;pre&gt;&lt;code&gt;gpg -a --export C514AF8E4BA401C3 | apt-key add -
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;origem&quot;&gt;Origem&lt;/h3&gt;
+
+&lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
 </description>
 				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
