@@ -1,113 +1,206 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
-    <url>
-        <loc>http://guilhermecardoso.pt/bower/2014/09/09/bowe-package.html</loc>
-        <lastmod>2014-09-24T02:20:36+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</loc>
-        <lastmod>2014-09-24T02:12:44+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/angularjs/2014/09/10/git.html</loc>
-        <lastmod>2014-09-24T02:16:02+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/c%23/mono/2014/09/15/csharp-mono-linux.html</loc>
-        <lastmod>2014-09-24T01:14:02+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html
-        </loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html
-        </loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html
-        </loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html
-        </loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</loc>
-        <lastmod>2014-09-22T01:07:02+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html
-        </loc>
-        <lastmod>2014-09-24T00:23:31+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</loc>
-        <lastmod>2014-09-24T00:37:21+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</loc>
-        <lastmod>2014-09-24T01:12:14+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</loc>
-        <lastmod>2014-09-24T00:57:01+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</loc>
-        <lastmod>2014-09-24T01:04:56+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/archive.html</loc>
-        <lastmod>2014-09-21T20:23:03+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://guilhermecardoso.pt/</loc>
-        <lastmod>2014-09-24T02:20:36+00:00</lastmod>
-    </url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</loc>
+    
+    <lastmod>2014-09-24T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</loc>
+    
+    <lastmod>2014-09-23T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</loc>
+    
+    <lastmod>2014-09-22T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</loc>
+    
+    <lastmod>2014-09-22T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</loc>
+    
+    <lastmod>2014-09-18T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</loc>
+    
+    <lastmod>2014-09-17T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</loc>
+    
+    <lastmod>2014-09-16T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</loc>
+    
+    <lastmod>2014-09-16T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</loc>
+    
+    <lastmod>2014-09-16T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</loc>
+    
+    <lastmod>2014-09-16T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</loc>
+    
+    <lastmod>2014-09-16T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</loc>
+    
+    <lastmod>2014-09-16T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</loc>
+    
+    <lastmod>2014-09-15T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</loc>
+    
+    <lastmod>2014-09-15T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/c%23/mono/2014/09/15/csharp-mono-linux.html</loc>
+    
+    <lastmod>2014-09-15T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</loc>
+    
+    <lastmod>2014-09-15T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/javascript/2014/09/10/javascript-iife.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/angularjs/2014/09/10/git.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-introduction.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/angularjs/2014/09/10/angularjs-dynamic-forms.html</loc>
+    
+    <lastmod>2014-09-10T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/bower/2014/09/09/bowe-package.html</loc>
+    
+    <lastmod>2014-09-09T00:00:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/archive.html</loc>
+    <lastmod>2014-09-24T02:49:17+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>http://guilhermecardoso.pt/</loc>
+    <lastmod>2014-09-24T02:49:17+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  
+  
 </urlset>
