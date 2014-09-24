@@ -58,4 +58,7 @@ Já me aconteceu utilizar bibliotecas que já nem eram mantidas, ou que secalhar
 
 ### Programador
 
-Semelhantemente a um doutor que é especializado em determinadas áreas um programador também o é. Especializa-se 
+Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!
+
+
+
