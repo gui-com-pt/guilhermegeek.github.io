@@ -16,7 +16,7 @@ Preferia usar algo assim
 {% highlight php %}
 <?php
 
-class UserConfirmException : Exception {
+class UserNotConfirmedException : Exception {
 	protected $userId;
 
 	public function __construct($trace) {
@@ -37,7 +37,8 @@ Neste caso como valido campos dinâmicos:
 class UserService : BaseRest {
 	
 	public function confirm(){
-
+		$validator = new UserConfirmValidator($this->request);
+		$validator->assert();
 	}
 }
 {% endhighlight %}
@@ -52,10 +53,14 @@ class UserConfirmValidator : AbstractValidator {
 		$this->request = $request;
 	}
 
+	public function validate() {
+		return SomeLibrary::validate($this->request);
+	}
+
 	public function assert(){
-		$validated = SomeLibrary::validate($this->request);
+		$validate = $this->validate() 
 		if($validate->hasError()) {
-			throw new UserConfirmException($validate->errorTrace())
+			throw new UserNotConfirmedException($validate->errorTrace())
 		}
 	}
 }
