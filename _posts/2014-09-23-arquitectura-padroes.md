@@ -105,3 +105,14 @@ $app->get('/api/user', function() use($ioc) {
 
 $app->run();
 {% endhighlight %}
+
+Este seria o ficheiro index.php ou api.php fora da biblioteca. A ideia aqui é manter apenas um ficheiro na pasta onde a aplicação está publicada (tipica /var/www). Este ficheiro consume a biblioteca, essa biblioteca que é carregada por PSR está noutra pasta mais protegida.
+
+A biblioteca é composta por
+
+ * API - Classes que consomem a biblioteca
+ * Serviços - Classes de negócio, consomem recursos como repositórios de base de dados, validam entradas do utilizador, etc
+ * Data 
+
+
+Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.
