@@ -62,6 +62,15 @@
 			</item>
 		
 			<item>
+				<title>Padrão Builder</title>
+				<description>
+</description>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</guid>
+			</item>
+		
+			<item>
 				<title>Arquitecturas e Padrões em software</title>
 				<description>&lt;p&gt;Esta é a minha área favorita e nem que escrever! Para já mantenho tudo neste artigo, depois logo se vê&lt;/p&gt;
 
@@ -1142,79 +1151,6 @@ Os parêntises também são úteis para quem começa a ler o início da função
 				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/10/git.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/10/git.html</guid>
-			</item>
-		
-			<item>
-				<title>CSS e LESS</title>
-				<description>&lt;p&gt;Qualquer folha de estilos que tenhamos, podemos compilar com less e é gerado um resultado igual.
-Isto é bom para projectos já existentes, onde podemos começar a fazer implementações a tirar partido do less sem termos de remudelar todo o código já usado.&lt;/p&gt;
-
-&lt;h4 id=&quot;mixins&quot;&gt;Mixins&lt;/h4&gt;
-
-&lt;p&gt;Se precisas de desenvolver aplicações e websites podes criar um conjunto de funções que partilhes nos projectos. Um pacote bower ou um simples ficheiro .css&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Código compatível - Aqui é que tiramos realmente proveito! Para aplicar uma sombra, em vez de escrever-mos .shadow, .webkit-shadow, etc criamos um método que o faça, receba variáveis para tamanhos e cores&lt;/li&gt;
-  &lt;li&gt;Grelha - Eu gosto de esquematizar o design em grelhas. Não obrigo a seguir sempre este padrão mas para os containers e elementos principais do layout aplico (cabecários, barras laterais, etc).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;grelha-do-bootstrap&quot;&gt;Grelha do Bootstrap&lt;/h4&gt;
-&lt;p&gt;Eu não gosto de definir os tamanhos dos elementos no html. Acho uma má prática.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Numa aplicação grande em que uses sempre o mesmos tamanho para os formulários (ex: col-xs-7), quando fores alterar o tamanho vais fazê-lo em todas as páginas.&lt;/li&gt;
-  &lt;li&gt;Simplesmente não me parece bem. Prefiro defenir isto em css e não usar classes &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Com less, podemos fazê-lo a usar as mixins do Bootstrap. Por exemplo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;ex-container&quot;&amp;gt;
-    &amp;lt;div class=&quot;sidebar&quot;&amp;gt;
-
-    &amp;lt;/div&amp;gt;
-    &amp;lt;div class=&quot;content&quot;&amp;gt;
-    &amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-
-.ex-container {
-    .container; /* não chamamos um método mas aplicamos a class ``container`` neste elemento */
-
-    .sidebar {
-        .make-xs-col(3);
-    }
-    .content {
-        .make-xs-col(9);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;É aqui que o less é pior que sass. &lt;strong&gt;links&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;cores&quot;&gt;Cores&lt;/h3&gt;
-
-&lt;p&gt;O Bootstrap é um excelente exemplo para definir-mos as variáveis das cores.
-Usar variáveis como marca, marca-invertida, etc permite-nos aplicar as mesmas cores em vários componentes a seguir um padrão de UX.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@cor-preto-escuro: #666666;
-@cor-marca: #EEEEEE;
-@cor-marca-invertida: #DDDDDD;
-
-@texto-cor: @cor-preto-escuro;
-
-body {
-    color: @texto-cor;
-}
-.component_noticias {
-    .cabecario {
-        background-color: @cor-marca;
-        color: @cor-marca-invertida;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/less/2014/09/10/css-and-less-introduction.html</guid>
 			</item>
 		
 	</channel>
