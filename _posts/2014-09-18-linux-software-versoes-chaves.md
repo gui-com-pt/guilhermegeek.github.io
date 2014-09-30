@@ -1,7 +1,7 @@
 ---
 title: Repositório de software
 layout: post_entry
-image: /media/php.jpg
+image: /media/linux_logo.png
 excerpt: 
 categories:
  ide software

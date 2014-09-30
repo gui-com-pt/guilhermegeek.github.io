@@ -3,15 +3,12 @@ title: Arquitecturas e Padrões em software
 layout: post_entry
 image: /media/angular-thumb.jpg
 excerpt:
+author: Guilherme Cardoso <email@guilhermecardoso.pt>
 categories:
  software
 ---
 
 Esta é a minha área favorita e nem que escrever! Para já mantenho tudo neste artigo, depois logo se vê
-
-
-
-
 #### PHP
 
 Começar com um exemplo simples. Uma aplicação com as seguintes entidades:

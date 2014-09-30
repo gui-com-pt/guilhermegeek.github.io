@@ -2,14 +2,14 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Guilherme Cardoso Padrão Builder</title>
+      <title>Guilherme Cardoso Linux</title>
       <meta name="description" content="">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="Padrão Builder">
-      <meta property="og:image" content="/media/angular-thumb.jpg">
+      <meta property="og:site_name" content="Linux">
+      <meta property="og:image" content="/media/linux_logo.png">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/design-pattern/2014/09/24/builder-pattern.html">
-      <meta property="og:title" content="Padrão Builder">
+      <meta property="og:url" content="/linux/2014/09/30/linux.html">
+      <meta property="og:title" content="Linux">
       <meta property="og:description" content="">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
@@ -127,58 +127,27 @@
 
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
-<img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
-<h2 class="content">Padrão Builder</h2>
+<img src="/media/linux_logo.png" class="post-entry__thumbnail" />
+<h2 class="content">Linux</h2>
 </div>
  
-<p>Padrão Factory Method</p>
+<p>Este é um artigo muito prático, para teoria a Wikipédia é suficiente.</p>
 
-<p>Este padrão é talvez o mais conhecido de todos os padrões de projecto publicado no “Design Patterns: Elements of Reusable Object-Oriented Software”. Foi quando li este livro que comecei a programar.</p>
+<p>Estrutura do sistema operativo:</p>
 
-<p>A função dos padrões Factory é encapsular a criação de objectos. </p>
+<ul>
+  <li>/dev</li>
+  <li>/var</li>
+  <li>/etc</li>
+  <li>/etc/apache2</li>
+  <li>/var/www</li>
+  <li>/home</li>
+  <li>/home/jesus/Pictures</li>
+</ul>
 
-<p>O Factory Method tem a particularidade de encapsular a criação de objectos e deixar as sub classes decirem quais os objectos criados</p>
+<h3 id="distribuies">Distribuições</h3>
 
-<p>Este é o teste unitário com que vamos testar o código</p>
-
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">public class Bible {</span>
-<span class="x">	</span>
-<span class="x">	public function getVerses($bookId, $chapter, $fromVerse, $toVerse = null) {</span>
-<span class="x">		// etc</span>
-<span class="x">	}</span>
-<span class="x">}</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">public abstract class BibleCreator {</span>
-<span class="x">	public function factoryMethod($version);</span>
-
-<span class="x">	public $bible;</span>
-<span class="x">}</span></code></pre></div>
-
-<p><strong>Creator</strong> - Define a estrutura principal a ser herdada por todos os construtores. </p>
-
-<p>Temos o método abstracto <strong>factoryMethod()</strong> que é utilizado pelas sub classes para criarem um objecto Bible. Também podemos criar mais métodos a serem implementados, um exemplo seria um <strong>getBible()</strong> que retornava o objecto Bible</p>
-
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">public class JfrAlmeidaBible : Bible {</span>
-<span class="x">	</span>
-<span class="x">	public function factoryMethod(){</span>
-<span class="x">		$bible = new Bible(); </span>
-<span class="x">		// etc </span>
-<span class="x">		return $bible;</span>
-<span class="x">	}</span>
-<span class="x">}</span></code></pre></div>
-
-<p>Este é o constructor concreto. Herda o Creator (Bible) sendo assim uma sub class que referi em cima, implementa o método <strong>factoryMethod()</strong> para criar o objecto.</p>
-
-<p>Person</p>
-
-<p>ConcretPerson</p>
-
-<h2 id="director">Director</h2>
-
-<p>Constroi o um objecto utilizando a interface do builder. </p>
-
-<h2 id="builder">Builder</h2>
-
+<p>O mais óbvio é começar pela escolha de uma distribuição. Existem vários distribuições com objectivos diferentes, a escolha depende sempre daquilo que o sistema operativo precisar de fazer.</p>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>

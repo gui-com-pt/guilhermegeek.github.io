@@ -17,12 +17,6 @@ O Factory Method tem a particularidade de encapsular a criação de objectos e d
 Este é o teste unitário com que vamos testar o código
 
 
-{% endhighlight %}
-
-{% highlight php %}
-
-{% endhighlight %}
-
 {% highlight php %}
 public class Bible {
 	
@@ -39,6 +33,7 @@ public abstract class BibleCreator {
 
 	public $bible;
 }
+{% endhighlight %}
 
 
 **Creator** - Define a estrutura principal a ser herdada por todos os construtores. 
