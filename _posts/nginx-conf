@@ -1,0 +1,16 @@
+http://stackoverflow.com/questions/9233368/nginx-server-configuration-subdomain-to-folder
+
+
+server {
+  listen 80;
+  server_name "~^(?<sub>.+)\.domain\.tld$";
+
+  root /path/to/document/root/$sub;
+
+  location / { try_files $uri $uri/ /index.php; }
+
+  location ~ \.php {
+    include fastcgi_params;
+    fastcgi_pass  unix:/etc/nginx/sockets/domain.socket;
+  }
+}
