@@ -7,6 +7,87 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Scripts bash para tarefas comuns</title>
+				<description>&lt;p&gt;O bach é não é uma linguagem de programação mas sim um interpretador de comandos. Quando na consola escrevemos um comando o bash executa-o ou acusa um erro.&lt;/p&gt;
+
+&lt;p&gt;Shell scripts são códigos escritos em bash. Um exemplo pode ser o ficheiro &lt;strong&gt;configure&lt;/strong&gt; gerado nas instalações de software ou um qualquer outro ficheiro .sh.&lt;/p&gt;
+
+&lt;p&gt;No caso de um programador, temos tarefas comuns como apagar um directori e clonar outro, um script que abra o chrome, um cliente de emails, verifique se há notificações de emails ou redes sociais, etc.&lt;/p&gt;
+
+&lt;p&gt;No fundo um script shell vai executar o que pretender-mos. Como exemplo temos o copiar-tese.sh&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+###
+# Copiar Tese para pendrive
+#
+# @description Este script copia todos os documentos da tese para uma pendrive
+# @author Guilherme Cardoso &amp;lt;email@guilhermecardoso.pt&amp;gt;
+###
+cp ~/trabalhos/tese /dev/sda2/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Os comentários não são obrigatórios, apenas na primeira linha para indicar que é um script bash. Os outros sigo a norma mais comum: titulo, descrição, autor. Mesmo em scripts que sei que mais ninguém vai usar documento-os, até porque sou mesmo esquecido.&lt;/p&gt;
+
+&lt;p&gt;** Dica ** Na linha de comandos também podemos executar vários comandos intercalados. Para isso separamos cada comando com &amp;amp;&amp;amp;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir bible &amp;amp;&amp;amp; cd bible &amp;amp;&amp;amp; cp /tmp/bible.db bible.db
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;permisso&quot;&gt;Permissão&lt;/h2&gt;
+
+&lt;p&gt;Os scripts bash têm de ter permissão para serem executados. É atribuida com o chmod&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod +x copiar-tese.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;correr-scripts&quot;&gt;Correr scripts&lt;/h2&gt;
+
+&lt;p&gt;Podem ser executados com o comando sh ou usando ./&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./copiar-tese.sh
+sh copiar-tese.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Além de serem executados também podemos usar o comando &lt;strong&gt;source&lt;/strong&gt;. A diferença é que o source vai correr os comandos na shell actual e executar corre os comandos numa nova shell. Por exemplo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+set PATH = $PATH:/opt/bible/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessível pelo terminar por estarem na PATH. &lt;/p&gt;
+
+&lt;p&gt;Se executarmos o script (./set-path.sh ou sh set-path.sh) a variável PATH não foi alterada na shell em que nos encontramos, se digitares no terminal echo $PATH ele não retorna com /opt/bible/bin&lt;/p&gt;
+
+&lt;p&gt;Se abrires uma nova shell a variável já está actualizada. Se em vez de executares usares &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;source set-path.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O script é executado e as alterações são realizadas na shell actual. Isto é porque o source serve para actualizar ficheiros de configuração, e uma das actualizações são as variáveis de ambiente.&lt;/p&gt;
+
+&lt;p&gt;O comando da linha 10 apenas é executado se na linha 9 não houve nenhuma excepção. Isto permite executar comandos em cadeia e é alias algo que fazemos naturalmente quando removemos uma pasta, criamos uma nova e copiar conteudo de outro. &lt;/p&gt;
+
+&lt;p&gt;Em técnicas de invasão um script shell pode fazer uma ligação ssh, comprimir arquivos, copiar tokens do Facebook, copiar os registos do keylogger.&lt;/p&gt;
+</description>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</guid>
+			</item>
+		
+			<item>
+				<title>Shell</title>
+				<description>&lt;p&gt;A shell é um interpretador de linha de comandos que disponibilia uma interface de usuário para sistemas *nix. Tu escolhes a operação a ser realizada através do comando que escreves e o interpretador executa, ou através de scripts shell. http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html&lt;/p&gt;
+
+&lt;p&gt;A consola que o Linux traz instalada é um emulador de terminal e permite-nos abrir uma nova shell. As shells também podem ser utilizadas por ligações de hardware ou sessões de rede.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell.html</guid>
+			</item>
+		
+			<item>
 				<title>Instalar softwares em Linux</title>
 				<description>&lt;p&gt;Como se instala um software? Extrais o código e corres numa linha de comandos: ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo install&lt;/p&gt;
 
@@ -1016,134 +1097,6 @@ tar -cpzf $DESDIR/$FILENAME $SRCDIR # compress the source directory and saves th
 				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/c%23/mono/2014/09/15/csharp-mono-linux.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/c%23/mono/2014/09/15/csharp-mono-linux.html</guid>
-			</item>
-		
-			<item>
-				<title>Introdução ao padrão BEM em CSS</title>
-				<description>&lt;p&gt;Primeiro, porque precisamos de uma metadalogia para CSS sequer? 
-Vamos a um exemplo, um widget da última noticia repetido várias vezes na mesma página:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;left&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main_list&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;highlithed&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;first&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;second&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;right&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;header&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;News&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Isto é muito comum e normalmente traduz-se numa folha de estilo semelhante a:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.left.hidden&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.main_list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.highlighted&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.header&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Num projecto pequeno onde apenas tu trabalhes no frontend isto não vai gerar confusão, mas se ficar complexo e cada página tiver uma folha de isto corres o risco de usar um .news, .left sem querer e afectar o resto do código. Sabes que o news indica o módulo, o componente principal (utilizador, noticias, etc) mas o restante é apenas atribuir nomes diferentes para não entrarem em colisão. E chega o ponto em que poluíste o contexto e já tens classes em elementos que não querias.&lt;/p&gt;
-
-&lt;p&gt;Se trabalhares com alguém então precisam de ter uma metadologia para seguirem em comum, ou pelo menos um padrão defenido com certa lógica.&lt;/p&gt;
-
-&lt;p&gt;O que mais adoro em código é padrões e arquitecturas e para este caso temos o BEM - Block Element Modifier&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__left&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__main_list&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__main_list_item--highlithed&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;first&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__main_list_item&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;second&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__right&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__header&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;News&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;news__body&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.news&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news__left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news__left--hiden&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news__main_list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news__main_list_item--highlighted&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news__header&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.news__body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;É mais rápido porque o browser não precisa de lidar com duas classes e bastante mais ligível!&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;.news&lt;/strong&gt; O block representa um componente. &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;.news__left&lt;/strong&gt; O elemento é o elemento em si que estamos a trabalhar, seja um botão, uma caixa de texto, um texto diferente do resto. O conjunto de elementos formam o componente (apesar de o componente puder usar outros estilos comuns)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;.news__main_list_item–hightlighted&lt;/strong&gt; O modificador pode alterar o estado do bloco, neste exemplo do elemento até.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O padrão é usar __ para separar o bloco e elemento e – para representar um estado diferente.&lt;/p&gt;
-
-&lt;p&gt;Cada classe pertence a um elemento e torna tudo muito mais simples. Programadores adoram este tipo de conceitos trazidos para o lado do cliente, torna tudo mais organizado :)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/media/posts/head-marked2.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Créditos da imagem: Smashing Magazine&lt;/p&gt;
-
-&lt;p&gt;Uma pequena nota, porque usar a class horrível news__main_list_item–highlithed e não fazer simplesmente .news__main_list li? Gosto de abstrair a folha de estilo o quanto possível do tipo de elemento do DOM. Neste caso é uma lista mas pode ser reaproveitado para outro elemento numa div por exemplo, isto mais a passar paginas de web para mobile.&lt;/p&gt;
-
-&lt;p&gt;Se formos a ver no primeiro exemplo que mostrei, as classes não fazem muito sentido e não encontramos uma ligação entre elas que nos indiquem que pertencem ao mesmo bloco ou grupo. A menos que estivessem juntas na folha de estilo e comentadas, tería dificuldades.&lt;/p&gt;
-
-&lt;p&gt;A seguir o BEM ou outro padrão qualquer com que te identifiques, mesmo que seja muito diferente e pouco convencional, só o facto de seguires um padrão já é muito bom e torna tudo uniformizado, dás nomes seguindo uma lógica.&lt;/p&gt;
-
-&lt;h3 id=&quot;feio&quot;&gt;É feio!&lt;/h3&gt;
-
-&lt;p&gt;Ok é justo, compreendo que á primeira vista .layout-container__right_sidebar–hidden seja grande e feio.
-Mas eu em programação no servidor também uso getParentDetailsStatus e recurso-me a usar abreviaturas ou palavras mais curtas só para não ficar feio. Mesmo no PHP que não compilamos o código, é praticamente insigificante para o interpretador e mesmo que seja mais tarde podes minificar tudo. &lt;/p&gt;
-</description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/css/2014/09/15/CSS-BEM-pattern.html</guid>
-			</item>
-		
-			<item>
-				<title>SMTP local mail server</title>
-				<description>&lt;h1 id=&quot;local-mail-server-for-tests&quot;&gt;Local mail server for tests&lt;/h1&gt;
-
-&lt;p&gt;When you’re dealing with emails providers, it’s a good pratice to keep the connection information in a configuration place. Allow it to set the encription, username, etc. Like this&lt;/p&gt;
-
-&lt;p&gt;$array = array(
-‘smtp.hostname’ =&amp;gt; ‘localhost’,
-‘smtp.port’ =&amp;gt; 25
-/*
- * Null for no authenticated
- * Availables: ssl, tsl
- */
-‘smtp.security’ =&amp;gt; null,
-‘smtp.username’ =&amp;gt; ‘’,
-‘smtp.password’ =&amp;gt; ‘’
-);&lt;/p&gt;
-
-&lt;p&gt;If you’re using some framework you can put the configuration in the IOC (if any), or in the default framework configuration.
-For online email providers you’ve greate services like mail chimp or even the windows live and gmail services. 
-Howerever you’ll not want to keep testing the emails always with your provider, you may even get considered as spammer.&lt;/p&gt;
-
-&lt;p&gt;For Windows you can install smtp4dev
-A greate tool i’ve used for a few time while i work with MS. It tracks the emails and if you’ve any email client it shows up there.&lt;/p&gt;
-
-&lt;p&gt;For linux i recommend the python mail server. It’s a simple server that output the messages in console, you get the plain text of email.
-For me it’s usefull because i always like to inspect the entire email (headers, etc).&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-python -m smtpd -n -c DebuggingServer localhost:26
-&lt;/code&gt;
-The default port is 25&lt;/p&gt;
-
-&lt;h3 id=&quot;getting-ready-for-production&quot;&gt;Getting ready for production&lt;/h3&gt;
-&lt;p&gt;This is how i strucutre my projects configurations. The default configurations is in a file like &lt;code&gt;default-settings.php&lt;/code&gt;. In my case the default-settings is set from a prent library. Then i’ve the &lt;code&gt;local-settings.php&lt;/code&gt; wich is ignored and never sent to the git repository. This file return a array that’ll replace the default settings.&lt;/p&gt;
-</description>
-				<pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/smtp/test/2014/09/10/smtp-local-server.html</guid>
 			</item>
 		
 	</channel>
