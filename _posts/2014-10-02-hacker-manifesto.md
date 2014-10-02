@@ -13,7 +13,7 @@ No filme The Social Network, no quarto do Mark Zuckerberg está um poster a bran
 
 <img class="post-entry__image" src="/media/posts/hacker-manifest2.png" />
 
-A ideia criada pela media dá-nos a entender que um hacker é um criminiso pois rouba informação. E tudo começa aqui, o erro da presunção que um hacker é de facto alguém mau.
+A ideia criada pela media dá-nos a entender que um hacker é criminoso pois rouba informação. E tudo começa aqui, o erro da presunção que um hacker é de facto alguém mau.
 
 Este manifesto foi escrito pelo The Mentor, de nome Loyd Blankenship após a sua detenção. É importante notar na crítica ao sistema de educação, que tantos anos depois se mantém.
 
