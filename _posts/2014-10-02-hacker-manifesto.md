@@ -2,7 +2,7 @@
 title: Manifesto de 1986 - The Conscience of a Hacker
 layout: post_entry
 image: /media/hacker1.jpg
-excerpt: Um manifesto que realmente recomendo a ser lido! Crítica ao nosso sistema de educação e também sociedade no geral
+excerpt: Um manifesto que realmente recomendo a ser lido! Também uma crítica ao nosso sistema de educação
 categories:
  hack
 ---
