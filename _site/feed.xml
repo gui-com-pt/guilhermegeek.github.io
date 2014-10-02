@@ -7,10 +7,107 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Scripts bash para tarefas comuns</title>
-				<description>&lt;p&gt;O bach é não é uma linguagem de programação mas sim um interpretador de comandos. Quando na consola escrevemos um comando o bash executa-o ou acusa um erro.&lt;/p&gt;
+				<title>Manifesto de 1986 - The Conscience of a Hacker</title>
+				<description>&lt;p&gt;Um manifesto escrito em 1986 por um hacker. Considero-o uma introdução obrigatória para quem perceber o que é um hacker afinal de contas. É necessária a educação ética nesta área para quem a quer estudar, e assim não deixar o ego crescer demasiado e tornar-se num pseudo black hat.&lt;/p&gt;
 
-&lt;p&gt;Shell scripts são códigos escritos em bash. Um exemplo pode ser o ficheiro &lt;strong&gt;configure&lt;/strong&gt; gerado nas instalações de software ou um qualquer outro ficheiro .sh.&lt;/p&gt;
+&lt;p&gt;No filme The Social Network, no quarto do Mark Zuckerberg está um poster a branco e verde, é o mesmo manifesto&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/hacker-manifest2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A ideia criada pela media dá-nos a entender que um hacker é um criminiso pois rouba informação. E tudo começa aqui, o erro da presunção que um hacker é de facto alguém mau.&lt;/p&gt;
+
+&lt;p&gt;Este manifesto foi escrito pelo The Mentor, de nome Loyd Blankenship após a sua detenção. É importante notar na crítica ao sistema de educação, que tantos anos depois se mantém.&lt;/p&gt;
+
+&lt;p&gt;Eu tenho o 9º ano de escolaridade e não terminei o secundário nem frequentei nenhum curso superior para aprender a programar. No entanto sou desfavorecido salarialmente e discriminado em várias situações que ter o 9º ano corresponde a ser um insucesso escolar.&lt;/p&gt;
+
+&lt;p&gt;A mim foi necessário estudar sozinho para chegar aqui, não limites as tuas escolhas pelo que o sistema te oferece. Prefiro ser um insucesso escolar do que ser mais uma pomba no marquês de pombal.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/hacker-manifesto1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following was written shortly after my arrest...
+
+                       \/\The Conscience of a Hacker/\/
+
+                                      by
+
+                               +++The Mentor+++
+
+                          Written on January 8, 1986
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+        Another one got caught today, it&#39;s all over the papers.  &quot;Teenager
+Arrested in Computer Crime Scandal&quot;, &quot;Hacker Arrested after Bank Tampering&quot;...
+        Damn kids.  They&#39;re all alike.
+
+        But did you, in your three-piece psychology and 1950&#39;s technobrain,
+ever take a look behind the eyes of the hacker?  Did you ever wonder what
+made him tick, what forces shaped him, what may have molded him?
+        I am a hacker, enter my world...
+        Mine is a world that begins with school... I&#39;m smarter than most of
+the other kids, this crap they teach us bores me...
+        Damn underachiever.  They&#39;re all alike.
+
+        I&#39;m in junior high or high school.  I&#39;ve listened to teachers explain
+for the fifteenth time how to reduce a fraction.  I understand it.  &quot;No, Ms.
+Smith, I didn&#39;t show my work.  I did it in my head...&quot;
+        Damn kid.  Probably copied it.  They&#39;re all alike.
+
+        I made a discovery today.  I found a computer.  Wait a second, this is
+cool.  It does what I want it to.  If it makes a mistake, it&#39;s because I
+screwed it up.  Not because it doesn&#39;t like me...
+                Or feels threatened by me...
+                Or thinks I&#39;m a smart ass...
+                Or doesn&#39;t like teaching and shouldn&#39;t be here...
+        Damn kid.  All he does is play games.  They&#39;re all alike.
+
+        And then it happened... a door opened to a world... rushing through
+the phone line like heroin through an addict&#39;s veins, an electronic pulse is
+sent out, a refuge from the day-to-day incompetencies is sought... a board is
+found.
+        &quot;This is it... this is where I belong...&quot;
+        I know everyone here... even if I&#39;ve never met them, never talked to
+them, may never hear from them again... I know you all...
+        Damn kid.  Tying up the phone line again.  They&#39;re all alike...
+
+        You bet your ass we&#39;re all alike... we&#39;ve been spoon-fed baby food at
+school when we hungered for steak... the bits of meat that you did let slip
+through were pre-chewed and tasteless.  We&#39;ve been dominated by sadists, or
+ignored by the apathetic.  The few that had something to teach found us will-
+ing pupils, but those few are like drops of water in the desert.
+
+        This is our world now... the world of the electron and the switch, the
+beauty of the baud.  We make use of a service already existing without paying
+for what could be dirt-cheap if it wasn&#39;t run by profiteering gluttons, and
+you call us criminals.  We explore... and you call us criminals.  We seek
+after knowledge... and you call us criminals.  We exist without skin color,
+without nationality, without religious bias... and you call us criminals.
+You build atomic bombs, you wage wars, you murder, cheat, and lie to us
+and try to make us believe it&#39;s for our own good, yet we&#39;re the criminals.
+
+        Yes, I am a criminal.  My crime is that of curiosity.  My crime is
+that of judging people by what they say and think, not what they look like.
+My crime is that of outsmarting you, something that you will never forgive me
+for.
+
+        I am a hacker, and this is my manifesto.  You may stop this individual,
+but you can&#39;t stop us all... after all, we&#39;re all alike.
+
+                               +++The Mentor+++
+_________________________________________________________&lt;/pre&gt;
+</description>
+				<pubDate>Thu, 02 Oct 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</guid>
+			</item>
+		
+			<item>
+				<title>Scripts shell</title>
+				<description>&lt;p&gt;O bash é não é uma linguagem de programação mas sim um interpretador de comandos. Quando na consola escrevemos um comando o bash interpreta-o executando-o.&lt;/p&gt;
+
+&lt;p&gt;Shell scripts é uma linguagem de script usada em vários sitemas operativos em bash. Um exemplo pode ser o ficheiro &lt;strong&gt;configure&lt;/strong&gt; gerado nas instalações de software ou um qualquer outro ficheiro .sh. É script pois é um programa escrito em linguagem interpretada como em Python ou Javascript, não é compilada como em C#.&lt;/p&gt;
 
 &lt;p&gt;No caso de um programador, temos tarefas comuns como apagar um directori e clonar outro, um script que abra o chrome, um cliente de emails, verifique se há notificações de emails ou redes sociais, etc.&lt;/p&gt;
 
@@ -69,7 +166,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Em técnicas de invasão um script shell pode fazer uma ligação ssh, comprimir arquivos, copiar tokens do Facebook, copiar os registos do keylogger.&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</guid>
 			</item>
@@ -82,7 +179,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell.html</guid>
 			</item>
@@ -150,32 +247,84 @@ set PATH = $PATH:/opt/bible/bin
 &lt;p&gt;http://www.codecoffee.com/tipsforlinux/articles/27.html&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</guid>
 			</item>
 		
 			<item>
 				<title>Linux</title>
-				<description>&lt;p&gt;Este é um artigo muito prático, para teoria a Wikipédia é suficiente.&lt;/p&gt;
+				<description>&lt;p&gt;Daqui vou dividir em vários artigos com o tempo.&lt;/p&gt;
 
-&lt;p&gt;Estrutura do sistema operativo:&lt;/p&gt;
+&lt;h2 id=&quot;distribuies&quot;&gt;Distribuições&lt;/h2&gt;
+
+&lt;p&gt;O mais óbvio é começar pela escolha de uma distribuição. Existem vários distribuições com objectivos diferentes, a escolha depende sempre daquilo que o sistema operativo precisar de fazer. &lt;/p&gt;
+
+&lt;p&gt;Senão souberes qual distribuição escolher começa pelo Ubuntu. Á medida que fores conhecendo melhor o Linux vais-te identificando com outras distribuições.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;/media/posts/linux-ubuntu1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;windows-e-linux&quot;&gt;Windows e Linux&lt;/h2&gt;
+
+&lt;p&gt;A estrutura do sistema é importante porque te dá uma ideia de como as coisas funcionam em Linux&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;/dev&lt;/li&gt;
-  &lt;li&gt;/var&lt;/li&gt;
-  &lt;li&gt;/etc&lt;/li&gt;
-  &lt;li&gt;/etc/apache2&lt;/li&gt;
-  &lt;li&gt;/var/www&lt;/li&gt;
-  &lt;li&gt;/home&lt;/li&gt;
-  &lt;li&gt;/home/jesus/Pictures&lt;/li&gt;
+  &lt;li&gt;/bin/ - Binários essenciais &lt;/li&gt;
+  &lt;li&gt;/boot/ - Ficheiros estáticos do boot loader. Estes ficheiros são utilizados durante o processo de boot-up, incluindo a Kernel kernel do Linux&lt;/li&gt;
+  &lt;li&gt;/dev/ - Ficheiros de dispositivos. Contém ficheiros de dispositivos para todo o hardware de dispositivos existentes como um leitor de CD, CPU&lt;/li&gt;
+  &lt;li&gt;/etc/ - Configurações específicas do sistema&lt;/li&gt;
+  &lt;li&gt;/home/ - As directorias home dos utilizadores &lt;/li&gt;
+  &lt;li&gt;/lib/ - Bibliotecas e módulos da kernel essenciais que são partilhados&lt;/li&gt;
+  &lt;li&gt;/media/ - Os media removíveis (pen drive) são montados aqui&lt;/li&gt;
+  &lt;li&gt;/mnt/ - Ponto de montagem para sistemas temporariamente montados&lt;/li&gt;
+  &lt;li&gt;/opt/ - Sítio alternativo onde os softwares instalados por pacotes alternativos são instalados&lt;/li&gt;
+  &lt;li&gt;/sbin/ - Binários do sistema&lt;/li&gt;
+  &lt;li&gt;/srv/ - Dados para serviços que o sistema disponibiliza&lt;/li&gt;
+  &lt;li&gt;/tmp/ - Ficheiros temporários&lt;/li&gt;
+  &lt;li&gt;/usr/ - Utilitários e aplicações dos utilizadores&lt;/li&gt;
+  &lt;li&gt;/var/ - Ficheiros variáveis&lt;/li&gt;
+  &lt;li&gt;/root/ - O directório home do root&lt;/li&gt;
+  &lt;li&gt;/proc/ - Documentação vertical do sistema e estado de processos como ficheiros de texto&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;distribuies&quot;&gt;Distribuições&lt;/h3&gt;
+&lt;p&gt;A comparação com o Windows&lt;/p&gt;
 
-&lt;p&gt;O mais óbvio é começar pela escolha de uma distribuição. Existem vários distribuições com objectivos diferentes, a escolha depende sempre daquilo que o sistema operativo precisar de fazer.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Windows - Contém todos os ficheiros necessários do sistema operativo. Tudo que percenta ao sistema operativo apenas fica aqui&lt;/li&gt;
+  &lt;li&gt;Users - Os perfis de utilizador&lt;/li&gt;
+  &lt;li&gt;Boot - Ficheiros do boot loader&lt;/li&gt;
+  &lt;li&gt;ProgramData - Ficheiros das instalações, dados guardados por aplicações&lt;/li&gt;
+  &lt;li&gt;Recovery - Contém a imagem necessária para entrar na consola de recuperação&lt;/li&gt;
+  &lt;li&gt;$recycle.bin - Esta pasta é a reciclagem do Windows, é para aqui que todos os ficheiros removidos vão. Apagar a pasta é igual a esvaziar a reciclagem ou parte dela (cada partição tem a sua própria $recycle.bin, a reciclagem no Windows pode conter ficheiros de diferentes partições)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Windows utiliza barra para trás, o Linux é para a frente&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:\Windows\system32
+
+/usr/bin/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O que reparamos logo é que no Windows existem letras para os dispositivos e partições, no Linux está tudo dentro do /. No Windows isto também é possível mas não é assim que ele está preparado.&lt;/p&gt;
+
+&lt;h3 id=&quot;apagar-ou-modificar-ficheiros-abertos&quot;&gt;Apagar ou modificar ficheiros abertos&lt;/h3&gt;
+
+&lt;p&gt;Ao contrário do Windows, em sistemas *nix as aplicações não trancam ficheiros exclusivos.&lt;/p&gt;
+
+&lt;p&gt;Se estiveres abrires um documento Word no Office e o tentares apagar sem fechar o Office ele acusa um erro. Em *nix isso não acontece. *nix ou Unix-like são sistemas semelhantes ao sistema Unix-like como é o caso da família BSD, Linux e Mac OS X.&lt;/p&gt;
+
+&lt;h3 id=&quot;ficheiros-mais-importantes&quot;&gt;Ficheiros mais importantes&lt;/h3&gt;
+
+&lt;p&gt;Aqui vou manter uma lista de ficheiros e utilários do sistema mais importantes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;/boot/vmlinuz - O ficheiro da kernel do Linux&lt;/li&gt;
+  &lt;li&gt;/dev/hda - O ficheiro de dispositivo do primeiro HDD IDE&lt;/li&gt;
+  &lt;li&gt;/dev/null - Um dispositivo que não existe! Muitas vezes o retorno considerado lixo é redireccionado para o /dev/null para ser perdido para sempre&lt;/li&gt;
+  &lt;li&gt;/etc/bashrc&lt;/li&gt;
+&lt;/ul&gt;
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux.html</guid>
 			</item>
@@ -230,7 +379,7 @@ set PATH = $PATH:/opt/bible/bin
 &lt;p&gt;Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
 			</item>
@@ -286,7 +435,7 @@ set PATH = $PATH:/opt/bible/bin
 &lt;h2 id=&quot;builder&quot;&gt;Builder&lt;/h2&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</guid>
 			</item>
@@ -400,7 +549,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</guid>
 			</item>
@@ -461,7 +610,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</guid>
 			</item>
@@ -486,7 +635,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</guid>
 			</item>
@@ -508,7 +657,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
@@ -525,7 +674,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
 </description>
-				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
@@ -616,7 +765,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 17 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
 			</item>
@@ -679,7 +828,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 
 [+] Starting the password brute forcer
 
-  Brute forcing user 'testadmin' with 500 passwords... 100% complete.
+  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
 [+] Finished at Thu Jul 18 03:39:02 2013
 [+] Elapsed time: 00:01:16
 &lt;/code&gt;&lt;/pre&gt;
@@ -704,7 +853,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 &lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
 Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
@@ -787,7 +936,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
@@ -813,7 +962,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
 			</item>
@@ -895,7 +1044,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
   &lt;li&gt;http://www.troyhunt.com/2011/07/science-of-password-selection.html&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</guid>
 			</item>
@@ -912,7 +1061,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 &lt;p&gt;Tenho encontrado computadores com versões ancestrais do Internet Explorer e Flash que até nem se actualizam por causa de permissões de contas, firewall a bloquear portas, etc. Isto sim, é um prato bem servido a quem tem más intenções&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</guid>
 			</item>
@@ -965,7 +1114,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 &lt;p&gt;Eu utilizei isto num contexto em que o baseController já era em si um controller herdado mas a utilizar o ui-router. 
 Desta forma registas o kidsController e adultsController como dois controladores independentes um do outro, mas com as mesmas dependências.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</guid>
 			</item>
@@ -999,7 +1148,7 @@ IDE’s como o PHPStorm ou NetBens têm grandes funcionalidades de debugging mas
 &lt;p&gt;O Vdebug é um plugin para o vim que permite fazer debug a vário código, não apenas PHP!
 O mais fácil para instalares o Vdebug é adicioná-lo nas configuração do vim, em ~/.vimrc (cria este arquivo caso não exista)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Plugin 'joonty/vdebug'
+&lt;pre&gt;&lt;code&gt;Plugin &#39;joonty/vdebug&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Depois corre este comando para instalares o plugin
@@ -1031,7 +1180,7 @@ Isto vai abrir 4 janelas diferentes. Na esquerda o ficheiro a ser visto e á dir
   &lt;li&gt;F2 - Próximo&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</guid>
 			</item>
@@ -1085,18 +1234,9 @@ tar -cpzf $DESDIR/$FILENAME $SRCDIR # compress the source directory and saves th
 &lt;p&gt;1 vez por dia copiar apenas a base de dados&lt;/p&gt;
 
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</guid>
-			</item>
-		
-			<item>
-				<title>C#, Mono e Linux</title>
-				<description>&lt;p&gt;Aqui não há muito a acrescentar que já não esteja estapando no Google. Vou mostrar algumas bibliotecas e projectos compatíveis como mono, dar exemplos de como lido com problemas de dependências e dicas gerais como utilizar o fastcgiserver, várias versões do .NET, etc&lt;/p&gt;
-</description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/c%23/mono/2014/09/15/csharp-mono-linux.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/c%23/mono/2014/09/15/csharp-mono-linux.html</guid>
 			</item>
 		
 	</channel>

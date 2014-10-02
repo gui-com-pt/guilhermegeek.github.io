@@ -1,15 +1,15 @@
 ---
-title: Scripts bash para tarefas comuns
+title: Scripts shell 
 layout: post_entry
 image: /media/linux_logo.png
-excerpt: Uma introdução ao Bash e scripts shell
+excerpt: Uma introdução a scripts shell com Bash
 categories:
  linux
 ---
 
-O bach é não é uma linguagem de programação mas sim um interpretador de comandos. Quando na consola escrevemos um comando o bash executa-o ou acusa um erro.
+O bash é não é uma linguagem de programação mas sim um interpretador de comandos. Quando na consola escrevemos um comando o bash interpreta-o executando-o.
 
-Shell scripts são códigos escritos em bash. Um exemplo pode ser o ficheiro **configure** gerado nas instalações de software ou um qualquer outro ficheiro .sh.
+Shell scripts é uma linguagem de script usada em vários sitemas operativos em bash. Um exemplo pode ser o ficheiro **configure** gerado nas instalações de software ou um qualquer outro ficheiro .sh. É script pois é um programa escrito em linguagem interpretada como em Python ou Javascript, não é compilada como em C#.
 
 No caso de um programador, temos tarefas comuns como apagar um directori e clonar outro, um script que abra o chrome, um cliente de emails, verifique se há notificações de emails ou redes sociais, etc.
 

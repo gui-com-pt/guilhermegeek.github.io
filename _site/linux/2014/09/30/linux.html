@@ -131,23 +131,75 @@
 <h2 class="content">Linux</h2>
 </div>
  
-<p>Este é um artigo muito prático, para teoria a Wikipédia é suficiente.</p>
+<p>Daqui vou dividir em vários artigos com o tempo.</p>
 
-<p>Estrutura do sistema operativo:</p>
+<h2 id="distribuies">Distribuições</h2>
+
+<p>O mais óbvio é começar pela escolha de uma distribuição. Existem vários distribuições com objectivos diferentes, a escolha depende sempre daquilo que o sistema operativo precisar de fazer. </p>
+
+<p>Senão souberes qual distribuição escolher começa pelo Ubuntu. Á medida que fores conhecendo melhor o Linux vais-te identificando com outras distribuições.</p>
+
+<p><img class="img-responsive" src="/media/posts/linux-ubuntu1.png" /></p>
+
+<h2 id="windows-e-linux">Windows e Linux</h2>
+
+<p>A estrutura do sistema é importante porque te dá uma ideia de como as coisas funcionam em Linux</p>
 
 <ul>
-  <li>/dev</li>
-  <li>/var</li>
-  <li>/etc</li>
-  <li>/etc/apache2</li>
-  <li>/var/www</li>
-  <li>/home</li>
-  <li>/home/jesus/Pictures</li>
+  <li>/bin/ - Binários essenciais </li>
+  <li>/boot/ - Ficheiros estáticos do boot loader. Estes ficheiros são utilizados durante o processo de boot-up, incluindo a Kernel kernel do Linux</li>
+  <li>/dev/ - Ficheiros de dispositivos. Contém ficheiros de dispositivos para todo o hardware de dispositivos existentes como um leitor de CD, CPU</li>
+  <li>/etc/ - Configurações específicas do sistema</li>
+  <li>/home/ - As directorias home dos utilizadores </li>
+  <li>/lib/ - Bibliotecas e módulos da kernel essenciais que são partilhados</li>
+  <li>/media/ - Os media removíveis (pen drive) são montados aqui</li>
+  <li>/mnt/ - Ponto de montagem para sistemas temporariamente montados</li>
+  <li>/opt/ - Sítio alternativo onde os softwares instalados por pacotes alternativos são instalados</li>
+  <li>/sbin/ - Binários do sistema</li>
+  <li>/srv/ - Dados para serviços que o sistema disponibiliza</li>
+  <li>/tmp/ - Ficheiros temporários</li>
+  <li>/usr/ - Utilitários e aplicações dos utilizadores</li>
+  <li>/var/ - Ficheiros variáveis</li>
+  <li>/root/ - O directório home do root</li>
+  <li>/proc/ - Documentação vertical do sistema e estado de processos como ficheiros de texto</li>
 </ul>
 
-<h3 id="distribuies">Distribuições</h3>
+<p>A comparação com o Windows</p>
 
-<p>O mais óbvio é começar pela escolha de uma distribuição. Existem vários distribuições com objectivos diferentes, a escolha depende sempre daquilo que o sistema operativo precisar de fazer.</p>
+<ul>
+  <li>Windows - Contém todos os ficheiros necessários do sistema operativo. Tudo que percenta ao sistema operativo apenas fica aqui</li>
+  <li>Users - Os perfis de utilizador</li>
+  <li>Boot - Ficheiros do boot loader</li>
+  <li>ProgramData - Ficheiros das instalações, dados guardados por aplicações</li>
+  <li>Recovery - Contém a imagem necessária para entrar na consola de recuperação</li>
+  <li>$recycle.bin - Esta pasta é a reciclagem do Windows, é para aqui que todos os ficheiros removidos vão. Apagar a pasta é igual a esvaziar a reciclagem ou parte dela (cada partição tem a sua própria $recycle.bin, a reciclagem no Windows pode conter ficheiros de diferentes partições)</li>
+</ul>
+
+<p>Windows utiliza barra para trás, o Linux é para a frente</p>
+
+<pre><code>C:\Windows\system32
+
+/usr/bin/
+</code></pre>
+
+<p>O que reparamos logo é que no Windows existem letras para os dispositivos e partições, no Linux está tudo dentro do /. No Windows isto também é possível mas não é assim que ele está preparado.</p>
+
+<h3 id="apagar-ou-modificar-ficheiros-abertos">Apagar ou modificar ficheiros abertos</h3>
+
+<p>Ao contrário do Windows, em sistemas *nix as aplicações não trancam ficheiros exclusivos.</p>
+
+<p>Se estiveres abrires um documento Word no Office e o tentares apagar sem fechar o Office ele acusa um erro. Em *nix isso não acontece. *nix ou Unix-like são sistemas semelhantes ao sistema Unix-like como é o caso da família BSD, Linux e Mac OS X.</p>
+
+<h3 id="ficheiros-mais-importantes">Ficheiros mais importantes</h3>
+
+<p>Aqui vou manter uma lista de ficheiros e utilários do sistema mais importantes</p>
+
+<ul>
+  <li>/boot/vmlinuz - O ficheiro da kernel do Linux</li>
+  <li>/dev/hda - O ficheiro de dispositivo do primeiro HDD IDE</li>
+  <li>/dev/null - Um dispositivo que não existe! Muitas vezes o retorno considerado lixo é redireccionado para o /dev/null para ser perdido para sempre</li>
+  <li>/etc/bashrc</li>
+</ul>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
