@@ -192,6 +192,15 @@ set PATH = $PATH:/opt/bible/bin
 
 <p>Em técnicas de invasão um script shell pode fazer uma ligação ssh, comprimir arquivos, copiar tokens do Facebook, copiar os registos do keylogger.</p>
 
+<h3 id="algumas-dicas">Algumas dicas</h3>
+
+<p>Em bash o “*” tem um significado próprio. Se executares um script que aceite * é preciso escapar com \ Por exemplo o redis-cli que é um cliente para a base de dados redis, executamos a aplicação redis-cli e entramos numa shell de acesso ao Redis. Para escrever um script que execute um comando nessa shell teria de ser</p>
+
+<pre><code>redis-cli keys \*
+</code></pre>
+
+<p>Isto seria igual a entrar no redis-cli e depois escrever na shell keys *</p>
+
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
     <script type="text/javascript">

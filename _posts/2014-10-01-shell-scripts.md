@@ -62,3 +62,12 @@ O script é executado e as alterações são realizadas na shell actual. Isto é
 O comando da linha 10 apenas é executado se na linha 9 não houve nenhuma excepção. Isto permite executar comandos em cadeia e é alias algo que fazemos naturalmente quando removemos uma pasta, criamos uma nova e copiar conteudo de outro. 
 
 Em técnicas de invasão um script shell pode fazer uma ligação ssh, comprimir arquivos, copiar tokens do Facebook, copiar os registos do keylogger.
+
+
+### Algumas dicas
+
+Em bash o "*" tem um significado próprio. Se executares um script que aceite * é preciso escapar com \ Por exemplo o redis-cli que é um cliente para a base de dados redis, executamos a aplicação redis-cli e entramos numa shell de acesso ao Redis. Para escrever um script que execute um comando nessa shell teria de ser
+
+	redis-cli keys \*
+
+Isto seria igual a entrar no redis-cli e depois escrever na shell keys *

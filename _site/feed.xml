@@ -165,6 +165,15 @@ set PATH = $PATH:/opt/bible/bin
 &lt;p&gt;O comando da linha 10 apenas é executado se na linha 9 não houve nenhuma excepção. Isto permite executar comandos em cadeia e é alias algo que fazemos naturalmente quando removemos uma pasta, criamos uma nova e copiar conteudo de outro. &lt;/p&gt;
 
 &lt;p&gt;Em técnicas de invasão um script shell pode fazer uma ligação ssh, comprimir arquivos, copiar tokens do Facebook, copiar os registos do keylogger.&lt;/p&gt;
+
+&lt;h3 id=&quot;algumas-dicas&quot;&gt;Algumas dicas&lt;/h3&gt;
+
+&lt;p&gt;Em bash o “*” tem um significado próprio. Se executares um script que aceite * é preciso escapar com \ Por exemplo o redis-cli que é um cliente para a base de dados redis, executamos a aplicação redis-cli e entramos numa shell de acesso ao Redis. Para escrever um script que execute um comando nessa shell teria de ser&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;redis-cli keys \*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Isto seria igual a entrar no redis-cli e depois escrever na shell keys *&lt;/p&gt;
 </description>
 				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>
