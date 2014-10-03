@@ -45,7 +45,7 @@ Podem ser executados com o comando sh ou usando ./
 
 Além de serem executados também podemos usar o comando **source**. A diferença é que o source vai correr os comandos na shell actual e executar corre os comandos numa nova shell. Por exemplo
 
-	#!/bin/sh
+	#!/bin/bash
 	set PATH = $PATH:/opt/bible/bin
 
 Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessível pelo terminar por estarem na PATH. 
