@@ -8,7 +8,7 @@
 		
 			<item>
 				<title>Manifesto de 1986 - The Conscience of a Hacker</title>
-				<description>&lt;p&gt;Um manifesto escrito em 1986 por um hacker. Considero-o uma introdução obrigatória para quem perceber o que é um hacker afinal de contas. É necessária a educação ética nesta área para quem a quer estudar, e assim não deixar o ego crescer demasiado e tornar-se num pseudo black hat.&lt;/p&gt;
+				<description>&lt;p&gt;Um manifesto escrito em 1986 por um hacker. Considero-o uma introdução obrigatória para quem quer perceber o que é um hacker afinal de contas. É necessária a educação ética nesta área para quem a quer estudar, e assim não deixar o ego crescer demasiado e tornar-se num pseudo black hat.&lt;/p&gt;
 
 &lt;p&gt;No filme The Social Network, no quarto do Mark Zuckerberg está um poster a branco e verde, é o mesmo manifesto&lt;/p&gt;
 
@@ -147,7 +147,7 @@ sh copiar-tese.sh
 
 &lt;p&gt;Além de serem executados também podemos usar o comando &lt;strong&gt;source&lt;/strong&gt;. A diferença é que o source vai correr os comandos na shell actual e executar corre os comandos numa nova shell. Por exemplo&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;#!/bin/sh
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
 set PATH = $PATH:/opt/bible/bin
 &lt;/code&gt;&lt;/pre&gt;
 
