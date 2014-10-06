@@ -7,7 +7,7 @@ categories:
  hack
 ---
 
-Um manifesto escrito em 1986 por um hacker. Considero-o uma introdução obrigatória para quem perceber o que é um hacker afinal de contas. É necessária a educação ética nesta área para quem a quer estudar, e assim não deixar o ego crescer demasiado e tornar-se num pseudo black hat.
+Um manifesto escrito em 1986 por um hacker. Considero-o uma introdução obrigatória para quem quer perceber o que é um hacker afinal de contas. É necessária a educação ética nesta área para quem a quer estudar, e assim não deixar o ego crescer demasiado e tornar-se num pseudo black hat.
 
 No filme The Social Network, no quarto do Mark Zuckerberg está um poster a branco e verde, é o mesmo manifesto
 
