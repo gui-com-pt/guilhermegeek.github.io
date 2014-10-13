@@ -14,3 +14,42 @@ server {
     fastcgi_pass  unix:/etc/nginx/sockets/domain.socket;
   }
 }
+
+
+
+
+
+
+# Dynamic websites.
+# $http_host represents a domain. For example: /var/www/volupio.com/htdocs
+# The same applies to the server_name, it's volupio.com
+server {
+        listen 80;
+#       root /var/www/$http_host/public;
+        index index.php index.html;
+
+        if ($host ~* www\.(.*)) {
+                set $host_without_www $1;
+                rewrite ^(.*)$ $scheme://$host_without_www$1 permanent; #1
+                #rewrite ^ $scheme://$host_without_www$1request_uri permanent; #2
+        }
+
+        root /var/www/$vhost/public;
+        server_name ~^(?<vhost>.*)$;
+#       server_name $http_host;
+        location /favicon.ico { access_log off; log_not_found off; return 204; }
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+
+       location ~ \.php$ {
+               fastcgi_split_path_info ^(.+\.php)(/.+)$;
+               # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+               fastcgi_pass 127.0.0.1:9000;
+               # With php5-fpm:
+               #fastcgi_pass unix:/var/run/php5-fpm.sock;
+               fastcgi_index index.php;
+               include fastcgi_params;
+       }
+}

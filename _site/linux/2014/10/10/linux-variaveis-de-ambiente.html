@@ -2,15 +2,15 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Guilherme Cardoso Scripts shell</title>
-      <meta name="description" content="Uma introdução a scripts shell com Bash">
+      <title>Guilherme Cardoso Variáveis de ambiente e locais no Unix</title>
+      <meta name="description" content="">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="Scripts shell">
+      <meta property="og:site_name" content="Variáveis de ambiente e locais no Unix">
       <meta property="og:image" content="/media/linux_logo.png">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/linux/2014/10/01/shell-scripts.html">
-      <meta property="og:title" content="Scripts shell">
-      <meta property="og:description" content="Uma introdução a scripts shell com Bash">
+      <meta property="og:url" content="/linux/2014/10/10/linux-variaveis-de-ambiente.html">
+      <meta property="og:title" content="Variáveis de ambiente e locais no Unix">
+      <meta property="og:description" content="">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
     
@@ -128,78 +128,68 @@
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
 <img src="/media/linux_logo.png" class="post-entry__thumbnail" />
-<h2 class="content">Scripts shell</h2>
+<h2 class="content">Variáveis de ambiente e locais no Unix</h2>
 </div>
  
-<p>O bash é não é uma linguagem de programação mas sim um interpretador de comandos. Quando na consola escrevemos um comando o bash interpreta-o executando-o.</p>
+<p>No UNIX os softwares são mais flexíveis que Windows, o comportamente de um programa pode ser alterado apenas por alterar uma variável. Além de caminhos para pastas, as variáveis de ambiente podem ter opções de linha de comandos, ou flags (EMAILS_ENABLED, COMMENTS_ALLOWED).</p>
 
-<p>Shell scripts é uma linguagem de script usada em vários sitemas operativos em bash. Um exemplo pode ser o ficheiro <strong>configure</strong> gerado nas instalações de software ou um qualquer outro ficheiro .sh. É script pois é um programa escrito em linguagem interpretada como em Python ou Javascript, não é compilada como em C#.</p>
+<p>As variáveis de ambiente ou globais guardam informação partilhada por programas como caminhos para determinadas pastas (variável HOME com C:\Users\Gui). São sempre escritas em maiúsculas, semelhantemente em linguagens de programação as constantes são escritas em maísculas e podem desempenhar uma função semelhante, apesar de isto ser uma convenção e não uma regra.</p>
 
-<p>No caso de um programador, temos tarefas comuns como apagar um directori e clonar outro, um script que abra o chrome, um cliente de emails, verifique se há notificações de emails ou redes sociais, etc.</p>
+<p>No terminal é indiferente se as variáveis seguem esta com convenção ou não, as de ambiente da shell actual são herdadas por todos os shells filhos. </p>
 
-<p>No fundo um script shell vai executar o que pretender-mos. Como exemplo temos o copiar-tese.sh</p>
+<p>Também existem as variáveis são as variáveis do shell, as locais. Estas são escritas em minúsculas e não são herdadas pelos filhos.	</p>
 
-<pre><code>#!/bin/bash
-###
-# Copiar Tese para pendrive
-#
-# @description Este script copia todos os documentos da tese para uma pendrive
-# @author Guilherme Cardoso &lt;email@guilhermecardoso.pt&gt;
-###
-cp ~/trabalhos/tese /dev/sda2/
-</code></pre>
+<h3 id="principais">Principais</h3>
 
-<p>Os comentários não são obrigatórios, apenas na primeira linha para indicar que é um script bash. Os outros sigo a norma mais comum: titulo, descrição, autor. Mesmo em scripts que sei que mais ninguém vai usar documento-os, até porque sou mesmo esquecido.</p>
+<p><strong>PATH</strong></p>
 
-<p>** Dica ** Na linha de comandos também podemos executar vários comandos intercalados. Para isso separamos cada comando com &amp;&amp;</p>
+<p>Contém o caminho para pastas com ficheiros de sistema (equivalente no Windows ao programa.exe). Os programas que executas na consola, ls, node, grunt, mkdir, tanto podem ter o executável na /usr/local/bin que já está na variável PATH normalmente, ou numa pasta /opt/spotify-client que seria adicionado á PATH.</p>
 
-<pre><code>mkdir bible &amp;&amp; cd bible &amp;&amp; cp /tmp/bible.db bible.db
-</code></pre>
+<p><strong>HOME</strong></p>
 
-<h2 id="permisso">Permissão</h2>
+<p>O caminho absoluto para o teu directorio home, por exemplo /home/maria Programas usam-na para guardarem ficheiros de configuração de cada utilizador do sistema na sua pasta home ou o comando <strong>cd ~</strong> que usa a variável para ir para a HOME.</p>
 
-<p>Os scripts bash têm de ter permissão para serem executados. É atribuida com o chmod</p>
+<p><strong>USERNAME</strong></p>
 
-<pre><code>chmod +x copiar-tese.sh
-</code></pre>
+<p>Nome do utilizador autenticado na shell.</p>
 
-<h2 id="correr-scripts">Correr scripts</h2>
+<p><strong>TERM</strong></p>
 
-<p>Podem ser executados com o comando sh ou usando ./</p>
+<p>Tipo de terminal usado para aceder ao sistema</p>
 
-<pre><code>./copiar-tese.sh
-sh copiar-tese.sh
-</code></pre>
+<h3 id="como-usar">Como usar</h3>
 
-<p>Além de serem executados também podemos usar o comando <strong>source</strong>. A diferença é que o source vai correr os comandos na shell actual e executar corre os comandos numa nova shell. Por exemplo</p>
+<p>Uma variável é atribuida por VARIAVEL=VALOR</p>
 
-<pre><code>#!/bin/bash
-PATH = $PATH:/opt/bible/bin
-</code></pre>
+<p>Por vezes podemos usar o valor da variável para atribuir a um novo valor, exemplo seria adicionar a pasta /opt/bible-king-james á variável PATH.</p>
 
-<p>Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessíveis pelo terminar por estarem na PATH. </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">dk@localhost:/<span class="nv">$ PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/opt/bible-king-james
+dk@localhost:/<span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$PATH</span>
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/GitEye/:/opt/bible-king-james/</code></pre></div>
 
-<p>Se executarmos o script (./set-path.sh ou sh set-path.sh) a variável PATH não foi alterada na shell em que nos encontramos, se digitares no terminal echo $PATH ele não retorna com /opt/bible/bin</p>
+<p>Na PATH adicionei o caminho aseguir a $PATH, a variável que com o valor actual dos os restantes caminhos.</p>
 
-<p>Se abrires uma nova shell a variável já está actualizada. Se em vez de executares usares </p>
+<p>Quando executarmos um programa ele procura primeiro na pasta /usr/local/bin, senão existir na /usr/bin, e consecutivamente. Se adicionasse no início, esse caminho seria o primeiro a ser usado</p>
 
-<pre><code>source set-path.sh
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">dk@localhost:/opt/sublime<span class="nv">$ PATH</span><span class="o">=</span>/opt/bible-king-james:<span class="nv">$PATH</span>
+dk@localhost:/opt/sublime<span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$PATH</span>
+/opt/bible-king-james:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/GitEye/</code></pre></div>
 
-<p>O script é executado e as alterações são realizadas na shell actual. Isto é porque o source serve para actualizar ficheiros de configuração, e uma das actualizações são as variáveis de ambiente.</p>
+<p>Se usassemos apenas atribuição com PATH não seria bom, por exemplo: PATH=/opt/bibke-king-james. Ness momento quando executasses um programa no shell ele apenas seria procurado nesse novo caminho. Comandos como cd, ls, não estaríam disponíveis.</p>
 
-<p>O comando da linha 10 apenas é executado se na linha 9 não houve nenhuma excepção. Isto permite executar comandos em cadeia e é alias algo que fazemos naturalmente quando removemos uma pasta, criamos uma nova e copiar conteudo de outro. </p>
+<h3 id="onde-usar">Onde usar</h3>
 
-<p>Em técnicas de invasão um script shell pode fazer uma ligação ssh, comprimir arquivos, copiar tokens do Facebook, copiar os registos do keylogger.</p>
-
-<h3 id="algumas-dicas">Algumas dicas</h3>
-
-<p>Em bash o “*” tem um significado próprio. Se executares um script que aceite * é preciso escapar com \ Por exemplo o redis-cli que é um cliente para a base de dados redis, executamos a aplicação redis-cli e entramos numa shell de acesso ao Redis. Para escrever um script que execute um comando nessa shell teria de ser</p>
-
-<pre><code>redis-cli keys \*
-</code></pre>
-
-<p>Isto seria igual a entrar no redis-cli e depois escrever na shell keys *</p>
+<ul>
+  <li>
+    <p>~/.bashrc apenas são acessível pelo bash em sim como configurações do shell, consola. Aqui não guardamos variáveis utilizadas por programas porque não lêem este ficheiro, apenas o shell do bash.</p>
+  </li>
+  <li>
+    <p>~/.profile aplicado á sessão inteira, como programas que são executados no arranque da sessão</p>
+  </li>
+  <li>
+    <p>~/.bash_profile</p>
+  </li>
+</ul>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>

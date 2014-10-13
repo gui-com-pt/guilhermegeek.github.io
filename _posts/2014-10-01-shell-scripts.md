@@ -46,9 +46,11 @@ Podem ser executados com o comando sh ou usando ./
 Além de serem executados também podemos usar o comando **source**. A diferença é que o source vai correr os comandos na shell actual e executar corre os comandos numa nova shell. Por exemplo
 
 	#!/bin/bash
-	set PATH = $PATH:/opt/bible/bin
+	PATH = $PATH:/opt/bible/bin
 
-Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessível pelo terminar por estarem na PATH. 
+Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessíveis pelo terminar por estarem na PATH. 
+
+
 
 Se executarmos o script (./set-path.sh ou sh set-path.sh) a variável PATH não foi alterada na shell em que nos encontramos, se digitares no terminal echo $PATH ele não retorna com /opt/bible/bin
 

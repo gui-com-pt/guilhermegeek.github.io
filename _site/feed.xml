@@ -7,6 +7,73 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Variáveis de ambiente e locais no Unix</title>
+				<description>&lt;p&gt;No UNIX os softwares são mais flexíveis que Windows, o comportamente de um programa pode ser alterado apenas por alterar uma variável. Além de caminhos para pastas, as variáveis de ambiente podem ter opções de linha de comandos, ou flags (EMAILS_ENABLED, COMMENTS_ALLOWED).&lt;/p&gt;
+
+&lt;p&gt;As variáveis de ambiente ou globais guardam informação partilhada por programas como caminhos para determinadas pastas (variável HOME com C:\Users\Gui). São sempre escritas em maiúsculas, semelhantemente em linguagens de programação as constantes são escritas em maísculas e podem desempenhar uma função semelhante, apesar de isto ser uma convenção e não uma regra.&lt;/p&gt;
+
+&lt;p&gt;No terminal é indiferente se as variáveis seguem esta com convenção ou não, as de ambiente da shell actual são herdadas por todos os shells filhos. &lt;/p&gt;
+
+&lt;p&gt;Também existem as variáveis são as variáveis do shell, as locais. Estas são escritas em minúsculas e não são herdadas pelos filhos.	&lt;/p&gt;
+
+&lt;h3 id=&quot;principais&quot;&gt;Principais&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;PATH&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Contém o caminho para pastas com ficheiros de sistema (equivalente no Windows ao programa.exe). Os programas que executas na consola, ls, node, grunt, mkdir, tanto podem ter o executável na /usr/local/bin que já está na variável PATH normalmente, ou numa pasta /opt/spotify-client que seria adicionado á PATH.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HOME&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;O caminho absoluto para o teu directorio home, por exemplo /home/maria Programas usam-na para guardarem ficheiros de configuração de cada utilizador do sistema na sua pasta home ou o comando &lt;strong&gt;cd ~&lt;/strong&gt; que usa a variável para ir para a HOME.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;USERNAME&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Nome do utilizador autenticado na shell.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TERM&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tipo de terminal usado para aceder ao sistema&lt;/p&gt;
+
+&lt;h3 id=&quot;como-usar&quot;&gt;Como usar&lt;/h3&gt;
+
+&lt;p&gt;Uma variável é atribuida por VARIAVEL=VALOR&lt;/p&gt;
+
+&lt;p&gt;Por vezes podemos usar o valor da variável para atribuir a um novo valor, exemplo seria adicionar a pasta /opt/bible-king-james á variável PATH.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;dk@localhost:/&lt;span class=&quot;nv&quot;&gt;$ PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:/opt/bible-king-james
+dk@localhost:/&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/GitEye/:/opt/bible-king-james/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Na PATH adicionei o caminho aseguir a $PATH, a variável que com o valor actual dos os restantes caminhos.&lt;/p&gt;
+
+&lt;p&gt;Quando executarmos um programa ele procura primeiro na pasta /usr/local/bin, senão existir na /usr/bin, e consecutivamente. Se adicionasse no início, esse caminho seria o primeiro a ser usado&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/bible-king-james:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+/opt/bible-king-james:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/GitEye/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Se usassemos apenas atribuição com PATH não seria bom, por exemplo: PATH=/opt/bibke-king-james. Ness momento quando executasses um programa no shell ele apenas seria procurado nesse novo caminho. Comandos como cd, ls, não estaríam disponíveis.&lt;/p&gt;
+
+&lt;h3 id=&quot;onde-usar&quot;&gt;Onde usar&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;~/.bashrc apenas são acessível pelo bash em sim como configurações do shell, consola. Aqui não guardamos variáveis utilizadas por programas porque não lêem este ficheiro, apenas o shell do bash.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;~/.profile aplicado á sessão inteira, como programas que são executados no arranque da sessão&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;~/.bash_profile&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
+			</item>
+		
+			<item>
 				<title>Manifesto de 1986 - The Conscience of a Hacker</title>
 				<description>&lt;p&gt;Um manifesto escrito em 1986 por um hacker. Considero-o uma introdução obrigatória para quem quer perceber o que é um hacker afinal de contas. É necessária a educação ética nesta área para quem a quer estudar, e assim não deixar o ego crescer demasiado e tornar-se num pseudo black hat.&lt;/p&gt;
 
@@ -38,54 +105,54 @@ The following was written shortly after my arrest...
                           Written on January 8, 1986
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-        Another one got caught today, it&#39;s all over the papers.  &quot;Teenager
+        Another one got caught today, it's all over the papers.  &quot;Teenager
 Arrested in Computer Crime Scandal&quot;, &quot;Hacker Arrested after Bank Tampering&quot;...
-        Damn kids.  They&#39;re all alike.
+        Damn kids.  They're all alike.
 
-        But did you, in your three-piece psychology and 1950&#39;s technobrain,
+        But did you, in your three-piece psychology and 1950's technobrain,
 ever take a look behind the eyes of the hacker?  Did you ever wonder what
 made him tick, what forces shaped him, what may have molded him?
         I am a hacker, enter my world...
-        Mine is a world that begins with school... I&#39;m smarter than most of
+        Mine is a world that begins with school... I'm smarter than most of
 the other kids, this crap they teach us bores me...
-        Damn underachiever.  They&#39;re all alike.
+        Damn underachiever.  They're all alike.
 
-        I&#39;m in junior high or high school.  I&#39;ve listened to teachers explain
+        I'm in junior high or high school.  I've listened to teachers explain
 for the fifteenth time how to reduce a fraction.  I understand it.  &quot;No, Ms.
-Smith, I didn&#39;t show my work.  I did it in my head...&quot;
-        Damn kid.  Probably copied it.  They&#39;re all alike.
+Smith, I didn't show my work.  I did it in my head...&quot;
+        Damn kid.  Probably copied it.  They're all alike.
 
         I made a discovery today.  I found a computer.  Wait a second, this is
-cool.  It does what I want it to.  If it makes a mistake, it&#39;s because I
-screwed it up.  Not because it doesn&#39;t like me...
+cool.  It does what I want it to.  If it makes a mistake, it's because I
+screwed it up.  Not because it doesn't like me...
                 Or feels threatened by me...
-                Or thinks I&#39;m a smart ass...
-                Or doesn&#39;t like teaching and shouldn&#39;t be here...
-        Damn kid.  All he does is play games.  They&#39;re all alike.
+                Or thinks I'm a smart ass...
+                Or doesn't like teaching and shouldn't be here...
+        Damn kid.  All he does is play games.  They're all alike.
 
         And then it happened... a door opened to a world... rushing through
-the phone line like heroin through an addict&#39;s veins, an electronic pulse is
+the phone line like heroin through an addict's veins, an electronic pulse is
 sent out, a refuge from the day-to-day incompetencies is sought... a board is
 found.
         &quot;This is it... this is where I belong...&quot;
-        I know everyone here... even if I&#39;ve never met them, never talked to
+        I know everyone here... even if I've never met them, never talked to
 them, may never hear from them again... I know you all...
-        Damn kid.  Tying up the phone line again.  They&#39;re all alike...
+        Damn kid.  Tying up the phone line again.  They're all alike...
 
-        You bet your ass we&#39;re all alike... we&#39;ve been spoon-fed baby food at
+        You bet your ass we're all alike... we've been spoon-fed baby food at
 school when we hungered for steak... the bits of meat that you did let slip
-through were pre-chewed and tasteless.  We&#39;ve been dominated by sadists, or
+through were pre-chewed and tasteless.  We've been dominated by sadists, or
 ignored by the apathetic.  The few that had something to teach found us will-
 ing pupils, but those few are like drops of water in the desert.
 
         This is our world now... the world of the electron and the switch, the
 beauty of the baud.  We make use of a service already existing without paying
-for what could be dirt-cheap if it wasn&#39;t run by profiteering gluttons, and
+for what could be dirt-cheap if it wasn't run by profiteering gluttons, and
 you call us criminals.  We explore... and you call us criminals.  We seek
 after knowledge... and you call us criminals.  We exist without skin color,
 without nationality, without religious bias... and you call us criminals.
 You build atomic bombs, you wage wars, you murder, cheat, and lie to us
-and try to make us believe it&#39;s for our own good, yet we&#39;re the criminals.
+and try to make us believe it's for our own good, yet we're the criminals.
 
         Yes, I am a criminal.  My crime is that of curiosity.  My crime is
 that of judging people by what they say and think, not what they look like.
@@ -93,12 +160,12 @@ My crime is that of outsmarting you, something that you will never forgive me
 for.
 
         I am a hacker, and this is my manifesto.  You may stop this individual,
-but you can&#39;t stop us all... after all, we&#39;re all alike.
+but you can't stop us all... after all, we're all alike.
 
                                +++The Mentor+++
 _________________________________________________________&lt;/pre&gt;
 </description>
-				<pubDate>Thu, 02 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</guid>
 			</item>
@@ -148,10 +215,10 @@ sh copiar-tese.sh
 &lt;p&gt;Além de serem executados também podemos usar o comando &lt;strong&gt;source&lt;/strong&gt;. A diferença é que o source vai correr os comandos na shell actual e executar corre os comandos numa nova shell. Por exemplo&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;#!/bin/bash
-set PATH = $PATH:/opt/bible/bin
+PATH = $PATH:/opt/bible/bin
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessível pelo terminar por estarem na PATH. &lt;/p&gt;
+&lt;p&gt;Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessíveis pelo terminar por estarem na PATH. &lt;/p&gt;
 
 &lt;p&gt;Se executarmos o script (./set-path.sh ou sh set-path.sh) a variável PATH não foi alterada na shell em que nos encontramos, se digitares no terminal echo $PATH ele não retorna com /opt/bible/bin&lt;/p&gt;
 
@@ -175,7 +242,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Isto seria igual a entrar no redis-cli e depois escrever na shell keys *&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</guid>
 			</item>
@@ -188,7 +255,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell.html</guid>
 			</item>
@@ -256,7 +323,7 @@ set PATH = $PATH:/opt/bible/bin
 &lt;p&gt;http://www.codecoffee.com/tipsforlinux/articles/27.html&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</guid>
 			</item>
@@ -333,7 +400,7 @@ set PATH = $PATH:/opt/bible/bin
   &lt;li&gt;/etc/bashrc&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux.html</guid>
 			</item>
@@ -388,7 +455,7 @@ set PATH = $PATH:/opt/bible/bin
 &lt;p&gt;Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
 			</item>
@@ -444,7 +511,7 @@ set PATH = $PATH:/opt/bible/bin
 &lt;h2 id=&quot;builder&quot;&gt;Builder&lt;/h2&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</guid>
 			</item>
@@ -558,7 +625,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</guid>
 			</item>
@@ -619,7 +686,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</guid>
 			</item>
@@ -644,7 +711,7 @@ set PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</guid>
 			</item>
@@ -666,7 +733,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
@@ -683,7 +750,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
 </description>
-				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
@@ -774,7 +841,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 17 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
 			</item>
@@ -837,7 +904,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 
 [+] Starting the password brute forcer
 
-  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
+  Brute forcing user 'testadmin' with 500 passwords... 100% complete.
 [+] Finished at Thu Jul 18 03:39:02 2013
 [+] Elapsed time: 00:01:16
 &lt;/code&gt;&lt;/pre&gt;
@@ -862,7 +929,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 &lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
 Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
@@ -945,7 +1012,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
@@ -971,7 +1038,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
 			</item>
@@ -1053,7 +1120,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
   &lt;li&gt;http://www.troyhunt.com/2011/07/science-of-password-selection.html&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</guid>
 			</item>
@@ -1070,7 +1137,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 &lt;p&gt;Tenho encontrado computadores com versões ancestrais do Internet Explorer e Flash que até nem se actualizam por causa de permissões de contas, firewall a bloquear portas, etc. Isto sim, é um prato bem servido a quem tem más intenções&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</guid>
 			</item>
@@ -1123,7 +1190,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 &lt;p&gt;Eu utilizei isto num contexto em que o baseController já era em si um controller herdado mas a utilizar o ui-router. 
 Desta forma registas o kidsController e adultsController como dois controladores independentes um do outro, mas com as mesmas dependências.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/javascript/2014/09/16/AngularJS-herdar-controller.html</guid>
 			</item>
@@ -1157,7 +1224,7 @@ IDE’s como o PHPStorm ou NetBens têm grandes funcionalidades de debugging mas
 &lt;p&gt;O Vdebug é um plugin para o vim que permite fazer debug a vário código, não apenas PHP!
 O mais fácil para instalares o Vdebug é adicioná-lo nas configuração do vim, em ~/.vimrc (cria este arquivo caso não exista)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Plugin &#39;joonty/vdebug&#39;
+&lt;pre&gt;&lt;code&gt;Plugin 'joonty/vdebug'
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Depois corre este comando para instalares o plugin
@@ -1189,63 +1256,9 @@ Isto vai abrir 4 janelas diferentes. Na esquerda o ficheiro a ser visto e á dir
   &lt;li&gt;F2 - Próximo&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/2014/09/15/php-debug-with-vim-vdebug-xdebug.html</guid>
-			</item>
-		
-			<item>
-				<title>Gerir um servidor de alojamento</title>
-				<description>&lt;h3 id=&quot;php-e-extenses&quot;&gt;PHP e extensões&lt;/h3&gt;
-&lt;p&gt;Praticamente todas as distribuições com instaladores de pacotes conseguem instalar o PHP, MySQL e Apache mas nós precisamos de controlar as versões dos programas e não depender de terceiros para compilar o código.
-Eu gosto de compilar o PHP de raíz, assim como o nginx e MySQL. Ainda são muitas as dependências que temos de instalar (muitas de raíz também).&lt;/p&gt;
-
-&lt;p&gt;As extensões também as compilo. O PECL é muito util para instalar extensões e até tem versões recentes, senão te sentires à vontade no unix é sempre uma boa alternativa.&lt;/p&gt;
-
-&lt;p&gt;É útil ter várias instâncias do PHP a correr com versões diferentes. É preciso instalá-lo em versões diferentes mas é útil pois nem todos os projectos suportam a 5.5 com mais funções deprecadas.
-O ideal é puxar o código do GIT, fazer checkout da versão desejada e compilar o código do genero ./configure –prefix=/opt/php/5.5 &amp;amp;&amp;amp; make &amp;amp;&amp;amp; install
-Assim temos mais constrolo das instalações e até mesmo para as configurações podemos criar uma estrutura semelhante.(php.ini)&lt;/p&gt;
-
-&lt;h3 id=&quot;servios&quot;&gt;Serviços&lt;/h3&gt;
-
-&lt;p&gt;Cpanel e WHM&lt;/p&gt;
-
-&lt;p&gt;O WHM é um serviço pago. Uma solução desenvolvida para configurar uma máquina como servidor web.
-É muito comum nas soluções de alojamento disponíveis porque já têem instaladores para CMS como o Wordpress e Jooma, instalam logo o PHPMyadmin para gerir o MySQL, contas FTP, etc.&lt;/p&gt;
-
-&lt;h3 id=&quot;conta&quot;&gt;Conta&lt;/h3&gt;
-
-&lt;p&gt;Quando alugamos um servidor dedicado ou mesmo partilhado, a entidade que o configura costuma entregar ao cliente um utilizador e password desse servidor. Não adicionam este utilizador ao grupo &lt;strong&gt;sudo&lt;/strong&gt; nem muito menos vão dar a conta root e manterem a manutentação, mas instalam os programas e configuram tudo o que é necessário.&lt;/p&gt;
-
-&lt;p&gt;Recomendo os seguintes softwares a serem instalados&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;htop - uma melhoria do &lt;strong&gt;top&lt;/strong&gt; que já vem disponível, permite ver o consumo detalhado de cada processo e o estado geral dos recursos do servidor&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;scripts&quot;&gt;Scripts&lt;/h3&gt;
-
-&lt;p&gt;O CPanel e semelhantes trazem opções de backup limitadas. O que mais gosto de fazer é escrever o código e pensar eu na forma como a informação vai ser guardada.&lt;/p&gt;
-
-&lt;p&gt;De 7 em 7 dias um backup completo do conteúdo público de todas as contas (/www), das base de dados e email.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-
-#START
-TIME=`date +&quot;%d-%m-%Y-%H-%M-%S&quot;` # day-month-year-hour-minute-second. Ie: 30-04-2014-14-49-47
-FILENAME=&quot;backup-$TIME.tar.gz&quot; # file name is combined with the date
-SRCDIR=&quot;/var/www&quot; # source directory
-DESDIR=&quot;/var/backups&quot; # destination directory
-tar -cpzf $DESDIR/$FILENAME $SRCDIR # compress the source directory and saves the compress archive in destination
-#END
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;1 vez por dia copiar apenas a base de dados&lt;/p&gt;
-
-</description>
-				<pubDate>Mon, 15 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/webhosting/2014/09/15/manage-webhosting.html</guid>
 			</item>
 		
 	</channel>
