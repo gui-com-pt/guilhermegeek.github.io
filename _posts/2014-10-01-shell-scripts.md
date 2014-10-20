@@ -51,7 +51,6 @@ Além de serem executados também podemos usar o comando **source**. A diferenç
 Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessíveis pelo terminar por estarem na PATH. 
 
 
-
 Se executarmos o script (./set-path.sh ou sh set-path.sh) a variável PATH não foi alterada na shell em que nos encontramos, se digitares no terminal echo $PATH ele não retorna com /opt/bible/bin
 
 Se abrires uma nova shell a variável já está actualizada. Se em vez de executares usares 

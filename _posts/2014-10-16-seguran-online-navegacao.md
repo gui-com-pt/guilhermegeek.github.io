@@ -7,18 +7,21 @@ categories:
  bower
 ---
 
-O titulo deste artigo torna-se inválido porque não existem procedimentos 100% seguros na internet, no entanto vamos melhorar alguns hábitos.
-
 ### Tor - Navegar em anônimo
 
-Como me dizia um amigo, a "cebolinha"! O Tor é uma rede que podemos utilizar para navegar anonimamente na internet. É a rede utilizada por hackers para realizar ataques, para fazer pagamentos online, autenticar em serviços numa rede pública ou simplesmente enganar aquele sistema de votação online :)
+Como me dizia um amigo, a "cebolinha"! O Tor é uma rede que podemos utilizar para navegar anonimamente na internet. É a rede utilizada por hackers para realizar ataques, para fazer pagamentos online, autenticar em serviços numa rede pública ou simplesmente enganar aquele sistema de votação online.
+
+O tráfego é transmitido de forma encriptada e passado entre vários computadores e servidores espalhados pelo mundo.
+
+Como está licenciado como open source já começam a aparecer mais soluções a utilizar esta comunicação e a tornar-se ainda mais popular.
 
 
-### [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en)
+### [Tor Navegador](https://www.torproject.org/projects/torbrowser.html.en)
 
-Este browser está disponível para Windows, Linux e Mac. Há extensões para o Firefox para puderes usar a rede Tor com esse browser, mas se preferires podes usar este.
+Este browser é uma versão modificada do Firefox e está disponível para Windows, Linux e Mac. Há extensões para o Firefox para puderes usar a rede Tor com esse browser, mas se preferires podes usar este.
 
-Não tem as mesmas funcionalidades que o Chrome ou Firefox e certamente não irás instalar extensões para tirar screenshots, sacar vídeos do youtube. Mas também não irás utilizar o Tor para isso, essa é a razão pela qual uso este browser (apenas quando preciso).
+Não aconselho instalar extensões no navegador como no fazemos no Chrome por exemplo. Essas extensões têm de estar preparadas para utilizar a rede Tor, e nem todas estão o que implica que o tráfego dessa extensão não é anónimo. O mesmo se aplica a outros programas do computador, apenas o navegador utiliza esta rede para comunicar. 
+
 
 ### [Orbot](https://guardianproject.info/apps/orbot/)
 

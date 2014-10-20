@@ -8,17 +8,19 @@
 		
 			<item>
 				<title>Segurança Online - Navegação</title>
-				<description>&lt;p&gt;O titulo deste artigo torna-se inválido porque não existem procedimentos 100% seguros na internet, no entanto vamos melhorar alguns hábitos.&lt;/p&gt;
+				<description>&lt;h3 id=&quot;tor---navegar-em-annimo&quot;&gt;Tor - Navegar em anônimo&lt;/h3&gt;
 
-&lt;h3 id=&quot;tor---navegar-em-annimo&quot;&gt;Tor - Navegar em anônimo&lt;/h3&gt;
+&lt;p&gt;Como me dizia um amigo, a “cebolinha”! O Tor é uma rede que podemos utilizar para navegar anonimamente na internet. É a rede utilizada por hackers para realizar ataques, para fazer pagamentos online, autenticar em serviços numa rede pública ou simplesmente enganar aquele sistema de votação online.&lt;/p&gt;
 
-&lt;p&gt;Como me dizia um amigo, a “cebolinha”! O Tor é uma rede que podemos utilizar para navegar anonimamente na internet. É a rede utilizada por hackers para realizar ataques, para fazer pagamentos online, autenticar em serviços numa rede pública ou simplesmente enganar aquele sistema de votação online :)&lt;/p&gt;
+&lt;p&gt;O tráfego é transmitido de forma encriptada e passado entre vários computadores e servidores espalhados pelo mundo.&lt;/p&gt;
 
-&lt;h3 id=&quot;tor-browserhttpswwwtorprojectorgprojectstorbrowserhtmlen&quot;&gt;&lt;a href=&quot;https://www.torproject.org/projects/torbrowser.html.en&quot;&gt;Tor Browser&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Como está licenciado como open source já começam a aparecer mais soluções a utilizar esta comunicação e a tornar-se ainda mais popular.&lt;/p&gt;
 
-&lt;p&gt;Este browser está disponível para Windows, Linux e Mac. Há extensões para o Firefox para puderes usar a rede Tor com esse browser, mas se preferires podes usar este.&lt;/p&gt;
+&lt;h3 id=&quot;tor-navegadorhttpswwwtorprojectorgprojectstorbrowserhtmlen&quot;&gt;&lt;a href=&quot;https://www.torproject.org/projects/torbrowser.html.en&quot;&gt;Tor Navegador&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;Não tem as mesmas funcionalidades que o Chrome ou Firefox e certamente não irás instalar extensões para tirar screenshots, sacar vídeos do youtube. Mas também não irás utilizar o Tor para isso, essa é a razão pela qual uso este browser (apenas quando preciso).&lt;/p&gt;
+&lt;p&gt;Este browser é uma versão modificada do Firefox e está disponível para Windows, Linux e Mac. Há extensões para o Firefox para puderes usar a rede Tor com esse browser, mas se preferires podes usar este.&lt;/p&gt;
+
+&lt;p&gt;Não aconselho instalar extensões no navegador como no fazemos no Chrome por exemplo. Essas extensões têm de estar preparadas para utilizar a rede Tor, e nem todas estão o que implica que o tráfego dessa extensão não é anónimo. O mesmo se aplica a outros programas do computador, apenas o navegador utiliza esta rede para comunicar. &lt;/p&gt;
 
 &lt;h3 id=&quot;orbothttpsguardianprojectinfoappsorbot&quot;&gt;&lt;a href=&quot;https://guardianproject.info/apps/orbot/&quot;&gt;Orbot&lt;/a&gt;&lt;/h3&gt;
 
@@ -41,7 +43,7 @@
 &lt;p&gt;&lt;strong&gt;Tem preferência por sites com comunicações seguras&lt;/strong&gt;. Certificados SSL não são nenhum investimento gigante para sites, sejam de serviços ou comunidades até. Eu utilizo no meu e não lido com informação importante, considera estranho o facto de um site conhecido não usar nenhum certificado.&lt;/p&gt;
 
 </description>
-				<pubDate>Thu, 16 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 16 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bower/2014/10/16/seguran-online-navegacao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/16/seguran-online-navegacao.html</guid>
 			</item>
@@ -99,7 +101,7 @@
 &lt;p&gt;Nesse exemplo a palavra t33t que facilmente seria descoberta por um hacker, sendo encriptada com o algoritmo transformou-se em w1=rD9YhWahxArZydD8b.&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 15 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</guid>
 			</item>
@@ -166,7 +168,7 @@ dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;spa
   &lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
 			</item>
@@ -203,54 +205,54 @@ The following was written shortly after my arrest...
                           Written on January 8, 1986
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-        Another one got caught today, it&#39;s all over the papers.  &quot;Teenager
+        Another one got caught today, it's all over the papers.  &quot;Teenager
 Arrested in Computer Crime Scandal&quot;, &quot;Hacker Arrested after Bank Tampering&quot;...
-        Damn kids.  They&#39;re all alike.
+        Damn kids.  They're all alike.
 
-        But did you, in your three-piece psychology and 1950&#39;s technobrain,
+        But did you, in your three-piece psychology and 1950's technobrain,
 ever take a look behind the eyes of the hacker?  Did you ever wonder what
 made him tick, what forces shaped him, what may have molded him?
         I am a hacker, enter my world...
-        Mine is a world that begins with school... I&#39;m smarter than most of
+        Mine is a world that begins with school... I'm smarter than most of
 the other kids, this crap they teach us bores me...
-        Damn underachiever.  They&#39;re all alike.
+        Damn underachiever.  They're all alike.
 
-        I&#39;m in junior high or high school.  I&#39;ve listened to teachers explain
+        I'm in junior high or high school.  I've listened to teachers explain
 for the fifteenth time how to reduce a fraction.  I understand it.  &quot;No, Ms.
-Smith, I didn&#39;t show my work.  I did it in my head...&quot;
-        Damn kid.  Probably copied it.  They&#39;re all alike.
+Smith, I didn't show my work.  I did it in my head...&quot;
+        Damn kid.  Probably copied it.  They're all alike.
 
         I made a discovery today.  I found a computer.  Wait a second, this is
-cool.  It does what I want it to.  If it makes a mistake, it&#39;s because I
-screwed it up.  Not because it doesn&#39;t like me...
+cool.  It does what I want it to.  If it makes a mistake, it's because I
+screwed it up.  Not because it doesn't like me...
                 Or feels threatened by me...
-                Or thinks I&#39;m a smart ass...
-                Or doesn&#39;t like teaching and shouldn&#39;t be here...
-        Damn kid.  All he does is play games.  They&#39;re all alike.
+                Or thinks I'm a smart ass...
+                Or doesn't like teaching and shouldn't be here...
+        Damn kid.  All he does is play games.  They're all alike.
 
         And then it happened... a door opened to a world... rushing through
-the phone line like heroin through an addict&#39;s veins, an electronic pulse is
+the phone line like heroin through an addict's veins, an electronic pulse is
 sent out, a refuge from the day-to-day incompetencies is sought... a board is
 found.
         &quot;This is it... this is where I belong...&quot;
-        I know everyone here... even if I&#39;ve never met them, never talked to
+        I know everyone here... even if I've never met them, never talked to
 them, may never hear from them again... I know you all...
-        Damn kid.  Tying up the phone line again.  They&#39;re all alike...
+        Damn kid.  Tying up the phone line again.  They're all alike...
 
-        You bet your ass we&#39;re all alike... we&#39;ve been spoon-fed baby food at
+        You bet your ass we're all alike... we've been spoon-fed baby food at
 school when we hungered for steak... the bits of meat that you did let slip
-through were pre-chewed and tasteless.  We&#39;ve been dominated by sadists, or
+through were pre-chewed and tasteless.  We've been dominated by sadists, or
 ignored by the apathetic.  The few that had something to teach found us will-
 ing pupils, but those few are like drops of water in the desert.
 
         This is our world now... the world of the electron and the switch, the
 beauty of the baud.  We make use of a service already existing without paying
-for what could be dirt-cheap if it wasn&#39;t run by profiteering gluttons, and
+for what could be dirt-cheap if it wasn't run by profiteering gluttons, and
 you call us criminals.  We explore... and you call us criminals.  We seek
 after knowledge... and you call us criminals.  We exist without skin color,
 without nationality, without religious bias... and you call us criminals.
 You build atomic bombs, you wage wars, you murder, cheat, and lie to us
-and try to make us believe it&#39;s for our own good, yet we&#39;re the criminals.
+and try to make us believe it's for our own good, yet we're the criminals.
 
         Yes, I am a criminal.  My crime is that of curiosity.  My crime is
 that of judging people by what they say and think, not what they look like.
@@ -258,12 +260,12 @@ My crime is that of outsmarting you, something that you will never forgive me
 for.
 
         I am a hacker, and this is my manifesto.  You may stop this individual,
-but you can&#39;t stop us all... after all, we&#39;re all alike.
+but you can't stop us all... after all, we're all alike.
 
                                +++The Mentor+++
 _________________________________________________________&lt;/pre&gt;
 </description>
-				<pubDate>Thu, 02 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</guid>
 			</item>
@@ -340,7 +342,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Isto seria igual a entrar no redis-cli e depois escrever na shell keys *&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</guid>
 			</item>
@@ -353,7 +355,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell.html</guid>
 			</item>
@@ -421,7 +423,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;http://www.codecoffee.com/tipsforlinux/articles/27.html&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</guid>
 			</item>
@@ -498,7 +500,7 @@ PATH = $PATH:/opt/bible/bin
   &lt;li&gt;/etc/bashrc&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux.html</guid>
 			</item>
@@ -553,7 +555,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
 			</item>
@@ -609,7 +611,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;h2 id=&quot;builder&quot;&gt;Builder&lt;/h2&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</guid>
 			</item>
@@ -723,7 +725,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</guid>
 			</item>
@@ -784,7 +786,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</guid>
 			</item>
@@ -809,7 +811,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</guid>
 			</item>
@@ -831,7 +833,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
@@ -848,7 +850,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
 </description>
-				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
@@ -939,7 +941,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 17 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
 			</item>
@@ -1002,7 +1004,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 
 [+] Starting the password brute forcer
 
-  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
+  Brute forcing user 'testadmin' with 500 passwords... 100% complete.
 [+] Finished at Thu Jul 18 03:39:02 2013
 [+] Elapsed time: 00:01:16
 &lt;/code&gt;&lt;/pre&gt;
@@ -1027,7 +1029,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 &lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
 Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
@@ -1110,7 +1112,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
@@ -1136,7 +1138,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
 			</item>
@@ -1218,7 +1220,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
   &lt;li&gt;http://www.troyhunt.com/2011/07/science-of-password-selection.html&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</guid>
 			</item>
@@ -1235,7 +1237,7 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
 
 &lt;p&gt;Tenho encontrado computadores com versões ancestrais do Internet Explorer e Flash que até nem se actualizam por causa de permissões de contas, firewall a bloquear portas, etc. Isto sim, é um prato bem servido a quem tem más intenções&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</guid>
 			</item>
