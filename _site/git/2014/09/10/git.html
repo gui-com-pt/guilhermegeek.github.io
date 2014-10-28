@@ -2,14 +2,14 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Guilherme Cardoso Segurança Online - Password</title>
+      <title>Guilherme Cardoso GIT</title>
       <meta name="description" content="">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="Segurança Online - Password">
+      <meta property="og:site_name" content="GIT">
       <meta property="og:image" content="/media/angular-thumb.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/bower/2014/10/15/seguranca-online-password.html">
-      <meta property="og:title" content="Segurança Online - Password">
+      <meta property="og:url" content="/git/2014/09/10/git.html">
+      <meta property="og:title" content="GIT">
       <meta property="og:description" content="">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
@@ -128,66 +128,69 @@
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
 <img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
-<h2 class="content">Segurança Online - Password</h2>
+<h2 class="content">GIT</h2>
 </div>
  
-<p>O problema de passwords fracas é que são facilmente identificadas por ataques brute-force. Uma password que seja construída por sequências ou palavras óbvias torna-se vulnerável a este tipo de ataques. Alguns exemplos para o João Marques nascido a 31/10/1960.</p>
+<p>O Git é utilizador para controlo de versões de software. </p>
+
+<p>Ele foi criado pelo Linus Trovald para distruibuir a Kernel do Linux, um mecanismo bom para actualizar a Kernel, variar entre as versões existentes e implementar código proposto por programadores.</p>
+
+<p>Neste momento o GIT é utilizador por diversos projectos e ganhou mais popularidade quando começaram a existir serviços tão bons como o Github ou Bitbucket! Eles dão-nos espaço gratuíto e mantêm o código fonte num servidor, com interfaces web para gerir tudo, criar ramos, dar permissões a utilizadores, etc.</p>
+
+<p>Eu utilizo para gerir projectos e código em geral que escrevo. Mesmo que não seja código publicado, tê-lo versonado com GIT ou outro sistema é excelente porque tens acesso a alterações que foram feitas, a comparações de código. </p>
+
+<h3 id="repositrios">Repositórios</h3>
+
+<p>Para explicar a estrutura do Git começou por introduzir os repositórios. Um repositório é um directorio onde todas as alterações realizadas são registadas. É a pasta onde vais meter o código, ficheiros de documentação ou scripts de compilação. </p>
+
+<p>No mesmo repositório podes manter vários projectos, eles mesmos a representarem-se como repositórios. Eu prefiro separá-los para ter página da Wiki e Gestão de Erros associados aos projectos em separado.</p>
+
+<h3 id="estrutura">Estrutura</h3>
+
+<p>O Git está organizado em três árvores:</p>
 
 <ul>
-  <li>123_joao_321</li>
-  <li>asdasd<em>joao</em>asdasd</li>
-  <li>qwer123_31_qwe123</li>
-  <li>1960<em>10</em>31</li>
+  <li>Working directory - contém os arquivos vigentes</li>
+  <li>Index - dados temporários</li>
+  <li>HEAD - última confirmação realizada</li>
 </ul>
 
-<p>Estas passwords são vulneráveis a brute-force. Se for uma vítima específica, o hacker vai usar as tais palavras óbvias como o nome dos pais, filhos, morada, localidade.</p>
+<p>Para criarmos um repositório novo usamos </p>
 
-<p>Também é comum utilizar a mesma password para serviços diferentes e apenas diferir numa palavra que identifique esse serviço. No exemplo de cima, para o Facebook e Google seria:</p>
+<pre><code>git init
+</code></pre>
 
-<ul>
-  <li>123_joao_321-facebook</li>
-  <li>123_joao_321-google</li>
-</ul>
+<p>Para puxarmos um repositório já existente</p>
 
-<p>Podemos concluír que para descubrir a password um hacker pode tentar várias tentativas até usando palavras chaves que de certa forma se identifiquem a nós.</p>
+<pre><code>git clone https://github.com/guilhermegeek/guilhermegeek.github.io
+</code></pre>
 
-<p>Assim a solução para uma password é não utilizar-mos nenhuma sequência ou melhor ainda: uma password que nem nós saibamos! Uma palavra construída por um programa que pode ser instalado no computador ou telemovel, e seja gerada apartir de uma lógica.</p>
+<p>Quando adicionamos, removemos ou editamos um ficheiro dentro de um repositório, as mudanças ficam no <strong>Index</strong>.</p>
 
-<h2 id="usuabilidade">Usuabilidade</h2>
+<pre><code>git add -A
+</code></pre>
 
-<p>Quando tens dezenas de contas registadas em serviços como email, redes sociais, portais, o mais comum é a password ser sempre a mesma. Até podes usar diferentes mas cada uma atribúida a níveis diferentes de segurança (mais complexas para serviços mais sensíveis).</p>
+<p>Para adicionar ficheiros ocultos:</p>
 
-<p>Não é prático termos dezenas de passwords diferentes que tenhamos de decorar sempre. </p>
+<pre><code>git add -A .
+</code></pre>
 
-<h2 id="como-utilizar-a-password">Como utilizar a password</h2>
+<p>Uma alteração contém um ou mais ficheiros que foram adicionados, editados ou removidos após o repositório ter sido actualizado. Ao adicionar-mos os ficheiros á alteração eles ficam no <strong>HEAD</strong> mas ainda não estão no repositório remoto, estão localmente.</p>
 
-<p>O primeiro passo que fazes é sempre autenticares-te. Se for num site como o Facebook, a opção para manter a sessão iniciada após a autenticação pode ser uma vulnerabilidade em redes que não sejam confiáveis. Isto porque esta opção guarda uma espécie de palavra super secreta que pode ser usada durante X dias para entrar no Facebook sem teres de te ligar sempre. Esta palavra expira depois desses dias, são os tokens (no caso do Facebook providos por OAuth 2).</p>
+<pre><code>git commit -m 'Im fixing the bug founded in CV0023 by Marthin'
+</code></pre>
 
-<p>Se estiveres ligado á internet de tua casa, podes partir do princípio que podes guardar a sessão iniciada. Estás numa rede conhecida e se alguém a invadir a tua conta do Facebook deve ser a menor das preocupações.</p>
+<p>O parametro m indica uma mensagem a associar à alteração. É importante usar sempre uma mensagem descrivita, simples e lógica que outro programador que nunca tenha trabalhado neste projecto entenda.</p>
 
-<p>Numa rede pública como um café inverte-se claro. Nessa rede pode aceder qualquer um que tenha o acesso, acesso esse que não é controlado por ti. Podes ser vítima de um roubo da palavra super secreta que falei. Essa palavra está guardada no teu computador (para ser usada para entrar no Facebook sem te autenticares sempre), possivelmente numa cookie facilmente acedida. Quem roubar essa palavra, consegue entrar na tua conta sem precisar de se autenticar.</p>
+<p>Quando enviamos pela primeira vez para o repositório temos de indicar o ramo, neste exemplo master</p>
 
-<p>**Nunca guardes a sessão iniciada automaticamente numa rede pública. Se procurares mesmo segurança, então nunca a guardes em nenhuma rede.</p>
+<pre><code>git push origin master
+</code></pre>
 
-<h2 id="master-password-app">Master Password App</h2>
+<p>Também podemos criar um novo repositório num servidor git apartir do nosso repositório local, no caso de não ter sido clonado</p>
 
-<p>Este é o programa que recomendo para gerires a tua password. Este programa gera uma palavra através de um algoritmo, isto significa que ela não é guardada em nenhum lado.</p>
-
-<p><img class="post-entry__image" src="/media/posts/seguranca-pw-1.png" /></p>
-
-<p>O Master Password pode ser instalado como uma aplicação mobile, um programa no computador ou até mesmo usado em código.</p>
-
-<p>No caso de uma password importante que apenas uses algumas vezes por dia (o acto da autenticação e não o serviço em si), tendo esta aplicação instalada é uma mais valia e evita que guardes passwords.</p>
-
-<p>Nesse exemplo a palavra t33t que facilmente seria descoberta por um hacker, sendo encriptada com o algoritmo transformou-se em w1=rD9YhWahxArZydD8b.</p>
-
-<h2 id="google-security-key">Google Security Key</h2>
-
-<p><img class="post-entry__image" src="/media/posts/seguranca-pw-2.jpg" /></p>
-
-<p>A Google tomou um passo importante ao promover a autenticação de dois passos. Primeiro autenticas-te com a password e depois receber um código de confirmação através de uma sms, chamada de voz ou uma aplicação própria para isso. Esse código de confirmação é o segundo passo na autenticação.</p>
-
-<p>Além de usar um código de confirmação no segundo passo, agora é possível usar uma pen drive, a chamada <strong>Security Key for 2-Step verification</strong>. Por enquanto esta autenticação apenas é possível através do Chrome na versão 38 (muito recente ainda).</p>
+<pre><code>git remote add origin https://links
+</code></pre>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>

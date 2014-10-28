@@ -100,6 +100,13 @@
 
 &lt;p&gt;Nesse exemplo a palavra t33t que facilmente seria descoberta por um hacker, sendo encriptada com o algoritmo transformou-se em w1=rD9YhWahxArZydD8b.&lt;/p&gt;
 
+&lt;h2 id=&quot;google-security-key&quot;&gt;Google Security Key&lt;/h2&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-pw-2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A Google tomou um passo importante ao promover a autenticação de dois passos. Primeiro autenticas-te com a password e depois receber um código de confirmação através de uma sms, chamada de voz ou uma aplicação própria para isso. Esse código de confirmação é o segundo passo na autenticação.&lt;/p&gt;
+
+&lt;p&gt;Além de usar um código de confirmação no segundo passo, agora é possível usar uma pen drive, a chamada &lt;strong&gt;Security Key for 2-Step verification&lt;/strong&gt;. Por enquanto esta autenticação apenas é possível através do Chrome na versão 38 (muito recente ainda).&lt;/p&gt;
 </description>
 				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</link>
