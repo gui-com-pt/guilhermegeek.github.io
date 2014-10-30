@@ -7,6 +7,120 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Começar a trabalhar como programador</title>
+				<description>&lt;p&gt;Neste artigo vou tentar explicar que vários rumos podes tomar na área da programação, mas também direccionado a quem queira estudar web design ou outras áreas como gestão de base de dados. &lt;/p&gt;
+
+&lt;p&gt;Tudo começa no planeamento que vais criar para a tua carreira enquanto programador. Vou dividir em três níveis&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Baixo - Não investes muito tempo para conhecer a linguagem de programação (ou seja, apenas conheces uma também) e trabalhas em projetos rotinários que não te façam ter de sair da tua zona de conforto. Isto implica que não precises de estudar e avançar mais do nível onde te encontras.&lt;/li&gt;
+  &lt;li&gt;Normal - Além das 8 horas de trabalho investes tempo para te manteres actualizado e tudo que aprendes não é apenas da necessidade dos projetos. &lt;/li&gt;
+  &lt;li&gt;Alto - Estudas e aprendes tecnologias que não usas no teu trabalho, lês teses e projetos com o objetivo de aprendizagem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Algo que sempre gostei em programação é que o teu valor enquanto provedor de serviços (não meramente um empregado) pode ser porpocional ao tempo que dedicas a estudar. Para te tornares um melhor programador não precisas de ir para uma boa faculdade ou ter uma cunha, simplesmente tens de estudar. E para isso é preciso gostar mesmo asério do que vais fazer.&lt;/p&gt;
+
+&lt;p&gt;Dependendo da área onde residas, a tua escolha de te tornares um programador de alto nível pode implicar que tenhas de trabalhar noutro local ou então iniciares-te como freelancer. No caso de Portugal hà boas empresas fora das cidades principais Lisboa, Porto, Coimbra e Braga. No entanto é mais em Lisboa e Porto que o mercado de consultoria está localizado e onde tens mais diversidade de escolha.&lt;/p&gt;
+
+&lt;h3 id=&quot;empresas-de-webdesign&quot;&gt;Empresas de Webdesign&lt;/h3&gt;
+
+&lt;p&gt;Não é a desenvolver websites ou a usar CMS que vão aparecer desafios que te evoluam e criem a necessidade de estudo. Há muitas empresas assim, com serviços como: desenvolvimento de websites, criação de lojas online, criação de portais, etc. Basicamente criam sites. Neste tipo de empresas não tens muita margem para evoluir. Alguns exemplos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;O código que escreves é irrelevante tanto para o cliente como para o teu empregador, pois não tens nenhum chefe de equipa decerta forma a julgar-te e valorizar-te também. Curtos prazos de desenvolvimento são pedidos porque o projeto foi vendido ao preço de umas sapatilhas, e tens de rentabilizar o tempo.&lt;/li&gt;
+  &lt;li&gt;Testes unitários demoram tempo. Na realidade, até podes poupar tempo se souberes desenvolver a escrever testes (TDD) mas isso não interessa para a empresa. Escrever testes = escrever mais código = prazos maiores de desenvolvimento.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Uma empresa assim pode ser boa para começares a trabalhar. Outra alternativa é começar no mercado da consultoria mas isso já requer alguma experiência ou boa teoria.&lt;/p&gt;
+
+&lt;h3 id=&quot;consultoria&quot;&gt;Consultoria&lt;/h3&gt;
+
+&lt;p&gt;Em consultoria o cenário é diferente, muito diferente. O teu empregador pode ser uma empresa com equipas pŕoprias de desenvolvimento que esteja a contratar especificamente para aquele projeto ou pode ser uma empresa que apenas sub contrata.&lt;/p&gt;
+
+&lt;p&gt;Podes ser contratado apenas para um projeto ou assinar mesmo um contrato com uma empresa mas simplesmente trabalhares como consultor. Vais participar em projetos externos, conhecer várias pessoas da área pois lidas com muita coisa mesmo! Na mesma sala pode estar uma equipa de desenvolvimento á medida, outra de SAP.&lt;/p&gt;
+
+&lt;p&gt;Os ambientes são mais formais. Eu gosto disto, trabalhei em sítios onde realmente respeitam o local de trabalho e o silêncio é apreciado. Isto é muito importante porque se fores trabalhar para uma empresa pequena onde tenhas uma pessoa que a função dela não requer atenção e foco na tarefa, basta ser engraçadinho e é o suficiente para te afetar durante o trabalho, não te conseguires concentrar.&lt;/p&gt;
+
+&lt;h4 id=&quot;perfil&quot;&gt;Perfil&lt;/h4&gt;
+
+&lt;p&gt;Em consultoria a procura é específica. Enquanto que numa empresa de webdesign tens de saber HTML, CSS, Javascript e uma linguagem como PHP, neste tipo de projetos procuram profissionais específicos para as linguagens e os requisítios são mais elevados.&lt;/p&gt;
+
+&lt;p&gt;Há requisitos na procura que também justificam os salários mais altos. Por exemplo para um programador C# pode ser pedido:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Desenvolver APIs com a .NET Web API&lt;/li&gt;
+  &lt;li&gt;Validar os serviços com testes unitários&lt;/li&gt;
+  &lt;li&gt;Utilizar GIT ou outro gestor de código&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para um web designer:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Código HTML validado com a W3C&lt;/li&gt;
+  &lt;li&gt;Utilizar LESS ou SASS para gerar o código CSS&lt;/li&gt;
+  &lt;li&gt;Utilizar um padrão em CSS (por exemplo: BEM)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Existem níveis que classificam a tua posição dentro da empresa. &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Júnior - programador com menos de 2 anos de experiência&lt;/li&gt;
+  &lt;li&gt;Sénior&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Uma dica: se queres trabalhar em consultoria e queres investir em ti então estuda o que mercado mais procura e valoriza! É escusado dizer que quanto mais precisas de aprender, melhor é a recompensa salarial ;)&lt;/p&gt;
+
+&lt;h3 id=&quot;freelancer&quot;&gt;Freelancer&lt;/h3&gt;
+
+&lt;p&gt;Esta área tem esta mais valia em relaçao a muitas outras profissoes. O mercado recorre muito a freelancers e por isso, se investires mesmo em ti consegues trabalhar como freelancer.&lt;/p&gt;
+
+&lt;p&gt;Há aqueles freelancers que só o são por não serem contratados. Aqui incluo grande maioria dos estudantes formados em tecnologias. Quando em 2014 é leccionado Pascal a quem quer seguir programação é ridículo e o que é ensinado é demasiado teório sem grandes aplicações em projetos reais.&lt;/p&gt;
+
+&lt;p&gt;Aquele programador que não tem experiência séria, num projeto simples sente-se assustado com novas funcionalidades que desconhece possíveis implementações ou que simplesmente demore demasiado tempo a entregar um produto.&lt;/p&gt;
+
+&lt;p&gt;Todos começamos por algum lado, é preciso é continuar.&lt;/p&gt;
+
+&lt;h4 id=&quot;sub-contratao&quot;&gt;Sub contratação&lt;/h4&gt;
+
+&lt;p&gt;É comum perderem-se projetos por não conseguir fazer certa implementação. Como freelancer podes sub contratar outros freelanceres para áreas que não sejam a tua e assim alcançares mais projetos. &lt;/p&gt;
+
+&lt;p&gt;Se começares sozinho é sempre arriscado porque pode ser alguém que não conheces e acabas por perder o controlo do prazo de entrega, ou simplesmente é alguém bom demais que te vai pedir tanto que irá lucrar mais que tu.&lt;/p&gt;
+
+&lt;h4 id=&quot;projeto-de-equipa&quot;&gt;Projeto de equipa&lt;/h4&gt;
+
+&lt;p&gt;Uma boa forma de formares uma equipa de freelancers é começarem com um projeto sério. No início estes projetos devem ser internos para a equipa se ficar a conhecer melhor, identificarem o que ainda precisam de aprender e que falhas existem nos vários processos de desenvolvimento.&lt;/p&gt;
+
+&lt;p&gt;Como estás a trabalhar por conta própria não lidas com requisitos de clientes (como suportar o Internet Explorer 9), e isso permite á equipa apostar em tecnologias de ponta.&lt;/p&gt;
+
+&lt;p&gt;Apartir daqui vou escrever mais artigos específicos do que falei&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Plano - roadmap a que te comprometas para começares a programar ou evoluires.&lt;/li&gt;
+  &lt;li&gt;Curriculum - como te podes apresentar a uma empresa&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Começar a programar&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Recursos de aprendizagem&lt;/li&gt;
+  &lt;li&gt;Escolher uma linguagem de programação&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Freelancer&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;O teu primeiro projeto real&lt;/li&gt;
+  &lt;li&gt;Estrutares a base da tua empresa de modo a que outros programadores possam desenvolver e rentabilizar o tempo&lt;/li&gt;
+  &lt;li&gt;Propostas de orçamentos&lt;/li&gt;
+  &lt;li&gt;Divulgação&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/programacao/2014/10/28/profissoes.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/10/28/profissoes.html</guid>
+			</item>
+		
+			<item>
 				<title>Segurança Online - Navegação</title>
 				<description>&lt;h3 id=&quot;tor---navegar-em-annimo&quot;&gt;Tor - Navegar em anônimo&lt;/h3&gt;
 
@@ -43,7 +157,7 @@
 &lt;p&gt;&lt;strong&gt;Tem preferência por sites com comunicações seguras&lt;/strong&gt;. Certificados SSL não são nenhum investimento gigante para sites, sejam de serviços ou comunidades até. Eu utilizo no meu e não lido com informação importante, considera estranho o facto de um site conhecido não usar nenhum certificado.&lt;/p&gt;
 
 </description>
-				<pubDate>Thu, 16 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 16 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bower/2014/10/16/seguran-online-navegacao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/16/seguran-online-navegacao.html</guid>
 			</item>
@@ -108,7 +222,7 @@
 
 &lt;p&gt;Além de usar um código de confirmação no segundo passo, agora é possível usar uma pen drive, a chamada &lt;strong&gt;Security Key for 2-Step verification&lt;/strong&gt;. Por enquanto esta autenticação apenas é possível através do Chrome na versão 38 (muito recente ainda).&lt;/p&gt;
 </description>
-				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 15 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</guid>
 			</item>
@@ -175,7 +289,7 @@ dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;spa
   &lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
 			</item>
@@ -212,54 +326,54 @@ The following was written shortly after my arrest...
                           Written on January 8, 1986
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-        Another one got caught today, it&#39;s all over the papers.  &quot;Teenager
+        Another one got caught today, it's all over the papers.  &quot;Teenager
 Arrested in Computer Crime Scandal&quot;, &quot;Hacker Arrested after Bank Tampering&quot;...
-        Damn kids.  They&#39;re all alike.
+        Damn kids.  They're all alike.
 
-        But did you, in your three-piece psychology and 1950&#39;s technobrain,
+        But did you, in your three-piece psychology and 1950's technobrain,
 ever take a look behind the eyes of the hacker?  Did you ever wonder what
 made him tick, what forces shaped him, what may have molded him?
         I am a hacker, enter my world...
-        Mine is a world that begins with school... I&#39;m smarter than most of
+        Mine is a world that begins with school... I'm smarter than most of
 the other kids, this crap they teach us bores me...
-        Damn underachiever.  They&#39;re all alike.
+        Damn underachiever.  They're all alike.
 
-        I&#39;m in junior high or high school.  I&#39;ve listened to teachers explain
+        I'm in junior high or high school.  I've listened to teachers explain
 for the fifteenth time how to reduce a fraction.  I understand it.  &quot;No, Ms.
-Smith, I didn&#39;t show my work.  I did it in my head...&quot;
-        Damn kid.  Probably copied it.  They&#39;re all alike.
+Smith, I didn't show my work.  I did it in my head...&quot;
+        Damn kid.  Probably copied it.  They're all alike.
 
         I made a discovery today.  I found a computer.  Wait a second, this is
-cool.  It does what I want it to.  If it makes a mistake, it&#39;s because I
-screwed it up.  Not because it doesn&#39;t like me...
+cool.  It does what I want it to.  If it makes a mistake, it's because I
+screwed it up.  Not because it doesn't like me...
                 Or feels threatened by me...
-                Or thinks I&#39;m a smart ass...
-                Or doesn&#39;t like teaching and shouldn&#39;t be here...
-        Damn kid.  All he does is play games.  They&#39;re all alike.
+                Or thinks I'm a smart ass...
+                Or doesn't like teaching and shouldn't be here...
+        Damn kid.  All he does is play games.  They're all alike.
 
         And then it happened... a door opened to a world... rushing through
-the phone line like heroin through an addict&#39;s veins, an electronic pulse is
+the phone line like heroin through an addict's veins, an electronic pulse is
 sent out, a refuge from the day-to-day incompetencies is sought... a board is
 found.
         &quot;This is it... this is where I belong...&quot;
-        I know everyone here... even if I&#39;ve never met them, never talked to
+        I know everyone here... even if I've never met them, never talked to
 them, may never hear from them again... I know you all...
-        Damn kid.  Tying up the phone line again.  They&#39;re all alike...
+        Damn kid.  Tying up the phone line again.  They're all alike...
 
-        You bet your ass we&#39;re all alike... we&#39;ve been spoon-fed baby food at
+        You bet your ass we're all alike... we've been spoon-fed baby food at
 school when we hungered for steak... the bits of meat that you did let slip
-through were pre-chewed and tasteless.  We&#39;ve been dominated by sadists, or
+through were pre-chewed and tasteless.  We've been dominated by sadists, or
 ignored by the apathetic.  The few that had something to teach found us will-
 ing pupils, but those few are like drops of water in the desert.
 
         This is our world now... the world of the electron and the switch, the
 beauty of the baud.  We make use of a service already existing without paying
-for what could be dirt-cheap if it wasn&#39;t run by profiteering gluttons, and
+for what could be dirt-cheap if it wasn't run by profiteering gluttons, and
 you call us criminals.  We explore... and you call us criminals.  We seek
 after knowledge... and you call us criminals.  We exist without skin color,
 without nationality, without religious bias... and you call us criminals.
 You build atomic bombs, you wage wars, you murder, cheat, and lie to us
-and try to make us believe it&#39;s for our own good, yet we&#39;re the criminals.
+and try to make us believe it's for our own good, yet we're the criminals.
 
         Yes, I am a criminal.  My crime is that of curiosity.  My crime is
 that of judging people by what they say and think, not what they look like.
@@ -267,12 +381,12 @@ My crime is that of outsmarting you, something that you will never forgive me
 for.
 
         I am a hacker, and this is my manifesto.  You may stop this individual,
-but you can&#39;t stop us all... after all, we&#39;re all alike.
+but you can't stop us all... after all, we're all alike.
 
                                +++The Mentor+++
 _________________________________________________________&lt;/pre&gt;
 </description>
-				<pubDate>Thu, 02 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</guid>
 			</item>
@@ -349,7 +463,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Isto seria igual a entrar no redis-cli e depois escrever na shell keys *&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</guid>
 			</item>
@@ -362,7 +476,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell.html</guid>
 			</item>
@@ -430,7 +544,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;http://www.codecoffee.com/tipsforlinux/articles/27.html&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</guid>
 			</item>
@@ -507,7 +621,7 @@ PATH = $PATH:/opt/bible/bin
   &lt;li&gt;/etc/bashrc&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux.html</guid>
 			</item>
@@ -562,7 +676,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
 			</item>
@@ -618,7 +732,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;h2 id=&quot;builder&quot;&gt;Builder&lt;/h2&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</guid>
 			</item>
@@ -732,7 +846,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</guid>
 			</item>
@@ -793,7 +907,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</guid>
 			</item>
@@ -818,7 +932,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</guid>
 			</item>
@@ -840,7 +954,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
@@ -857,7 +971,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
 </description>
-				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
@@ -948,7 +1062,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 17 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
 			</item>
@@ -1011,7 +1125,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 
 [+] Starting the password brute forcer
 
-  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
+  Brute forcing user 'testadmin' with 500 passwords... 100% complete.
 [+] Finished at Thu Jul 18 03:39:02 2013
 [+] Elapsed time: 00:01:16
 &lt;/code&gt;&lt;/pre&gt;
@@ -1036,7 +1150,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 &lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
 Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
@@ -1119,7 +1233,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
@@ -1145,7 +1259,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
 			</item>
@@ -1227,26 +1341,9 @@ Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acaba
   &lt;li&gt;http://www.troyhunt.com/2011/07/science-of-password-selection.html&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</guid>
-			</item>
-		
-			<item>
-				<title>Actualizações do Sistema Operativo e Softwares</title>
-				<description>&lt;p&gt;Já estou habituado a usar pc’s que logo no arranque mostram avisos de actualizações e os proprietários simplesmente me dizem “Ah ignora isso, se puderes remove essas mensagens. Não quero actualizar nada, é sempre a mesma coisa”. Partilhas da mesma opinião? Isto é para ti.&lt;/p&gt;
-
-&lt;p&gt;Quando é encontrada uma vulnerabilidade num software o investigador pode comunicar directamente os donos do código ou simplesmente libertar a falha para outros. Estas vulnerabilidades existem em sistemas operativos, softwares, sites, enfim praticamente tudo que tenha código.&lt;/p&gt;
-
-&lt;p&gt;Ao ser lançada uma actualização para determinado software ela pode cair na categoria da &lt;strong&gt;correcção de falhas de segurança&lt;/strong&gt;, foram falhas corrigidas pelos proprietários e enviado um patch para a corrigir. Ao rejeitares uma actualização destas simplesmente estás a dizer “Ok, descubriram erros e estão a querer actualizar o código do meu computador mas sou preguiço e não quero”. Simples!&lt;/p&gt;
-
-&lt;p&gt;As vulnerabilidades publicas sem nenhum patch disponível para correcção são consideradas Zero Day, Zero Day Attack, Zero Day Exploit. Assim que é libertada uma actualização deixa de ser Zero Day.&lt;/p&gt;
-
-&lt;p&gt;Tenho encontrado computadores com versões ancestrais do Internet Explorer e Flash que até nem se actualizam por causa de permissões de contas, firewall a bloquear portas, etc. Isto sim, é um prato bem servido a quem tem más intenções&lt;/p&gt;
-</description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/security/2014/09/16/actualizacoes-e-vulnerabilidades.html</guid>
 			</item>
 		
 	</channel>
