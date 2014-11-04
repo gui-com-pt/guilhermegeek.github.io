@@ -74,23 +74,45 @@
 
 &lt;p&gt;Esta área tem esta mais valia em relaçao a muitas outras profissoes. O mercado recorre muito a freelancers e por isso, se investires mesmo em ti consegues trabalhar como freelancer.&lt;/p&gt;
 
-&lt;p&gt;Há aqueles freelancers que só o são por não serem contratados. Aqui incluo grande maioria dos estudantes formados em tecnologias. Quando em 2014 é leccionado Pascal a quem quer seguir programação é ridículo e o que é ensinado é demasiado teório sem grandes aplicações em projetos reais.&lt;/p&gt;
+&lt;p&gt;Há aqueles freelancers que só o são por não conseguirem arranjar emprego.&lt;/p&gt;
 
-&lt;p&gt;Aquele programador que não tem experiência séria, num projeto simples sente-se assustado com novas funcionalidades que desconhece possíveis implementações ou que simplesmente demore demasiado tempo a entregar um produto.&lt;/p&gt;
+&lt;p&gt;Aquele programador que não tem experiência séria, num projeto simples sente-se assustado com novas funcionalidades que desconhece possíveis implementações ou que simplesmente demore demasiado tempo a entregar um produto. &lt;/p&gt;
 
 &lt;p&gt;Todos começamos por algum lado, é preciso é continuar.&lt;/p&gt;
 
-&lt;h4 id=&quot;sub-contratao&quot;&gt;Sub contratação&lt;/h4&gt;
+&lt;h4 id=&quot;projeto&quot;&gt;Projeto&lt;/h4&gt;
 
-&lt;p&gt;É comum perderem-se projetos por não conseguir fazer certa implementação. Como freelancer podes sub contratar outros freelanceres para áreas que não sejam a tua e assim alcançares mais projetos. &lt;/p&gt;
+&lt;p&gt;Para aprender a programar web quer uses php, python, c# tens sempre bibliotecas gratuítas que podes usar e desenvolver um projeto. Na fase inicial é uma mais valia ao portfólio e é tido em conta nas entrevistas.&lt;/p&gt;
 
-&lt;p&gt;Se começares sozinho é sempre arriscado porque pode ser alguém que não conheces e acabas por perder o controlo do prazo de entrega, ou simplesmente é alguém bom demais que te vai pedir tanto que irá lucrar mais que tu.&lt;/p&gt;
+&lt;p&gt;Seja para um cliente ou para experiência é sempre preciso estruturar e definir toda a preparação do projeto. Há livros a falar da fase de planeamento de um projeto.&lt;/p&gt;
 
-&lt;h4 id=&quot;projeto-de-equipa&quot;&gt;Projeto de equipa&lt;/h4&gt;
+&lt;p&gt;Eu não levo tão asério. Começo em rascunho numa folha de papel, um esquema UML ou a usar um programa de mockups. Primeiro escolho o domínio daquilo que vou desenvolver. O domínio é formado por entidades, por exemplo para um blog as entidades seriam: Article, Comment, User, Review&lt;/p&gt;
 
-&lt;p&gt;Uma boa forma de formares uma equipa de freelancers é começarem com um projeto sério. No início estes projetos devem ser internos para a equipa se ficar a conhecer melhor, identificarem o que ainda precisam de aprender e que falhas existem nos vários processos de desenvolvimento.&lt;/p&gt;
+&lt;p&gt;Com estas entidades escrevo serviços que vão fazer operações como: ArticleCreate, CommentSend, ReviewEdit, Register, CommentAprove, ArticlePublish, CommentList&lt;/p&gt;
 
-&lt;p&gt;Como estás a trabalhar por conta própria não lidas com requisitos de clientes (como suportar o Internet Explorer 9), e isso permite á equipa apostar em tecnologias de ponta.&lt;/p&gt;
+&lt;p&gt;Serviços comuns como NotificationSend, EmailSend que meto à parte. Este esquema depois serve-me como modelo daquilo que vou desenvolver. &lt;/p&gt;
+
+&lt;p&gt;Podes geriar a parte html usando layouts, páginas parciais. Isto é no lado do servidor seja em PHP, C#, python, há frameworks e bibliotecas que auxiliam.&lt;/p&gt;
+
+&lt;p&gt;Outra alternativa é desenvolveres uma SPA - single page application com uma framework como o AngularJS. A parte do cliente (html, css, javascript) fica separada do código do servidor, o backend. No caso de desenvolver uma SPA o ideal é sempre servi-la com uma API. As linguagens modernas têm frameworks boas para implementar APIs.&lt;/p&gt;
+
+&lt;p&gt;Eu recomendo sempre aprenderem angular! Uma aplicação angular pode servir um website ou uma aplicação android a usar phonegap, ionicframework. Podes escrever toda a lógica, serviços num módulo que partilhes no website e aplicação, e depois desenvolves duas aplicações que consumam esse módulo.&lt;/p&gt;
+
+&lt;p&gt;Além que aprendes javascript e html, mesmo que depois venhas a trabalhar no lado do servidor para fazer isto noutros projetos já sabes boas bases e facilmente te adaptas.&lt;/p&gt;
+
+&lt;p&gt;Isto é javascript mas se sabes programar PHP ou C# também sabes javascript. &lt;/p&gt;
+
+&lt;p&gt;Para desenvolver o código temos de seguir uma arquitectura ou pelo menos alguns padrões que asegurem um bom código. &lt;/p&gt;
+
+&lt;p&gt;Eu gosto muito da arquitectura SOA - arquitectura orientada a serviços mas há outras e depende sempre do que fores desenvolver. Um exemplo de uma aplicação dividida em camadas a utilizar a framework Slim em PHP para servir uma API: https://www.guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html&lt;/p&gt;
+
+&lt;p&gt;Para implementares funcionalidades como validação de dados, formatação de texto, tratamento de imagens, gestão de ficheiros no sistema podes usar bibliotecas. Cada linguagem tem o seu gestor de dependências como o Nuget em C#, composer em PHP, bower para javascript e css. Ter dependências como bibliotecas geridas por algo assim é melhor, ajuda-te a manter tudo actualizado e torna-se mais fácil a instalação em produção.&lt;/p&gt;
+
+&lt;p&gt;Há serviços que podes contratar como websockets, envio de emails, um sistema de comunicação em grupo. Grande parte das empresas que os prestam vêem de programadores e disponibilizam pacotes gratuítos para projetos startup ou pequenos. &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Isto foi escrito pelos Gang Of Four. Não é um livro para um iniciante ler mas se queres aprender a estruturar aplicações e a programar código reutilizável com padrões tens mesmo de ler! - http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Apartir daqui vou escrever mais artigos específicos do que falei&lt;/p&gt;
 
@@ -110,7 +132,7 @@
 
 &lt;ul&gt;
   &lt;li&gt;O teu primeiro projeto real&lt;/li&gt;
-  &lt;li&gt;Estrutares a base da tua empresa de modo a que outros programadores possam desenvolver e rentabilizar o tempo&lt;/li&gt;
+  &lt;li&gt;Estrutares a base da tua equipa de modo a que outros programadores possam desenvolver e rentabilizar o tempo&lt;/li&gt;
   &lt;li&gt;Propostas de orçamentos&lt;/li&gt;
   &lt;li&gt;Divulgação&lt;/li&gt;
 &lt;/ul&gt;

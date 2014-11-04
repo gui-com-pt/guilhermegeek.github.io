@@ -2,14 +2,15 @@
 layout: default
 ---
 <div class="container">
+<p style="font-size:0.8em; color: #666666;">Muitos artigos estão incompletos, desorganizados e o site é feio.</p>
 <div class="row">
 <div class="col-xs-9">
 <div class="clearfix">
 {% for post in site.posts %}
 <div class="media post__list">
-  <a class="pull-left" href="{{post.url}}">
+  <!--<a class="pull-left" href="{{post.url}}">
     <img class="media-object post__thumbnail" src="{{ post.image }}" alt="Logo">
-  </a>
+  </a>-->
   <div class="media-body">
   	<span class="media-date">{{ post.date | date: "%-d %B %Y" }}</span>
     <h4 class="media-heading"><a href="{{post.url}}">{{ post.title }}</a></h4>
@@ -23,7 +24,7 @@ layout: default
 <div class="col-xs-3">
 <div class="clearfix">
 <a href="http://stackoverflow.com/users/365383/guilherme-cardoso">
-<img src="https://stackoverflow.com/users/flair/365383.png?theme=clean" width="208" height="58" alt="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Guilherme Cardoso at Stack Overflow, Q&amp;A for professional and enthusiast programmers" style="width: 100%; height: auto;">
+stackoverflow
 </a>
 <!--<a href="https://internetdefenseleague.org"><img src="https://internetdefenseleague.org/images/badges/final/shield_badge.png" alt="Member of The Internet Defense League" class="img-responsive"/></a>-->
 </div>
