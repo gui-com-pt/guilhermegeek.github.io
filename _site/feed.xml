@@ -179,7 +179,7 @@
 &lt;p&gt;&lt;strong&gt;Tem preferência por sites com comunicações seguras&lt;/strong&gt;. Certificados SSL não são nenhum investimento gigante para sites, sejam de serviços ou comunidades até. Eu utilizo no meu e não lido com informação importante, considera estranho o facto de um site conhecido não usar nenhum certificado.&lt;/p&gt;
 
 </description>
-				<pubDate>Thu, 16 Oct 2014 00:00:00 +0000</pubDate>
+				<pubDate>Thu, 16 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/bower/2014/10/16/seguran-online-navegacao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/16/seguran-online-navegacao.html</guid>
 			</item>
@@ -244,7 +244,7 @@
 
 &lt;p&gt;Além de usar um código de confirmação no segundo passo, agora é possível usar uma pen drive, a chamada &lt;strong&gt;Security Key for 2-Step verification&lt;/strong&gt;. Por enquanto esta autenticação apenas é possível através do Chrome na versão 38 (muito recente ainda).&lt;/p&gt;
 </description>
-				<pubDate>Wed, 15 Oct 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</guid>
 			</item>
@@ -311,9 +311,115 @@ dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;spa
   &lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
+			</item>
+		
+			<item>
+				<title>PHP - Biblioteca</title>
+				<description>&lt;p&gt;Neste artigo vou explicar como podes reutilizar código criando uma biblioteca que seja partilhada. Esta biblioteca vai ter como dependência a biblioteca Respect, que é utilizada para validação.&lt;/p&gt;
+
+&lt;h3 id=&quot;composer&quot;&gt;Composer&lt;/h3&gt;
+
+&lt;p&gt;Para gerir dependências em PHP o composer é o gestor de eleição. Não é nenhum programa que tenhas de distribuir com a biblioteca mas sim um gestor de dependências.&lt;/p&gt;
+
+&lt;p&gt;Na raíz da aplicação (no directorio bible) criamos o ficheiro composer.json. Este ficheiro contém a informação necessária ao composer para reconhecer a biblioteca, as suas dependências e outras informações importantes como a utilização de PSR.&lt;/p&gt;
+
+&lt;p&gt;Exemplo de um ficheiro composer.json&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+	&quot;name&quot;: &quot;o-teu-nome/biblioteca&quot;,
+    &quot;config&quot;: {
+        &quot;vendor-dir&quot;: &quot;src/vendor&quot;
+    },
+    &quot;require&quot;: {
+        &quot;respect/validation&quot;: &quot;dev-master&quot;
+    },
+    &quot;autoload&quot;: {
+        &quot;psr-0&quot;: {
+            &quot;Bible&quot;: &quot;./src&quot;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;No vendor-dir indicamos o directorio onde as dependências vão ser instaladas. Como a biblioteca vai ficar em /bible/src/Bible deixamos as dependências em /bible/src/vendor&lt;/p&gt;
+
+&lt;p&gt;O autoload permite-nos indicar onde está a biblioteca, isto é necessário para que as aplicações a consumam. O composer precisa de saber onde está situada a biblioteca porque em nenhuma parte do código vamos referenciar directamente este caminho. As dependências são da responsabilidade do composer, nós apenas precisamos de ter tudo bem registado e incluindo o ficheiro autoload.php que se encontra dentro da pasta bible/src/vendor.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-biblioteca&quot;&gt;A biblioteca&lt;/h3&gt;
+
+&lt;p&gt;Esta biblioteca vai ser simples. Vamos chamar-lhe &lt;em&gt;Bible&lt;/em&gt; e tem como função prover serviços que procurem versículos na biblia. Vão ser dois ficheiros: o serviço VerseService e uma classe utilitária VerseFormat para formatar-mos os versos.&lt;/p&gt;
+
+&lt;p&gt;O ficheiro bootstrap.php é responsável por carregar todas as dependências da biblioteca e configurações primárias.&lt;/p&gt;
+
+&lt;p&gt;bible
+bible/src
+bible/src/bootstrap.php
+bible/src/Bible
+bible/src/Bible/Services
+bible/src/Bible/Services/VerseService.php
+bible/src/Bible/Helpers
+bible/src/Bible/Helpers/VerseFormat.php&lt;/p&gt;
+
+&lt;p&gt;A pasta src indica source - o directório onde está todo o código da Biblioteca. Outras pasta de primeiro nível além da src poderiam ser:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;docs -  para documentação&lt;/li&gt;
+  &lt;li&gt;examples - para exemplos de como utilizar a biblioteca.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;aplicao-cliente&quot;&gt;Aplicação Cliente&lt;/h3&gt;
+
+&lt;p&gt;Esta é a aplicação que vai consumir a biblioteca. Enquanto que a biblioteca indica o autoload e as dependências, o cliente tem de indicar como dependência a biblioteca e as dependências da biblioteca (neste exemplo o respect/validation) também são automáticamente instaladas.&lt;/p&gt;
+
+&lt;p&gt;O cliente tem de ter um ficheiro composer.json também&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &quot;config&quot;: {
+        &quot;vendor-dir&quot;: &quot;src/vendor&quot;
+    },
+    &quot;require&quot;: {
+        &quot;respect/validation&quot;: &quot;dev-master&quot;,
+        &quot;o-teu-nome/biblioteca&quot;: &quot;dev-master&quot;
+    },
+    &quot;autoload&quot;: {
+        &quot;psr-0&quot;: {
+            &quot;Bible&quot;: &quot;./src&quot;
+        }
+    },
+    &quot;repositories&quot;: [{
+        &quot;type&quot;: &quot;vcs&quot;,
+        &quot;url&quot;: &quot;git@bitbucket.org:o-teu-nome/biblioteca.git&quot;
+    }]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O composer tem um registo publico da mesma forma que o bower mas neste exemplo a biblioteca é privada, por isso indicamos no &lt;strong&gt;repositories&lt;/strong&gt; a localização. &lt;/p&gt;
+
+&lt;p&gt;O dev-master é o ramo GIT que queremos utilizar. Poderia ser&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;master&lt;/li&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;(para o mais recente apenas)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;production&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Vai depender da forma como gerires o GIT. Eu gosto de manter a mesma versão da biblioteca com a tag do Git para criar versões 0.1, 0.1.1&lt;/p&gt;
+
+&lt;h3 id=&quot;actualizao&quot;&gt;Actualização&lt;/h3&gt;
+
+&lt;p&gt;Neste exemplo temos um cliente a utilizar a biblioteca mas podem ser N. A utilização do composer é também para gerir as actualizações de uma forma muito simples: alteramos a biblioteca e enviamos todas as alterações para o versionador de código (GIT). Os clientes depois actualizam as dependências com &lt;strong&gt;composer update&lt;/strong&gt;&lt;/p&gt;
+
+</description>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<link>http://guilhermecardoso.pt/bower/2014/10/10/criar-uma-biblioteca-em-php.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/10/criar-uma-biblioteca-em-php.html</guid>
 			</item>
 		
 			<item>
@@ -348,54 +454,54 @@ The following was written shortly after my arrest...
                           Written on January 8, 1986
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-        Another one got caught today, it's all over the papers.  &quot;Teenager
+        Another one got caught today, it&#39;s all over the papers.  &quot;Teenager
 Arrested in Computer Crime Scandal&quot;, &quot;Hacker Arrested after Bank Tampering&quot;...
-        Damn kids.  They're all alike.
+        Damn kids.  They&#39;re all alike.
 
-        But did you, in your three-piece psychology and 1950's technobrain,
+        But did you, in your three-piece psychology and 1950&#39;s technobrain,
 ever take a look behind the eyes of the hacker?  Did you ever wonder what
 made him tick, what forces shaped him, what may have molded him?
         I am a hacker, enter my world...
-        Mine is a world that begins with school... I'm smarter than most of
+        Mine is a world that begins with school... I&#39;m smarter than most of
 the other kids, this crap they teach us bores me...
-        Damn underachiever.  They're all alike.
+        Damn underachiever.  They&#39;re all alike.
 
-        I'm in junior high or high school.  I've listened to teachers explain
+        I&#39;m in junior high or high school.  I&#39;ve listened to teachers explain
 for the fifteenth time how to reduce a fraction.  I understand it.  &quot;No, Ms.
-Smith, I didn't show my work.  I did it in my head...&quot;
-        Damn kid.  Probably copied it.  They're all alike.
+Smith, I didn&#39;t show my work.  I did it in my head...&quot;
+        Damn kid.  Probably copied it.  They&#39;re all alike.
 
         I made a discovery today.  I found a computer.  Wait a second, this is
-cool.  It does what I want it to.  If it makes a mistake, it's because I
-screwed it up.  Not because it doesn't like me...
+cool.  It does what I want it to.  If it makes a mistake, it&#39;s because I
+screwed it up.  Not because it doesn&#39;t like me...
                 Or feels threatened by me...
-                Or thinks I'm a smart ass...
-                Or doesn't like teaching and shouldn't be here...
-        Damn kid.  All he does is play games.  They're all alike.
+                Or thinks I&#39;m a smart ass...
+                Or doesn&#39;t like teaching and shouldn&#39;t be here...
+        Damn kid.  All he does is play games.  They&#39;re all alike.
 
         And then it happened... a door opened to a world... rushing through
-the phone line like heroin through an addict's veins, an electronic pulse is
+the phone line like heroin through an addict&#39;s veins, an electronic pulse is
 sent out, a refuge from the day-to-day incompetencies is sought... a board is
 found.
         &quot;This is it... this is where I belong...&quot;
-        I know everyone here... even if I've never met them, never talked to
+        I know everyone here... even if I&#39;ve never met them, never talked to
 them, may never hear from them again... I know you all...
-        Damn kid.  Tying up the phone line again.  They're all alike...
+        Damn kid.  Tying up the phone line again.  They&#39;re all alike...
 
-        You bet your ass we're all alike... we've been spoon-fed baby food at
+        You bet your ass we&#39;re all alike... we&#39;ve been spoon-fed baby food at
 school when we hungered for steak... the bits of meat that you did let slip
-through were pre-chewed and tasteless.  We've been dominated by sadists, or
+through were pre-chewed and tasteless.  We&#39;ve been dominated by sadists, or
 ignored by the apathetic.  The few that had something to teach found us will-
 ing pupils, but those few are like drops of water in the desert.
 
         This is our world now... the world of the electron and the switch, the
 beauty of the baud.  We make use of a service already existing without paying
-for what could be dirt-cheap if it wasn't run by profiteering gluttons, and
+for what could be dirt-cheap if it wasn&#39;t run by profiteering gluttons, and
 you call us criminals.  We explore... and you call us criminals.  We seek
 after knowledge... and you call us criminals.  We exist without skin color,
 without nationality, without religious bias... and you call us criminals.
 You build atomic bombs, you wage wars, you murder, cheat, and lie to us
-and try to make us believe it's for our own good, yet we're the criminals.
+and try to make us believe it&#39;s for our own good, yet we&#39;re the criminals.
 
         Yes, I am a criminal.  My crime is that of curiosity.  My crime is
 that of judging people by what they say and think, not what they look like.
@@ -403,12 +509,12 @@ My crime is that of outsmarting you, something that you will never forgive me
 for.
 
         I am a hacker, and this is my manifesto.  You may stop this individual,
-but you can't stop us all... after all, we're all alike.
+but you can&#39;t stop us all... after all, we&#39;re all alike.
 
                                +++The Mentor+++
 _________________________________________________________&lt;/pre&gt;
 </description>
-				<pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
+				<pubDate>Thu, 02 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</guid>
 			</item>
@@ -485,7 +591,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Isto seria igual a entrar no redis-cli e depois escrever na shell keys *&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</guid>
 			</item>
@@ -498,7 +604,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell.html</guid>
 			</item>
@@ -566,7 +672,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;http://www.codecoffee.com/tipsforlinux/articles/27.html&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</guid>
 			</item>
@@ -643,7 +749,7 @@ PATH = $PATH:/opt/bible/bin
   &lt;li&gt;/etc/bashrc&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux.html</guid>
 			</item>
@@ -698,7 +804,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
 			</item>
@@ -754,7 +860,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;h2 id=&quot;builder&quot;&gt;Builder&lt;/h2&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</guid>
 			</item>
@@ -868,7 +974,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</guid>
 			</item>
@@ -929,7 +1035,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</guid>
 			</item>
@@ -954,7 +1060,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</guid>
 			</item>
@@ -976,7 +1082,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
@@ -993,7 +1099,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
 </description>
-				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
@@ -1084,7 +1190,7 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 17 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
 			</item>
@@ -1147,7 +1253,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 
 [+] Starting the password brute forcer
 
-  Brute forcing user 'testadmin' with 500 passwords... 100% complete.
+  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
 [+] Finished at Thu Jul 18 03:39:02 2013
 [+] Elapsed time: 00:01:16
 &lt;/code&gt;&lt;/pre&gt;
@@ -1172,7 +1278,7 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 &lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
 Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
@@ -1255,7 +1361,7 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
@@ -1281,91 +1387,9 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 
 &lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
-			</item>
-		
-			<item>
-				<title>Ataque brute force</title>
-				<description>&lt;p&gt;Um ataque brute-force (ataque de força bruta!) é o ataque mais simples que podemos fazer para descubrir as credenciais de uma conta. &lt;/p&gt;
-
-&lt;p&gt;Ao contrário de exploits que envolvem trabaho de investigação ou outras técnicas mais avançadas, um ataque brute-force apenas envolve a tentativa exaustiva de adivinhar a password. &lt;/p&gt;
-
-&lt;p&gt;Estes ataques podem ser rápidos, demorados ou mesmo barrados pelo servidor.
-Infelizmente muitas pessoas não foram ensinadas a escolher uma password e acabam por usar passwords comuns como:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;asdasd123123&lt;/li&gt;
-  &lt;li&gt;123*123&lt;/li&gt;
-  &lt;li&gt;zxcvbnm123&lt;/li&gt;
-  &lt;li&gt;mysecretpassword&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Estas são as primeiras tentativas, passwords comuns. No caso de um alvo local (um site de Portugal) podemos usar palavras em Português.&lt;/p&gt;
-
-&lt;p&gt;Com uma lista com password pré defenidasf azemos um ataque de dicionários. Usamos várias palavras e podemos usar separadores como &lt;strong&gt;_&lt;/strong&gt; ou &lt;strong&gt;@&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Passwords mais complexas com minúscuas/maiúsculas, caracteres especiais ou palavras sem sentido são mais demoradas de apanhar mas mesmo assim é tudo uma questão de tempo (se não houver resposta de defesa).&lt;/p&gt;
-
-&lt;h3 id=&quot;ataque&quot;&gt;Ataque&lt;/h3&gt;
-
-&lt;p&gt;Para realizar o ataque há vários softwares existentes e até mesmo escrever um script em python ou javascript é simples. Vê os projectos para este fim que estão publicados no github: https://github.com/search?utf8=%E2%9C%93&amp;amp;q=brute+force&lt;/p&gt;
-
-&lt;p&gt;O processo consiste em:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Obter uma password&lt;/li&gt;
-  &lt;li&gt;Fazer um pedido de autenticação (normalmente um HTTP POST)&lt;/li&gt;
-  &lt;li&gt;Ler a resposta &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Para conhecer-mos a resposta que deveríamos receber numa autenticação com sucesso, podemos criar uma conta nesse sistema e inspecionar o pedido HTTP. Senão houver acesso ao registo, podes usar o código da resposta HTTP (&amp;gt;400 consideras erro), faz várias tentativas e considera como correcta qualquer resposta que não a que recebes nas tentativas erradas (aqui corres o risco de respostas de outros erros).&lt;/p&gt;
-
-&lt;p&gt;Em sistemas já conhecidos como o Wordpress este processo é simplificado.&lt;/p&gt;
-
-&lt;p&gt;Podem ser usados vários servidores virtuais (melhor, computadores infectados) para simularem um cluster na tentativa de autenticação. Uma base de dados em redis onde metamos 30GB em memória e todos os servidores fazem as tentativas com essa base de dados, vai-se removendo à medida que se faz get e não há resposta positiva.&lt;/p&gt;
-
-&lt;p&gt;Um servidor com 32GB de RAM arranjas por 33 euros mensais, e cada vps 2 ou 3 euros mensais. &lt;/p&gt;
-
-&lt;h3 id=&quot;listas&quot;&gt;Listas&lt;/h3&gt;
-
-&lt;p&gt;Passwords brute-force&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://www.moehre.org/bruteforce.html&lt;/li&gt;
-  &lt;li&gt;http://packetstormsecurity.com/Crackers/wordlists/&lt;/li&gt;
-  &lt;li&gt;http://trac.kismac-ng.org/wiki/wordlists&lt;/li&gt;
-  &lt;li&gt;https://wiki.skullsecurity.org/Passwords&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;WPA-PSK
- * http://www.renderlab.net/projects/WPA-tables/&lt;/p&gt;
-
-&lt;h3 id=&quot;gerar-uma-lista&quot;&gt;Gerar uma lista&lt;/h3&gt;
-
-&lt;p&gt;Há palavras e numeros que podemos usar para gerir uma lista. Mesmo que seja uma lista pequena usamos antes de um ataque mais global.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Aniversário e de parentes próximos&lt;/li&gt;
-  &lt;li&gt;Nome e de parentes próximos&lt;/li&gt;
-  &lt;li&gt;Cidade natal&lt;/li&gt;
-  &lt;li&gt;Gostos pessoais (motas, mulheres, marijuana, mar, golf, etc)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Para gerares esta lista podes usar o Apligen: http://apligen.sourceforge.net/&lt;/p&gt;
-
-&lt;h3 id=&quot;referncias&quot;&gt;Referências&lt;/h3&gt;
-
-&lt;p&gt;Artigos interessantes para dar seguimento ao que escrevi&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://www.troyhunt.com/2011/07/science-of-password-selection.html&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/16/ataque-brute-force.html</guid>
 			</item>
 		
 	</channel>
