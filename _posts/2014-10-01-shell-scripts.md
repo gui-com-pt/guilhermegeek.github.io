@@ -72,3 +72,18 @@ Em bash o "*" tem um significado próprio. Se executares um script que aceite * 
 	redis-cli keys \*
 
 Isto seria igual a entrar no redis-cli e depois escrever na shell keys *
+
+
+O nohup é um comando que ignora o sinal HUP. Quando terminamos a sessão na shell, o sinal HUP avisa os processos dependentes que são terminados.
+
+Com este comando, mesmo após terminar a sessão o processo continua a ser executado.
+
+	nohup ./run-backgroundjob.sh
+
+Por defeito o retorno é guardado no ficheiro nohup.out, tanto os avisos como os erros. Podemos descartar por completo o retorno enviando-o para /dev/null
+
+	nohup ./resque-scheduler.sh >& /dev/null &
+
+Por outro lado podemos querer descantar o retorno normal e apenas guardar os erros, isso é alcançado removendo o &
+
+	nohup ./resque-scheduler.sh > /dev/null &
