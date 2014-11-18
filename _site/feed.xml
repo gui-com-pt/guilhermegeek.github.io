@@ -590,6 +590,23 @@ PATH = $PATH:/opt/bible/bin
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Isto seria igual a entrar no redis-cli e depois escrever na shell keys *&lt;/p&gt;
+
+&lt;p&gt;O nohup é um comando que ignora o sinal HUP. Quando terminamos a sessão na shell, o sinal HUP avisa os processos dependentes que são terminados.&lt;/p&gt;
+
+&lt;p&gt;Com este comando, mesmo após terminar a sessão o processo continua a ser executado.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nohup ./run-backgroundjob.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Por defeito o retorno é guardado no ficheiro nohup.out, tanto os avisos como os erros. Podemos descartar por completo o retorno enviando-o para /dev/null&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nohup ./resque-scheduler.sh &amp;gt;&amp;amp; /dev/null &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Por outro lado podemos querer descantar o retorno normal e apenas guardar os erros, isso é alcançado removendo o &amp;amp;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nohup ./resque-scheduler.sh &amp;gt; /dev/null &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
 				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>

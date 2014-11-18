@@ -201,6 +201,23 @@ PATH = $PATH:/opt/bible/bin
 
 <p>Isto seria igual a entrar no redis-cli e depois escrever na shell keys *</p>
 
+<p>O nohup é um comando que ignora o sinal HUP. Quando terminamos a sessão na shell, o sinal HUP avisa os processos dependentes que são terminados.</p>
+
+<p>Com este comando, mesmo após terminar a sessão o processo continua a ser executado.</p>
+
+<pre><code>nohup ./run-backgroundjob.sh
+</code></pre>
+
+<p>Por defeito o retorno é guardado no ficheiro nohup.out, tanto os avisos como os erros. Podemos descartar por completo o retorno enviando-o para /dev/null</p>
+
+<pre><code>nohup ./resque-scheduler.sh &gt;&amp; /dev/null &amp;
+</code></pre>
+
+<p>Por outro lado podemos querer descantar o retorno normal e apenas guardar os erros, isso é alcançado removendo o &amp;</p>
+
+<pre><code>nohup ./resque-scheduler.sh &gt; /dev/null &amp;
+</code></pre>
+
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
     <script type="text/javascript">
