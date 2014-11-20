@@ -1,8 +1,8 @@
 ---
-title: Segurança Online - Introdução
+title: Dicas para te protegeres de ataques, malware e problemas comuns
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+excerpt: Queres aprender a proteger-te melhor na Internet? É muito mais que usar programas, aprende hábitos, recomendações e vê exemplos práticos de malware
 categories:
  angularjs
 ---
@@ -17,7 +17,8 @@ Série de artigos sobre segurança online
 
 A prevenção é boa manutenção da máquina é essencial. Não basta apenas instalar programas e esperar que eles por si sejam responsáveis pela segurança.
 
-Os programas são bons para analisar e detectar mas a prevenção é que dita se ficheiros maliciosos e outras ameaças conseguem alcançar a nossa máquina. 
+Os programas são bons para analisar e detectar mas a prevenção é que dita se ficheiros maliciosos e outras ameaças conseguem alcançar a nossa máquina, temos de adoptar boas práticas e criar hábitos que proporcionem isto.
+
 
 
 ## Programas
@@ -43,7 +44,16 @@ Na página do programa se houver publicidade da Google ou outra intencional, fac
 O ficheiro descarregado pode ser um programa totalmente diferente do que preendíamos, pode ser um gestor de programas que diz instalar o programa que procuramos ou pode até abrir a instaação normal do programa que queremos mas trazer consigo código malicioso.
 
 
-#### Instalador
+#### Integridade
+
+Integridade neste contexto significa que o ficheiro original que é distribuído e que recebemos não foi modificado. Uma forma utilizada para comprovar a integridade de um programa é verificar a assinatura md5. 
+
+MD5 significa Message-Digest algorithm, um algoritmo de hash desenvolvido pela RSA Data Security inc com 128 bits unidireccional.
+
+Por ser unidireccional, após ter sido gerado o hash por um texto (por exemplo uma password) não podemos transformar o hash novamente no texto que o originou. Com as passwords guardamos na base de dados encriptadas com MD5 e quando um utilizador se autentica criamos uma hash com a password inserida e comparamos com a hash da base de dados, não podemos desencriptar a hash da base de dados para comparar com a password inserida.
+
+
+#### Processo de Instalação
 
 Neste exemplo vou instalar o Daemon Tools Lite.
 
