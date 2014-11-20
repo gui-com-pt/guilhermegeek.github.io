@@ -7,6 +7,79 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Segurança Online - Introdução</title>
+				<description>&lt;p&gt;Série de artigos sobre segurança online&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Passwords&lt;/li&gt;
+  &lt;li&gt;Navegação&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;precauo&quot;&gt;Precaução&lt;/h2&gt;
+
+&lt;p&gt;A prevenção é boa manutenção da máquina é essencial. Não basta apenas instalar programas e esperar que eles por si sejam responsáveis pela segurança.&lt;/p&gt;
+
+&lt;p&gt;Os programas são bons para analisar e detectar mas a prevenção é que dita se ficheiros maliciosos e outras ameaças conseguem alcançar a nossa máquina. &lt;/p&gt;
+
+&lt;h2 id=&quot;programas&quot;&gt;Programas&lt;/h2&gt;
+
+&lt;p&gt;Uma das formas de distribuir código malicioso e alcançar os utilizadores finais é através de programas. Programas que são instalados para realizarem determinada função mas que traz consigo código com outras intenções, semelhantemente ao cenário do cavalo de troia.&lt;/p&gt;
+
+&lt;p&gt;Neste tipo de programas é mais comum nos deparar-mos com:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Gestor de drivers e actualizações&lt;/li&gt;
+  &lt;li&gt;Anti Virus e programas de segurança&lt;/li&gt;
+  &lt;li&gt;Cracks e patchs&lt;/li&gt;
+  &lt;li&gt;Anexos de emails&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Algo que estes programas têm em comum: têm de ser instalados! Isto também inclui programas instalados como terceiros, ou seja, programas instalados como ofertas, bónus ou promoções durante a instalação de outros.&lt;/p&gt;
+
+&lt;p&gt;Isto normalmente ocorre na aceitação de termos e condições ou na finalização da instalação, e os responsáveis usam truques baixos para levarem as pessoas a instalar. Vamos analisar algumas formas comuns:&lt;/p&gt;
+
+&lt;h4 id=&quot;download&quot;&gt;Download&lt;/h4&gt;
+
+&lt;p&gt;Na página do programa se houver publicidade da Google ou outra intencional, facilmente nos deparamos com 2 ou 3 caixas a dizerm “Download” e ficamos sem saber onde realmente é realizado o download. Isto é um truque utilizador: a publicidade recebe do site informação em relação ao Download e usam-na como referência para o nome do ficheiro ou para aparecer no quadrado de publicidade e levar o utilizador a pensar que é ali o Download.&lt;/p&gt;
+
+&lt;p&gt;O ficheiro descarregado pode ser um programa totalmente diferente do que preendíamos, pode ser um gestor de programas que diz instalar o programa que procuramos ou pode até abrir a instaação normal do programa que queremos mas trazer consigo código malicioso.&lt;/p&gt;
+
+&lt;h4 id=&quot;instalador&quot;&gt;Instalador&lt;/h4&gt;
+
+&lt;p&gt;Neste exemplo vou instalar o Daemon Tools Lite.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Primeiro passo é aceitar os termos do Daemon Tools Lite. A aceitação dos termos costuma ser dos primeiros passos na instalação.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Esta escolha ainda é relevante ao Daemon Tools Lite. Apesar de ter escolhido a versão gratuíta no site, na instalação icentivam o utilizador a comprar a licença.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Aqui está a primeira tentativa de nos enganar. Quando olhamos para este ecrã partimos do princípio que apenas a opção “Typical installation (recommended)” está disponível pois a opçção “Custom installation (advanced)” está com outra cor e tanto a roda (radio button) como o texto estão desactivados. Fazemos isto a elementos quando o utilizador não os pode utilizar, neste caso é apenas para enganar. De outra forma não estaria “recomended”.&lt;/p&gt;
+
+&lt;p&gt;Com a instalação que nos recomendam vamos instalar o Linkey e todo o malware que venha atrás. Podemos então carregar no “Custom installation (advanced)” &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Uma observação que reforça a intenção de enganar: agora a opção “Typical installation (recommended)” não está desactivada como a opção “Custom installation (advanced)” estava a início. Se não estivesse desactivada para enganar, porque não se desactivou a Typical agora que escolhemos? Removemos todos os vistos neste passo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-5.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Para finalizar ainda levamos com o TuneUp Utilities 2014. De novo a técnica de desactivar a opção “I do not accept”. &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ainda durante a instalação aparece mais um Gadget a ser instalado.&lt;/p&gt;
+</description>
+				<pubDate>Wed, 19 Nov 2014 00:00:00 +0000</pubDate>
+				<link>http://guilhermecardoso.pt/angularjs/2014/11/19/seguranca-online-intro.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/11/19/seguranca-online-intro.html</guid>
+			</item>
+		
+			<item>
 				<title>Começar a trabalhar como programador</title>
 				<description>&lt;p&gt;Neste artigo vou tentar explicar que vários rumos podes tomar na área da programação, mas também direccionado a quem queira estudar web design ou outras áreas como gestão de base de dados. &lt;/p&gt;
 
@@ -1381,32 +1454,6 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
 				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
-			</item>
-		
-			<item>
-				<title>Bitcoin</title>
-				<description>&lt;p&gt;O Bitcoin é uma moeda virtual que utiliza a rede peer to peer (o mesmo que utilizas quando sacas um torrent). Neste sistema não existe uma autoridade centralizada que controle as transacções, como uma entidade bancária por exemplo.
-É utilizado um sistema de banco de dados distribuídos espalhados pelos nós da rede p2p para registar as transacções, e com ciptografia utiliza funções de segurança como aseguir que bitcoins só podem ser usados pelo dono.&lt;/p&gt;
-
-&lt;p&gt;O que significa isto? Ninguém é dono do Bitcoin e caramba, o próprio código fonte é livre!&lt;/p&gt;
-
-&lt;p&gt;No mundo do hacking isto é aquilo que precisas para alugar servidores e outros recursos anonimanente. Tens de passar sempre pelo processo de obter as Bitcoins mas há imensas formas e vários serviços de confiança.&lt;/p&gt;
-
-&lt;p&gt;Apesar de apenas ter um formato digital, uma bitcoin é considerado um activo no sentido económico. Tem valor, valor esse que não pode ser inflacionado da mesma forma que o Euro quando se imprimem mais notas por exemplo.&lt;/p&gt;
-
-&lt;h3 id=&quot;como-usar&quot;&gt;Como usar&lt;/h3&gt;
-
-&lt;p&gt;Ao contrário de uma conta bancária onde a entidade é que tem o dinheiro, com o bitcoin tu armazenas a moeda no teu computador, numa pen drive (cuidado, demasiado casos de acidentes!!) ou até mesmo num serviço de alojamento de bitcoins online.&lt;/p&gt;
-
-&lt;p&gt;Em Portugal já há soluções para comprar bitcoins.&lt;/p&gt;
-
-&lt;h3 id=&quot;como-funciona&quot;&gt;Como funciona&lt;/h3&gt;
-
-&lt;p&gt;No bitcoin, todas as transacções são públicas e armazenadas num banco de dados distrubído, block-chain.&lt;/p&gt;
-</description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/bitcoin/2014/09/16/bitcoin-introducao.html</guid>
 			</item>
 		
 	</channel>
