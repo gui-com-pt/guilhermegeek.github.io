@@ -1,9 +1,9 @@
 ## Setup
-title:            Guilherme Cardoso
+title:            Codigo
 tagline:          'Software Programmer'
-description:      'My personal website and blog.'
-url:              http://guilhermecardoso.pt
-name: 'Guilherme Cardoso'
+description:      'Codigo'
+url:              http://www.codigo.pt
+name: 'Codigo'
 comments: true
 gems:
   - jekyll-sitemap

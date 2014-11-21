@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Guilherme Cardoso</title>
-		<description>My personal website and blog.</description>		
-		<link>http://guilhermecardoso.pt</link>
-		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
+		<title>Codigo</title>
+		<description>Codigo</description>		
+		<link>http://www.codigo.pt</link>
+		<atom:link href="http://www.codigo.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Dicas para te protegeres de ataques, malware e problemas comuns</title>
@@ -95,8 +95,8 @@
 &lt;p&gt;Há programas específicos para analisar processos em execução sem ser o gestor de tarefas.&lt;/p&gt;
 </description>
 				<pubDate>Wed, 19 Nov 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/seguranca/2014/11/19/seguranca-online-intro.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/seguranca/2014/11/19/seguranca-online-intro.html</guid>
+				<link>http://www.codigo.pt/seguranca/2014/11/19/seguranca-online-intro.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/seguranca/2014/11/19/seguranca-online-intro.html</guid>
 			</item>
 		
 			<item>
@@ -231,8 +231,8 @@
 &lt;/ul&gt;
 </description>
 				<pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/programacao/2014/10/28/profissoes.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/10/28/profissoes.html</guid>
+				<link>http://www.codigo.pt/programacao/2014/10/28/profissoes.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/programacao/2014/10/28/profissoes.html</guid>
 			</item>
 		
 			<item>
@@ -273,8 +273,8 @@
 
 </description>
 				<pubDate>Thu, 16 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/bower/2014/10/16/seguran-online-navegacao.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/16/seguran-online-navegacao.html</guid>
+				<link>http://www.codigo.pt/bower/2014/10/16/seguran-online-navegacao.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/bower/2014/10/16/seguran-online-navegacao.html</guid>
 			</item>
 		
 			<item>
@@ -338,8 +338,8 @@
 &lt;p&gt;Além de usar um código de confirmação no segundo passo, agora é possível usar uma pen drive, a chamada &lt;strong&gt;Security Key for 2-Step verification&lt;/strong&gt;. Por enquanto esta autenticação apenas é possível através do Chrome na versão 38 (muito recente ainda).&lt;/p&gt;
 </description>
 				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/15/seguranca-online-password.html</guid>
+				<link>http://www.codigo.pt/bower/2014/10/15/seguranca-online-password.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/bower/2014/10/15/seguranca-online-password.html</guid>
 			</item>
 		
 			<item>
@@ -405,8 +405,8 @@ dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;spa
 &lt;/ul&gt;
 </description>
 				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
+				<link>http://www.codigo.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
 			</item>
 		
 			<item>
@@ -511,8 +511,8 @@ bible/src/Bible/Helpers/VerseFormat.php&lt;/p&gt;
 
 </description>
 				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/bower/2014/10/10/criar-uma-biblioteca-em-php.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/bower/2014/10/10/criar-uma-biblioteca-em-php.html</guid>
+				<link>http://www.codigo.pt/bower/2014/10/10/criar-uma-biblioteca-em-php.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/bower/2014/10/10/criar-uma-biblioteca-em-php.html</guid>
 			</item>
 		
 			<item>
@@ -608,8 +608,8 @@ but you can&#39;t stop us all... after all, we&#39;re all alike.
 _________________________________________________________&lt;/pre&gt;
 </description>
 				<pubDate>Thu, 02 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/10/02/hacker-manifesto.html</guid>
+				<link>http://www.codigo.pt/hack/2014/10/02/hacker-manifesto.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/hack/2014/10/02/hacker-manifesto.html</guid>
 			</item>
 		
 			<item>
@@ -702,8 +702,8 @@ PATH = $PATH:/opt/bible/bin
 &lt;/code&gt;&lt;/pre&gt;
 </description>
 				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html</guid>
+				<link>http://www.codigo.pt/linux/2014/10/01/shell-scripts.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/linux/2014/10/01/shell-scripts.html</guid>
 			</item>
 		
 			<item>
@@ -715,8 +715,8 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
 </description>
 				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/linux/2014/10/01/shell.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/10/01/shell.html</guid>
+				<link>http://www.codigo.pt/linux/2014/10/01/shell.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/linux/2014/10/01/shell.html</guid>
 			</item>
 		
 			<item>
@@ -783,8 +783,8 @@ PATH = $PATH:/opt/bible/bin
 
 </description>
 				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux-instalar-softwares.html</guid>
+				<link>http://www.codigo.pt/linux/2014/09/30/linux-instalar-softwares.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/linux/2014/09/30/linux-instalar-softwares.html</guid>
 			</item>
 		
 			<item>
@@ -860,8 +860,8 @@ PATH = $PATH:/opt/bible/bin
 &lt;/ul&gt;
 </description>
 				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/linux/2014/09/30/linux.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/linux/2014/09/30/linux.html</guid>
+				<link>http://www.codigo.pt/linux/2014/09/30/linux.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/linux/2014/09/30/linux.html</guid>
 			</item>
 		
 			<item>
@@ -915,8 +915,8 @@ PATH = $PATH:/opt/bible/bin
 
 </description>
 				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
+				<link>http://www.codigo.pt/programacao/2014/09/24/linguagens-programacao.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/programacao/2014/09/24/linguagens-programacao.html</guid>
 			</item>
 		
 			<item>
@@ -971,8 +971,8 @@ PATH = $PATH:/opt/bible/bin
 
 </description>
 				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/design-pattern/2014/09/24/builder-pattern.html</guid>
+				<link>http://www.codigo.pt/design-pattern/2014/09/24/builder-pattern.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/design-pattern/2014/09/24/builder-pattern.html</guid>
 			</item>
 		
 			<item>
@@ -1085,8 +1085,8 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/23/arquitectura-padroes.html</guid>
+				<link>http://www.codigo.pt/software/2014/09/23/arquitectura-padroes.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/software/2014/09/23/arquitectura-padroes.html</guid>
 			</item>
 		
 			<item>
@@ -1146,8 +1146,8 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
 </description>
 				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/software/2014/09/22/errors-and-exceptions.html</guid>
+				<link>http://www.codigo.pt/software/2014/09/22/errors-and-exceptions.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/software/2014/09/22/errors-and-exceptions.html</guid>
 			</item>
 		
 			<item>
@@ -1171,8 +1171,8 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
 </description>
 				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/hack/2014/09/22/dns-spoofing.html</guid>
+				<link>http://www.codigo.pt/hack/2014/09/22/dns-spoofing.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/hack/2014/09/22/dns-spoofing.html</guid>
 			</item>
 		
 			<item>
@@ -1210,8 +1210,8 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 &lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
 </description>
 				<pubDate>Thu, 18 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
+				<link>http://www.codigo.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
 		
 			<item>
@@ -1301,8 +1301,8 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/ides-icecoder7.png&quot; /&gt;&lt;/p&gt;
 </description>
 				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/ide/software/2014/09/17/ides.html</guid>
+				<link>http://www.codigo.pt/ide/software/2014/09/17/ides.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/ide/software/2014/09/17/ides.html</guid>
 			</item>
 		
 			<item>
@@ -1389,8 +1389,8 @@ Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sort
 Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
+				<link>http://www.codigo.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
 			</item>
 		
 			<item>
@@ -1472,8 +1472,8 @@ Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso púb
 &lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
 </description>
 				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
+				<link>http://www.codigo.pt/angularjs/2014/09/16/google-hacking-database.html</link>
+				<guid isPermaLink="true">http://www.codigo.pt/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
 		
 	</channel>

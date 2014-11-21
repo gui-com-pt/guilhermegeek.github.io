@@ -2,15 +2,15 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Instalar softwares em Linux - Codigo </title>
-      <meta name="description" content="">
-      <meta name="keywords" content="">
+      <title>Aprende a utilizar o GIT para gerires - Codigo </title>
+      <meta name="description" content="Como usar o GIT? Aprende a instalar, configurar e utilizar">
+      <meta name="keywords" content="git simples">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="Instalar softwares em Linux">
-      <meta property="og:image" content="/media/linux_logo.png">
+      <meta property="og:site_name" content="Aprende a utilizar o GIT para gerires">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/linux/2014/09/30/linux-instalar-softwares.html">
-      <meta property="og:title" content="Instalar softwares em Linux">
+      <meta property="og:url" content="/git/2014/09/10/git.html">
+      <meta property="og:title" content="Aprende a utilizar o GIT para gerires">
       <meta property="og:description" content="">
     
       <link href="/css/bootstrap.css" rel="stylesheet">
@@ -133,70 +133,70 @@
 
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
-<img src="/media/linux_logo.png" class="post-entry__thumbnail" />
-<h2 class="content">Instalar softwares em Linux</h2>
+<img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
+<h2 class="content">Aprende a utilizar o GIT para gerires</h2>
 </div>
  
-<p>Como se instala um software? Extrais o código e corres numa linha de comandos: ./configure &amp;&amp; make &amp;&amp; sudo install</p>
+<p>O Git é utilizador para controlo de versões de software. </p>
 
-<p>Simples. Agora a explicação.</p>
+<p>Ele foi criado pelo Linus Trovald para distruibuir a Kernel do Linux, um mecanismo bom para actualizar a Kernel, variar entre as versões existentes e implementar código proposto por programadores.</p>
 
-<p>No Windows fazes download de software já compilado e pronto a ser executado para a arquitectura certa. Alguns instaladores lidam com essa tarefa e o mesmo instalador instala versões diferentes, outros softwares são distribuídos para arquitecturas diferentes, por exemplo quando na página de download tens disponíveis as versões x86 para 32 bits e x64 para 64 bits para download.</p>
+<p>Neste momento o GIT é utilizador por diversos projectos e ganhou mais popularidade quando começaram a existir serviços tão bons como o Github ou Bitbucket! Eles dão-nos espaço gratuíto e mantêm o código fonte num servidor, com interfaces web para gerir tudo, criar ramos, dar permissões a utilizadores, etc.</p>
 
-<p>No Linux há softwares distribuídos assim - os pacotes .deb em debian e .rpm em Fedora. Mas isto é uma pequena parte comparado com o software disponível que é opensource e muito dele mantido apenas por amor do programador aos utilizadores. Nesses casos não há tempo para disponibilizar estes pacotes.</p>
+<p>Eu utilizo para gerir projectos e código em geral que escrevo. Mesmo que não seja código publicado, tê-lo versonado com GIT ou outro sistema é excelente porque tens acesso a alterações que foram feitas, a comparações de código. </p>
 
-<p>Também hà software disponibilizado por repositórios que podem ser instalados com o apt ou yum. Podes ver mais aqui: (https://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html)[https://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html]</p>
+<h3 id="repositrios">Repositórios</h3>
 
-<p>Mais tarde ou mais cedo chega a altura em que é bom perceber como se compila os softwares em Linux, eu ainda configurei muitos servidores sem o entender bem.</p>
+<p>Para explicar a estrutura do Git começou por introduzir os repositórios. Um repositório é um directorio onde todas as alterações realizadas são registadas. É a pasta onde vais meter o código, ficheiros de documentação ou scripts de compilação. </p>
 
-<p>Código - O código do software é distribuído em ficheiros comprimidos, sistemas GIT, ftp, entre outros. Normalmente fazes download do ficheiro comprimido, por exemplo “spotify-client-test-0.1.tar.gz”</p>
+<p>No mesmo repositório podes manter vários projectos, eles mesmos a representarem-se como repositórios. Eu prefiro separá-los para ter página da Wiki e Gestão de Erros associados aos projectos em separado.</p>
 
-<p>Se for em linhas de comandos, os arquivos .tar.gz descomprimem-se com:</p>
+<h3 id="estrutura">Estrutura</h3>
 
-<pre><code>tar -xvfz spotify-client-test-0.1.tar.gz
+<p>O Git está organizado em três árvores:</p>
+
+<ul>
+  <li>Working directory - contém os arquivos vigentes</li>
+  <li>Index - dados temporários</li>
+  <li>HEAD - última confirmação realizada</li>
+</ul>
+
+<p>Para criarmos um repositório novo usamos </p>
+
+<pre><code>git init
 </code></pre>
 
-<p>Isto cria uma nova directoria, neste caso <strong>spotify-client-test-0.1</strong>. Ela deve ter um ficheiro README e outro INSTALL. Nestes documentos de texto os desenvolvedores explicam como instalar, que dependências existem, problemas comuns. </p>
+<p>Para puxarmos um repositório já existente</p>
 
-<h3 id="configure">./configure</h3>
-
-<p>Este comando executa o script <strong>configure</strong> que vai certificar que o sistema operativo tem todas as dependências necessárias para que o software seja instalado. Dependendo do software o retorno do comando pode ser mais ou menos informativo.</p>
-
-<p>Normalmente explica a biblioteca em falta e sugere pacotes a serem instalados. Em casos de erros conseguimos ver sempre o ficheiro e ir lá inspecionar por nós.</p>
-
-<p>No final o script cria um ficheiro <strong>MAKEFILE</strong></p>
-
-<p>Ele pode gerar o script e mesmo assim ter enviado erros, é preciso ter atenção a isso. </p>
-
-<p>O parametro prefix indica o destino da instalação quando instalarmos. Esse destino é pré defenido pelo sistema mas pode ser alterado</p>
-
-<pre><code>./configure --prefix=/usr/local/bin
+<pre><code>git clone https://github.com/guilhermegeek/guilhermegeek.github.io
 </code></pre>
 
-<h3 id="make">make</h3>
+<p>Quando adicionamos, removemos ou editamos um ficheiro dentro de um repositório, as mudanças ficam no <strong>Index</strong>.</p>
 
-<p>O make é um software utilitário que existe em quase todos os sistemas Unix.</p>
+<pre><code>git add -A
+</code></pre>
 
-<p>Este utilitário procura um script <strong>MAKEFILE</strong> para compilar todo o código do programa e criar os executáveis. É possível que certas partes do código requiram que outras partes do código já estejam prontas, é esta a função da Makefile. Define a sequência para os eventos para que o programa não acuse dependências em falta.</p>
+<p>Para adicionar ficheiros ocultos:</p>
 
-<p>O makefile tem vários nomes para secções diferentes. É possível que o controlo seja pasasdo para diversas secções dentro do Makefile ou é possível que no fim de uma secção haja um comando para ir para outra.</p>
+<pre><code>git add -A .
+</code></pre>
 
-<p>O melhor exemplo que temos é o <strong>install</strong></p>
+<p>Uma alteração contém um ou mais ficheiros que foram adicionados, editados ou removidos após o repositório ter sido actualizado. Ao adicionar-mos os ficheiros á alteração eles ficam no <strong>HEAD</strong> mas ainda não estão no repositório remoto, estão localmente.</p>
 
-<p>Se o comando <strong>make</strong> correr com sucesso então a instalação está quase completa.</p>
+<pre><code>git commit -m 'Im fixing the bug founded in CV0023 by Marthin'
+</code></pre>
 
-<h3 id="make-install">make install</h3>
+<p>O parametro m indica uma mensagem a associar à alteração. É importante usar sempre uma mensagem descrivita, simples e lógica que outro programador que nunca tenha trabalhado neste projecto entenda.</p>
 
-<p>Quando corres o make sem nenhum parametro, a instrução no Makefile começa a executar do início e consoante as regras defenidas dentro do Makefile. Quando corres make com install como parâmetro, o utilitário make procura por uma secção chamada install dentro do Makefile, e executa apenas essa secção.</p>
+<p>Quando enviamos pela primeira vez para o repositório temos de indicar o ramo, neste exemplo master</p>
 
-<p>Com o <strong>make</strong> os executáveis e outros ficheiros são compilados, a secção install copia esses executáveis e outros ficheiros para os directórios finais do sistema.</p>
+<pre><code>git push origin master
+</code></pre>
 
-<p>Os executáveis podem ser copiados para o /usr/local/bin para ser acedido por todos os utilizadores. O make apenas os gera, a secção install é que os copia.</p>
+<p>Também podemos criar um novo repositório num servidor git apartir do nosso repositório local, no caso de não ter sido clonado</p>
 
-<h3 id="autogen">autogen</h3>
-
-<p>http://www.codecoffee.com/tipsforlinux/articles/27.html</p>
-
+<pre><code>git remote add origin https://links
+</code></pre>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
