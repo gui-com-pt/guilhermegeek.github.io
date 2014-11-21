@@ -7,7 +7,7 @@
 		<atom:link href="http://guilhermecardoso.pt/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Segurança Online - Introdução</title>
+				<title>Dicas para te protegeres de ataques, malware e problemas comuns</title>
 				<description>&lt;p&gt;Série de artigos sobre segurança online&lt;/p&gt;
 
 &lt;ul&gt;
@@ -19,7 +19,7 @@
 
 &lt;p&gt;A prevenção é boa manutenção da máquina é essencial. Não basta apenas instalar programas e esperar que eles por si sejam responsáveis pela segurança.&lt;/p&gt;
 
-&lt;p&gt;Os programas são bons para analisar e detectar mas a prevenção é que dita se ficheiros maliciosos e outras ameaças conseguem alcançar a nossa máquina. &lt;/p&gt;
+&lt;p&gt;Os programas são bons para analisar e detectar mas a prevenção é que dita se ficheiros maliciosos e outras ameaças conseguem alcançar a nossa máquina, temos de adoptar boas práticas e criar hábitos que proporcionem isto.&lt;/p&gt;
 
 &lt;h2 id=&quot;programas&quot;&gt;Programas&lt;/h2&gt;
 
@@ -44,7 +44,15 @@
 
 &lt;p&gt;O ficheiro descarregado pode ser um programa totalmente diferente do que preendíamos, pode ser um gestor de programas que diz instalar o programa que procuramos ou pode até abrir a instaação normal do programa que queremos mas trazer consigo código malicioso.&lt;/p&gt;
 
-&lt;h4 id=&quot;instalador&quot;&gt;Instalador&lt;/h4&gt;
+&lt;h4 id=&quot;integridade&quot;&gt;Integridade&lt;/h4&gt;
+
+&lt;p&gt;Integridade neste contexto significa que o ficheiro original que é distribuído e que recebemos não foi modificado. Uma forma utilizada para comprovar a integridade de um programa é verificar a assinatura md5. &lt;/p&gt;
+
+&lt;p&gt;MD5 significa Message-Digest algorithm, um algoritmo de hash desenvolvido pela RSA Data Security inc com 128 bits unidireccional.&lt;/p&gt;
+
+&lt;p&gt;Por ser unidireccional, após ter sido gerado o hash por um texto (por exemplo uma password) não podemos transformar o hash novamente no texto que o originou. Com as passwords guardamos na base de dados encriptadas com MD5 e quando um utilizador se autentica criamos uma hash com a password inserida e comparamos com a hash da base de dados, não podemos desencriptar a hash da base de dados para comparar com a password inserida.&lt;/p&gt;
+
+&lt;h4 id=&quot;processo-de-instalao&quot;&gt;Processo de Instalação&lt;/h4&gt;
 
 &lt;p&gt;Neste exemplo vou instalar o Daemon Tools Lite.&lt;/p&gt;
 
@@ -73,10 +81,22 @@
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-6.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Ainda durante a instalação aparece mais um Gadget a ser instalado.&lt;/p&gt;
+
+&lt;h2 id=&quot;anlise&quot;&gt;Análise&lt;/h2&gt;
+
+&lt;h4 id=&quot;processos&quot;&gt;Processos&lt;/h4&gt;
+
+&lt;p&gt;No Windows podemos usar o gestor de tarefas paras consultas os processos em execução. Um programa quando é executado usa um ou mais processos, por vezes conseguimos descubrir problemas com o gestor de tarefas e uma pesquisa no Google para procurar rastos do mesmo processo mas pode ser irrelevante. Pode ser um nome aleatório ou até mesmo código injetado noutro processo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-7.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nos serviços também pode estar algo malicioso que tenha escalado a permissão de administração e criado um serviço do Windows.&lt;/p&gt;
+
+&lt;p&gt;Há programas específicos para analisar processos em execução sem ser o gestor de tarefas.&lt;/p&gt;
 </description>
 				<pubDate>Wed, 19 Nov 2014 00:00:00 +0000</pubDate>
-				<link>http://guilhermecardoso.pt/angularjs/2014/11/19/seguranca-online-intro.html</link>
-				<guid isPermaLink="true">http://guilhermecardoso.pt/angularjs/2014/11/19/seguranca-online-intro.html</guid>
+				<link>http://guilhermecardoso.pt/seguranca/2014/11/19/seguranca-online-intro.html</link>
+				<guid isPermaLink="true">http://guilhermecardoso.pt/seguranca/2014/11/19/seguranca-online-intro.html</guid>
 			</item>
 		
 			<item>

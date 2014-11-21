@@ -3,6 +3,7 @@ title: Fazer debug em PHP com Vim, Vdebug e Xdebug
 layout: post_entry
 image: /media/php.jpg
 excerpt: Fazer debug a código remoto através de uma ligação SSH, evaluar expressões, etc
+description: Já exprimentas-te depurar PHP numa consola com o VI? Aprende a fazê-lo em poucos passos
 categories: php linux
 ---
 

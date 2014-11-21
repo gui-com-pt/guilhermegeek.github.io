@@ -2,9 +2,11 @@
 title: Dicas para te protegeres de ataques, malware e problemas comuns
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: Queres aprender a proteger-te melhor na Internet? É muito mais que usar programas, aprende hábitos, recomendações e vê exemplos práticos de malware
+description: Queres aprender a proteger-te melhor na Internet? É muito mais que usar programas, aprende hábitos, recomendações e vê exemplos práticos de malware
+keywords: seguranca malware virus
 categories:
- angularjs
+ seguranca
+
 ---
 
 Série de artigos sobre segurança online
@@ -83,3 +85,17 @@ Para finalizar ainda levamos com o TuneUp Utilities 2014. De novo a técnica de 
 <img class="post-entry__image" src="/media/posts/seguranca-intro-6.png" />
 
 Ainda durante a instalação aparece mais um Gadget a ser instalado.
+
+
+
+## Análise
+
+#### Processos
+
+No Windows podemos usar o gestor de tarefas paras consultas os processos em execução. Um programa quando é executado usa um ou mais processos, por vezes conseguimos descubrir problemas com o gestor de tarefas e uma pesquisa no Google para procurar rastos do mesmo processo mas pode ser irrelevante. Pode ser um nome aleatório ou até mesmo código injetado noutro processo.
+
+<img class="post-entry__image" src="/media/posts/seguranca-intro-7.png" />
+
+Nos serviços também pode estar algo malicioso que tenha escalado a permissão de administração e criado um serviço do Windows.
+
+Há programas específicos para analisar processos em execução sem ser o gestor de tarefas.

@@ -3,8 +3,9 @@ title: Expressão de Função Imediatamente-Invocada
 layout: post_entry
 image: /media/javascript.png
 excerpt: Utilização de funções self invoked anonymous no Javascript
+description: Descobre o que são funções imediatamente invocadas e para que servem
 categories:
- javascript
+ javascript pattern
 ---
 Em inglês o termo é IIFE - Immediately-Invoked Function Expression. Também é conhecido como Self-Invoked anonymous function.
 

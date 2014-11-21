@@ -2,6 +2,7 @@
 title: Introdução ao padrão BEM em CSS
 layout: post_entry
 excerpt: Escolher nomes para as classes com lógica e seguindo um padrão recomendado, que ajuda a manutenção da folha de estilo e evita a poluição com nomes repetidos
+description Precisas de organizar o teu código CSS! O Padrão BEM é focado em blocos e ideal para reaproveitar
 image: /media/less.jpg
 categories: css
 ---

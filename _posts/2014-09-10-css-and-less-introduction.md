@@ -1,8 +1,9 @@
 ---
-title: CSS e LESS
+title: Organiza o teu código CSS com o padrão BEM 
 layout: post_entry
 image: /media/less.jpg
 excerpt: Introdução a CSS com LESS utilizando o Bootstrap
+description: Aprende a utilizar o Bootstrap com LESS! Configura um tema e reparoveita o teu código
 categories:
  less
 ---

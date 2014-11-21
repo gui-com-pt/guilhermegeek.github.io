@@ -2,15 +2,16 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Guilherme Cardoso GIT</title>
-      <meta name="description" content="">
+      <title>Expressão de Função Imediatamente-Invocada - Guilherme Cardoso </title>
+      <meta name="description" content="Descobre o que são funções imediatamente invocadas e para que servem">
+      <meta name="keywords" content="">
       <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="GIT">
-      <meta property="og:image" content="/media/angular-thumb.jpg">
+      <meta property="og:site_name" content="Expressão de Função Imediatamente-Invocada">
+      <meta property="og:image" content="/media/javascript.png">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/git/2014/09/10/git.html">
-      <meta property="og:title" content="GIT">
-      <meta property="og:description" content="">
+      <meta property="og:url" content="/javascript/pattern/2014/09/10/javascript-iife.html">
+      <meta property="og:title" content="Expressão de Função Imediatamente-Invocada">
+      <meta property="og:description" content="Utilização de funções self invoked anonymous no Javascript">
       <meta name="google-site-verification" content="DcLHz8gdSoPTh4JtlmXwswlXYoIZxjGnAu_e7rxh9b8" />
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
@@ -132,70 +133,80 @@
 
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
-<img src="/media/angular-thumb.jpg" class="post-entry__thumbnail" />
-<h2 class="content">GIT</h2>
+<img src="/media/javascript.png" class="post-entry__thumbnail" />
+<h2 class="content">Expressão de Função Imediatamente-Invocada</h2>
 </div>
  
-<p>O Git é utilizador para controlo de versões de software. </p>
+<p>Em inglês o termo é IIFE - Immediately-Invoked Function Expression. Também é conhecido como Self-Invoked anonymous function.</p>
 
-<p>Ele foi criado pelo Linus Trovald para distruibuir a Kernel do Linux, um mecanismo bom para actualizar a Kernel, variar entre as versões existentes e implementar código proposto por programadores.</p>
+<h4 id="introduo">Introdução</h4>
+<p>Em javascript, quando invocamos uma função criamos um novo contexto de execução. Todas as variáveis e funções que existam dentro deste contexto não podem ser acedidas por contextos paternos.
+Isto é útil para termos privacidade dentro desse contexto sem poluir o resto.</p>
 
-<p>Neste momento o GIT é utilizador por diversos projectos e ganhou mais popularidade quando começaram a existir serviços tão bons como o Github ou Bitbucket! Eles dão-nos espaço gratuíto e mantêm o código fonte num servidor, com interfaces web para gerir tudo, criar ramos, dar permissões a utilizadores, etc.</p>
+<pre><code>function registarVisita() {
+    var i = 0;
+    return function() {
+        console.log(++1);
+    };
+}
 
-<p>Eu utilizo para gerir projectos e código em geral que escrevo. Mesmo que não seja código publicado, tê-lo versonado com GIT ou outro sistema é excelente porque tens acesso a alterações que foram feitas, a comparações de código. </p>
+var test = registerVisita();
+test(); // log: 1
+test(); // log: 2
 
-<h3 id="repositrios">Repositórios</h3>
+var test2 = registerVisita();
+test2(); // log: 1
+test3(); // log: 2
 
-<p>Para explicar a estrutura do Git começou por introduzir os repositórios. Um repositório é um directorio onde todas as alterações realizadas são registadas. É a pasta onde vais meter o código, ficheiros de documentação ou scripts de compilação. </p>
+test(); // log 3
+</code></pre>
 
-<p>No mesmo repositório podes manter vários projectos, eles mesmos a representarem-se como repositórios. Eu prefiro separá-los para ter página da Wiki e Gestão de Erros associados aos projectos em separado.</p>
+<p>i; // Erro de Referência - i não está defenido, apenas existe dentro de registarVisita</p>
 
-<h3 id="estrutura">Estrutura</h3>
+<p>As funções test e test2 apenas são executadas quando as invocamos.
+Quando defenimos uma função <code>function foo() {}</code> our <code>var foo = function(){}</code> temos um identificador para a função, que invocamos usando parêntises à frente
+Mesmo que só chamemos a função test uma vez temos de ter a referência para depois invocarmos a função</p>
 
-<p>O Git está organizado em três árvores:</p>
+<pre><code>var foo = function() { }
+</code></pre>
+
+<p>No entanto, senão passarmos nenhum identificador para a função é lançada uma excepção</p>
+
+<pre><code>function() { }();
+</code></pre>
+
+<p>Quando o parser encontra a palavra <strong>function</strong> num scope global ou dentro de uma função, trata-o como uma declaração de função (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Statement</a>) não como uma expressão de função (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function">Function</a>).
+Como não está explicito que a função é uma expressão, o parser pensa que é uma declaração de função e espera que a palavra <strong>function</strong> seja seguida do nome, em vez de (. Isto é porque uma função requer um nome.</p>
+
+<h4 id="iife">IIFE</h4>
+<p>Se colocarmos tudo dentro de parêntises, o parser vai esperar uma expressão de função em vez de uma declaração. Isto é porque em javascript parêntises não podem conter statments.
+Quando o parser encontra a palavra <strong>function</strong>, sabe que tem de o parse como uma expressão e não declaração.
+Ambos os exemplos podem ser utilizados para criar-mos a mesma privacidade dos primeiros exemplos dentro do contexto da função</p>
+
+<pre><code>// Recomendação do Crockford (http://www.crockford.com/)
+(function() { 
+}());
+
+// Também funciona
+(function() {
+
+})();
+</code></pre>
+
+<p>Como o objectivo dos parênteses é separar as expressões das declarações de funções, eles podem ser omitidos quando o parser já espera uma expressão</p>
+
+<pre><code>var i = function() { return 1; }(); 
+</code></pre>
+
+<p>No entanto devemos usá-los quando estamos a atribuir, por uma questão de convenção.
+Os parêntises também são úteis para quem começa a ler o início da função já saber que ela imediatamente executada.</p>
+
+<h3 id="fontes">Fontes</h3>
 
 <ul>
-  <li>Working directory - contém os arquivos vigentes</li>
-  <li>Index - dados temporários</li>
-  <li>HEAD - última confirmação realizada</li>
+  <li>http://benalman.com/news/2010/11/immediately-invoked-function-expression/</li>
 </ul>
 
-<p>Para criarmos um repositório novo usamos </p>
-
-<pre><code>git init
-</code></pre>
-
-<p>Para puxarmos um repositório já existente</p>
-
-<pre><code>git clone https://github.com/guilhermegeek/guilhermegeek.github.io
-</code></pre>
-
-<p>Quando adicionamos, removemos ou editamos um ficheiro dentro de um repositório, as mudanças ficam no <strong>Index</strong>.</p>
-
-<pre><code>git add -A
-</code></pre>
-
-<p>Para adicionar ficheiros ocultos:</p>
-
-<pre><code>git add -A .
-</code></pre>
-
-<p>Uma alteração contém um ou mais ficheiros que foram adicionados, editados ou removidos após o repositório ter sido actualizado. Ao adicionar-mos os ficheiros á alteração eles ficam no <strong>HEAD</strong> mas ainda não estão no repositório remoto, estão localmente.</p>
-
-<pre><code>git commit -m 'Im fixing the bug founded in CV0023 by Marthin'
-</code></pre>
-
-<p>O parametro m indica uma mensagem a associar à alteração. É importante usar sempre uma mensagem descrivita, simples e lógica que outro programador que nunca tenha trabalhado neste projecto entenda.</p>
-
-<p>Quando enviamos pela primeira vez para o repositório temos de indicar o ramo, neste exemplo master</p>
-
-<pre><code>git push origin master
-</code></pre>
-
-<p>Também podemos criar um novo repositório num servidor git apartir do nosso repositório local, no caso de não ter sido clonado</p>
-
-<pre><code>git remote add origin https://links
-</code></pre>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
