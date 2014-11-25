@@ -7,6 +7,82 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Utiliza emails descartáveis gratuitamente!</title>
+				<description>&lt;p&gt;Mais de metade dos emails de spam que recebo foram serviços que subscrebi apenas para obter algo como fazer um download de um PDF ou receber por email uma activação no site.&lt;/p&gt;
+
+&lt;p&gt;Havia uma altura em que utilizava uma conta de email apenas para estes tipos de registos, ou para outras inscrições em sites menus seguros ou a quem eu não confiasse. &lt;/p&gt;
+
+&lt;p&gt;Uma boa alternativa a ter de gerir mais outro email é usar emails descartáveis! A filosofia é bastante simples: crias uma conta de email por pedido, coma duração de 60 minutos. Para isto podemos usar o Guerrilla Mail https://www.guerrillamail.com&lt;/p&gt;
+
+&lt;p&gt;Com um email temporário podes registar-te em determinado serviço sem te associares a ele. Como as contas têem a duração de 60 minutos não podes partir do princípio que vais voltar acesso à conta, ou seja, após os 60 minutos não podes recuperar passwords, receber emails de confirmação, etc. Mas não é para isso que este tipo de emails servem também.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;entry__image&quot; src=&quot;/media/posts/temporary-mail-1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Algumas finalidades para este serviço:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Registo em sites suspeitos - senão confias na fonte e não queres criar um registo a identificar-te&lt;/li&gt;
+  &lt;li&gt;Registo apenas para receber um email - no caso de downloads de PDFs ou &lt;code&gt;gifts&lt;/code&gt; ocasionais (a estratégia de oferecer uma parte do conteúdo requerendo um registo para a subscrição de newsletters)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;api&quot;&gt;API&lt;/h4&gt;
+
+&lt;p&gt;Um ponto forte deste serviço é o acesso a uma API. Por esta API podemos criar novas contas temporárias, receber e enviar emails. &lt;/p&gt;
+
+&lt;p&gt;Uma das primeiras utilidades que me veio à cabeça foi usar estes emails para registar contas em massa em serviços aos quais consiga ultrapassar a protecção de recaptcha. Como temos acesso à API podemos muito bem interpetrar os emails recebidos e assim confirmar automáticamente as contas. &lt;/p&gt;
+</description>
+				<pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/bower/2014/11/25/emails-temporarios.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/bower/2014/11/25/emails-temporarios.html</guid>
+			</item>
+		
+			<item>
+				<title>PHP e gettext</title>
+				<description>&lt;h3 id=&quot;linux&quot;&gt;Linux&lt;/h3&gt;
+
+&lt;p&gt;Para o gettext funcionar correctamente em Linux é preciso ter o idioma usado instalado no sistema operativo.&lt;/p&gt;
+
+&lt;p&gt;Isto é uma requisição, caso contrário o gettext não funciona. Para instalar novos idiomas em debian em descomento a entrada para o idioma que quero no ficheiro /etc/locale.gen, por exemplo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pt_PT.UTF-8 UTF-8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Para o debian reconfigurar o idioma &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dpkg-reconfigure locales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Isto vai instalar todos os idiomas em uso no /etc/locale.gen&lt;/p&gt;
+
+&lt;h3 id=&quot;php&quot;&gt;PHP&lt;/h3&gt;
+
+&lt;p&gt;Quando desenvolvo uma aplicação em PHP deixo os idiomas na configuração da aplicação. Se já usares uma framework terás de ver a documentação dela para associares um novo dominio.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$language = &quot;pt_PT&quot;;
+$codeset = &#39;UTF-8&#39;;
+$locale = $language . &#39;.&#39; . $codeset;
+$domain = &#39;messages&#39;;
+
+if(defined($locale)) { // linux
+    setlocale(LC_MESSAGES, $locale);
+}
+else {
+    putenv(&#39;LC_ALL={$locale}&#39;); // windows
+}
+putenv(&#39;LANG={$language}&#39;);
+
+bindtextdomain($domain, &#39;../i18n/Locale&#39;);
+bind_textdomain_codeset($domain, $codeset);
+textdomain($domain);
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+				<pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/php/2014/11/20/php-gettext.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/php/2014/11/20/php-gettext.html</guid>
+			</item>
+		
+			<item>
 				<title>Dicas para te protegeres de ataques, malware e problemas comuns</title>
 				<description>&lt;p&gt;Série de artigos sobre segurança online&lt;/p&gt;
 
@@ -1303,177 +1379,6 @@ Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.
 				<pubDate>Wed, 17 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://www.codigo.ovh/ide/software/2014/09/17/ides.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/ide/software/2014/09/17/ides.html</guid>
-			</item>
-		
-			<item>
-				<title>Invadir um site Wordpress - métodos e exemplos</title>
-				<description>&lt;h3 id=&quot;verso&quot;&gt;Versão&lt;/h3&gt;
-
-&lt;p&gt;Há vulnerabilidades conhecidas no código principal do Wordpress. Não são muitas mas andam aí e são fáceis de apanhar!&lt;/p&gt;
-
-&lt;p&gt;Para descubrires a versão do wordpress procura a tag &lt;strong&gt;generator&lt;/strong&gt; na página retornada (ver código fonte do browser…).&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;generator&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;WordPress 3.9.2&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;A maioria das instalações contém o ficheiro readme.html que tem de ser removido depois de instalado o Wordpress. Também podemos ver a versão por aí.&lt;/p&gt;
-
-&lt;p&gt;O próximo passo é saber a versão dos plugins. Podemos fazer um método passivo e fazer pedidos http aos ficheiros do plugin que procuramos, podemos também ver a resposta do http se é 200 para existente ou 404 para não encontrado.&lt;/p&gt;
-
-&lt;p&gt;@todo - vou indicar alguns scripts com base de dados actualizadas que podemos usar para tornar o método aggressivo.&lt;/p&gt;
-
-&lt;p&gt;Daqui iremos usar vulnerabilidades para os plugins encontrados, mas isso mais à frente.&lt;/p&gt;
-
-&lt;h3 id=&quot;utilizadores&quot;&gt;Utilizadores&lt;/h3&gt;
-
-&lt;p&gt;O método que vamos seguir para atacar as contas vai ser brute force. Uma tentativa em massava de autenticação com várias passwords pré defenidas.
-O Wordpress permite saber quem é cada utilizador pelo seu id&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;http://guilhermecardoso.pt/?author=1 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Se estiver configurado para URLs amigáveis, o pedido retorna um redireccionamento indicando o nickname no url&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;http://guilhermecardoso.pt/author/gui
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Além do método de brute force há outras formas de obter as credências.
-Se estiveres ligado na mesma rede que alguém que entre no site e tiveres a sorte de não ter nenhum certificado SSL um rastreio do pedido http indica o utilizador e password. Da mesma forma podem ser usados keyloggers mas ou o instalas no mesmo computador que a pessoa que vai aceder ao site, ou dentro da mesma rede usas um exploit para instalar o keylogger (redes públicas com WindowsXP e softwares como o Java e Internet Explorer desactualizados são indicadas).&lt;/p&gt;
-
-&lt;p&gt;De volta aos utilizadores, se te autenticares com um utilizador existente e uma password inválida o Wordpress é nosso amigo e avisa-nos que a conta existe.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/media/posts/wordpress-hack1.png&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;ferramentas&quot;&gt;Ferramentas&lt;/h3&gt;
-
-&lt;p&gt;As ferramentas e scripts que aqui vou indicar são código aberto e é espetacular encontrá-las no github, só demonstra a verdadeira liberdade do opensource :)&lt;/p&gt;
-
-&lt;h4 id=&quot;httpwpscanorg&quot;&gt;http://wpscan.org/&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Login com brute force&lt;/li&gt;
-  &lt;li&gt;Análise de plugins e temas com vulnerabilidades conhecidas&lt;/li&gt;
-  &lt;li&gt;Indicar lista de utilizadores&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Um pequeno exemplo&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ruby wpscan.rb -u 192.241.xx.x68 --threads 20 --wordlist 500worst.txt --username testadmin
-
-********* SNIP ******************
-
-[+] Starting the password brute forcer
-
-  Brute forcing user &#39;testadmin&#39; with 500 passwords... 100% complete.
-[+] Finished at Thu Jul 18 03:39:02 2013
-[+] Elapsed time: 00:01:16
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Admirado pelas 500 passwords num minuto e 16 segundos? Isto é numa VPS fraca na digital ocean que me custa 3.5 euros mensais. Servidores mais rápidos e infrastruturas maiores permitem-te resultados melhores. Em caso de ips bloqueados ou outras defesas que sejam aplicadas podes recorrer a uma rede: várias máquinas com uma lista curta de passwords a fazerem tentativas aleatórias para não serem bloqueadas por exemplo.&lt;/p&gt;
-
-&lt;h4 id=&quot;nmap&quot;&gt;Nmap&lt;/h4&gt;
-
-&lt;p&gt;Esta ferramenta aparece no Matrix! Ela não serve apenas para procurar portas abertas, diz-nos bastante mais que isso.&lt;/p&gt;
-
-&lt;p&gt;@todo mostrar exemplos de scripts ecs :)&lt;/p&gt;
-
-&lt;h3 id=&quot;vulnerabilidades&quot;&gt;Vulnerabilidades&lt;/h3&gt;
-
-&lt;p&gt;As vulnerabilidades que estas ferramentas e scripts utilizam são erros ou falhas existentes no código. Estes erros e falhas podem permitir:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Enviar uma shell para o servidor e aceder a ela (vai efectuar acções no servidor como compressão de directorios e enviar por ftp, descubrir passwords em ficheiros de configuração, etc). Esta vulnerabilidade é comum em anexo de uploads que não validam correctamente o pedido.&lt;/li&gt;
-  &lt;li&gt;Injecção de código SQL. URLs do gênero /wp-content/plugins/exemplo/ficheiro.php?id=3534 são usados para injectar código SQL, ou seja, substituir o id por algo que interpretado pela base de dados faça algo que não deveria. Isto ocorre também por má validação&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O problema destas vulnerabilidades é que são demasiado fáceis de ser descoberta por ser código aberto e todos temos acesso, até mesmo plugins pagos recebes o código (apenas tens de usar a licença para usar o plugin no site). O Wordpress tem uma comunidade enorme de programadores, uns melhores que os outros.
-Há muitos temas excelentes a nível de design mas fracos na programação e que podem comprometer um servidor inteiro. Empresas que se baseam em “desenvolver” websites (não, CMS não é programar cara!) com CMS deste gênero correm estes riscos e a menos que não conheçam bem o terreno e saibam o que fazem, é comum perderem horas a fazer restauros por causa de plugins infectados.&lt;/p&gt;
-</description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/php/linux/hack/2014/09/16/wordpress-hack-vulnerabilidades.html</guid>
-			</item>
-		
-			<item>
-				<title>Google Hacking Database</title>
-				<description>&lt;p&gt;“Utilizar o Google para encontrar técnicos idiotas” - diz tudo. Google dorks são idiotas encontrados através do Google, sites mal configurados com ficheiros públicos que não deveriam ser.&lt;/p&gt;
-
-&lt;p&gt;Como é que os dorks são encontrados através do Google? A seguinte pesquisa:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;https://www.google.pt/search?q=filetype:png
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Retorna todos os ficheiros do tipo png. Agora vamos passar para um ficheiro mais interessante: &lt;strong&gt;.sql&lt;/strong&gt;. Vamos pesquisar apenas em sites com a extensão .gov&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;http://www.google.com/search?q=filetype:sql%20site:gov%20and%20%22insert%20into%22
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Nesta pesquisa além da extensão do ficheiro ser .sql e a do domínio .gov, também estamos a incluir ficheiros que contenham explicitamente insert into
-Este tipo de ficheiros costumam ser cópias de segurança geradas de acesso público que foram encontrados pelos bots da Google&lt;/p&gt;
-
-&lt;p&gt;Algo muito comum neste tipo de pesquisa para script kiddies costuma ser procurar shell já enviados para os servidores. Alguém já explorou o servidor, enviou uma shell e o Google ainda a indexa para nós sabermos onde encontrá-la!&lt;/p&gt;
-
-&lt;p&gt;O &lt;strong&gt;exploit-db&lt;/strong&gt; tem um arquivo dedicado a dorks do Google. Podes escolher vários tipos de Dorks como mensagens de erro, ficheiros que contenham passwords, etc. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;http://www.exploit-db.com/google-dorks/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;dorks&quot;&gt;Dorks&lt;/h2&gt;
-
-&lt;h3 id=&quot;site&quot;&gt;site&lt;/h3&gt;
-&lt;p&gt;Restringe a pesquisa ao domínio especificado. &lt;/p&gt;
-
-&lt;p&gt;Exemplo: site:guilhermecardoso.pt&lt;/p&gt;
-
-&lt;h3 id=&quot;inurl&quot;&gt;inurl&lt;/h3&gt;
-&lt;p&gt;Restringue os resultados a links que contenham palavras específicas no URL. &lt;/p&gt;
-
-&lt;p&gt;Exemplo: inurl:wp-admin&lt;/p&gt;
-
-&lt;h3 id=&quot;intitle&quot;&gt;intitle&lt;/h3&gt;
-&lt;p&gt;Títulos que contenham palavras específicas.&lt;/p&gt;
-
-&lt;p&gt;Exemplo: intitle:Portugal&lt;/p&gt;
-
-&lt;h3 id=&quot;allintitle&quot;&gt;allintitle&lt;/h3&gt;
-&lt;p&gt;Semelhante ao &lt;strong&gt;intitle&lt;/strong&gt; mas corresponde exactamente ao título, enquanto que o intitle procura apenas palavras especificas.&lt;/p&gt;
-
-&lt;p&gt;Exemplo: allintitle:Gui&lt;/p&gt;
-
-&lt;h3 id=&quot;allinurl&quot;&gt;allinurl&lt;/h3&gt;
-
-&lt;h3 id=&quot;cache&quot;&gt;cache&lt;/h3&gt;
-
-&lt;h3 id=&quot;numrange&quot;&gt;numrange&lt;/h3&gt;
-
-&lt;h3 id=&quot;filetype-or-ext&quot;&gt;filetype or ext&lt;/h3&gt;
-
-&lt;h3 id=&quot;link&quot;&gt;link&lt;/h3&gt;
-
-&lt;h3 id=&quot;inanchor&quot;&gt;inanchor&lt;/h3&gt;
-
-&lt;h3 id=&quot;allintext&quot;&gt;allintext&lt;/h3&gt;
-
-&lt;h3 id=&quot;intext&quot;&gt;intext&lt;/h3&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;*&lt;/h3&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;**&lt;/h3&gt;
-
-&lt;h3 id=&quot;section-2&quot;&gt;.&lt;/h3&gt;
-
-&lt;h3 id=&quot;section-3&quot;&gt;|&lt;/h3&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;+&lt;/h3&gt;
-
-&lt;h3 id=&quot;section-5&quot;&gt;-&lt;/h3&gt;
-
-&lt;h1 id=&quot;exploit-db&quot;&gt;exploit-db&lt;/h1&gt;
-
-&lt;p&gt;A Offensive Security lançou um projecto no exploit-db.com &lt;/p&gt;
-</description>
-				<pubDate>Tue, 16 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/angularjs/2014/09/16/google-hacking-database.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/09/16/google-hacking-database.html</guid>
 			</item>
 		
 	</channel>
