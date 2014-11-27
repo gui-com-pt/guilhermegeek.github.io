@@ -3,7 +3,6 @@ layout: default
 comments: true
 ---
 <div class="clearfix">
-<img src="{{ page.image }}" class="post-entry__thumbnail" />
 <h2 class="content">{{page.title}}</h2>
 </div>
  

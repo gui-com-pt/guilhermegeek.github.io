@@ -7,6 +7,7 @@ description: Descobre o que são funções imediatamente invocadas e para que se
 categories:
  javascript pattern
 ---
+
 Em inglês o termo é IIFE - Immediately-Invoked Function Expression. Também é conhecido como Self-Invoked anonymous function.
 
 #### Introdução ####
@@ -51,14 +52,8 @@ Se colocarmos tudo dentro de parêntises, o parser vai esperar uma expressão de
 Quando o parser encontra a palavra **function**, sabe que tem de o parse como uma expressão e não declaração.
 Ambos os exemplos podem ser utilizados para criar-mos a mesma privacidade dos primeiros exemplos dentro do contexto da função
 
-    // Recomendação do Crockford (http://www.crockford.com/)
-    (function() { 
-    }());
-
-    // Também funciona
-    (function() {
-
-    })();
+<iframe height='350' scrolling='no' src='http://codepen.io/guilhermecardoso/embed/WbvyXR/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/guilhermecardoso/pen/WbvyXR/'>WbvyXR</a> by Guilherme Cardoso (<a href='http://codepen.io/guilhermecardoso'>@guilhermecardoso</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
 
 Como o objectivo dos parênteses é separar as expressões das declarações de funções, eles podem ser omitidos quando o parser já espera uma expressão
 
