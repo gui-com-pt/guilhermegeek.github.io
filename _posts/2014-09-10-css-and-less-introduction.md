@@ -5,7 +5,7 @@ image: /media/less.jpg
 excerpt: Introdução a CSS com LESS utilizando o Bootstrap
 description: Aprende a utilizar o Bootstrap com LESS! Configura um tema e reparoveita o teu código
 categories:
- less
+ less css
 ---
 Qualquer folha de estilos que tenhamos, podemos compilar com less e é gerado um resultado igual.
 Isto é bom para projectos já existentes, onde podemos começar a fazer implementações a tirar partido do less sem termos de remudelar todo o código já usado.
