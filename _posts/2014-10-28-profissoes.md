@@ -130,3 +130,8 @@ Freelancer
  * Estrutares a base da tua equipa de modo a que outros programadores possam desenvolver e rentabilizar o tempo
  * Propostas de orçamentos
  * Divulgação
+
+
+Referências Futuras
+
+ * http://programmer-hek.blogspot.pt/2014/07/which-type-of-it-career-is-best-for-you.html
