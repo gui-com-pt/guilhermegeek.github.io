@@ -3,6 +3,7 @@ title: Boas práticas em AngularJS
 layout: post_entry
 image: /media/angular-thumb.jpg
 description: Aprende boas práticas do AngularJS e mantém o teu código compreensível
+keywords: angular angularjs boas praticas javascript 
 categories:
  angularjs
 ---
