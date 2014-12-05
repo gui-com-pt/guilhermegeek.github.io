@@ -2,10 +2,9 @@
 title: Boas práticas em AngularJS
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
 description: Aprende boas práticas do AngularJS e mantém o teu código compreensível
 categories:
- bower
+ angularjs
 ---
 
 Neste artigo vou demonstrar boas práticas para trabalhar com o AngularJS. O resultado final vai ser este:
