@@ -126,7 +126,11 @@
       </button>
       <a class="navbar-brand" href="/">Publicações</a>
     </div>
-    <a href="https://www.one.org"><img src="https://one_org_international.s3.amazonaws.com/international/media/international/2013/07/468x60banner.gif" class="img-responsive" style="float: right; height: 50px;"/></a>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/feed.xml">RSS</a></li>
+    </ul>
+    </div>
     </div>
     </nav>
 </div>
@@ -196,6 +200,26 @@
 
 <pre><code>git remote add origin https://links
 </code></pre>
+
+<h1 id="ramos">Ramos</h1>
+
+<p>Até agora usámos o ramo principal <strong>master</strong>. Quando estamos a ver um repositório no github por exemplo, temos acesso à versão estável mais recente do produto. Essa versão é o que o ramo <strong>master</strong> tem.</p>
+
+<p>Criar um novo ramo apartir do <strong>master</strong> significa clona a versão actual do ramo <strong>master</strong> para um novo ramo. Começando a usar esse ramo, todas as alterações que fazemos enviamos em commits para o ramo novo sem afectar o ramo <strong>master</strong>, e desenvolvemos o código sempre neste ramo. Quando tiver testado e estável é enviado para o master, este processo chama-se fundir ou merge. </p>
+
+<p>Enquanto desenvolvemos o novo ramo, o <strong>master</strong> vai ficar atrás dele porque os commmits enviados são para o novo ramo. </p>
+
+<p>No mundo real os ramos podem ser novos componentes de um software.</p>
+
+<p>Para criar um novo ramo usamos</p>
+
+<pre><code>git checkout -b "notifications"
+</code></pre>
+
+<p>Ou
+	git branch “notifications”
+	git checkout “notifications”</p>
+
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>
