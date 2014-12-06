@@ -7,140 +7,6 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Boas práticas em AngularJS</title>
-				<description>&lt;p&gt;Neste artigo vou demonstrar boas práticas para trabalhar com o AngularJS. O resultado final vai ser este:&lt;/p&gt;
-
-&lt;iframe height=&quot;350&quot; scrolling=&quot;no&quot; src=&quot;http://codepen.io/guilhermecardoso/embed/LEGpmY/&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/guilhermecardoso/pen/LEGpmY/&quot;&gt;LEGpmY&lt;/a&gt; by Guilherme Cardoso (&lt;a href=&quot;http://codepen.io/guilhermecardoso&quot;&gt;@guilhermecardoso&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/iframe&gt;
-
-&lt;p&gt;Como os restantes artigos eu vou actualizando à medida que tenho tempo, por isso esta versão inicial pode ser confusa.&lt;/p&gt;
-
-&lt;h3 id=&quot;isolamento&quot;&gt;Isolamento&lt;/h3&gt;
-
-&lt;p&gt;Para isolar ao máximo os contextos, sempre que escrevo um controlador, um serviço, uma directia uso uma expressão de função imediatamente-invocada. Podes ler mais aqui: &lt;a href=&quot;http://www.codigo.ovh/javascript/pattern/2014/09/10/javascript-iife.html&quot;&gt;Expressão de Função Imediatamente-Invocada (IIFE)&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Tudo que existir dentro da função não está acessível aos contextos parentes, neste caso o global.&lt;/p&gt;
-
-&lt;p&gt;Neste exemplo eu apenas deixo no contexto global a &lt;code&gt;app&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var app = angular.module(&#39;web&#39;, [&#39;ngRoute&#39;]);
-(function(){
-
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;problema-de-minificadores&quot;&gt;Problema de minificadores&lt;/h3&gt;
-
-&lt;p&gt;É bastante comum em tutoriais ver-mos exemplos assim:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;web&#39;).controller(&#39;homeCtrl&#39;, function($scope) {
-	$scope.message = &#39;message&#39;;
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Este código não apresenta erros e é válido mas vamos supor que queremos minificar o código com uma ferramenta. Essa ferramenta vai alterar os nomes das variáveis e o resultado será este:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;web&#39;).controller(&#39;homeCtrl&#39;, function(s) {
-	s.message = &#39;message&#39;;
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Agora o AngularJS não vai conseguir injetar a $scope. Isto é esperado e não é nenhum erro, na verdade a ferramenta está a fazer bem o seu trabalho a minificar. &lt;/p&gt;
-
-&lt;p&gt;Uma solução será enviar uma array com as dependências e só no final a função a ser executada.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;web&#39;).controller(&#39;homeCtrl&#39;, [&#39;$scope&#39;, function($scope) {
-	$scope.message = &#39;message&#39;;
-}]);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Na primeira entrada da array a $scope é passada numa string, o que significa que o minificador vai deixar o valor intacto. Já na variável da função ele vai substituír a $scope mas não há problema, pois o AngularJS sabe que a primeira variável é a $scope, independentemente do nome que a variável tiver. O resutlado é este:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;web&#39;).controller(&#39;homeCtrl&#39;, [&#39;$scope&#39;, &#39;$rootScope&#39;, function(s, r) {
-	s.message = &#39;message&#39;;
-}]);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A variável &lt;code&gt;s&lt;/code&gt; é a $scope e a &lt;code&gt;r&lt;/code&gt; a $rootScope. Quando recebe um array, o AngularJS sabe que o último valor é sempre a função e vai resolver as dependências pelos valores passados no array.&lt;/p&gt;
-
-&lt;h3 id=&quot;outra-estratgia&quot;&gt;Outra estratégia&lt;/h3&gt;
-
-&lt;p&gt;O último exemplo é compatível com o minificador. No entanto continuamos com funções anónimas e no geral não é um código entendido por quem não utilize o AngularJS.&lt;/p&gt;
-
-&lt;p&gt;Vamos examinar o exemplo do controller &lt;code&gt;homeCtrl&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;(function(){
-  
-  var cntrlFn = function($log, sharedService) {
-    var self = this;
-    self.$log = $log;
-    self.service = sharedService;
-  };
-
-  cntrlFn.$inject = [&#39;$log&#39;, &#39;sharedService&#39;];
-  app.controller(&#39;homeCtrl&#39;, cntrlFn);
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Quando atribuo a função à variável cntrlFn tento criar o método main. Registo as dependências na função com o &lt;code&gt;this&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Todos os métodos que quiser implementar no controller faço-o com o prototype, por exemplo o método refresh e logout:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;(function(){
-  
-  var cntrlFn = function($log, sharedService) {
-    var self = this;
-    self.$log = $log;
-    self.service = sharedService;
-  };
-
-  cntrlFn.prototype.refresh = function(){
-  	var self = this;
-  	self.$log(&#39;refreshed&#39;);
-  };
-
-  cntrlFn.prototype.logout = function(){
-  	window.location = &#39;/logout&#39;;
-  };
-
-  cntrlFn.$inject = [&#39;$log&#39;, &#39;sharedService&#39;];
-  app.controller(&#39;homeCtrl&#39;, cntrlFn);
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A propriedade &lt;code&gt;$inject&lt;/code&gt; é um array com a lista de dependências do controller, neste caso o &lt;code&gt;$log&lt;/code&gt; e &lt;code&gt;sharedService&lt;/code&gt;. O AngularJS consegue interpretar as dependências e não são resolvidas pelo nome das variáveis da função nem temos de passar tudo num array.&lt;/p&gt;
-
-&lt;p&gt;Se alguém que nunca utilizou AngularJS comparar este exemplo com a declaração numa função anónima mais facilmente reconhece o que se passa e a função de cada método.&lt;/p&gt;
-
-&lt;h3 id=&quot;controlleras&quot;&gt;controllerAs&lt;/h3&gt;
-
-&lt;p&gt;Neste exemplo eu não estou a expor os membros do controller na &lt;code&gt;$scope&lt;/code&gt;. Isto começou na versão 1.2 porque a $scope acabava por representar o próprio controller, e torna-se mais intuitívo utilizar o &lt;code&gt;this&lt;/code&gt; no controller para declarar as propriedades e ficarem acessíveis na página.&lt;/p&gt;
-
-&lt;p&gt;Tanto o &lt;code&gt;$routeProvider&lt;/code&gt; como o &lt;code&gt;$stateProvider&lt;/code&gt; do módulo ui-router suportam o controllerAs da seguinte forma:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$routeProvider.when(&#39;/&#39;, {
-	controller: &#39;homeCtrl&#39;,
-	controllerAs: &#39;ctrl&#39;
-});
-
-$stateProvider.state(&#39;home&#39;, {
-	url: &#39;/&#39;,
-	controller: &#39;homeCtrl&#39;,
-	controllerAs: &#39;ctrl&#39;
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;O controller fica acessível através do &lt;code&gt;ctrl&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div ng-bind=&quot;ctrl.message&quot;&amp;gt;&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-				<pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/angularjs/2014/12/01/AngularJS.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/01/AngularJS.html</guid>
-			</item>
-		
-			<item>
 				<title>Utiliza emails descartáveis gratuitamente!</title>
 				<description>&lt;p&gt;Mais de metade dos emails de spam que recebo foram serviços que subscrebi apenas para obter algo como fazer um download de um PDF ou receber por email uma activação no site.&lt;/p&gt;
 
@@ -230,19 +96,19 @@ $stateProvider.state(&#39;home&#39;, {
 &lt;p&gt;Quando desenvolvo uma aplicação em PHP deixo os idiomas na configuração da aplicação. Se já usares uma framework terás de ver a documentação dela para associares um novo dominio.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$language = &quot;pt_PT&quot;;
-$codeset = &#39;UTF-8&#39;;
-$locale = $language . &#39;.&#39; . $codeset;
-$domain = &#39;messages&#39;;
+$codeset = 'UTF-8';
+$locale = $language . '.' . $codeset;
+$domain = 'messages';
 
 if(defined($locale)) { // linux
     setlocale(LC_MESSAGES, $locale);
 }
 else {
-    putenv(&#39;LC_ALL={$locale}&#39;); // windows
+    putenv('LC_ALL={$locale}'); // windows
 }
-putenv(&#39;LANG={$language}&#39;);
+putenv('LANG={$language}');
 
-bindtextdomain($domain, &#39;../i18n/Locale&#39;);
+bindtextdomain($domain, '../i18n/Locale');
 bind_textdomain_codeset($domain, $codeset);
 textdomain($domain);
 &lt;/code&gt;&lt;/pre&gt;
@@ -525,7 +391,7 @@ textdomain($domain);
 &lt;p&gt;&lt;strong&gt;Tem preferência por sites com comunicações seguras&lt;/strong&gt;. Certificados SSL não são nenhum investimento gigante para sites, sejam de serviços ou comunidades até. Eu utilizo no meu e não lido com informação importante, considera estranho o facto de um site conhecido não usar nenhum certificado.&lt;/p&gt;
 
 </description>
-				<pubDate>Thu, 16 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 16 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/bower/2014/10/16/seguran-online-navegacao.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/bower/2014/10/16/seguran-online-navegacao.html</guid>
 			</item>
@@ -590,7 +456,7 @@ textdomain($domain);
 
 &lt;p&gt;Além de usar um código de confirmação no segundo passo, agora é possível usar uma pen drive, a chamada &lt;strong&gt;Security Key for 2-Step verification&lt;/strong&gt;. Por enquanto esta autenticação apenas é possível através do Chrome na versão 38 (muito recente ainda).&lt;/p&gt;
 </description>
-				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 15 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/bower/2014/10/15/seguranca-online-password.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/bower/2014/10/15/seguranca-online-password.html</guid>
 			</item>
@@ -657,7 +523,7 @@ dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;spa
   &lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
 			</item>
@@ -763,7 +629,7 @@ bible/src/Bible/Helpers/VerseFormat.php&lt;/p&gt;
 &lt;p&gt;Neste exemplo temos um cliente a utilizar a biblioteca mas podem ser N. A utilização do composer é também para gerir as actualizações de uma forma muito simples: alteramos a biblioteca e enviamos todas as alterações para o versionador de código (GIT). Os clientes depois actualizam as dependências com &lt;strong&gt;composer update&lt;/strong&gt;&lt;/p&gt;
 
 </description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/bower/2014/10/10/criar-uma-biblioteca-em-php.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/bower/2014/10/10/criar-uma-biblioteca-em-php.html</guid>
 			</item>
@@ -800,54 +666,54 @@ The following was written shortly after my arrest...
                           Written on January 8, 1986
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-        Another one got caught today, it&#39;s all over the papers.  &quot;Teenager
+        Another one got caught today, it's all over the papers.  &quot;Teenager
 Arrested in Computer Crime Scandal&quot;, &quot;Hacker Arrested after Bank Tampering&quot;...
-        Damn kids.  They&#39;re all alike.
+        Damn kids.  They're all alike.
 
-        But did you, in your three-piece psychology and 1950&#39;s technobrain,
+        But did you, in your three-piece psychology and 1950's technobrain,
 ever take a look behind the eyes of the hacker?  Did you ever wonder what
 made him tick, what forces shaped him, what may have molded him?
         I am a hacker, enter my world...
-        Mine is a world that begins with school... I&#39;m smarter than most of
+        Mine is a world that begins with school... I'm smarter than most of
 the other kids, this crap they teach us bores me...
-        Damn underachiever.  They&#39;re all alike.
+        Damn underachiever.  They're all alike.
 
-        I&#39;m in junior high or high school.  I&#39;ve listened to teachers explain
+        I'm in junior high or high school.  I've listened to teachers explain
 for the fifteenth time how to reduce a fraction.  I understand it.  &quot;No, Ms.
-Smith, I didn&#39;t show my work.  I did it in my head...&quot;
-        Damn kid.  Probably copied it.  They&#39;re all alike.
+Smith, I didn't show my work.  I did it in my head...&quot;
+        Damn kid.  Probably copied it.  They're all alike.
 
         I made a discovery today.  I found a computer.  Wait a second, this is
-cool.  It does what I want it to.  If it makes a mistake, it&#39;s because I
-screwed it up.  Not because it doesn&#39;t like me...
+cool.  It does what I want it to.  If it makes a mistake, it's because I
+screwed it up.  Not because it doesn't like me...
                 Or feels threatened by me...
-                Or thinks I&#39;m a smart ass...
-                Or doesn&#39;t like teaching and shouldn&#39;t be here...
-        Damn kid.  All he does is play games.  They&#39;re all alike.
+                Or thinks I'm a smart ass...
+                Or doesn't like teaching and shouldn't be here...
+        Damn kid.  All he does is play games.  They're all alike.
 
         And then it happened... a door opened to a world... rushing through
-the phone line like heroin through an addict&#39;s veins, an electronic pulse is
+the phone line like heroin through an addict's veins, an electronic pulse is
 sent out, a refuge from the day-to-day incompetencies is sought... a board is
 found.
         &quot;This is it... this is where I belong...&quot;
-        I know everyone here... even if I&#39;ve never met them, never talked to
+        I know everyone here... even if I've never met them, never talked to
 them, may never hear from them again... I know you all...
-        Damn kid.  Tying up the phone line again.  They&#39;re all alike...
+        Damn kid.  Tying up the phone line again.  They're all alike...
 
-        You bet your ass we&#39;re all alike... we&#39;ve been spoon-fed baby food at
+        You bet your ass we're all alike... we've been spoon-fed baby food at
 school when we hungered for steak... the bits of meat that you did let slip
-through were pre-chewed and tasteless.  We&#39;ve been dominated by sadists, or
+through were pre-chewed and tasteless.  We've been dominated by sadists, or
 ignored by the apathetic.  The few that had something to teach found us will-
 ing pupils, but those few are like drops of water in the desert.
 
         This is our world now... the world of the electron and the switch, the
 beauty of the baud.  We make use of a service already existing without paying
-for what could be dirt-cheap if it wasn&#39;t run by profiteering gluttons, and
+for what could be dirt-cheap if it wasn't run by profiteering gluttons, and
 you call us criminals.  We explore... and you call us criminals.  We seek
 after knowledge... and you call us criminals.  We exist without skin color,
 without nationality, without religious bias... and you call us criminals.
 You build atomic bombs, you wage wars, you murder, cheat, and lie to us
-and try to make us believe it&#39;s for our own good, yet we&#39;re the criminals.
+and try to make us believe it's for our own good, yet we're the criminals.
 
         Yes, I am a criminal.  My crime is that of curiosity.  My crime is
 that of judging people by what they say and think, not what they look like.
@@ -855,12 +721,12 @@ My crime is that of outsmarting you, something that you will never forgive me
 for.
 
         I am a hacker, and this is my manifesto.  You may stop this individual,
-but you can&#39;t stop us all... after all, we&#39;re all alike.
+but you can't stop us all... after all, we're all alike.
 
                                +++The Mentor+++
 _________________________________________________________&lt;/pre&gt;
 </description>
-				<pubDate>Thu, 02 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Thu, 02 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/hack/2014/10/02/hacker-manifesto.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/hack/2014/10/02/hacker-manifesto.html</guid>
 			</item>
@@ -954,7 +820,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;pre&gt;&lt;code&gt;nohup ./resque-scheduler.sh &amp;gt; /dev/null &amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/10/01/shell-scripts.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/01/shell-scripts.html</guid>
 			</item>
@@ -967,7 +833,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
 </description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/10/01/shell.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/01/shell.html</guid>
 			</item>
@@ -1035,7 +901,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;http://www.codecoffee.com/tipsforlinux/articles/27.html&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/09/30/linux-instalar-softwares.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/09/30/linux-instalar-softwares.html</guid>
 			</item>
@@ -1112,7 +978,7 @@ PATH = $PATH:/opt/bible/bin
   &lt;li&gt;/etc/bashrc&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/09/30/linux.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/09/30/linux.html</guid>
 			</item>
@@ -1167,7 +1033,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;p&gt;Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/programacao/2014/09/24/linguagens-programacao.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/programacao/2014/09/24/linguagens-programacao.html</guid>
 			</item>
@@ -1223,7 +1089,7 @@ PATH = $PATH:/opt/bible/bin
 &lt;h2 id=&quot;builder&quot;&gt;Builder&lt;/h2&gt;
 
 </description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Wed, 24 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/design-pattern/2014/09/24/builder-pattern.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/design-pattern/2014/09/24/builder-pattern.html</guid>
 			</item>
@@ -1337,7 +1203,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/software/2014/09/23/arquitectura-padroes.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/software/2014/09/23/arquitectura-padroes.html</guid>
 			</item>
@@ -1398,7 +1264,7 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;O método assert vai invocar a excepção&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/software/2014/09/22/errors-and-exceptions.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/software/2014/09/22/errors-and-exceptions.html</guid>
 			</item>
@@ -1423,9 +1289,48 @@ PATH = $PATH:/opt/bible/bin
 
 &lt;p&gt;Depois explico como utilizar do dnsspoof, também tutoriais sobre isso é o que menos falta.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 22 Sep 2014 00:00:00 +0100</pubDate>
+				<pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/hack/2014/09/22/dns-spoofing.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/hack/2014/09/22/dns-spoofing.html</guid>
+			</item>
+		
+			<item>
+				<title>Repositório de software</title>
+				<description>&lt;p&gt;Em Linux utilizamos gestores de pacotes como o apt e yum para instalar software sem termos de fazer a instalação manual ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install. Eles instalam as dependências necessárias o que pode ser bom ou não, já dei por mim a perder horas por causa de dependências em falta.&lt;/p&gt;
+
+&lt;p&gt;As distribuições de Linux mantêm repositórios públicos. Nestes repositórios eles disponibilizam software configurado, compilado e pronto para diferentes arquitecturas e versões da distribuição. Raramente encontras um software no repositório oficial do SO, em casos como o mono tens versões usadas há 4 ou 5 anos.&lt;/p&gt;
+
+&lt;p&gt;Agora começa a ser mais comum quem distribui o software disponibilizar um repositório público que podes adicionar e confirar pois são os proprietários do código a disponibilizar os pacotes. &lt;/p&gt;
+
+&lt;p&gt;Mesmo assim ainda são poucas e há muitos softwares que são disponibilizado por outros terceiros que fazem esse trabalho por oferta.
+Por exemplo, a gblib6 que já é embarcada com o Debian Wheezy é inferior ao 2.13 já requirido por muitos softwares recentes. Eu utilizo a distruibuição Kali num portátil de desenvolvimento e bem sei a dor de cabeça que isto deu!&lt;/p&gt;
+
+&lt;h3 id=&quot;chaves&quot;&gt;Chaves&lt;/h3&gt;
+
+&lt;p&gt;Quando adicionamos um novo repositório ao gestor de software vamos permitir que esse distribuidor instale o código que quiser.&lt;/p&gt;
+
+&lt;p&gt;Uma medida de segurança implementada é a troca de chaves pública e privada. Quem pública estes softwares tem de disponibilizar uma chave pública. Essa chave pública é mostrada em mensagens de erro quando tentamos actualizar o Apt e ele tem um repositório sem chave confiada:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;W: GPG error: http://ppa.launchpad.net intrepid Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C514AF8E4BA401C3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Neste exemplo temos de fazer download da chave&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gpg --keyserver pgpkeys.mit.edu --recv-key C514AF8E4BA401C3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;E adicioná-la com apt-key add ficheiro-da-chave.key&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gpg -a --export C514AF8E4BA401C3 | apt-key add -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;origem&quot;&gt;Origem&lt;/h3&gt;
+
+&lt;p&gt;A origem do repositório é importante. São vários os exemplos de ataques feitos que distribuiram código através de software de terceiros. Com acesso ao servidor de distribuição podem distribuir código a todos que actualizem.&lt;/p&gt;
+</description>
+				<pubDate>Thu, 18 Sep 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/ide/software/2014/09/18/linux-software-versoes-chaves.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/ide/software/2014/09/18/linux-software-versoes-chaves.html</guid>
 			</item>
 		
 	</channel>
