@@ -62,7 +62,7 @@ A variável ``s`` é a $scope e a ``r`` a $rootScope. Quando recebe um array, o 
 
 ### Outra estratégia
 
-O último exemplo é compatível com o minificador. No entanto continuamos com funções anónimas e no geral não é um código entendido por quem não utilize o AngularJS.
+O último exemplo é compatível com o minificador e é válido mas outra alternativa a meu ver mais correta é ao chamar a função ``controller`` passar apenas o nome do controlador e a sua função. As dependências são injetadas na função e declaradas sempre na propriedade ``$inject``.
 
 Vamos examinar o exemplo do controller ``homeCtrl``
 
