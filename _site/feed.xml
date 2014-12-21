@@ -10,7 +10,7 @@
 				<title>Análise da fuga de informação da equipa do Facebook</title>
 				<description>&lt;h1 id=&quot;anlise&quot;&gt;Análise&lt;/h1&gt;
 
-&lt;p&gt;Escrevi na Volupio &lt;a href=&quot;http://volupio.com/falha-grave-de-programadores-facebook-revela-demasiado/&quot;&gt;um artigo sobre a fuga de informação da responsabilidade de trabalhadores do Facebook&lt;/a&gt;, aqui vou tentar analisar mais detalhadamente a informação recolhida.&lt;/p&gt;
+&lt;p&gt;Escrevi na Volupio &lt;a href=&quot;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&quot;&gt;um artigo sobre a fuga de informação da responsabilidade de trabalhadores do Facebook&lt;/a&gt;, aqui vou tentar analisar mais detalhadamente a informação recolhida.&lt;/p&gt;
 
 &lt;p&gt;Tudo começa na publicação de Malcom, que &lt;a href=&quot;http://sintheticlabs.com/blog/a-look-inside-facebooks-source-code.html&quot;&gt;pode ser lida aqui&lt;/a&gt;. Malcom estava a lidar com erros do Phabricator, uma plataforma de código aberto lançada pela equipa do Facebook. Quando eu elogio o Facebook por contribuir para o código de fonte aberta é exactamente por isto, bibliotecas, plataformas e até uma linguagem de programação que a equipa desenvolveu e distribuíu. Para quem programa em PHP, o &lt;a href=&quot;http://hacklang.org/&quot;&gt;PHP Hack&lt;/a&gt; é um grande exemplo de um passo dado pelo Facebook para levar o PHP mais além, e para mim enquanto programador C# foi uma razão para gostar ainda mais de PHP.&lt;/p&gt;
 
@@ -76,6 +76,8 @@ HipHop Fatal error: Uncaught exception exception &#39;PhutilBootloaderException&
 &lt;p&gt;Neste caso do Facebook foi pior, pois foi colado no pastebin e nem foi protegido com uma password.&lt;/p&gt;
 
 &lt;p&gt;O que podemos aprender daqui? De nada vale um projeto estar protegido por firewalls, pontos de acessos, enfim tudo e mais alguma coisa que possamos imaginar em segurança de redes, se os programadores são negligêntes ao ponto de colarem o próprio código na Internet!&lt;/p&gt;
+
+&lt;p&gt;Link do artigo que escrevi na Volupio: &lt;a href=&quot;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&quot;&gt;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&lt;/a&gt;&lt;/p&gt;
 </description>
 				<pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/security/facebook/2014/12/21/analise-fuga-informacao-facebook.html</link>

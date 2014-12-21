@@ -9,7 +9,7 @@ categories:
 ---
 # Análise
 
-Escrevi na Volupio [um artigo sobre a fuga de informação da responsabilidade de trabalhadores do Facebook](http://volupio.com/falha-grave-de-programadores-facebook-revela-demasiado/), aqui vou tentar analisar mais detalhadamente a informação recolhida.
+Escrevi na Volupio [um artigo sobre a fuga de informação da responsabilidade de trabalhadores do Facebook](http://volupio.com/falha-de-programadores-facebook-revela-demasiado/), aqui vou tentar analisar mais detalhadamente a informação recolhida.
 
 Tudo começa na publicação de Malcom, que [pode ser lida aqui](http://sintheticlabs.com/blog/a-look-inside-facebooks-source-code.html). Malcom estava a lidar com erros do Phabricator, uma plataforma de código aberto lançada pela equipa do Facebook. Quando eu elogio o Facebook por contribuir para o código de fonte aberta é exactamente por isto, bibliotecas, plataformas e até uma linguagem de programação que a equipa desenvolveu e distribuíu. Para quem programa em PHP, o [PHP Hack](http://hacklang.org/) é um grande exemplo de um passo dado pelo Facebook para levar o PHP mais além, e para mim enquanto programador C# foi uma razão para gostar ainda mais de PHP.
 
@@ -72,3 +72,5 @@ Mesmo em serviços privados eu sempre tive muito medo. Enquanto programador tenh
 Neste caso do Facebook foi pior, pois foi colado no pastebin e nem foi protegido com uma password.
 
 O que podemos aprender daqui? De nada vale um projeto estar protegido por firewalls, pontos de acessos, enfim tudo e mais alguma coisa que possamos imaginar em segurança de redes, se os programadores são negligêntes ao ponto de colarem o próprio código na Internet!
+
+Link do artigo que escrevi na Volupio: [http://volupio.com/falha-de-programadores-facebook-revela-demasiado/](http://volupio.com/falha-de-programadores-facebook-revela-demasiado/)
