@@ -7,6 +7,58 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Já conheces o Hacklang? Uma linguagem que se interpola lindamente com o PHP!</title>
+				<description>&lt;p&gt;Hack é uma linguagem de programação desenvolvida pelo Facebook. A equipa usa esta linguagem na rede social e tornou-a código aberto.&lt;/p&gt;
+
+&lt;p&gt;O PHP é uma linguagem dinâmica enquanto que C# é estática.&lt;/p&gt;
+
+&lt;p&gt;Uma linguagem estática tem de ser compilada para ser executada, temos o exemplo de C++ e C#. Se num projeto .NET alterar-mos código temos de construir de novo o projeto e gerar as dll&lt;/p&gt;
+
+&lt;p&gt;Em PHP isso não acontece porque é dinâmica. Há casos em que isto até é aproveitado para criar ficheiros php em tempo de execuxão (um exemplo são os Hydrators do Doctrine ODM, um ORM orientado a base de dados documentais).&lt;/p&gt;
+
+&lt;p&gt;Hack é uma mistura destes dois tipos de linguagem, como o PHP é uma linguagem dinâmica e ambas interpolam-se sem problemas mas também é estaticamente “tipada”. &lt;/p&gt;
+
+&lt;p&gt;O Hack utiliza um compilador Just In Time chamado Hip Hop Virtual Machine - HHVM. Em vez de interpretar ou compilar código PHP diretamente para C++, o HHVM compila o Hack e PHP para um código binário intermediário que é traduzido para código de máquina x64 dinamicamente em tempo de execução pelo compilador.&lt;/p&gt;
+
+&lt;p&gt;Entre as várias vantagens do hack vou destacar aquelas que me levaram a começar a programar com esta linguagem:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Atributos - usar atributos podes facilitar em muito a manutenção do código. Podem ser usados nos métodos de um controlador para indicar o URL de destino, numa classe de validação para indicar os tipos de campos, numa classe de domínio para indicar fazer o mapeamento das propriedades da classe com os campos da base de dados, etc&lt;/li&gt;
+  &lt;li&gt;Enumerador - apesar de existem bibliotecas em PHP que simulam enumeradores eles não existem nativamente em PHP&lt;/li&gt;
+  &lt;li&gt;Genêricos - utilizar tipos genêricos aumenta muito o desenvolvimento em certas situações como a criação de um repositório quer receba um tipo genêrico &lt;strong&gt;T&lt;/strong&gt;. Isto permite ter uma classe definida que consiga lidar com vários tipos de entidades (normalmente extendemos a classe do repositório e só escrevemos novas funções quando precisamos de queries específicas).&lt;/li&gt;
+  &lt;li&gt;Anotações de tipo - sem dúvida o forte do hacklang. Quando criamos uma variável indicamos se é um número inteiro, uma string, etc enquanto que em PHP é dinâmico e apenas anotamos arrays ou classes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;instalao&quot;&gt;Instalação&lt;/h3&gt;
+
+&lt;p&gt;A instalação é facilitada com pacotes suportados pela equipa do Facebook para debian, ubuntu e mint. Também existem pacotes distribuídos pela comunidade para Fedora, Centos, Amazon Linux, Arch e outras versões do Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;O hhvm precisa de um servidor web, o recomendado é o nginx. Na instalação do hhvm é disponibilizado um script que configura a comunicação do hhvm com o nginx por sockets usando o fastcgi (não confundas com o php-fpm, ele é responsável por fazer o php comunicar com o fastcgi e não o hhvm). Este script é corrido após a instalação:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+sudo sh /usr/share/hhvm/install_fastcgi.sh
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Este script adiciona o ficheiro hhvm.conf no directório /etc/nginx&lt;/p&gt;
+
+&lt;h3 id=&quot;comear-a-usar&quot;&gt;Começar a usar&lt;/h3&gt;
+
+&lt;p&gt;Partimos do princípio que qualquer projecto PHP irá correr no hhvm. Isto nem sempre é verdade pois hà funcionalidades no PHP que não são permitidas em hacklang, mas a maioria podemos considerar maus hábitos de programação que têem vindo a ser usados no PHP por ser “tão dinâmico”.&lt;/p&gt;
+
+&lt;p&gt;Na raíz do projecto criamos um ficheiro em branco &lt;strong&gt;.hhconfig&lt;/strong&gt;. Este ficheiro permite ao type checker do hhvm saber onde procurar o código a avaliar.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+hhclient
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Se o projecto for apenas PHP e ainda não tivermos programado nad em hacklang, o type checker vai correr um daemon e retornará &lt;code&gt;no errors&lt;/code&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/php/hacklang/2015/02/09/php-hack-introducao.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/php/hacklang/2015/02/09/php-hack-introducao.html</guid>
+			</item>
+		
+			<item>
 				<title>Análise da fuga de informação da equipa do Facebook</title>
 				<description>&lt;h1 id=&quot;anlise&quot;&gt;Análise&lt;/h1&gt;
 
@@ -34,7 +86,7 @@
        $t_end = microtime(true);
        $t_delta = $t_end - $t_start;
        if ($t_delta &amp;gt; ProfilingThresholds::$queryReadDuration) {
-         ProfilingThresholds::recordDurationError(&#39;mysql.queryReadDuration&#39;,
+         ProfilingThresholds::recordDurationError('mysql.queryReadDuration',
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;A informação colada nesse pastebin foi publicada por um visitante dia 17 deste mês. Pela formatação do código conseguimos ver que provem de uma consulta com o GIT, possivelmente um diff. É uma função simples que executada instruções SQL, e muito possivelmente o trabalhador do Facebook colou isto para passar a outro.&lt;/p&gt;
@@ -48,7 +100,7 @@
 &lt;p&gt;Pelos caminhos indicados em alguns registos também podemos saber o nome das contas utilizadas por alguns trabalhadores. Por exemplo&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Running unit tests...
-HipHop Fatal error: Uncaught exception exception &#39;PhutilBootloaderException&#39; with message &#39;The phutil library &#39;&#39; has not been loaded!&#39; in /home/engshare/devtools/libphutil/src/__phutil_library_init__.php:124\nStack trace:\n#0 /home/engshare/devtools/libphutil/src/__phutil_library_init__.php(177): PhutilBootloader-&amp;gt;getLibraryRoot()\n#1 /home/engshare/devtools/arcanist/src/unit/engine/phutil/PhutilUnitTestEngine.php(53): PhutilBootloader-&amp;gt;moduleExists()\n#2 /home/engshare/devtools/arcanist/src/workflow/unit/ArcanistUnitWorkflow.php(113): PhutilUnitTestEngine-&amp;gt;run()\n#3 /home/engshare/devtools/arcanist/src/workflow/diff/ArcanistDiffWorkflow.php(1172): ArcanistUnitWorkflow-&amp;gt;run()\n#4 /home/engshare/devtools/arcanist/src/workflow/diff/ArcanistDiffWorkflow.php(225): ArcanistDiffWorkflow-&amp;gt;runUnit()\n#5 /home/engshare/devtools/arcanist/scripts/arcanist.php(257): ArcanistDiffWorkflow-&amp;gt;run()\n#6 {main}
+HipHop Fatal error: Uncaught exception exception 'PhutilBootloaderException' with message 'The phutil library '' has not been loaded!' in /home/engshare/devtools/libphutil/src/__phutil_library_init__.php:124\nStack trace:\n#0 /home/engshare/devtools/libphutil/src/__phutil_library_init__.php(177): PhutilBootloader-&amp;gt;getLibraryRoot()\n#1 /home/engshare/devtools/arcanist/src/unit/engine/phutil/PhutilUnitTestEngine.php(53): PhutilBootloader-&amp;gt;moduleExists()\n#2 /home/engshare/devtools/arcanist/src/workflow/unit/ArcanistUnitWorkflow.php(113): PhutilUnitTestEngine-&amp;gt;run()\n#3 /home/engshare/devtools/arcanist/src/workflow/diff/ArcanistDiffWorkflow.php(1172): ArcanistUnitWorkflow-&amp;gt;run()\n#4 /home/engshare/devtools/arcanist/src/workflow/diff/ArcanistDiffWorkflow.php(225): ArcanistDiffWorkflow-&amp;gt;runUnit()\n#5 /home/engshare/devtools/arcanist/scripts/arcanist.php(257): ArcanistDiffWorkflow-&amp;gt;run()\n#6 {main}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Este registo foi gerado HHVM e a conta engshare sugere uma conta partilhada pelos engeheiros do Facebook.&lt;/p&gt;
@@ -62,7 +114,7 @@ HipHop Fatal error: Uncaught exception exception &#39;PhutilBootloaderException&
 
 &lt;p&gt;Outra informação muito relevante, no qual se baseou o artigo que escrevi na Volupio é uma ligação à base de dados. Esta informação parece ter vindo de um print_r() de uma array que acabou por ser enviado para produção hà alguns anos:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;array ( &#39;ip&#39; =&amp;gt; &#39;10.21.209.92&#39;, &#39;db_name&#39; =&amp;gt; &#39;insights&#39;, &#39;user&#39; =&amp;gt; &#39;mark&#39;, &#39;pass&#39; =&amp;gt; &#39;e5p0nd4&#39;, &#39;mode&#39; =&amp;gt; &#39;r&#39;, &#39;port&#39; =&amp;gt; 3306, &#39;cleanup&#39; =&amp;gt; false, &#39;num_retries&#39; =&amp;gt; 3, &#39;log_after_num_retries&#39; =&amp;gt; 4, &#39;reason&#39; =&amp;gt; &#39;insights&#39;, &#39;cdb&#39; =&amp;gt; true, &#39;flags&#39; =&amp;gt; 0, &#39;is_shadow&#39; =&amp;gt; false, &#39;backoff_retry&#39; =&amp;gt; false, )
+&lt;pre&gt;&lt;code&gt;array ( 'ip' =&amp;gt; '10.21.209.92', 'db_name' =&amp;gt; 'insights', 'user' =&amp;gt; 'mark', 'pass' =&amp;gt; 'e5p0nd4', 'mode' =&amp;gt; 'r', 'port' =&amp;gt; 3306, 'cleanup' =&amp;gt; false, 'num_retries' =&amp;gt; 3, 'log_after_num_retries' =&amp;gt; 4, 'reason' =&amp;gt; 'insights', 'cdb' =&amp;gt; true, 'flags' =&amp;gt; 0, 'is_shadow' =&amp;gt; false, 'backoff_retry' =&amp;gt; false, )
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1 id=&quot;o-que-podemos-aprender-daqui&quot;&gt;O que podemos aprender daqui&lt;/h1&gt;
@@ -92,22 +144,22 @@ HipHop Fatal error: Uncaught exception exception &#39;PhutilBootloaderException&
 
 &lt;p&gt;Quando existem nomes iguais de um serviço, diretiva, controlador, a injecção é resolvida pela ordem com que são os módulos dependentes. &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;moduleOne&#39;, []).service(&#39;bible&#39;, function(){});
+&lt;pre&gt;&lt;code&gt;angular.module('moduleOne', []).service('bible', function(){});
 
-angular.module(&#39;moduleTwo&#39;, ]).service(&#39;bible&#39;, function(){})
+angular.module('moduleTwo', ]).service('bible', function(){})
 
-angular.module(&#39;app&#39;, [&#39;moduleOne&#39;, &#39;moduleTwo&#39;])
-		.controller(&#39;homeCtrl&#39;, [&#39;bible&#39;, function(bible) {}])
+angular.module('app', ['moduleOne', 'moduleTwo'])
+		.controller('homeCtrl', ['bible', function(bible) {}])
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;O serviço &lt;code&gt;bible&lt;/code&gt; injetado no controlador é o do módulo moduleTwo por ele ter sido declarado no array depois do moduleOne. No caso de saber-mos que um serviço com o mesmo nome deve provir de determinado módulo, a posição desse módulo no array deve ser depois dos outros com um serviço com o mesmo nome.&lt;/p&gt;
 
 &lt;p&gt;No entanto este comportanto apesar de ser esperado não é uma boa forma de resolvermos o problema. O ideal é especificar qual o módulo do qual queremos injetar o serviço &lt;code&gt;bible&lt;/code&gt; utilizando o &lt;code&gt;injector()&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;app&#39;, [&#39;moduleOne&#39;, &#39;moduleTwo&#39;])
-		.controller(&#39;homeCtrl&#39;, [&#39;$injector&#39;, function($injector) {
-				var mod = angular.injector([&#39;moduleOne&#39;]);
-				var bible = mod.get(&#39;bible&#39;);
+&lt;pre&gt;&lt;code&gt;angular.module('app', ['moduleOne', 'moduleTwo'])
+		.controller('homeCtrl', ['$injector', function($injector) {
+				var mod = angular.injector(['moduleOne']);
+				var bible = mod.get('bible');
 			}]);
 &lt;/code&gt;&lt;/pre&gt;
 </description>
@@ -133,7 +185,7 @@ angular.module(&#39;app&#39;, [&#39;moduleOne&#39;, &#39;moduleTwo&#39;])
 
 &lt;p&gt;Neste exemplo eu apenas deixo no contexto global a &lt;code&gt;app&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var app = angular.module(&#39;web&#39;, [&#39;ngRoute&#39;]);
+&lt;pre&gt;&lt;code&gt;var app = angular.module('web', ['ngRoute']);
 (function(){
 
 })();
@@ -143,15 +195,15 @@ angular.module(&#39;app&#39;, [&#39;moduleOne&#39;, &#39;moduleTwo&#39;])
 
 &lt;p&gt;É bastante comum em tutoriais ver-mos exemplos assim:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;web&#39;).controller(&#39;homeCtrl&#39;, function($scope) {
-	$scope.message = &#39;message&#39;;
+&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', function($scope) {
+	$scope.message = 'message';
 });
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Este código não apresenta erros e é válido mas vamos supor que queremos minificar o código com uma ferramenta. Essa ferramenta vai alterar os nomes das variáveis e o resultado será este:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;web&#39;).controller(&#39;homeCtrl&#39;, function(s) {
-	s.message = &#39;message&#39;;
+&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', function(s) {
+	s.message = 'message';
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -159,15 +211,15 @@ angular.module(&#39;app&#39;, [&#39;moduleOne&#39;, &#39;moduleTwo&#39;])
 
 &lt;p&gt;Uma solução será enviar uma array com as dependências e só no final a função a ser executada.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;web&#39;).controller(&#39;homeCtrl&#39;, [&#39;$scope&#39;, function($scope) {
-	$scope.message = &#39;message&#39;;
+&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', ['$scope', function($scope) {
+	$scope.message = 'message';
 }]);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Na primeira entrada da array a $scope é passada numa string, o que significa que o minificador vai deixar o valor intacto. Já na variável da função ele vai substituír a $scope mas não há problema, pois o AngularJS sabe que a primeira variável é a $scope, independentemente do nome que a variável tiver. O resutlado é este:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;angular.module(&#39;web&#39;).controller(&#39;homeCtrl&#39;, [&#39;$scope&#39;, &#39;$rootScope&#39;, function(s, r) {
-	s.message = &#39;message&#39;;
+&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', ['$scope', '$rootScope', function(s, r) {
+	s.message = 'message';
 }]);
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -187,8 +239,8 @@ angular.module(&#39;app&#39;, [&#39;moduleOne&#39;, &#39;moduleTwo&#39;])
     self.service = sharedService;
   };
 
-  cntrlFn.$inject = [&#39;$log&#39;, &#39;sharedService&#39;];
-  app.controller(&#39;homeCtrl&#39;, cntrlFn);
+  cntrlFn.$inject = ['$log', 'sharedService'];
+  app.controller('homeCtrl', cntrlFn);
 })();
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -206,15 +258,15 @@ angular.module(&#39;app&#39;, [&#39;moduleOne&#39;, &#39;moduleTwo&#39;])
 
   cntrlFn.prototype.refresh = function(){
   	var self = this;
-  	self.$log(&#39;refreshed&#39;);
+  	self.$log('refreshed');
   };
 
   cntrlFn.prototype.logout = function(){
-  	window.location = &#39;/logout&#39;;
+  	window.location = '/logout';
   };
 
-  cntrlFn.$inject = [&#39;$log&#39;, &#39;sharedService&#39;];
-  app.controller(&#39;homeCtrl&#39;, cntrlFn);
+  cntrlFn.$inject = ['$log', 'sharedService'];
+  app.controller('homeCtrl', cntrlFn);
 })();
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -225,15 +277,15 @@ angular.module(&#39;app&#39;, [&#39;moduleOne&#39;, &#39;moduleTwo&#39;])
 
 &lt;p&gt;Tanto o &lt;code&gt;$routeProvider&lt;/code&gt; como o &lt;code&gt;$stateProvider&lt;/code&gt; do módulo ui-router suportam o controllerAs da seguinte forma:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$routeProvider.when(&#39;/&#39;, {
-	controller: &#39;homeCtrl&#39;,
-	controllerAs: &#39;ctrl&#39;
+&lt;pre&gt;&lt;code&gt;$routeProvider.when('/', {
+	controller: 'homeCtrl',
+	controllerAs: 'ctrl'
 });
 
-$stateProvider.state(&#39;home&#39;, {
-	url: &#39;/&#39;,
-	controller: &#39;homeCtrl&#39;,
-	controllerAs: &#39;ctrl&#39;
+$stateProvider.state('home', {
+	url: '/',
+	controller: 'homeCtrl',
+	controllerAs: 'ctrl'
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -337,19 +389,19 @@ $stateProvider.state(&#39;home&#39;, {
 &lt;p&gt;Quando desenvolvo uma aplicação em PHP deixo os idiomas na configuração da aplicação. Se já usares uma framework terás de ver a documentação dela para associares um novo dominio.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$language = &quot;pt_PT&quot;;
-$codeset = &#39;UTF-8&#39;;
-$locale = $language . &#39;.&#39; . $codeset;
-$domain = &#39;messages&#39;;
+$codeset = 'UTF-8';
+$locale = $language . '.' . $codeset;
+$domain = 'messages';
 
 if(defined($locale)) { // linux
     setlocale(LC_MESSAGES, $locale);
 }
 else {
-    putenv(&#39;LC_ALL={$locale}&#39;); // windows
+    putenv('LC_ALL={$locale}'); // windows
 }
-putenv(&#39;LANG={$language}&#39;);
+putenv('LANG={$language}');
 
-bindtextdomain($domain, &#39;../i18n/Locale&#39;);
+bindtextdomain($domain, '../i18n/Locale');
 bind_textdomain_codeset($domain, $codeset);
 textdomain($domain);
 &lt;/code&gt;&lt;/pre&gt;
@@ -907,54 +959,54 @@ The following was written shortly after my arrest...
                           Written on January 8, 1986
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-        Another one got caught today, it&#39;s all over the papers.  &quot;Teenager
+        Another one got caught today, it's all over the papers.  &quot;Teenager
 Arrested in Computer Crime Scandal&quot;, &quot;Hacker Arrested after Bank Tampering&quot;...
-        Damn kids.  They&#39;re all alike.
+        Damn kids.  They're all alike.
 
-        But did you, in your three-piece psychology and 1950&#39;s technobrain,
+        But did you, in your three-piece psychology and 1950's technobrain,
 ever take a look behind the eyes of the hacker?  Did you ever wonder what
 made him tick, what forces shaped him, what may have molded him?
         I am a hacker, enter my world...
-        Mine is a world that begins with school... I&#39;m smarter than most of
+        Mine is a world that begins with school... I'm smarter than most of
 the other kids, this crap they teach us bores me...
-        Damn underachiever.  They&#39;re all alike.
+        Damn underachiever.  They're all alike.
 
-        I&#39;m in junior high or high school.  I&#39;ve listened to teachers explain
+        I'm in junior high or high school.  I've listened to teachers explain
 for the fifteenth time how to reduce a fraction.  I understand it.  &quot;No, Ms.
-Smith, I didn&#39;t show my work.  I did it in my head...&quot;
-        Damn kid.  Probably copied it.  They&#39;re all alike.
+Smith, I didn't show my work.  I did it in my head...&quot;
+        Damn kid.  Probably copied it.  They're all alike.
 
         I made a discovery today.  I found a computer.  Wait a second, this is
-cool.  It does what I want it to.  If it makes a mistake, it&#39;s because I
-screwed it up.  Not because it doesn&#39;t like me...
+cool.  It does what I want it to.  If it makes a mistake, it's because I
+screwed it up.  Not because it doesn't like me...
                 Or feels threatened by me...
-                Or thinks I&#39;m a smart ass...
-                Or doesn&#39;t like teaching and shouldn&#39;t be here...
-        Damn kid.  All he does is play games.  They&#39;re all alike.
+                Or thinks I'm a smart ass...
+                Or doesn't like teaching and shouldn't be here...
+        Damn kid.  All he does is play games.  They're all alike.
 
         And then it happened... a door opened to a world... rushing through
-the phone line like heroin through an addict&#39;s veins, an electronic pulse is
+the phone line like heroin through an addict's veins, an electronic pulse is
 sent out, a refuge from the day-to-day incompetencies is sought... a board is
 found.
         &quot;This is it... this is where I belong...&quot;
-        I know everyone here... even if I&#39;ve never met them, never talked to
+        I know everyone here... even if I've never met them, never talked to
 them, may never hear from them again... I know you all...
-        Damn kid.  Tying up the phone line again.  They&#39;re all alike...
+        Damn kid.  Tying up the phone line again.  They're all alike...
 
-        You bet your ass we&#39;re all alike... we&#39;ve been spoon-fed baby food at
+        You bet your ass we're all alike... we've been spoon-fed baby food at
 school when we hungered for steak... the bits of meat that you did let slip
-through were pre-chewed and tasteless.  We&#39;ve been dominated by sadists, or
+through were pre-chewed and tasteless.  We've been dominated by sadists, or
 ignored by the apathetic.  The few that had something to teach found us will-
 ing pupils, but those few are like drops of water in the desert.
 
         This is our world now... the world of the electron and the switch, the
 beauty of the baud.  We make use of a service already existing without paying
-for what could be dirt-cheap if it wasn&#39;t run by profiteering gluttons, and
+for what could be dirt-cheap if it wasn't run by profiteering gluttons, and
 you call us criminals.  We explore... and you call us criminals.  We seek
 after knowledge... and you call us criminals.  We exist without skin color,
 without nationality, without religious bias... and you call us criminals.
 You build atomic bombs, you wage wars, you murder, cheat, and lie to us
-and try to make us believe it&#39;s for our own good, yet we&#39;re the criminals.
+and try to make us believe it's for our own good, yet we're the criminals.
 
         Yes, I am a criminal.  My crime is that of curiosity.  My crime is
 that of judging people by what they say and think, not what they look like.
@@ -962,7 +1014,7 @@ My crime is that of outsmarting you, something that you will never forgive me
 for.
 
         I am a hacker, and this is my manifesto.  You may stop this individual,
-but you can&#39;t stop us all... after all, we&#39;re all alike.
+but you can't stop us all... after all, we're all alike.
 
                                +++The Mentor+++
 _________________________________________________________&lt;/pre&gt;
@@ -1333,120 +1385,6 @@ PATH = $PATH:/opt/bible/bin
 				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://www.codigo.ovh/design-pattern/2014/09/24/builder-pattern.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/design-pattern/2014/09/24/builder-pattern.html</guid>
-			</item>
-		
-			<item>
-				<title>Arquitecturas e Padrões em software</title>
-				<description>&lt;p&gt;Esta é a minha área favorita e nem que escrever! Para já mantenho tudo neste artigo, depois logo se vê
-#### PHP&lt;/p&gt;
-
-&lt;p&gt;Começar com um exemplo simples. Uma aplicação com as seguintes entidades:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Utilizador&lt;/li&gt;
-  &lt;li&gt;Mensagem&lt;/li&gt;
-  &lt;li&gt;Artigos&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O que esta aplicação mais vai ter são operações CRUD - create, read, update e delete. Dividir uma aplicação em camadas tem vantagens.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserRepository implements IRepository {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	protected $dbContext;&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;dbContext = $ioc[&amp;#39;database&amp;#39;]-&amp;gt;getDbContext(&amp;#39;App\Domain\User&amp;#39;));&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;	public function get($id){&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		return $dbContext-&amp;gt;get($id);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserService : BaseService {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	protected $userRepository;&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		parent::__construct($ioc);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;userRepository = new \App\Data\UserRepository($ioc);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;	public function get($id) {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		try {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;			$this-&amp;gt;baseValidator-&amp;gt;assertId($id); // If id is invalid, throw exception&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;			$user = $this-&amp;gt;userRepository-&amp;gt;get($id);&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;			if(is_null($user)) {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;				throw new UserNotFoundException($user);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;			}&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;			$userBuilder = new \App\Services\UserBuilder($user);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;			$userBuilder-&amp;gt;build();&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;			$userDto = $userBuilder-&amp;gt;getDto();&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;			return $userDto;&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		catch(MissingArgumentException $ex) {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;			$response = \App\Services\ErrorProvider::getResponse($ex);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;			return $response;&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Quando chamo a função assertId(). Ela vai validar o id e asegurar que é válido. Isto não significa que ele exista pois este tipo de função não recorre a recursos, apenas realiza uma validação.&lt;/p&gt;
-
-&lt;p&gt;No caso de ser inválido então invoca uma excepção, por exemplo InvalidIdException. Esta excepção não vamos estar a apanhar em cada função das APIs como é o exemplo do userService-&amp;gt;get().&lt;/p&gt;
-
-&lt;p&gt;Estas função lidamos numa camada superior. O ideal é a BaseService ter um função que lide com excepções globais como o exemplo da InvalidException. &lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class UserApi : RestBase {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	protected $userBusiness;&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;	public function __construct($ioc) {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		parent::__construct($ioc);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		$this-&amp;gt;userBusiness = new \App\Business\UserBusiness($ioc);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;	public function get(){&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		$id = $this-&amp;gt;app-&amp;gt;request()-&amp;gt;params(&amp;#39;id&amp;#39;);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		if(empty($id)) {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;			throw new ArgumentMissingExpcetion(&amp;#39;id&amp;#39;);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;		}&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;		$user = $this-&amp;gt;userBusiness-&amp;gt;get($id);&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;		return array(&amp;#39;code&amp;#39; =&amp;gt; 200, &amp;#39;result&amp;#39; =&amp;gt; $user);&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	}&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Agora falta declarar os pontos de acesso á API. Eu uso o Slim em projectos PHP apenas para isto, mas há outras micro frameworks melhores.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;$app = new \Slim\Slim();&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;$ioc = \App\Services\IocContainer();&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;$app-&amp;gt;get(&amp;#39;/api/user&amp;#39;, function() use($ioc) {&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;	$ioc[&amp;#39;userApi&amp;#39;]-&amp;gt;get();&lt;/span&gt;
-&lt;span class=&quot;x&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;x&quot;&gt;$app-&amp;gt;run();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Este seria o ficheiro index.php ou api.php fora da biblioteca. A ideia aqui é manter apenas um ficheiro na pasta onde a aplicação está publicada (tipica /var/www). Este ficheiro consume a biblioteca, essa biblioteca que é carregada por PSR está noutra pasta mais protegida.&lt;/p&gt;
-
-&lt;p&gt;A biblioteca é composta por&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;API - Classes que consomem a biblioteca&lt;/li&gt;
-  &lt;li&gt;Serviços - Classes de negócio, consomem recursos como repositórios de base de dados, validam entradas do utilizador, etc&lt;/li&gt;
-  &lt;li&gt;Data &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Eu não utilizo PHP para gerar as páginas. Como utilizo muito o Angular consigo ter apenas ficheiros estáticos que posso distribuir por uma CDN.&lt;/p&gt;
-</description>
-				<pubDate>Tue, 23 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/software/2014/09/23/arquitectura-padroes.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/software/2014/09/23/arquitectura-padroes.html</guid>
 			</item>
 		
 	</channel>
