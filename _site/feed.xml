@@ -7,6 +7,155 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Encurtador de URL com o redis e nginx - super rápido!</title>
+				<description>&lt;p&gt;Precisei de implementar uma solução para encurtar urls, semelhante ao &lt;a href=&quot;https://goo.gl/&quot;&gt;Google Shortener&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A primeira questão foi qual linguagem utilizar. Por ser algo tão simples ia para python mas encontrei uma implementação do &lt;a href=&quot;https://github.com/MendelGusmao&quot;&gt;Mendelson&lt;/a&gt; que utiliza o redis para guardar a informação em memória ram, e um servidor nginx.&lt;/p&gt;
+
+&lt;p&gt;Para melhorar o resultado de performance deste projeto, a ligação entre o servidor web nginx e a base de dados redis onde a informação é guardada, é feita no nível do nginx usando LUA. Isto é uma vantagem muito grande, pois evita que tenhamos de correr código PHP ou outra linguagem qualquer para lidar com o negócio das operações que pode ser muito bem tratado apenas no nginx. &lt;/p&gt;
+
+&lt;p&gt;No entanto esta aplicação é simples e não tem implementado nenhum sistema de autenticação ou validação dos urls.&lt;/p&gt;
+
+&lt;p&gt;Original: &lt;a href=&quot;https://gist.github.com/MendelGusmao/2356310&quot;&gt;https://gist.github.com/MendelGusmao/2356310&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Baseado em on http://uberblo.gs/2011/06/high-performance-url-shortening-with-redis-backed-nginx&lt;/li&gt;
+  &lt;li&gt;A usar código de from http://stackoverflow.com/questions/3554315/lua-base-converter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Esquema da Base de Dados&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;id -&amp;gt; url&lt;/li&gt;
+  &lt;li&gt;id -&amp;gt; contador&lt;/li&gt;
+  &lt;li&gt;id -&amp;gt; referer / user_agent&lt;/li&gt;
+  &lt;li&gt;id -&amp;gt; contador (when id is not found)&lt;/li&gt;
+  &lt;li&gt;id -&amp;gt; referer / user_agent (quando o id não é encontrado)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;chave “count” guarda o número de urls encurtados; o id é gerado (este número + 1) e convertido para base 62&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; server {
+	 
+   location ~ ^/retrieve$ {
+     internal;
+	 
+     redis2_query get $request_uri;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/count$ {
+     internal;
+	 
+     redis2_query select 5;
+     redis2_query get count;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/history$ {
+     internal;
+	 
+     redis2_query select 1;
+     redis2_query incr $request_uri;
+	 
+     redis2_query select 2;
+     redis2_query rpush $request_uri &quot;$http_referer|$http_user_agent&quot;;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/notfound$ {
+     internal;
+	 
+     redis2_query select 3;
+     redis2_query incr $request_uri;
+	 
+     redis2_query select 4;
+     redis2_query rpush $request_uri &quot;$http_referer|$http_user_agent&quot;;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/store$ {
+     internal;
+	 
+     redis2_query select 0;
+     set_unescape_uri $id $arg_id;
+     set_unescape_uri $url $arg_url;
+     redis2_query set $id $url;
+	 
+     redis2_query select 5;
+     redis2_query incr count;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/shorten/(?&amp;lt;url&amp;gt;.*)$ {
+     auth_basic &quot;Restricted&quot;;
+     auth_basic_user_file /etc/nginx/.htpasswd;
+	 
+     add_header Content-Type text/plain;
+	 
+     content_by_lua '
+       local parser = require &quot;redis.parser&quot;
+       local res = ngx.location.capture(&quot;/count&quot;)
+       local results, type = parser.parse_replies(res.body, 2)
+	 
+       basen = function(n, b)
+         n = math.floor(n)
+         if not b or b == 10 then return tostring(n) end
+         local digits = &quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;
+         local t = {}
+         local sign = &quot;&quot;
+         if n &amp;lt; 0 then
+           sign = &quot;-&quot;
+           n = -n
+         end
+         repeat
+           local d = (n % b) + 1
+           n = math.floor(n / b)
+           table.insert(t, 1, digits:sub(d, d))
+         until n == 0
+         return sign .. table.concat(t,&quot;&quot;)
+       end
+	 
+       local id = basen(results[2][1] + 1, 62)
+	 
+       ngx.location.capture(&quot;/store&quot;,
+         { args = { id = &quot;/&quot;..tostring(id), url = ngx.var.url } }
+       )
+	 
+       ngx.say(&quot;http://&quot; .. ngx.var.host .. &quot;/&quot; .. id)
+     ';
+   }
+	 
+   location / {
+     content_by_lua '
+       local parser = require &quot;redis.parser&quot;;
+       local res = ngx.location.capture(&quot;/retrieve&quot;);
+       local href, type = parser.parse_reply(res.body);
+       if type == parser.ERROR_REPLY or href == nil then
+         ngx.location.capture(&quot;/notfound&quot;);
+         ngx.exit(ngx.HTTP_NOT_FOUND);
+       else
+         ngx.location.capture(&quot;/history&quot;);
+         ngx.redirect(href); 
+       end
+     ';
+   }
+	 
+ }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+				<pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/redis/nginx/2015/02/10/criar-um-encurtador-de-links-com-redis-e-nginx.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/redis/nginx/2015/02/10/criar-um-encurtador-de-links-com-redis-e-nginx.html</guid>
+			</item>
+		
+			<item>
 				<title>Já conheces o Hacklang? Uma linguagem que se interpola lindamente com o PHP!</title>
 				<description>&lt;p&gt;Hack é uma linguagem de programação desenvolvida pelo Facebook. A equipa usa esta linguagem na rede social e tornou-a código aberto.&lt;/p&gt;
 
@@ -219,8 +368,8 @@ angular.module('app', ['moduleOne', 'moduleTwo'])
 &lt;/code&gt;&lt;/pre&gt;
 </description>
 				<pubDate>Fri, 05 Dec 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-moduls-diferentes-com-nomes-iguais.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-moduls-diferentes-com-nomes-iguais.html</guid>
+				<link>http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html</guid>
 			</item>
 		
 			<item>
@@ -1329,61 +1478,6 @@ PATH = $PATH:/opt/bible/bin
 				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/09/30/linux.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/09/30/linux.html</guid>
-			</item>
-		
-			<item>
-				<title>Programação - Introdução</title>
-				<description>&lt;p&gt;“Que linguagem de programação me aconselhas?” ou “Isso de programador é que é vida, passar o dia todo sentado” já fazem parte do meu quotidiano.&lt;/p&gt;
-
-&lt;p&gt;Neste artigo quero fazer uma breve introdução a linguagens de programação e ao que esta carreira representa.&lt;/p&gt;
-
-&lt;h3 id=&quot;linguagens&quot;&gt;Linguagens&lt;/h3&gt;
-
-&lt;p&gt;Eu comecei a programar em TCL e depois fiquei uns anos a programar para web com PHP e C#. Há cerca de 1/2 anos comecei a lidar mais com linguagens como Python e shell que me têm ajudado a evoluir bastante enquanto programador.&lt;/p&gt;
-
-&lt;h4 id=&quot;php--hack&quot;&gt;PHP + Hack&lt;/h4&gt;
-
-&lt;p&gt;Hack, yes! Grande prenda da equipa do Facebook, esta linguagem é baseada no PHP mas muito mais direccionada a OOO.&lt;/p&gt;
-
-&lt;p&gt;Para mim as principais vantagens são os tipos anónimos e funções com o retorno definido, por exemplo&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-
-&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; * @return User&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Em PHP é assim que consigo ter o IDE a utilizar a auto completação. Tenho de anotar a função com o retorno. Em hack a história é outra&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;bibliotecas-e-frameworks&quot;&gt;Bibliotecas e Frameworks&lt;/h4&gt;
-
-&lt;p&gt;Para mim isto era a única razão pela qual fiquei tanto tempo no .NET, por causa das bibliotecas que temos disponíveis. &lt;/p&gt;
-
-&lt;p&gt;Isto tem bastante peso na escolha de uma linguagem para determinado projecto. Vai ser opensource? Temos disponibilidade do cliente para pagar serviços de desenvolvimento? Está em questão a compatibilidade entre plataformas?&lt;/p&gt;
-
-&lt;p&gt;O ServiceStack é um excelente exemplo de como uma framework pode ser o suficiente para matar um projecto. Até há pouco tempo esta framework era opensource mas sempre com a licença BSD. Uma framework excelente direccionada a webservices e com metadologias e propostas de desenho muito boas mesmo.&lt;/p&gt;
-
-&lt;p&gt;Na actualização da versão 3 para 4 alteraram os planos, passou a ser e apenas a versão 3 se manteve como BSD. O que aconteceu a quem tem projectos suportados nesta framework? São clientes da 4 ou vão ter de fazer um fork da 3 :)&lt;/p&gt;
-
-&lt;p&gt;Já me aconteceu utilizar bibliotecas que já nem eram mantidas, ou que secalhar não são tão boas quanto isso. Podem ter uma API que utilizemos sem problema e satisfaça as necessidades mas o código sofrer de má programação. &lt;/p&gt;
-
-&lt;h3 id=&quot;programador&quot;&gt;Programador&lt;/h3&gt;
-
-&lt;p&gt;Uma grande dificuldade que tenho é o tempo que tenho de dedicar à minha formação enquanto programador. Já trabalhei para empresas que dedicam X horas por semana do teu horário de trabalho para a tua formação, seja com Workshops presenciais ou simplesmente darem-te tempo para estudares!&lt;/p&gt;
-
-</description>
-				<pubDate>Wed, 24 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/programacao/2014/09/24/linguagens-programacao.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/programacao/2014/09/24/linguagens-programacao.html</guid>
 			</item>
 		
 	</channel>

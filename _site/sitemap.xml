@@ -164,7 +164,7 @@
     </url>
     <url>
         <loc>
-            http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-moduls-diferentes-com-nomes-iguais.html
+            http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html
         </loc>
         <lastmod>2015-02-09T15:56:16+00:00</lastmod>
     </url>
@@ -185,11 +185,17 @@
         <lastmod>2015-02-09T16:18:22+00:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.codigo.ovh/redis/nginx/2015/02/10/criar-um-encurtador-de-links-com-redis-e-nginx.html
+        </loc>
+        <lastmod>2015-02-10T12:38:12+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.codigo.ovh/archive.html</loc>
         <lastmod>2015-02-09T15:56:16+00:00</lastmod>
     </url>
     <url>
         <loc>http://www.codigo.ovh/</loc>
-        <lastmod>2015-02-09T19:33:43+00:00</lastmod>
+        <lastmod>2015-02-10T12:38:12+00:00</lastmod>
     </url>
 </urlset>
