@@ -1,0 +1,10 @@
+
+O **Outlook** ganhou a sua reputação ao longo dos anos graças às suas funcionalidades avançadas. Tanto pode ser usado por um utilizador regular como por alguém cujo trabalho envolva utilizar profissionalmente emails.
+
+Em **Linux** não temos o Outlook mas temos outros clientes de emails muito bons. Arrisco-me desde já a dizer que grande parte dos utilizadores regulares do Outlook encontram em Linux funcionalidades para as suas necessidades. Mesmo que utilizes o cliente de email mais profissionalmente existem comunidades a disponibilizar plugins para tarefas como automatização, sincronização com serviços externos, etc.
+
+
+### Thunderbird e Icedove ###
+
+O Icedove é um cliente de email multi plataformas baseado no Thunderbird que é mantido pela equipa do Debian, isto porque em Debian não existe nenhum pacote para instalar o Thunderbird. A menos que utilizes estes programas profissionalmente não deverás notar grande diferença entre os dois.
+
