@@ -39,4 +39,4 @@ O padrão de design do Observador permite a um assinante registar e receber noti
 	};
 
 
-Assim o serviço consegue notificar o controlador de alterações invocando o método **registerCallback**.
+Assim o serviço consegue notificar o controlador de alterações invocando o método **notifyCallbacks**.
