@@ -15,29 +15,28 @@ E quando tal ligação não existe? Usando o exemplo de um plugin jQuery, ele n�
 
 O padrão de design do Observador permite a um assinante registar e receber notificações de um provedor. Vamos usar um exemplo, com um serviço do AngularJS:
 
-````
-var service = function(){
-	var callbacks = [];
 
-	var notifyCallbacks = function(){
-		angular.forEach(callbacks, function(callback) {
-			callback();
-		});
+	var service = function(){
+		var callbacks = [];
+
+		var notifyCallbacks = function(){
+			angular.forEach(callbacks, function(callback) {
+				callback();
+			});
+		};
+
+		this.registerCallback = function(callback) {
+			this.callbacks.push(callback);
+		};
 	};
 
-	this.registerCallback = function(callback) {
-		this.callbacks.push(callback);
-	};
-};
+	var controller = function(service, $scope) {
+		$scope.callable = function(){
+			console.log('$scope.callable invoded');
+		};
 
-var controller = function(service, $scope) {
-	$scope.callable = function(){
-		console.log('$scope.callable invoded');
+		service.registerCallback($scope.callable);
 	};
 
-	service.registerCallback($scope.callable);
-};
-
-````
 
 Assim o serviço consegue notificar o controlador de alterações invocando o método **registerCallback**.

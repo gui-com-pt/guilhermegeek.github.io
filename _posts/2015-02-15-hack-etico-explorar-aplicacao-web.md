@@ -1,5 +1,5 @@
 ---
-title: Hack ético: explorar uma aplicação vulnerável!
+title: Hack ético&#58; explorar uma aplicação vulnerável!
 layout: post_entry
 image: /media/linux_logo.png
 excerpt: Aprende a descubrir vulnerabilidades numa aplicação e como explorar as mesmas
