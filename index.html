@@ -5,12 +5,10 @@ layout: default
 <p style="font-size:0.8em; color: #666666;">Muitos artigos estão incompletos, desorganizados e o site é feio.</p>
 <div class="row">
 <div class="col-xs-9">
+<gcse:search></gcse:search>
 <div class="clearfix">
 {% for post in site.posts %}
 <div class="media post__list">
-  <!--<a class="pull-left" href="{{post.url}}">
-    <img class="media-object post__thumbnail" src="{{ post.image }}" alt="Logo">
-  </a>-->
   <div class="media-body">
   	<span class="media-date">{{ post.date | date: "%-d %B %Y" }}</span>
     <h4 class="media-heading"><a href="{{post.url}}">{{ post.title }}</a></h4>
@@ -20,26 +18,7 @@ layout: default
 </div>
 </div>
 <div class="col-xs-3">
-<div class="clearfix">
-<a href="http://stackoverflow.com/users/365383/guilherme-cardoso">
-stackoverflow
-</a>
-<!--<a href="https://internetdefenseleague.org"><img src="https://internetdefenseleague.org/images/badges/final/shield_badge.png" alt="Member of The Internet Defense League" class="img-responsive"/></a>-->
-</div>
-  <p><a href="mailto:&#101;&#109;&#097;&#105;&#108;&#064;&#103;&#117;&#105;&#108;&#104;&#101;&#114;&#109;&#101;&#099;&#097;&#114;&#100;&#111;&#115;&#111;&#046;&#112;&#116;">&#101;&#109;&#097;&#105;&#108;&#064;&#103;&#117;&#105;&#108;&#104;&#101;&#114;&#109;&#101;&#099;&#097;&#114;&#100;&#111;&#115;&#111;&#046;&#112;&#116;</a></p>
-  <div class="clearfix" style="text-align: justify;">
-  Sou um jovem programador sem tempo para desenhar este site. Para já apenas vou escrever sobre aquilo que gosto.<br>
-Corrije-me e ajuda-me a melhorar os artigos pelo repositório no <a href="https://github.com/guilhermegeek/guilhermegeek.github.io">Github</a><br><br>
-</div>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Dev -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-1750926490246398"
-     data-ad-slot="8822148576"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
+  {% include sidebar.html %}
+  </div>
 </div>
 </div>

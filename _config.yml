@@ -5,8 +5,9 @@ description:      'Codigo'
 url:              http://www.codigo.ovh
 name: 'Codigo'
 comments: true
-gems:
-  - jekyll-sitemap
+indextank_index: gui_index
+indextank_api_url: ''
+gems: ['jekyll-sitemap']
 pages_list:       
   About: '/about'
   Archive: '/archive'

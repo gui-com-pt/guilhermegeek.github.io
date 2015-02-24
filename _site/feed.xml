@@ -7,69 +7,6 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Hack Etico Explorar Aplicacao Web</title>
-				<description>&lt;p&gt;Este artigo é direccionado ao hacking ético. Vamos testar vulnerabilidades existentes numa aplicação e explorar as mesmas. Para este efeito usamos uma aplicação desenvolvida exactamente para isto: &lt;a href=&quot;http://www.dvwa.co.uk/&quot;&gt;&lt;strong&gt;Damn Vulnerable Web Application(DVWA)&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Como se trata de um artigo ético não vamos atacar nenhuma aplicação em produção. Em vez disso configura-mos um servidor e alojamos a aplicação.&lt;/p&gt;
-
-&lt;p&gt;Para alojar a aplicação podes instalá-la num servidor virtual no teu computador usando o &lt;strong&gt;VirtualBox&lt;/strong&gt;. Basta criares um servidor com 400 MB. Também podes alugar uma VPS por 2 euros mas haverão certos testes que não convém realizares num servidor alugado porque certamente vais infrigir regras.&lt;/p&gt;
-
-&lt;h3 id=&quot;configuraes&quot;&gt;Configurações&lt;/h3&gt;
-
-&lt;p&gt;Vamos instalar uma distribuição Linux no servidor virtual. Como apenas testamos a aplicação e não o sistema operativo, ele é indiferente e Linux torna-se ideal por ser gratuíto.&lt;/p&gt;
-
-&lt;p&gt;Precisamos de instalar o php5, php5-mysql, mysql-server e um servidor web (nginx ou apache2 por exemplo).&lt;/p&gt;
-
-&lt;p&gt;Após configurado o servidor precisamos de configurar os dados de acesso à base de dados MySQL no ficheiro &lt;strong&gt;config/config.inc.php&lt;/strong&gt;. Com os dados configurados acedes a http://localhost/setup.php e carrega no botão para configurar a base de dados e gerar as tabelas.&lt;/p&gt;
-
-&lt;p&gt;Ao longo destes testes vais tentar recolher e apagar informação da base de dados, por algumas vezes poderás ter de repetir estes passos para reinstalares a aplicação de novo.&lt;/p&gt;
-
-&lt;h3 id=&quot;o-que-testar&quot;&gt;O que testar&lt;/h3&gt;
-
-</description>
-				<pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/2015/02/15/hack-etico-explorar-aplicacao-web.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/2015/02/15/hack-etico-explorar-aplicacao-web.html</guid>
-			</item>
-		
-			<item>
-				<title>Shell Prompt</title>
-				<description>&lt;h2 id=&quot;ps1---padro-da-consola&quot;&gt;PS1 - Padrão da consola&lt;/h2&gt;
-
-&lt;p&gt;Podemos modificar o padrão da consola e torná-lo em algo informativo e útil. O padrão na maioria das distribuições costuma ser:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-bash-3.2$ 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Também pode ser o nome do utilizador com o hostname&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;username@hostname directorio-actual
-gui@localhost /home/gui
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;/lib/modules/3.17.8-gentoo-r1/kernel/drivers/char/kcopy/kcopy.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/arch/x86/kernel/iosf_mbi.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/netfilter/xt_nat.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/netfilter/nf_nat.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/netfilter/nf_nat_ftp.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/netfilter/xt_LOG.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/netfilter/nf_log_common.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/netfilter/nf_nat_irc.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/netfilter/nf_nat_sip.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/netfilter/xt_mark.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/ipv4/netfilter/ipt_MASQUERADE.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/ipv4/netfilter/nf_log_ipv4.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/ipv4/netfilter/iptable_nat.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/ipv4/netfilter/nf_nat_ipv4.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/ipv4/netfilter/nf_log_arp.ko
-/lib/modules/3.17.8-gentoo-r1/kernel/net/ipv6/netfilter/nf_log_ipv6.ko&lt;/p&gt;
-</description>
-				<pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/2015/02/10/shell-prompt.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/2015/02/10/shell-prompt.html</guid>
-			</item>
-		
-			<item>
 				<title>Encurtador de URL com o redis e nginx - super rápido!</title>
 				<description>&lt;p&gt;Precisei de implementar uma solução para encurtar urls, semelhante ao &lt;a href=&quot;https://goo.gl/&quot;&gt;Google Shortener&lt;/a&gt;.&lt;/p&gt;
 
@@ -1396,6 +1333,151 @@ PATH = $PATH:/opt/bible/bin
 				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/10/01/shell.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/01/shell.html</guid>
+			</item>
+		
+			<item>
+				<title>Instalar softwares em Linux</title>
+				<description>&lt;p&gt;Como se instala um software? Extrais o código e corres numa linha de comandos: ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo install&lt;/p&gt;
+
+&lt;p&gt;Simples. Agora a explicação.&lt;/p&gt;
+
+&lt;p&gt;No Windows fazes download de software já compilado e pronto a ser executado para a arquitectura certa. Alguns instaladores lidam com essa tarefa e o mesmo instalador instala versões diferentes, outros softwares são distribuídos para arquitecturas diferentes, por exemplo quando na página de download tens disponíveis as versões x86 para 32 bits e x64 para 64 bits para download.&lt;/p&gt;
+
+&lt;p&gt;No Linux há softwares distribuídos assim - os pacotes .deb em debian e .rpm em Fedora. Mas isto é uma pequena parte comparado com o software disponível que é opensource e muito dele mantido apenas por amor do programador aos utilizadores. Nesses casos não há tempo para disponibilizar estes pacotes.&lt;/p&gt;
+
+&lt;p&gt;Também hà software disponibilizado por repositórios que podem ser instalados com o apt ou yum. Podes ver mais aqui: (https://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html)[https://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html]&lt;/p&gt;
+
+&lt;p&gt;Mais tarde ou mais cedo chega a altura em que é bom perceber como se compila os softwares em Linux, eu ainda configurei muitos servidores sem o entender bem.&lt;/p&gt;
+
+&lt;p&gt;Código - O código do software é distribuído em ficheiros comprimidos, sistemas GIT, ftp, entre outros. Normalmente fazes download do ficheiro comprimido, por exemplo “spotify-client-test-0.1.tar.gz”&lt;/p&gt;
+
+&lt;p&gt;Se for em linhas de comandos, os arquivos .tar.gz descomprimem-se com:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar -xvfz spotify-client-test-0.1.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Isto cria uma nova directoria, neste caso &lt;strong&gt;spotify-client-test-0.1&lt;/strong&gt;. Ela deve ter um ficheiro README e outro INSTALL. Nestes documentos de texto os desenvolvedores explicam como instalar, que dependências existem, problemas comuns. &lt;/p&gt;
+
+&lt;h3 id=&quot;configure&quot;&gt;./configure&lt;/h3&gt;
+
+&lt;p&gt;Este comando executa o script &lt;strong&gt;configure&lt;/strong&gt; que vai certificar que o sistema operativo tem todas as dependências necessárias para que o software seja instalado. Dependendo do software o retorno do comando pode ser mais ou menos informativo.&lt;/p&gt;
+
+&lt;p&gt;Normalmente explica a biblioteca em falta e sugere pacotes a serem instalados. Em casos de erros conseguimos ver sempre o ficheiro e ir lá inspecionar por nós.&lt;/p&gt;
+
+&lt;p&gt;No final o script cria um ficheiro &lt;strong&gt;MAKEFILE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ele pode gerar o script e mesmo assim ter enviado erros, é preciso ter atenção a isso. &lt;/p&gt;
+
+&lt;p&gt;O parametro prefix indica o destino da instalação quando instalarmos. Esse destino é pré defenido pelo sistema mas pode ser alterado&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./configure --prefix=/usr/local/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;make&quot;&gt;make&lt;/h3&gt;
+
+&lt;p&gt;O make é um software utilitário que existe em quase todos os sistemas Unix.&lt;/p&gt;
+
+&lt;p&gt;Este utilitário procura um script &lt;strong&gt;MAKEFILE&lt;/strong&gt; para compilar todo o código do programa e criar os executáveis. É possível que certas partes do código requiram que outras partes do código já estejam prontas, é esta a função da Makefile. Define a sequência para os eventos para que o programa não acuse dependências em falta.&lt;/p&gt;
+
+&lt;p&gt;O makefile tem vários nomes para secções diferentes. É possível que o controlo seja pasasdo para diversas secções dentro do Makefile ou é possível que no fim de uma secção haja um comando para ir para outra.&lt;/p&gt;
+
+&lt;p&gt;O melhor exemplo que temos é o &lt;strong&gt;install&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Se o comando &lt;strong&gt;make&lt;/strong&gt; correr com sucesso então a instalação está quase completa.&lt;/p&gt;
+
+&lt;h3 id=&quot;make-install&quot;&gt;make install&lt;/h3&gt;
+
+&lt;p&gt;Quando corres o make sem nenhum parametro, a instrução no Makefile começa a executar do início e consoante as regras defenidas dentro do Makefile. Quando corres make com install como parâmetro, o utilitário make procura por uma secção chamada install dentro do Makefile, e executa apenas essa secção.&lt;/p&gt;
+
+&lt;p&gt;Com o &lt;strong&gt;make&lt;/strong&gt; os executáveis e outros ficheiros são compilados, a secção install copia esses executáveis e outros ficheiros para os directórios finais do sistema.&lt;/p&gt;
+
+&lt;p&gt;Os executáveis podem ser copiados para o /usr/local/bin para ser acedido por todos os utilizadores. O make apenas os gera, a secção install é que os copia.&lt;/p&gt;
+
+&lt;h3 id=&quot;autogen&quot;&gt;autogen&lt;/h3&gt;
+
+&lt;p&gt;http://www.codecoffee.com/tipsforlinux/articles/27.html&lt;/p&gt;
+
+</description>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/linux/2014/09/30/linux-instalar-softwares.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/09/30/linux-instalar-softwares.html</guid>
+			</item>
+		
+			<item>
+				<title>Linux</title>
+				<description>&lt;p&gt;Daqui vou dividir em vários artigos com o tempo.&lt;/p&gt;
+
+&lt;h2 id=&quot;distribuies&quot;&gt;Distribuições&lt;/h2&gt;
+
+&lt;p&gt;O mais óbvio é começar pela escolha de uma distribuição. Existem vários distribuições com objectivos diferentes, a escolha depende sempre daquilo que o sistema operativo precisar de fazer. &lt;/p&gt;
+
+&lt;p&gt;Senão souberes qual distribuição escolher começa pelo Ubuntu. Á medida que fores conhecendo melhor o Linux vais-te identificando com outras distribuições.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;/media/posts/linux-ubuntu1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;windows-e-linux&quot;&gt;Windows e Linux&lt;/h2&gt;
+
+&lt;p&gt;A estrutura do sistema é importante porque te dá uma ideia de como as coisas funcionam em Linux&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;/bin/ - Binários essenciais &lt;/li&gt;
+  &lt;li&gt;/boot/ - Ficheiros estáticos do boot loader. Estes ficheiros são utilizados durante o processo de boot-up, incluindo a Kernel kernel do Linux&lt;/li&gt;
+  &lt;li&gt;/dev/ - Ficheiros de dispositivos. Contém ficheiros de dispositivos para todo o hardware de dispositivos existentes como um leitor de CD, CPU&lt;/li&gt;
+  &lt;li&gt;/etc/ - Configurações específicas do sistema&lt;/li&gt;
+  &lt;li&gt;/home/ - As directorias home dos utilizadores &lt;/li&gt;
+  &lt;li&gt;/lib/ - Bibliotecas e módulos da kernel essenciais que são partilhados&lt;/li&gt;
+  &lt;li&gt;/media/ - Os media removíveis (pen drive) são montados aqui&lt;/li&gt;
+  &lt;li&gt;/mnt/ - Ponto de montagem para sistemas temporariamente montados&lt;/li&gt;
+  &lt;li&gt;/opt/ - Sítio alternativo onde os softwares instalados por pacotes alternativos são instalados&lt;/li&gt;
+  &lt;li&gt;/sbin/ - Binários do sistema&lt;/li&gt;
+  &lt;li&gt;/srv/ - Dados para serviços que o sistema disponibiliza&lt;/li&gt;
+  &lt;li&gt;/tmp/ - Ficheiros temporários&lt;/li&gt;
+  &lt;li&gt;/usr/ - Utilitários e aplicações dos utilizadores&lt;/li&gt;
+  &lt;li&gt;/var/ - Ficheiros variáveis&lt;/li&gt;
+  &lt;li&gt;/root/ - O directório home do root&lt;/li&gt;
+  &lt;li&gt;/proc/ - Documentação vertical do sistema e estado de processos como ficheiros de texto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A comparação com o Windows&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Windows - Contém todos os ficheiros necessários do sistema operativo. Tudo que percenta ao sistema operativo apenas fica aqui&lt;/li&gt;
+  &lt;li&gt;Users - Os perfis de utilizador&lt;/li&gt;
+  &lt;li&gt;Boot - Ficheiros do boot loader&lt;/li&gt;
+  &lt;li&gt;ProgramData - Ficheiros das instalações, dados guardados por aplicações&lt;/li&gt;
+  &lt;li&gt;Recovery - Contém a imagem necessária para entrar na consola de recuperação&lt;/li&gt;
+  &lt;li&gt;$recycle.bin - Esta pasta é a reciclagem do Windows, é para aqui que todos os ficheiros removidos vão. Apagar a pasta é igual a esvaziar a reciclagem ou parte dela (cada partição tem a sua própria $recycle.bin, a reciclagem no Windows pode conter ficheiros de diferentes partições)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Windows utiliza barra para trás, o Linux é para a frente&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:\Windows\system32
+
+/usr/bin/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O que reparamos logo é que no Windows existem letras para os dispositivos e partições, no Linux está tudo dentro do /. No Windows isto também é possível mas não é assim que ele está preparado.&lt;/p&gt;
+
+&lt;h3 id=&quot;apagar-ou-modificar-ficheiros-abertos&quot;&gt;Apagar ou modificar ficheiros abertos&lt;/h3&gt;
+
+&lt;p&gt;Ao contrário do Windows, em sistemas *nix as aplicações não trancam ficheiros exclusivos.&lt;/p&gt;
+
+&lt;p&gt;Se estiveres abrires um documento Word no Office e o tentares apagar sem fechar o Office ele acusa um erro. Em *nix isso não acontece. *nix ou Unix-like são sistemas semelhantes ao sistema Unix-like como é o caso da família BSD, Linux e Mac OS X.&lt;/p&gt;
+
+&lt;h3 id=&quot;ficheiros-mais-importantes&quot;&gt;Ficheiros mais importantes&lt;/h3&gt;
+
+&lt;p&gt;Aqui vou manter uma lista de ficheiros e utilários do sistema mais importantes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;/boot/vmlinuz - O ficheiro da kernel do Linux&lt;/li&gt;
+  &lt;li&gt;/dev/hda - O ficheiro de dispositivo do primeiro HDD IDE&lt;/li&gt;
+  &lt;li&gt;/dev/null - Um dispositivo que não existe! Muitas vezes o retorno considerado lixo é redireccionado para o /dev/null para ser perdido para sempre&lt;/li&gt;
+  &lt;li&gt;/etc/bashrc&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/linux/2014/09/30/linux.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/09/30/linux.html</guid>
 			</item>
 		
 	</channel>
