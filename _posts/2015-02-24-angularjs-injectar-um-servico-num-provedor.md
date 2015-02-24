@@ -6,7 +6,7 @@ categories:
  angularjs
 ---
 
-Um provedor (provider) no AngularJS distingue se de um serviço ou fábrica (provider) por puder ser acedido durante a configuração da aplicação, no método **config**. Já o serviço e fábrica apenas são acessidos no método **run** quando a aplicação é iniciada.
+Um provedor (provider) no AngularJS distingue se de um serviço ou fábrica (factory) por puder ser acedido durante a configuração da aplicação, no método **config**. Já o serviço e fábrica apenas são acessidos no método **run** quando a aplicação é iniciada.
 
 Apesar de o AngularJS não permitir isto nativamente, ou pelo menos não da forma mais elegante, é possível injectar um serviço num provedor durante a configuração da aplicação. 
 
