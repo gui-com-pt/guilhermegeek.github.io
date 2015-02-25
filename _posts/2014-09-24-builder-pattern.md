@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/angular-thumb.jpg
 excerpt: 
 categories:
- design-pattern
+ padrao-projeto
 ---
 Padrão Factory Method
 

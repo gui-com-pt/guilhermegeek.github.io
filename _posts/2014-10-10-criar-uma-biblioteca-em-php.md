@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/angular-thumb.jpg
 excerpt: 
 categories:
- bower
+ php composer
 ---
 
 

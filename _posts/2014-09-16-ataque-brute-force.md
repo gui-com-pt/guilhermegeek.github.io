@@ -5,6 +5,7 @@ excerpt: Estudo de um ataque bruteforce
 image: /media/hacker1.jpg
 categories: hack
 description: Aprende o que é um ataque bruteforce
+categories: seguranca
 ---
 
 Um ataque brute-force (ataque de força bruta!) é o ataque mais simples que podemos fazer para descubrir as credenciais de uma conta. 

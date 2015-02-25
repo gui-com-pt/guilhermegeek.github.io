@@ -5,7 +5,7 @@ image: /media/angular-thumb.jpg
 description: Aprende a utilizar emails temporários e descartáveis para não encheres a tua caixa de Spam!
 excerpt: 
 categories:
- bower
+ dicas
 ---
 
 Mais de metade dos emails de spam que recebo foram serviços que subscrebi apenas para obter algo como fazer um download de um PDF ou receber por email uma activação no site.

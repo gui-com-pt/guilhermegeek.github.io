@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/hacker1.jpg
 excerpt: Um manifesto que realmente recomendo a ser lido! Também uma crítica ao nosso sistema de educação
 categories:
- hack
+ hacking
 ---
 
 Um manifesto escrito em 1986 por um hacker. Considero-o uma introdução obrigatória para quem quer perceber o que é um hacker afinal de contas. É necessária a educação ética nesta área para quem a quer estudar, e assim não deixar o ego crescer demasiado e tornar-se num pseudo black hat.
