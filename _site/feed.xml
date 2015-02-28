@@ -7,6 +7,112 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>AngularJS - Extender um provedor injectando um serviço</title>
+				<description>&lt;p&gt;Um provedor (provider) no AngularJS distingue se de um serviço ou fábrica (factory) por puder ser acedido durante a configuração da aplicação, no método &lt;strong&gt;config&lt;/strong&gt;. Já o serviço e fábrica apenas são acessidos no método &lt;strong&gt;run&lt;/strong&gt; quando a aplicação é iniciada.&lt;/p&gt;
+
+&lt;p&gt;Apesar de o AngularJS não permitir isto nativamente, ou pelo menos não da forma mais elegante, é possível injectar um serviço num provedor durante a configuração da aplicação. &lt;/p&gt;
+
+&lt;p&gt;Para percebermos a utilidade disto vamos imaginar o seguinte exemplo. A aplicação &lt;strong&gt;bible&lt;/strong&gt; tem vários serviços para mostrar a biblia em diferentes traduções. Quando ocorre um erro usamos o serviço &lt;strong&gt;errorHandlerService&lt;/strong&gt; para mostrar uma caixa de diálogo ao utilizador. Extender a forma como lidamos com estes erros significa puder usar outro serviço senão o &lt;strong&gt;errorHandlerService&lt;/strong&gt; para lidar com as mensagens de erro, poderia ser uma caixa de alerta por exemplo. Para este exemplo teríamos os seguintes componentes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var errorHandlerService = function(modalService){
+	this.display = function(response){
+		modalService.open(response.message);
+	};
+};
+
+var homeController = function(errorHandlerService, api) {
+	api.getHome()
+		.then(function(res) {
+			// Ok, sem erros
+		}, function(res) {
+			errorHandlerService.display(res);
+		});
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Se quisermos alterar a forma como a mensagem de erro é mostrada ao utilizador temos de modificar directamente o serviço &lt;strong&gt;errorHandlerService&lt;/strong&gt;. Este serviço não é extensível.&lt;/p&gt;
+
+&lt;p&gt;Podemos usar antes um provedor para mostrar as mensagens de erro, e injectamos o método &lt;strong&gt;display&lt;/strong&gt; do serviço &lt;strong&gt;errorHandlerService&lt;/strong&gt; para mostrar as mensagens. Mais tarde, pudemos usar outro serviço sem termos de modificar o código do &lt;strong&gt;errorHandlerService&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var errorHandlerProvider = function(){
+	var errorHandler;
+
+	this.setHandler = function(handler) {
+		errorHandler = handler;
+	}
+
+	this.$get = function(){
+		return {
+			display: errorHandler
+		}
+	}
+}
+
+var config = function(errorHandler) {
+	var injector = angular.injector(['app']),
+		service = injector.get('errorHandlerService');
+
+	errorHandler.setHandler(service.display);
+};
+
+var homeController = function(errorHandlerProvider, api) {
+	api.getHome()
+		.then(function(res) {
+			// Ok, sem erros
+		}, function(res) {
+			errorHandlerProvider.display(res);
+		});
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Não me agrada muito esta solução por ter resolver a dependência do serviço &lt;strong&gt;errorHandlerService&lt;/strong&gt; através do injector do AngularJS. No entanto é fiável porque funciona e permite-nos alterar a forma como vamos mostrar as mensagens, num exemplo mais real usaríamos um serviço para a versão mobile que interaja com a API do telemovel e outro para o site que mostre a caixa de diálogo.&lt;/p&gt;
+</description>
+				<pubDate>Tue, 24 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/angularjs/2015/02/24/angularjs-injectar-um-servico-num-provedor.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2015/02/24/angularjs-injectar-um-servico-num-provedor.html</guid>
+			</item>
+		
+			<item>
+				<title>AngularJS - Padrão de Design do Observador</title>
+				<description>&lt;p&gt;Um dos pontos fortes do AngularJS é a ligação entre duas propriedades automática. Se um controlador referir uma propriedade de um serviço e essa propriedade alterar no lado do serviço, a alteração é propagada e o controlador é notificado.&lt;/p&gt;
+
+&lt;p&gt;E quando tal ligação não existe? Usando o exemplo de um plugin jQuery, ele não vai interpolar com o AngularJS e mesmo que altere valores na view essas alterações não vão referir na aplicação. &lt;/p&gt;
+
+&lt;h2 id=&quot;padro-de-design-do-observador&quot;&gt;Padrão de Design do Observador&lt;/h2&gt;
+
+&lt;p&gt;O padrão de design do Observador permite a um assinante registar e receber notificações de um provedor. Vamos usar um exemplo, com um serviço do AngularJS:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var service = function(){
+	var callbacks = [];
+
+	var notifyCallbacks = function(){
+		angular.forEach(callbacks, function(callback) {
+			callback();
+		});
+	};
+
+	this.registerCallback = function(callback) {
+		this.callbacks.push(callback);
+	};
+};
+
+var controller = function(service, $scope) {
+	$scope.callable = function(){
+		console.log('$scope.callable invoded');
+	};
+
+	service.registerCallback($scope.callable);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Assim o serviço consegue notificar o controlador de alterações invocando o método &lt;strong&gt;notifyCallbacks&lt;/strong&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Thu, 19 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/angularjs/2015/02/19/angularjs-padrao-design-observador.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2015/02/19/angularjs-padrao-design-observador.html</guid>
+			</item>
+		
+			<item>
 				<title>Encurtador de URL com o redis e nginx - super rápido!</title>
 				<description>&lt;p&gt;Precisei de implementar uma solução para encurtar urls, semelhante ao &lt;a href=&quot;https://goo.gl/&quot;&gt;Google Shortener&lt;/a&gt;.&lt;/p&gt;
 
@@ -1333,151 +1439,6 @@ PATH = $PATH:/opt/bible/bin
 				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/10/01/shell.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/01/shell.html</guid>
-			</item>
-		
-			<item>
-				<title>Instalar softwares em Linux</title>
-				<description>&lt;p&gt;Como se instala um software? Extrais o código e corres numa linha de comandos: ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo install&lt;/p&gt;
-
-&lt;p&gt;Simples. Agora a explicação.&lt;/p&gt;
-
-&lt;p&gt;No Windows fazes download de software já compilado e pronto a ser executado para a arquitectura certa. Alguns instaladores lidam com essa tarefa e o mesmo instalador instala versões diferentes, outros softwares são distribuídos para arquitecturas diferentes, por exemplo quando na página de download tens disponíveis as versões x86 para 32 bits e x64 para 64 bits para download.&lt;/p&gt;
-
-&lt;p&gt;No Linux há softwares distribuídos assim - os pacotes .deb em debian e .rpm em Fedora. Mas isto é uma pequena parte comparado com o software disponível que é opensource e muito dele mantido apenas por amor do programador aos utilizadores. Nesses casos não há tempo para disponibilizar estes pacotes.&lt;/p&gt;
-
-&lt;p&gt;Também hà software disponibilizado por repositórios que podem ser instalados com o apt ou yum. Podes ver mais aqui: (https://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html)[https://guilhermecardoso.pt/ide/software/2014/09/18/linux-software-versoes-chaves.html]&lt;/p&gt;
-
-&lt;p&gt;Mais tarde ou mais cedo chega a altura em que é bom perceber como se compila os softwares em Linux, eu ainda configurei muitos servidores sem o entender bem.&lt;/p&gt;
-
-&lt;p&gt;Código - O código do software é distribuído em ficheiros comprimidos, sistemas GIT, ftp, entre outros. Normalmente fazes download do ficheiro comprimido, por exemplo “spotify-client-test-0.1.tar.gz”&lt;/p&gt;
-
-&lt;p&gt;Se for em linhas de comandos, os arquivos .tar.gz descomprimem-se com:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tar -xvfz spotify-client-test-0.1.tar.gz
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Isto cria uma nova directoria, neste caso &lt;strong&gt;spotify-client-test-0.1&lt;/strong&gt;. Ela deve ter um ficheiro README e outro INSTALL. Nestes documentos de texto os desenvolvedores explicam como instalar, que dependências existem, problemas comuns. &lt;/p&gt;
-
-&lt;h3 id=&quot;configure&quot;&gt;./configure&lt;/h3&gt;
-
-&lt;p&gt;Este comando executa o script &lt;strong&gt;configure&lt;/strong&gt; que vai certificar que o sistema operativo tem todas as dependências necessárias para que o software seja instalado. Dependendo do software o retorno do comando pode ser mais ou menos informativo.&lt;/p&gt;
-
-&lt;p&gt;Normalmente explica a biblioteca em falta e sugere pacotes a serem instalados. Em casos de erros conseguimos ver sempre o ficheiro e ir lá inspecionar por nós.&lt;/p&gt;
-
-&lt;p&gt;No final o script cria um ficheiro &lt;strong&gt;MAKEFILE&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Ele pode gerar o script e mesmo assim ter enviado erros, é preciso ter atenção a isso. &lt;/p&gt;
-
-&lt;p&gt;O parametro prefix indica o destino da instalação quando instalarmos. Esse destino é pré defenido pelo sistema mas pode ser alterado&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;./configure --prefix=/usr/local/bin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;make&quot;&gt;make&lt;/h3&gt;
-
-&lt;p&gt;O make é um software utilitário que existe em quase todos os sistemas Unix.&lt;/p&gt;
-
-&lt;p&gt;Este utilitário procura um script &lt;strong&gt;MAKEFILE&lt;/strong&gt; para compilar todo o código do programa e criar os executáveis. É possível que certas partes do código requiram que outras partes do código já estejam prontas, é esta a função da Makefile. Define a sequência para os eventos para que o programa não acuse dependências em falta.&lt;/p&gt;
-
-&lt;p&gt;O makefile tem vários nomes para secções diferentes. É possível que o controlo seja pasasdo para diversas secções dentro do Makefile ou é possível que no fim de uma secção haja um comando para ir para outra.&lt;/p&gt;
-
-&lt;p&gt;O melhor exemplo que temos é o &lt;strong&gt;install&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Se o comando &lt;strong&gt;make&lt;/strong&gt; correr com sucesso então a instalação está quase completa.&lt;/p&gt;
-
-&lt;h3 id=&quot;make-install&quot;&gt;make install&lt;/h3&gt;
-
-&lt;p&gt;Quando corres o make sem nenhum parametro, a instrução no Makefile começa a executar do início e consoante as regras defenidas dentro do Makefile. Quando corres make com install como parâmetro, o utilitário make procura por uma secção chamada install dentro do Makefile, e executa apenas essa secção.&lt;/p&gt;
-
-&lt;p&gt;Com o &lt;strong&gt;make&lt;/strong&gt; os executáveis e outros ficheiros são compilados, a secção install copia esses executáveis e outros ficheiros para os directórios finais do sistema.&lt;/p&gt;
-
-&lt;p&gt;Os executáveis podem ser copiados para o /usr/local/bin para ser acedido por todos os utilizadores. O make apenas os gera, a secção install é que os copia.&lt;/p&gt;
-
-&lt;h3 id=&quot;autogen&quot;&gt;autogen&lt;/h3&gt;
-
-&lt;p&gt;http://www.codecoffee.com/tipsforlinux/articles/27.html&lt;/p&gt;
-
-</description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/linux/2014/09/30/linux-instalar-softwares.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/09/30/linux-instalar-softwares.html</guid>
-			</item>
-		
-			<item>
-				<title>Linux</title>
-				<description>&lt;p&gt;Daqui vou dividir em vários artigos com o tempo.&lt;/p&gt;
-
-&lt;h2 id=&quot;distribuies&quot;&gt;Distribuições&lt;/h2&gt;
-
-&lt;p&gt;O mais óbvio é começar pela escolha de uma distribuição. Existem vários distribuições com objectivos diferentes, a escolha depende sempre daquilo que o sistema operativo precisar de fazer. &lt;/p&gt;
-
-&lt;p&gt;Senão souberes qual distribuição escolher começa pelo Ubuntu. Á medida que fores conhecendo melhor o Linux vais-te identificando com outras distribuições.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;/media/posts/linux-ubuntu1.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;windows-e-linux&quot;&gt;Windows e Linux&lt;/h2&gt;
-
-&lt;p&gt;A estrutura do sistema é importante porque te dá uma ideia de como as coisas funcionam em Linux&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;/bin/ - Binários essenciais &lt;/li&gt;
-  &lt;li&gt;/boot/ - Ficheiros estáticos do boot loader. Estes ficheiros são utilizados durante o processo de boot-up, incluindo a Kernel kernel do Linux&lt;/li&gt;
-  &lt;li&gt;/dev/ - Ficheiros de dispositivos. Contém ficheiros de dispositivos para todo o hardware de dispositivos existentes como um leitor de CD, CPU&lt;/li&gt;
-  &lt;li&gt;/etc/ - Configurações específicas do sistema&lt;/li&gt;
-  &lt;li&gt;/home/ - As directorias home dos utilizadores &lt;/li&gt;
-  &lt;li&gt;/lib/ - Bibliotecas e módulos da kernel essenciais que são partilhados&lt;/li&gt;
-  &lt;li&gt;/media/ - Os media removíveis (pen drive) são montados aqui&lt;/li&gt;
-  &lt;li&gt;/mnt/ - Ponto de montagem para sistemas temporariamente montados&lt;/li&gt;
-  &lt;li&gt;/opt/ - Sítio alternativo onde os softwares instalados por pacotes alternativos são instalados&lt;/li&gt;
-  &lt;li&gt;/sbin/ - Binários do sistema&lt;/li&gt;
-  &lt;li&gt;/srv/ - Dados para serviços que o sistema disponibiliza&lt;/li&gt;
-  &lt;li&gt;/tmp/ - Ficheiros temporários&lt;/li&gt;
-  &lt;li&gt;/usr/ - Utilitários e aplicações dos utilizadores&lt;/li&gt;
-  &lt;li&gt;/var/ - Ficheiros variáveis&lt;/li&gt;
-  &lt;li&gt;/root/ - O directório home do root&lt;/li&gt;
-  &lt;li&gt;/proc/ - Documentação vertical do sistema e estado de processos como ficheiros de texto&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A comparação com o Windows&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Windows - Contém todos os ficheiros necessários do sistema operativo. Tudo que percenta ao sistema operativo apenas fica aqui&lt;/li&gt;
-  &lt;li&gt;Users - Os perfis de utilizador&lt;/li&gt;
-  &lt;li&gt;Boot - Ficheiros do boot loader&lt;/li&gt;
-  &lt;li&gt;ProgramData - Ficheiros das instalações, dados guardados por aplicações&lt;/li&gt;
-  &lt;li&gt;Recovery - Contém a imagem necessária para entrar na consola de recuperação&lt;/li&gt;
-  &lt;li&gt;$recycle.bin - Esta pasta é a reciclagem do Windows, é para aqui que todos os ficheiros removidos vão. Apagar a pasta é igual a esvaziar a reciclagem ou parte dela (cada partição tem a sua própria $recycle.bin, a reciclagem no Windows pode conter ficheiros de diferentes partições)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Windows utiliza barra para trás, o Linux é para a frente&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;C:\Windows\system32
-
-/usr/bin/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;O que reparamos logo é que no Windows existem letras para os dispositivos e partições, no Linux está tudo dentro do /. No Windows isto também é possível mas não é assim que ele está preparado.&lt;/p&gt;
-
-&lt;h3 id=&quot;apagar-ou-modificar-ficheiros-abertos&quot;&gt;Apagar ou modificar ficheiros abertos&lt;/h3&gt;
-
-&lt;p&gt;Ao contrário do Windows, em sistemas *nix as aplicações não trancam ficheiros exclusivos.&lt;/p&gt;
-
-&lt;p&gt;Se estiveres abrires um documento Word no Office e o tentares apagar sem fechar o Office ele acusa um erro. Em *nix isso não acontece. *nix ou Unix-like são sistemas semelhantes ao sistema Unix-like como é o caso da família BSD, Linux e Mac OS X.&lt;/p&gt;
-
-&lt;h3 id=&quot;ficheiros-mais-importantes&quot;&gt;Ficheiros mais importantes&lt;/h3&gt;
-
-&lt;p&gt;Aqui vou manter uma lista de ficheiros e utilários do sistema mais importantes&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;/boot/vmlinuz - O ficheiro da kernel do Linux&lt;/li&gt;
-  &lt;li&gt;/dev/hda - O ficheiro de dispositivo do primeiro HDD IDE&lt;/li&gt;
-  &lt;li&gt;/dev/null - Um dispositivo que não existe! Muitas vezes o retorno considerado lixo é redireccionado para o /dev/null para ser perdido para sempre&lt;/li&gt;
-  &lt;li&gt;/etc/bashrc&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-				<pubDate>Tue, 30 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/linux/2014/09/30/linux.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/09/30/linux.html</guid>
 			</item>
 		
 	</channel>
