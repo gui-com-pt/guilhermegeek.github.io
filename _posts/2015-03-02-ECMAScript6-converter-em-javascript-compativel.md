@@ -16,38 +16,38 @@ A Google lançou uma ferramenta chamada **Traceur** que permite exactamente isso
 
 Vamos usar um exemplo:
 
-````
-class House {
-	
-}
-class HouseFactory {
-  build(name = 'House name') {
-    return new House();
-  }
-}
 
-var factory = new HouseFactory();
-var house = factory.build();
-````
+  class House {
+  	
+  }
+  class HouseFactory {
+    build(name = 'House name') {
+      return new House();
+    }
+  }
+
+  var factory = new HouseFactory();
+  var house = factory.build();
+
 
 Este código será convertido em:
 
-````
-var House = function House() {
-  "use strict";
-};
-($traceurRuntime.createClass)(House, {}, {});
-var HouseFactory = function HouseFactory() {
-  "use strict";
-};
-($traceurRuntime.createClass)(HouseFactory, {build: function() {
+
+  var House = function House() {
     "use strict";
-    var name = arguments[0] !== (void 0) ? arguments[0] : 'House name';
-    return new House();
-  }}, {});
-var factory = new HouseFactory();
-var house = factory.build();
-````
+  };
+  ($traceurRuntime.createClass)(House, {}, {});
+  var HouseFactory = function HouseFactory() {
+    "use strict";
+  };
+  ($traceurRuntime.createClass)(HouseFactory, {build: function() {
+      "use strict";
+      var name = arguments[0] !== (void 0) ? arguments[0] : 'House name';
+      return new House();
+    }}, {});
+  var factory = new HouseFactory();
+  var house = factory.build();
+
 
 
 Existem dois métodos para compilar o código: em tempo de execução ou compilar o programa Traceur e usá-lo pela linha de comandos. Podes puxar o repositório do GitHub e compilar o programa com **make**. Assim podes aceder às funcionalidades pela linha de comandos e também facilita a utilização de scripts para automatização de tarefas.
