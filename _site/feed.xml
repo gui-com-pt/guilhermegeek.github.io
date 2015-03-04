@@ -7,6 +7,81 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Traceur - Compilador de ECMAScript 6, o novo JavaScript!</title>
+				<description>&lt;p&gt;O ECMAScript 6 é tão atractivo a qualquer programador! Introdução de classes em javascript, utilização de métodos como &lt;strong&gt;find&lt;/strong&gt; nativamente em arrays, funções com parâmetros pré defenidos, são apenas algumas das novidades que vêm com esta versão do ECMAScript.&lt;/p&gt;
+
+&lt;p&gt;Apesar de ainda não ser 100% implementado nos navegadores e ainda faltar um pouco é possível escrever código javascript a seguir e compilá-lo de modo a ficar compatível com os navegadores.&lt;/p&gt;
+
+&lt;p&gt;A Google lançou uma ferramenta chamada &lt;strong&gt;Traceur&lt;/strong&gt; que permite exactamente isso, compilar javascript ECMAScript 6 para código compatível com os browsers. Esta ferramenta até permite fazer esta compilação durante a execução, o que significa que basta incluires a biblioteca do Traceur!&lt;/p&gt;
+
+&lt;p&gt;Vamos usar um exemplo:&lt;/p&gt;
+
+&lt;p&gt;class House {&lt;/p&gt;
+
+&lt;p&gt;}
+  class HouseFactory {
+    build(name = ‘House name’) {
+      return new House();
+    }
+  }&lt;/p&gt;
+
+&lt;p&gt;var factory = new HouseFactory();
+  var house = factory.build();&lt;/p&gt;
+
+&lt;p&gt;Este código será convertido em:&lt;/p&gt;
+
+&lt;p&gt;var House = function House() {
+    “use strict”;
+  };
+  ($traceurRuntime.createClass)(House, {}, {});
+  var HouseFactory = function HouseFactory() {
+    “use strict”;
+  };
+  ($traceurRuntime.createClass)(HouseFactory, {build: function() {
+      “use strict”;
+      var name = arguments[0] !== (void 0) ? arguments[0] : ‘House name’;
+      return new House();
+    }}, {});
+  var factory = new HouseFactory();
+  var house = factory.build();&lt;/p&gt;
+
+&lt;p&gt;Existem dois métodos para compilar o código: em tempo de execução ou compilar o programa Traceur e usá-lo pela linha de comandos. Podes puxar o repositório do GitHub e compilar o programa com &lt;strong&gt;make&lt;/strong&gt;. Assim podes aceder às funcionalidades pela linha de comandos e também facilita a utilização de scripts para automatização de tarefas.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+./traceur --out /tmp/destination.js --script /tmp/source.js
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A ferramenta está bem documentada e também não é muito complicada de entender. Se quiseres começa a ler o &lt;a href=&quot;https://github.com/google/traceur-compiler/wiki/Getting-Started&quot;&gt;guia de introdução oficial&lt;/a&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/git/2015/03/02/ECMAScript6-converter-em-javascript-compativel.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/git/2015/03/02/ECMAScript6-converter-em-javascript-compativel.html</guid>
+			</item>
+		
+			<item>
+				<title>Composer - Resolver o problema cannot allocate memory</title>
+				<description>&lt;pre&gt;&lt;code&gt;Uncaught exception 'ErrorException' with message 'proc_open(): fork failed - Cannot allocate memory'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Este erro já me tinha aparecido antes quando tentava actualizar as depedências de uma plataforma que desenvolvi em PHP, ele reside no facto da máquina não ter espaço suficiente na memória SWAP. Esta plataforma tem poucas dependências e leves, mas duas principais foram desenvolvidas por mim e são as bibliotecas em que ela se baseia e já são maiores.&lt;/p&gt;
+
+&lt;p&gt;Da primeira vez assustou-me o facto de o PHP não ter memória livre para o composer conseguir actualizar as dependências e fiz ur ama actualização ao hardware da VPS onde ela estava alojada. Hoje voltou-me a acontecer mas numa VPS com 200MB livres e não me pareceu que uma actualização ao hardware fosse uma boa solução.&lt;/p&gt;
+
+&lt;p&gt;Assim aprendi a aumentar o espaço dedicado à memória SWAP. Apesar de ser suficiente parar alguns processos mais pesados, correr a actualização do composer e voltar a iniciar os processos, aumentar o espaço dedicado à memória SWAP é mais eficiente.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+/sbin/mkswap /var/swap.1
+/sbin/swapon /var/swap.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Este problema é comum em VPS de 512 de RAM ou menos, em computadores mais potentes possivelmente nunca te irás confrontar com isto.&lt;/p&gt;
+</description>
+				<pubDate>Tue, 24 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/composer/2015/02/24/composer-cannot-allocate-memory.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/composer/2015/02/24/composer-cannot-allocate-memory.html</guid>
+			</item>
+		
+			<item>
 				<title>AngularJS - Extender um provedor injectando um serviço</title>
 				<description>&lt;p&gt;Um provedor (provider) no AngularJS distingue se de um serviço ou fábrica (factory) por puder ser acedido durante a configuração da aplicação, no método &lt;strong&gt;config&lt;/strong&gt;. Já o serviço e fábrica apenas são acessidos no método &lt;strong&gt;run&lt;/strong&gt; quando a aplicação é iniciada.&lt;/p&gt;
 
@@ -442,8 +517,8 @@ HipHop Fatal error: Uncaught exception exception 'PhutilBootloaderException' wit
 &lt;p&gt;Link do artigo que escrevi na Volupio: &lt;a href=&quot;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&quot;&gt;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&lt;/a&gt;&lt;/p&gt;
 </description>
 				<pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/security/facebook/2014/12/21/analise-fuga-informacao-facebook.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/security/facebook/2014/12/21/analise-fuga-informacao-facebook.html</guid>
+				<link>http://www.codigo.ovh/seguranca/facebook/2014/12/21/analise-fuga-informacao-facebook.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/facebook/2014/12/21/analise-fuga-informacao-facebook.html</guid>
 			</item>
 		
 			<item>
@@ -635,8 +710,8 @@ $stateProvider.state('home', {
 &lt;p&gt;Uma das primeiras utilidades que me veio à cabeça foi usar estes emails para registar contas em massa em serviços aos quais consiga ultrapassar a protecção de recaptcha. Como temos acesso à API podemos muito bem interpetrar os emails recebidos e assim confirmar automáticamente as contas. &lt;/p&gt;
 </description>
 				<pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/bower/2014/11/25/emails-temporarios.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/bower/2014/11/25/emails-temporarios.html</guid>
+				<link>http://www.codigo.ovh/dicas/2014/11/25/emails-temporarios.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/dicas/2014/11/25/emails-temporarios.html</guid>
 			</item>
 		
 			<item>
@@ -995,8 +1070,8 @@ textdomain($domain);
 
 </description>
 				<pubDate>Thu, 16 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/bower/2014/10/16/seguran-online-navegacao.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/bower/2014/10/16/seguran-online-navegacao.html</guid>
+				<link>http://www.codigo.ovh/seguranca/2014/10/16/seguran-online-navegacao.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/10/16/seguran-online-navegacao.html</guid>
 			</item>
 		
 			<item>
@@ -1060,8 +1135,8 @@ textdomain($domain);
 &lt;p&gt;Além de usar um código de confirmação no segundo passo, agora é possível usar uma pen drive, a chamada &lt;strong&gt;Security Key for 2-Step verification&lt;/strong&gt;. Por enquanto esta autenticação apenas é possível através do Chrome na versão 38 (muito recente ainda).&lt;/p&gt;
 </description>
 				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/bower/2014/10/15/seguranca-online-password.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/bower/2014/10/15/seguranca-online-password.html</guid>
+				<link>http://www.codigo.ovh/seguranca/2014/10/15/seguranca-online-password.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/10/15/seguranca-online-password.html</guid>
 			</item>
 		
 			<item>
@@ -1233,8 +1308,8 @@ bible/src/Bible/Helpers/VerseFormat.php&lt;/p&gt;
 
 </description>
 				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/bower/2014/10/10/criar-uma-biblioteca-em-php.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/bower/2014/10/10/criar-uma-biblioteca-em-php.html</guid>
+				<link>http://www.codigo.ovh/php/composer/2014/10/10/criar-uma-biblioteca-em-php.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/php/composer/2014/10/10/criar-uma-biblioteca-em-php.html</guid>
 			</item>
 		
 			<item>
@@ -1330,115 +1405,8 @@ but you can't stop us all... after all, we're all alike.
 _________________________________________________________&lt;/pre&gt;
 </description>
 				<pubDate>Thu, 02 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/hack/2014/10/02/hacker-manifesto.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/hack/2014/10/02/hacker-manifesto.html</guid>
-			</item>
-		
-			<item>
-				<title>Scripts shell</title>
-				<description>&lt;p&gt;O bash é não é uma linguagem de programação mas sim um interpretador de comandos. Quando na consola escrevemos um comando o bash interpreta-o executando-o.&lt;/p&gt;
-
-&lt;p&gt;Shell scripts é uma linguagem de script usada em vários sitemas operativos em bash. Um exemplo pode ser o ficheiro &lt;strong&gt;configure&lt;/strong&gt; gerado nas instalações de software ou um qualquer outro ficheiro .sh. É script pois é um programa escrito em linguagem interpretada como em Python ou Javascript, não é compilada como em C#.&lt;/p&gt;
-
-&lt;p&gt;No caso de um programador, temos tarefas comuns como apagar um directori e clonar outro, um script que abra o chrome, um cliente de emails, verifique se há notificações de emails ou redes sociais, etc.&lt;/p&gt;
-
-&lt;p&gt;No fundo um script shell vai executar o que pretender-mos. Como exemplo temos o copiar-tese.sh&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-###
-# Copiar Tese para pendrive
-#
-# @description Este script copia todos os documentos da tese para uma pendrive
-# @author Guilherme Cardoso &amp;lt;email@guilhermecardoso.pt&amp;gt;
-###
-cp ~/trabalhos/tese /dev/sda2/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Os comentários não são obrigatórios, apenas na primeira linha para indicar que é um script bash. Os outros sigo a norma mais comum: titulo, descrição, autor. Mesmo em scripts que sei que mais ninguém vai usar documento-os, até porque sou mesmo esquecido.&lt;/p&gt;
-
-&lt;p&gt;** Dica ** Na linha de comandos também podemos executar vários comandos intercalados. Para isso separamos cada comando com &amp;amp;&amp;amp;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mkdir bible &amp;amp;&amp;amp; cd bible &amp;amp;&amp;amp; cp /tmp/bible.db bible.db
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;permisso&quot;&gt;Permissão&lt;/h2&gt;
-
-&lt;p&gt;Os scripts bash têm de ter permissão para serem executados. É atribuida com o chmod&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;chmod +x copiar-tese.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;correr-scripts&quot;&gt;Correr scripts&lt;/h2&gt;
-
-&lt;p&gt;Podem ser executados com o comando sh ou usando ./&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;./copiar-tese.sh
-sh copiar-tese.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Além de serem executados também podemos usar o comando &lt;strong&gt;source&lt;/strong&gt;. A diferença é que o source vai correr os comandos na shell actual e executar corre os comandos numa nova shell. Por exemplo&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-PATH = $PATH:/opt/bible/bin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Este comando vai copiar para a variável de ambiente PATH o caminho /opt/bible/bin, e os executáveis dentro da pasta bin ficam acessíveis pelo terminar por estarem na PATH. &lt;/p&gt;
-
-&lt;p&gt;Se executarmos o script (./set-path.sh ou sh set-path.sh) a variável PATH não foi alterada na shell em que nos encontramos, se digitares no terminal echo $PATH ele não retorna com /opt/bible/bin&lt;/p&gt;
-
-&lt;p&gt;Se abrires uma nova shell a variável já está actualizada. Se em vez de executares usares &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;source set-path.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;O script é executado e as alterações são realizadas na shell actual. Isto é porque o source serve para actualizar ficheiros de configuração, e uma das actualizações são as variáveis de ambiente.&lt;/p&gt;
-
-&lt;p&gt;O comando da linha 10 apenas é executado se na linha 9 não houve nenhuma excepção. Isto permite executar comandos em cadeia e é alias algo que fazemos naturalmente quando removemos uma pasta, criamos uma nova e copiar conteudo de outro. &lt;/p&gt;
-
-&lt;p&gt;Em técnicas de invasão um script shell pode fazer uma ligação ssh, comprimir arquivos, copiar tokens do Facebook, copiar os registos do keylogger.&lt;/p&gt;
-
-&lt;h3 id=&quot;algumas-dicas&quot;&gt;Algumas dicas&lt;/h3&gt;
-
-&lt;p&gt;Em bash o “*” tem um significado próprio. Se executares um script que aceite * é preciso escapar com \ Por exemplo o redis-cli que é um cliente para a base de dados redis, executamos a aplicação redis-cli e entramos numa shell de acesso ao Redis. Para escrever um script que execute um comando nessa shell teria de ser&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;redis-cli keys \*
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Isto seria igual a entrar no redis-cli e depois escrever na shell keys *&lt;/p&gt;
-
-&lt;p&gt;O nohup é um comando que ignora o sinal HUP. Quando terminamos a sessão na shell, o sinal HUP avisa os processos dependentes que são terminados.&lt;/p&gt;
-
-&lt;p&gt;Com este comando, mesmo após terminar a sessão o processo continua a ser executado.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nohup ./run-backgroundjob.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Por defeito o retorno é guardado no ficheiro nohup.out, tanto os avisos como os erros. Podemos descartar por completo o retorno enviando-o para /dev/null&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nohup ./resque-scheduler.sh &amp;gt;&amp;amp; /dev/null &amp;amp;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Por outro lado podemos querer descantar o retorno normal e apenas guardar os erros, isso é alcançado removendo o &amp;amp;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nohup ./resque-scheduler.sh &amp;gt; /dev/null &amp;amp;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/linux/2014/10/01/shell-scripts.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/01/shell-scripts.html</guid>
-			</item>
-		
-			<item>
-				<title>Shell</title>
-				<description>&lt;p&gt;A shell é um interpretador de linha de comandos que disponibilia uma interface de usuário para sistemas *nix. Tu escolhes a operação a ser realizada através do comando que escreves e o interpretador executa, ou através de scripts shell. http://guilhermecardoso.pt/linux/2014/10/01/shell-scripts.html&lt;/p&gt;
-
-&lt;p&gt;A consola que o Linux traz instalada é um emulador de terminal e permite-nos abrir uma nova shell. As shells também podem ser utilizadas por ligações de hardware ou sessões de rede.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/shell-emulator-1.jpg&quot; /&gt;&lt;/p&gt;
-</description>
-				<pubDate>Wed, 01 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/linux/2014/10/01/shell.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/01/shell.html</guid>
+				<link>http://www.codigo.ovh/hacking/2014/10/02/hacker-manifesto.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/hacking/2014/10/02/hacker-manifesto.html</guid>
 			</item>
 		
 	</channel>
