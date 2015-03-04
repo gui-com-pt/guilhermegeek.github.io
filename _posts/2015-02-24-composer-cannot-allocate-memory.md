@@ -1,0 +1,21 @@
+---
+title: Composer - Resolver o problema cannot allocate memory
+layout: post_entry
+excerpt: 
+categories:
+ composer
+---
+
+	Uncaught exception 'ErrorException' with message 'proc_open(): fork failed - Cannot allocate memory'
+
+Este erro já me tinha aparecido antes quando tentava actualizar as depedências de uma plataforma que desenvolvi em PHP, ele reside no facto da máquina não ter espaço suficiente na memória SWAP. Esta plataforma tem poucas dependências e leves, mas duas principais foram desenvolvidas por mim e são as bibliotecas em que ela se baseia e já são maiores.
+
+Da primeira vez assustou-me o facto de o PHP não ter memória livre para o composer conseguir actualizar as dependências e fiz ur ama actualização ao hardware da VPS onde ela estava alojada. Hoje voltou-me a acontecer mas numa VPS com 200MB livres e não me pareceu que uma actualização ao hardware fosse uma boa solução.
+
+Assim aprendi a aumentar o espaço dedicado à memória SWAP. Apesar de ser suficiente parar alguns processos mais pesados, correr a actualização do composer e voltar a iniciar os processos, aumentar o espaço dedicado à memória SWAP é mais eficiente.
+
+	/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+	/sbin/mkswap /var/swap.1
+	/sbin/swapon /var/swap.1
+
+Este problema é comum em VPS de 512 de RAM ou menos, em computadores mais potentes possivelmente nunca te irás confrontar com isto.

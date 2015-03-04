@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/javascript.png
 excerpt: Herdar controllers e extender a $scope
 categories:
- javascript
+ angularjs
 ---
 
 Tenho usado directivas como o angular-wizard para fazer uma página com etapas. É muito semelhante a usar páginas parciais com o ui-router, tens um controller principal e os herdeiros herdam a $scope

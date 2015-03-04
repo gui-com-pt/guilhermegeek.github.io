@@ -5,7 +5,7 @@ image: /media/less.jpg
 excerpt: A minha opinião e análise sobre a causa e as consequências da fuga de informação da equipa do Facebook
 description: A minha opinião e análise sobre a causa e as consequências da fuga de informação da equipa do Facebook
 categories:
- security facebook
+ seguranca facebook
 ---
 # Análise
 

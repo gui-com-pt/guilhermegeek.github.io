@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/angular-thumb.jpg
 excerpt: Navegar em segurança na internet
 categories:
- bower
+ seguranca
 ---
 
 ### Tor - Navegar em anônimo

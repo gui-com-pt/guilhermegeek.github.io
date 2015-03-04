@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/angular-thumb.jpg
 excerpt: 
 categories:
- bower
+ seguranca
 ---
 
 O problema de passwords fracas é que são facilmente identificadas por ataques brute-force. Uma password que seja construída por sequências ou palavras óbvias torna-se vulnerável a este tipo de ataques. Alguns exemplos para o João Marques nascido a 31/10/1960.

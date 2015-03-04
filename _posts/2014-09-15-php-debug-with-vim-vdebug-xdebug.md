@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/php.jpg
 excerpt: Fazer debug a código remoto através de uma ligação SSH, evaluar expressões, etc
 description: Já exprimentas-te depurar PHP numa consola com o VI? Aprende a fazê-lo em poucos passos
-categories: php linux
+categories: php
 ---
 
 Utilizar apenas a linha de comandos para evaluar uma expressão enquanto fazemos debug numa ligação SSH?

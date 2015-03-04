@@ -3,7 +3,7 @@ title: Invadir um site Wordpress - métodos e exemplos
 layout: post_entry
 image: /media/hacker1.jpg
 excerpt: Exemplos de como um site Wordpress pode ser invadido.
-categories: php linux hack
+categories: hacking wordpress
 ---
 
 ### Versão

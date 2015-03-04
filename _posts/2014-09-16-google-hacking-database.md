@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/hacker1.jpg
 excerpt: Utilizar o Google para encontrar técnicos idiotas
 categories:
- angularjs
+ hacking
 ---
 
 "Utilizar o Google para encontrar técnicos idiotas" - diz tudo. Google dorks são idiotas encontrados através do Google, sites mal configurados com ficheiros públicos que não deveriam ser.

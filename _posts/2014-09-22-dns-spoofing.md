@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/php.jpg
 excerpt: 
 categories:
- hack
+ hacking
 ---
 
 DNS spoofing também é conhecido como DNS cache poising ou envenenamento de cache DNS.

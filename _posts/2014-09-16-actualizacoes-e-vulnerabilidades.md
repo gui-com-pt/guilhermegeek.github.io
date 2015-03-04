@@ -4,7 +4,7 @@ layout: post_entry
 image: /media/hacker1.jpg
 excerpt: Qual a necessidade de manter actualizado o sistema operativo e softwares como java e flash?
 categories:
- security
+ seguranca
 ---
 
 Já estou habituado a usar pc's que logo no arranque mostram avisos de actualizações e os proprietários simplesmente me dizem "Ah ignora isso, se puderes remove essas mensagens. Não quero actualizar nada, é sempre a mesma coisa". Partilhas da mesma opinião? Isto é para ti.
