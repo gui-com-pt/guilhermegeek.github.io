@@ -16,7 +16,7 @@ Uma linguagem estática tem de ser compilada para ser executada, temos o exemplo
 
 Em PHP isso não acontece porque é dinâmica. Há casos em que isto até é aproveitado para criar ficheiros php em tempo de execuxão (um exemplo são os Hydrators do Doctrine ODM, um ORM orientado a base de dados documentais).
 
-Hack é uma mistura destes dois tipos de linguagem, como o PHP é uma linguagem dinâmica e ambas interpolam-se sem problemas mas também é estaticamente "tipada". 
+Hack é uma mistura destes dois tipos de linguagem, como o PHP é uma linguagem dinâmica e ambas interpolam-se sem problemas mas também é estaticamente "tipada".
 
 O Hack utiliza um compilador Just In Time chamado Hip Hop Virtual Machine - HHVM. Em vez de interpretar ou compilar código PHP diretamente para C++, o HHVM compila o Hack e PHP para um código binário intermediário que é traduzido para código de máquina x64 dinamicamente em tempo de execução pelo compilador.
 
@@ -52,3 +52,14 @@ hhclient
 ````
 
 Se o projecto for apenas PHP e ainda não tivermos programado nad em hacklang, o type checker vai correr um daemon e retornará ``no errors``.
+
+
+### Extensões ###
+
+O HHVM já traz extensões integradas do PHP. Podes ver a list [Aqui](https://github.com/facebook/hhvm/wiki/Extensions).
+
+Ele também permite utilizar as extensões do PHP que não estã integradas sem teres de instalar de novo graças ao modo de compatibilidade com o Zend. Com esta opção extensões como gettext e mongo podem ser usadas. No ficheiro php.ini
+
+````
+hhvm.enable_zend_compat = true
+````
