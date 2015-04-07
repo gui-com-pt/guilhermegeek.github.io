@@ -5,10 +5,11 @@ description:      'Codigo'
 url:              http://www.codigo.ovh
 name: 'Codigo'
 comments: true
+exclude: [node_modules, notready]
 indextank_index: gui_index
 indextank_api_url: ''
 gems: ['jekyll-sitemap']
-pages_list:       
+pages_list:
   About: '/about'
   Archive: '/archive'
   Feed: '/atom.xml'

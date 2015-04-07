@@ -1,0 +1,11 @@
+## Criar camadas
+
+Seleccionamos a area com a ferramenta de selecção (pode ser a ferramenta de Retangulo com a tecla R). Copiamos ou cortamos a área seleccionada, é importante que na janela das camadas (Layers) esteja seleccionada a camada certa, por vezes tinha seleccionada a Background e apenas copiava uma area branca sem perceber porquê :)
+
+Criamos uma nova camada (File -> New Layer ou CNTRL + SHIFT + N) e nessa camada colamos a area seleccionada.
+
+### Instalar plugins
+
+~/.gimp-2.X/plug_ins/
+
+Dar modo de permissão aos ficheiros
