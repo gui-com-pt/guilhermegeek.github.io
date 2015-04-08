@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Codigo</title>
+		<description>Codigo</description>		
+		<link>http://www.codigo.ovh</link>
+		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Sublime Text 3 Gratuíto</title>
+				<description>&lt;p&gt;Este é um daqueles artigos que em alguns países dava direito a uma “tolada na carola” mas divulgação de informação é bonita e eu apoio.&lt;/p&gt;
+
+&lt;p&gt;O verdadeiro autor que te vai permitir utilizar o Sublime Text 3 sem pagares publicou o artigo aqui: https://gist.github.com/vertexclique/9839383&lt;/p&gt;
+
+&lt;p&gt;Nessa página vais fazer download do ficheiro sublime_text crackado para o teu SO (Mac, Windows e Linux). Escolhe o mesmo tipo de arquitectura do teu SO.&lt;/p&gt;
+
+&lt;p&gt;Se já tiveres instalado o Sublime Text faz download no site e instala: http://www.sublimetext.com/&lt;/p&gt;
+
+&lt;p&gt;Agora tens de substituir  ficheiro executável &lt;strong&gt;sublime_text&lt;/strong&gt; pelo download que fizes-te. Pode estar no C:\Programas\Sublime ou em Linux /usr/bin/sublime ou /opt/sublime, etc.&lt;/p&gt;
+
+&lt;p&gt;Em Linux e Mac não te esqueças de corrigir as permissões do ficheiro com&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod u+x /usr/local/bin/sublime_text
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;package-control&quot;&gt;Package Control&lt;/h3&gt;
+
+&lt;p&gt;O verdadeiro poder do Sublime ou o Atom Editor são as extensões que podes instalar. São IDEs leves sem grande tralha instalada no núcleo mas podes aprefeiçoá-lo às tuas necessidades quer seja a nível de linguagem de programação, ferramentas como o gulp, exemplos de código, etc.&lt;/p&gt;
+
+&lt;p&gt;A instalação é simples e está bem detalhada no site do Package Controll. Instala-lo primeiro, depois usa- para instalar pacotes: https://sublime.wbond.net/installation&lt;/p&gt;
+
+&lt;h3 id=&quot;sidebar-enchancements&quot;&gt;SideBar Enchancements&lt;/h3&gt;
+
+&lt;p&gt;Tens de instalar isto! Se o teu PC for lento e usas o Sublime por isso mesmo então pode consumir um pouco de nada de recursos, mas no geral melhora a tua navegação nos directórios, actualiza ficheiros renomeados, pastas movidas, etc. Torna a exploração muito mais amigável.&lt;/p&gt;
+
+&lt;p&gt;https://github.com/titoBouzout/SideBarEnhancements&lt;/p&gt;
+</description>
+				<pubDate>Sat, 04 Apr 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/software/2015/04/04/sublime-text-3-gratuito.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/software/2015/04/04/sublime-text-3-gratuito.html</guid>
+			</item>
+		
+			<item>
+				<title>Traceur - Compilador de ECMAScript 6, o novo JavaScript!</title>
+				<description>&lt;p&gt;O ECMAScript 6 é tão atractivo a qualquer programador! Introdução de classes em javascript, utilização de métodos como &lt;strong&gt;find&lt;/strong&gt; nativamente em arrays, funções com parâmetros pré defenidos, são apenas algumas das novidades que vêm com esta versão do ECMAScript.&lt;/p&gt;
+
+&lt;p&gt;Apesar de ainda não ser 100% implementado nos navegadores e ainda faltar um pouco é possível escrever código javascript a seguir e compilá-lo de modo a ficar compatível com os navegadores.&lt;/p&gt;
+
+&lt;p&gt;A Google lançou uma ferramenta chamada &lt;strong&gt;Traceur&lt;/strong&gt; que permite exactamente isso, compilar javascript ECMAScript 6 para código compatível com os browsers. Esta ferramenta até permite fazer esta compilação durante a execução, o que significa que basta incluires a biblioteca do Traceur!&lt;/p&gt;
+
+&lt;p&gt;Vamos usar um exemplo:&lt;/p&gt;
+
+&lt;p&gt;class House {&lt;/p&gt;
+
+&lt;p&gt;}
+  class HouseFactory {
+    build(name = ‘House name’) {
+      return new House();
+    }
+  }&lt;/p&gt;
+
+&lt;p&gt;var factory = new HouseFactory();
+  var house = factory.build();&lt;/p&gt;
+
+&lt;p&gt;Este código será convertido em:&lt;/p&gt;
+
+&lt;p&gt;var House = function House() {
+    “use strict”;
+  };
+  ($traceurRuntime.createClass)(House, {}, {});
+  var HouseFactory = function HouseFactory() {
+    “use strict”;
+  };
+  ($traceurRuntime.createClass)(HouseFactory, {build: function() {
+      “use strict”;
+      var name = arguments[0] !== (void 0) ? arguments[0] : ‘House name’;
+      return new House();
+    }}, {});
+  var factory = new HouseFactory();
+  var house = factory.build();&lt;/p&gt;
+
+&lt;p&gt;Existem dois métodos para compilar o código: em tempo de execução ou compilar o programa Traceur e usá-lo pela linha de comandos. Podes puxar o repositório do GitHub e compilar o programa com &lt;strong&gt;make&lt;/strong&gt;. Assim podes aceder às funcionalidades pela linha de comandos e também facilita a utilização de scripts para automatização de tarefas.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+./traceur --out /tmp/destination.js --script /tmp/source.js
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A ferramenta está bem documentada e também não é muito complicada de entender. Se quiseres começa a ler o &lt;a href=&quot;https://github.com/google/traceur-compiler/wiki/Getting-Started&quot;&gt;guia de introdução oficial&lt;/a&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/git/2015/03/02/ECMAScript6-converter-em-javascript-compativel.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/git/2015/03/02/ECMAScript6-converter-em-javascript-compativel.html</guid>
+			</item>
+		
+			<item>
+				<title>Composer - Resolver o problema cannot allocate memory</title>
+				<description>&lt;pre&gt;&lt;code&gt;Uncaught exception 'ErrorException' with message 'proc_open(): fork failed - Cannot allocate memory'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Este erro já me tinha aparecido antes quando tentava actualizar as depedências de uma plataforma que desenvolvi em PHP, ele reside no facto da máquina não ter espaço suficiente na memória SWAP. Esta plataforma tem poucas dependências e leves, mas duas principais foram desenvolvidas por mim e são as bibliotecas em que ela se baseia e já são maiores.&lt;/p&gt;
+
+&lt;p&gt;Da primeira vez assustou-me o facto de o PHP não ter memória livre para o composer conseguir actualizar as dependências e fiz ur ama actualização ao hardware da VPS onde ela estava alojada. Hoje voltou-me a acontecer mas numa VPS com 200MB livres e não me pareceu que uma actualização ao hardware fosse uma boa solução.&lt;/p&gt;
+
+&lt;p&gt;Assim aprendi a aumentar o espaço dedicado à memória SWAP. Apesar de ser suficiente parar alguns processos mais pesados, correr a actualização do composer e voltar a iniciar os processos, aumentar o espaço dedicado à memória SWAP é mais eficiente.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+/sbin/mkswap /var/swap.1
+/sbin/swapon /var/swap.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Este problema é comum em VPS de 512 de RAM ou menos, em computadores mais potentes possivelmente nunca te irás confrontar com isto.&lt;/p&gt;
+</description>
+				<pubDate>Tue, 24 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/composer/2015/02/24/composer-cannot-allocate-memory.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/composer/2015/02/24/composer-cannot-allocate-memory.html</guid>
+			</item>
+		
+			<item>
+				<title>AngularJS - Extender um provedor injectando um serviço</title>
+				<description>&lt;p&gt;Um provedor (provider) no AngularJS distingue se de um serviço ou fábrica (factory) por puder ser acedido durante a configuração da aplicação, no método &lt;strong&gt;config&lt;/strong&gt;. Já o serviço e fábrica apenas são acessidos no método &lt;strong&gt;run&lt;/strong&gt; quando a aplicação é iniciada.&lt;/p&gt;
+
+&lt;p&gt;Apesar de o AngularJS não permitir isto nativamente, ou pelo menos não da forma mais elegante, é possível injectar um serviço num provedor durante a configuração da aplicação. &lt;/p&gt;
+
+&lt;p&gt;Para percebermos a utilidade disto vamos imaginar o seguinte exemplo. A aplicação &lt;strong&gt;bible&lt;/strong&gt; tem vários serviços para mostrar a biblia em diferentes traduções. Quando ocorre um erro usamos o serviço &lt;strong&gt;errorHandlerService&lt;/strong&gt; para mostrar uma caixa de diálogo ao utilizador. Extender a forma como lidamos com estes erros significa puder usar outro serviço senão o &lt;strong&gt;errorHandlerService&lt;/strong&gt; para lidar com as mensagens de erro, poderia ser uma caixa de alerta por exemplo. Para este exemplo teríamos os seguintes componentes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var errorHandlerService = function(modalService){
+	this.display = function(response){
+		modalService.open(response.message);
+	};
+};
+
+var homeController = function(errorHandlerService, api) {
+	api.getHome()
+		.then(function(res) {
+			// Ok, sem erros
+		}, function(res) {
+			errorHandlerService.display(res);
+		});
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Se quisermos alterar a forma como a mensagem de erro é mostrada ao utilizador temos de modificar directamente o serviço &lt;strong&gt;errorHandlerService&lt;/strong&gt;. Este serviço não é extensível.&lt;/p&gt;
+
+&lt;p&gt;Podemos usar antes um provedor para mostrar as mensagens de erro, e injectamos o método &lt;strong&gt;display&lt;/strong&gt; do serviço &lt;strong&gt;errorHandlerService&lt;/strong&gt; para mostrar as mensagens. Mais tarde, pudemos usar outro serviço sem termos de modificar o código do &lt;strong&gt;errorHandlerService&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var errorHandlerProvider = function(){
+	var errorHandler;
+
+	this.setHandler = function(handler) {
+		errorHandler = handler;
+	}
+
+	this.$get = function(){
+		return {
+			display: errorHandler
+		}
+	}
+}
+
+var config = function(errorHandler) {
+	var injector = angular.injector(['app']),
+		service = injector.get('errorHandlerService');
+
+	errorHandler.setHandler(service.display);
+};
+
+var homeController = function(errorHandlerProvider, api) {
+	api.getHome()
+		.then(function(res) {
+			// Ok, sem erros
+		}, function(res) {
+			errorHandlerProvider.display(res);
+		});
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Não me agrada muito esta solução por ter resolver a dependência do serviço &lt;strong&gt;errorHandlerService&lt;/strong&gt; através do injector do AngularJS. No entanto é fiável porque funciona e permite-nos alterar a forma como vamos mostrar as mensagens, num exemplo mais real usaríamos um serviço para a versão mobile que interaja com a API do telemovel e outro para o site que mostre a caixa de diálogo.&lt;/p&gt;
+</description>
+				<pubDate>Tue, 24 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/angularjs/2015/02/24/angularjs-injectar-um-servico-num-provedor.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2015/02/24/angularjs-injectar-um-servico-num-provedor.html</guid>
+			</item>
+		
+			<item>
+				<title>AngularJS - Padrão de Design do Observador</title>
+				<description>&lt;p&gt;Um dos pontos fortes do AngularJS é a ligação entre duas propriedades automática. Se um controlador referir uma propriedade de um serviço e essa propriedade alterar no lado do serviço, a alteração é propagada e o controlador é notificado.&lt;/p&gt;
+
+&lt;p&gt;E quando tal ligação não existe? Usando o exemplo de um plugin jQuery, ele não vai interpolar com o AngularJS e mesmo que altere valores na view essas alterações não vão referir na aplicação. &lt;/p&gt;
+
+&lt;h2 id=&quot;padro-de-design-do-observador&quot;&gt;Padrão de Design do Observador&lt;/h2&gt;
+
+&lt;p&gt;O padrão de design do Observador permite a um assinante registar e receber notificações de um provedor. Vamos usar um exemplo, com um serviço do AngularJS:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var service = function(){
+	var callbacks = [];
+
+	var notifyCallbacks = function(){
+		angular.forEach(callbacks, function(callback) {
+			callback();
+		});
+	};
+
+	this.registerCallback = function(callback) {
+		this.callbacks.push(callback);
+	};
+};
+
+var controller = function(service, $scope) {
+	$scope.callable = function(){
+		console.log('$scope.callable invoded');
+	};
+
+	service.registerCallback($scope.callable);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Assim o serviço consegue notificar o controlador de alterações invocando o método &lt;strong&gt;notifyCallbacks&lt;/strong&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Thu, 19 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/angularjs/2015/02/19/angularjs-padrao-design-observador.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2015/02/19/angularjs-padrao-design-observador.html</guid>
+			</item>
+		
+			<item>
+				<title>Encurtador de URL com o redis e nginx - super rápido!</title>
+				<description>&lt;p&gt;Precisei de implementar uma solução para encurtar urls, semelhante ao &lt;a href=&quot;https://goo.gl/&quot;&gt;Google Shortener&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A primeira questão foi qual linguagem utilizar. Por ser algo tão simples ia para python mas encontrei uma implementação do &lt;a href=&quot;https://github.com/MendelGusmao&quot;&gt;Mendelson&lt;/a&gt; que utiliza o redis para guardar a informação em memória ram, e um servidor nginx.&lt;/p&gt;
+
+&lt;p&gt;Para melhorar o resultado de performance deste projeto, a ligação entre o servidor web nginx e a base de dados redis onde a informação é guardada, é feita no nível do nginx usando LUA. Isto é uma vantagem muito grande, pois evita que tenhamos de correr código PHP ou outra linguagem qualquer para lidar com o negócio das operações que pode ser muito bem tratado apenas no nginx. &lt;/p&gt;
+
+&lt;p&gt;No entanto esta aplicação é simples e não tem implementado nenhum sistema de autenticação ou validação dos urls.&lt;/p&gt;
+
+&lt;p&gt;Original: &lt;a href=&quot;https://gist.github.com/MendelGusmao/2356310&quot;&gt;https://gist.github.com/MendelGusmao/2356310&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Baseado em on http://uberblo.gs/2011/06/high-performance-url-shortening-with-redis-backed-nginx&lt;/li&gt;
+  &lt;li&gt;A usar código de from http://stackoverflow.com/questions/3554315/lua-base-converter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Esquema da Base de Dados&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;id -&amp;gt; url&lt;/li&gt;
+  &lt;li&gt;id -&amp;gt; contador&lt;/li&gt;
+  &lt;li&gt;id -&amp;gt; referer / user_agent&lt;/li&gt;
+  &lt;li&gt;id -&amp;gt; contador (when id is not found)&lt;/li&gt;
+  &lt;li&gt;id -&amp;gt; referer / user_agent (quando o id não é encontrado)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;chave “count” guarda o número de urls encurtados; o id é gerado (este número + 1) e convertido para base 62&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; server {
+	 
+   location ~ ^/retrieve$ {
+     internal;
+	 
+     redis2_query get $request_uri;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/count$ {
+     internal;
+	 
+     redis2_query select 5;
+     redis2_query get count;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/history$ {
+     internal;
+	 
+     redis2_query select 1;
+     redis2_query incr $request_uri;
+	 
+     redis2_query select 2;
+     redis2_query rpush $request_uri &quot;$http_referer|$http_user_agent&quot;;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/notfound$ {
+     internal;
+	 
+     redis2_query select 3;
+     redis2_query incr $request_uri;
+	 
+     redis2_query select 4;
+     redis2_query rpush $request_uri &quot;$http_referer|$http_user_agent&quot;;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/store$ {
+     internal;
+	 
+     redis2_query select 0;
+     set_unescape_uri $id $arg_id;
+     set_unescape_uri $url $arg_url;
+     redis2_query set $id $url;
+	 
+     redis2_query select 5;
+     redis2_query incr count;
+	 
+     redis2_pass 127.0.0.1:6379;
+   }
+	 
+   location ~ ^/shorten/(?&amp;lt;url&amp;gt;.*)$ {
+     auth_basic &quot;Restricted&quot;;
+     auth_basic_user_file /etc/nginx/.htpasswd;
+	 
+     add_header Content-Type text/plain;
+	 
+     content_by_lua '
+       local parser = require &quot;redis.parser&quot;
+       local res = ngx.location.capture(&quot;/count&quot;)
+       local results, type = parser.parse_replies(res.body, 2)
+	 
+       basen = function(n, b)
+         n = math.floor(n)
+         if not b or b == 10 then return tostring(n) end
+         local digits = &quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;
+         local t = {}
+         local sign = &quot;&quot;
+         if n &amp;lt; 0 then
+           sign = &quot;-&quot;
+           n = -n
+         end
+         repeat
+           local d = (n % b) + 1
+           n = math.floor(n / b)
+           table.insert(t, 1, digits:sub(d, d))
+         until n == 0
+         return sign .. table.concat(t,&quot;&quot;)
+       end
+	 
+       local id = basen(results[2][1] + 1, 62)
+	 
+       ngx.location.capture(&quot;/store&quot;,
+         { args = { id = &quot;/&quot;..tostring(id), url = ngx.var.url } }
+       )
+	 
+       ngx.say(&quot;http://&quot; .. ngx.var.host .. &quot;/&quot; .. id)
+     ';
+   }
+	 
+   location / {
+     content_by_lua '
+       local parser = require &quot;redis.parser&quot;;
+       local res = ngx.location.capture(&quot;/retrieve&quot;);
+       local href, type = parser.parse_reply(res.body);
+       if type == parser.ERROR_REPLY or href == nil then
+         ngx.location.capture(&quot;/notfound&quot;);
+         ngx.exit(ngx.HTTP_NOT_FOUND);
+       else
+         ngx.location.capture(&quot;/history&quot;);
+         ngx.redirect(href); 
+       end
+     ';
+   }
+	 
+ }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+				<pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/redis/nginx/2015/02/10/criar-um-encurtador-de-links-com-redis-e-nginx.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/redis/nginx/2015/02/10/criar-um-encurtador-de-links-com-redis-e-nginx.html</guid>
+			</item>
+		
+			<item>
+				<title>Já conheces o Hacklang? Uma linguagem que se interpola lindamente com o PHP!</title>
+				<description>&lt;p&gt;Hack é uma linguagem de programação desenvolvida pelo Facebook. A equipa usa esta linguagem na rede social e tornou-a código aberto.&lt;/p&gt;
+
+&lt;p&gt;O PHP é uma linguagem dinâmica enquanto que C# é estática.&lt;/p&gt;
+
+&lt;p&gt;Uma linguagem estática tem de ser compilada para ser executada, temos o exemplo de C++ e C#. Se num projeto .NET alterar-mos código temos de construir de novo o projeto e gerar as dll&lt;/p&gt;
+
+&lt;p&gt;Em PHP isso não acontece porque é dinâmica. Há casos em que isto até é aproveitado para criar ficheiros php em tempo de execuxão (um exemplo são os Hydrators do Doctrine ODM, um ORM orientado a base de dados documentais).&lt;/p&gt;
+
+&lt;p&gt;Hack é uma mistura destes dois tipos de linguagem, como o PHP é uma linguagem dinâmica e ambas interpolam-se sem problemas mas também é estaticamente “tipada”.&lt;/p&gt;
+
+&lt;p&gt;O Hack utiliza um compilador Just In Time chamado Hip Hop Virtual Machine - HHVM. Em vez de interpretar ou compilar código PHP diretamente para C++, o HHVM compila o Hack e PHP para um código binário intermediário que é traduzido para código de máquina x64 dinamicamente em tempo de execução pelo compilador.&lt;/p&gt;
+
+&lt;p&gt;Entre as várias vantagens do hack vou destacar aquelas que me levaram a começar a programar com esta linguagem:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Atributos - usar atributos podes facilitar em muito a manutenção do código. Podem ser usados nos métodos de um controlador para indicar o URL de destino, numa classe de validação para indicar os tipos de campos, numa classe de domínio para indicar fazer o mapeamento das propriedades da classe com os campos da base de dados, etc&lt;/li&gt;
+  &lt;li&gt;Enumerador - apesar de existem bibliotecas em PHP que simulam enumeradores eles não existem nativamente em PHP&lt;/li&gt;
+  &lt;li&gt;Genêricos - utilizar tipos genêricos aumenta muito o desenvolvimento em certas situações como a criação de um repositório quer receba um tipo genêrico &lt;strong&gt;T&lt;/strong&gt;. Isto permite ter uma classe definida que consiga lidar com vários tipos de entidades (normalmente extendemos a classe do repositório e só escrevemos novas funções quando precisamos de queries específicas).&lt;/li&gt;
+  &lt;li&gt;Anotações de tipo - sem dúvida o forte do hacklang. Quando criamos uma variável indicamos se é um número inteiro, uma string, etc enquanto que em PHP é dinâmico e apenas anotamos arrays ou classes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;instalao&quot;&gt;Instalação&lt;/h3&gt;
+
+&lt;p&gt;A instalação é facilitada com pacotes suportados pela equipa do Facebook para debian, ubuntu e mint. Também existem pacotes distribuídos pela comunidade para Fedora, Centos, Amazon Linux, Arch e outras versões do Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;O hhvm precisa de um servidor web, o recomendado é o nginx. Na instalação do hhvm é disponibilizado um script que configura a comunicação do hhvm com o nginx por sockets usando o fastcgi (não confundas com o php-fpm, ele é responsável por fazer o php comunicar com o fastcgi e não o hhvm). Este script é corrido após a instalação:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+sudo sh /usr/share/hhvm/install_fastcgi.sh
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Este script adiciona o ficheiro hhvm.conf no directório /etc/nginx&lt;/p&gt;
+
+&lt;h3 id=&quot;comear-a-usar&quot;&gt;Começar a usar&lt;/h3&gt;
+
+&lt;p&gt;Partimos do princípio que qualquer projecto PHP irá correr no hhvm. Isto nem sempre é verdade pois hà funcionalidades no PHP que não são permitidas em hacklang, mas a maioria podemos considerar maus hábitos de programação que têem vindo a ser usados no PHP por ser “tão dinâmico”.&lt;/p&gt;
+
+&lt;p&gt;Na raíz do projecto criamos um ficheiro em branco &lt;strong&gt;.hhconfig&lt;/strong&gt;. Este ficheiro permite ao type checker do hhvm saber onde procurar o código a avaliar.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+hhclient
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Se o projecto for apenas PHP e ainda não tivermos programado nad em hacklang, o type checker vai correr um daemon e retornará &lt;code&gt;no errors&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;extenses&quot;&gt;Extensões&lt;/h3&gt;
+
+&lt;p&gt;O HHVM já traz extensões integradas do PHP. Podes ver a list &lt;a href=&quot;https://github.com/facebook/hhvm/wiki/Extensions&quot;&gt;Aqui&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ele também permite utilizar as extensões do PHP que não estã integradas sem teres de instalar de novo graças ao modo de compatibilidade com o Zend. Com esta opção extensões como gettext e mongo podem ser usadas. No ficheiro php.ini&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+hhvm.enable_zend_compat = true
+&lt;/code&gt;&lt;/p&gt;
+</description>
+				<pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/php/hacklang/2015/02/09/php-hack-introducao.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/php/hacklang/2015/02/09/php-hack-introducao.html</guid>
+			</item>
+		
+			<item>
+				<title>Distribuições Linux - gerir pacotes e versões de programas</title>
+				<description>&lt;p&gt;Distribuições Linux - Pacotes&lt;/p&gt;
+
+&lt;p&gt;Em Linux temos várias escolhas de distribuições. As três principais são:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Debian&lt;/li&gt;
+  &lt;li&gt;Fedora&lt;/li&gt;
+  &lt;li&gt;Slackware&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Apartir destas três distribuições existem outras que são derivadas da mesma. Como exemplo temos o Ubunto que deriva do Debian.&lt;/p&gt;
+
+&lt;p&gt;Elas proporcionam um gestor de pacotes que pode variar de distribuição para distribuição. Enquanto que em Debian usamos o &lt;strong&gt;apt&lt;/strong&gt;  no OpenSuse usamos o &lt;strong&gt;zypper&lt;/strong&gt; e no Gentoo instalamos os programas usando o código fonte.&lt;/p&gt;
+
+&lt;p&gt;Por norma, os gestores de pacotes funcionam de forma semelhante oferecendo as opções:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;install - usada para instalar um novo programa&lt;/li&gt;
+  &lt;li&gt;update - actualiza a lista de programas pelas fontes dos repositórios&lt;/li&gt;
+  &lt;li&gt;upgrade - actualiza os programas instalados&lt;/li&gt;
+  &lt;li&gt;dist upgrade - actualiza a versão da distribuição, sendo uma actualização mais “sólida”. &lt;/li&gt;
+  &lt;li&gt;remove - remove um programa instalado&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Alguns podem entrar em conflito quando se deparam com problemas nas versões de programas. Em Debian, isto é muito comum quando corremos um &lt;code&gt;sudo apt-get update&lt;/code&gt; e recebemos avisos de &lt;code&gt;unmet dependencies&lt;/code&gt;. Ocorre quando usamos versões mais recentes distribuídas por comunidades, e determinados programas não as suportam ou requerem até versões mais actuais.&lt;/p&gt;
+
+&lt;p&gt;Algo que gostei no &lt;strong&gt;zypper&lt;/strong&gt; foi o facto de nunca me ter deparado com este tipo de problemas, enquanto que no Debian a usar o &lt;strong&gt;apt&lt;/strong&gt; era o “prato do dia-a-dia”.&lt;/p&gt;
+
+&lt;h2 id=&quot;utilizar-a-verso-certa-de-um-programa&quot;&gt;Utilizar a versão certa de um programa&lt;/h2&gt;
+
+&lt;p&gt;As dificuldades na gestão de um computador Linux aparecem quando lidamos com problemas de versões de programas e bibliotecas. O mais comum é a versão do &lt;strong&gt;gcc&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;No Debian, o &lt;strong&gt;gcc&lt;/strong&gt; distribuído é o 4.7 enquanto que o Ubunto já distribui a versão 4.8. Programas como o Spotify Client e até mesmo a Steam necessitam de versões mais recentes do &lt;strong&gt;gcc&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Debian divide as distribuições pelo estado de testabilidade/usuabilidade dos programas. Na versão Wheezy temos programas estáveis enquanto que na Jessie encontramos pacotes mais recentes mas mais instáveis. No caso do &lt;strong&gt;gcc&lt;/strong&gt;, a solução mais comum no Debian é instalar a versão de Jessie num computador com o Wheezy mas isto pode trazer problemas quando já há muitos programas a dependerem do &lt;strong&gt;gcc&lt;/strong&gt; e são removidos por acidente ou deixam de funcionar.&lt;/p&gt;
+
+&lt;p&gt;Apesar de este problema não ser um problema comum para o típico utilizador iniciante de Linux, um utilizador mais avançado tem sempre soluções. Podemos instalar uma versão do programa (neste exemplo o &lt;strong&gt;gcc&lt;/strong&gt;) noutro directório e indicamos aos programas para utilizarem esta versão definindo a constante &lt;strong&gt;LD_LIBRARY_PATH&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;qual-a-distribuio-mais-flxivel&quot;&gt;Qual a distribuição mais fléxivel?&lt;/h2&gt;
+
+&lt;p&gt;Para mim é compreensível que o Debian não distribua uma versão actual do &lt;strong&gt;gcc&lt;/strong&gt;. Esta distribuição é muito utilizada em servidores e requer código estável.&lt;/p&gt;
+
+&lt;p&gt;Quando precisamos de ser tão minuciosos no sistema operativo ao ponto de controlar as versões instaladas, então precisamos de ter um conhecimento mais sólido de Linux e torna-se indiferente a distribuição que utilizamos.&lt;/p&gt;
+
+&lt;p&gt;No entanto eu gosto do &lt;strong&gt;Gentoo&lt;/strong&gt;. A sua instalação mete medo a todos os iniciantes pois requer instalar o Linux por linhas de comando e proceder à configuração assim. Como resultado final, esta distribuição permite configurar as versões a serem instaladas, assim como instalar várias versões em paralelo.&lt;/p&gt;
+
+&lt;p&gt;Quando procuramos por opiniões sobre o &lt;strong&gt;Gentoo&lt;/strong&gt; é comum encontrarmos algo do gênero “Qualquer utilizador de Linux devia instalar o Gentoo para compreender melhor como funciona o sistema operativo”, e é verdade.&lt;/p&gt;
+</description>
+				<pubDate>Sun, 08 Feb 2015 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/linux/2015/02/08/distribuicoes-linux-gerir-pacotes-e-versoes-de-programas.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/linux/2015/02/08/distribuicoes-linux-gerir-pacotes-e-versoes-de-programas.html</guid>
+			</item>
+		
+			<item>
+				<title>Análise da fuga de informação da equipa do Facebook</title>
+				<description>&lt;h1 id=&quot;anlise&quot;&gt;Análise&lt;/h1&gt;
+
+&lt;p&gt;Escrevi na Volupio &lt;a href=&quot;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&quot;&gt;um artigo sobre a fuga de informação da responsabilidade de trabalhadores do Facebook&lt;/a&gt;, aqui vou tentar analisar mais detalhadamente a informação recolhida.&lt;/p&gt;
+
+&lt;p&gt;Tudo começa na publicação de Malcom, que &lt;a href=&quot;http://sintheticlabs.com/blog/a-look-inside-facebooks-source-code.html&quot;&gt;pode ser lida aqui&lt;/a&gt;. Malcom estava a lidar com erros do Phabricator, uma plataforma de código aberto lançada pela equipa do Facebook. Quando eu elogio o Facebook por contribuir para o código de fonte aberta é exactamente por isto, bibliotecas, plataformas e até uma linguagem de programação que a equipa desenvolveu e distribuíu. Para quem programa em PHP, o &lt;a href=&quot;http://hacklang.org/&quot;&gt;PHP Hack&lt;/a&gt; é um grande exemplo de um passo dado pelo Facebook para levar o PHP mais além, e para mim enquanto programador C# foi uma razão para gostar ainda mais de PHP.&lt;/p&gt;
+
+&lt;p&gt;Como é uma plataforma relativamente recente e utilizada internamente pela equipa, é de esperar que as conversas e registos que se encontrem pelo Google provenham deles mesmos. Foi isso que aconteceu quando o Malcom pesquisa no Google e se deparou com código colado no pastebin que continha referências ao Phabricator e estava directamente relacionado com a plataforma do Facebook.&lt;/p&gt;
+
+&lt;p&gt;Vamos ver um exemplo: &lt;a href=&quot;http://pastebin.com/DMjWQ0cJ&quot;&gt;http://pastebin.com/DMjWQ0cJ&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Index: flib/core/db/queryf.php
+===================================================================
+--- flib/core/db/queryf.php
++++ flib/core/db/queryf.php
+@@ -1104,11 +1104,12 @@
+  *  @author rmcelroy
+  */
+ function mysql_query_all($sql, $ok_sql, $conn, $params) {
++  FBTraceDB::rqsend($ok_sql);
+   switch (SQLQueryType::parse($sql)) {
+     case SQLQueryType::READ:
+       $t_start = microtime(true);
+       $result = mysql_query_read($ok_sql, $conn);
+       $t_end = microtime(true);
+       $t_delta = $t_end - $t_start;
+       if ($t_delta &amp;gt; ProfilingThresholds::$queryReadDuration) {
+         ProfilingThresholds::recordDurationError('mysql.queryReadDuration',
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A informação colada nesse pastebin foi publicada por um visitante dia 17 deste mês. Pela formatação do código conseguimos ver que provem de uma consulta com o GIT, possivelmente um diff. É uma função simples que executada instruções SQL, e muito possivelmente o trabalhador do Facebook colou isto para passar a outro.&lt;/p&gt;
+
+&lt;p&gt;Isto é muito comum, dou por mim a partilhar erros e registos com outros utilizadores (seja no Mirc ou comunidades como StackOverflow) neste tipo de serviços mas sempre informação que não considero priveligiada, caso contrário não pode ir para um domínio publico que ainda por cima é indexado pela Google!&lt;/p&gt;
+
+&lt;p&gt;Continuando com a análise, este é apenas um pedaço da informação. No artigo, o Malcom recolheu muito mais código e inclusive arquivou tudo num ficheiro .zip e disponibilizou no seu site. Nesse arquivo, além de registos de erros está também pedaços de código e também de testes.&lt;/p&gt;
+
+&lt;p&gt;Algo interessante a realçar é o facto de a equipa usar o PHPUnit para realizar testes. &lt;/p&gt;
+
+&lt;p&gt;Pelos caminhos indicados em alguns registos também podemos saber o nome das contas utilizadas por alguns trabalhadores. Por exemplo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Running unit tests...
+HipHop Fatal error: Uncaught exception exception 'PhutilBootloaderException' with message 'The phutil library '' has not been loaded!' in /home/engshare/devtools/libphutil/src/__phutil_library_init__.php:124\nStack trace:\n#0 /home/engshare/devtools/libphutil/src/__phutil_library_init__.php(177): PhutilBootloader-&amp;gt;getLibraryRoot()\n#1 /home/engshare/devtools/arcanist/src/unit/engine/phutil/PhutilUnitTestEngine.php(53): PhutilBootloader-&amp;gt;moduleExists()\n#2 /home/engshare/devtools/arcanist/src/workflow/unit/ArcanistUnitWorkflow.php(113): PhutilUnitTestEngine-&amp;gt;run()\n#3 /home/engshare/devtools/arcanist/src/workflow/diff/ArcanistDiffWorkflow.php(1172): ArcanistUnitWorkflow-&amp;gt;run()\n#4 /home/engshare/devtools/arcanist/src/workflow/diff/ArcanistDiffWorkflow.php(225): ArcanistDiffWorkflow-&amp;gt;runUnit()\n#5 /home/engshare/devtools/arcanist/scripts/arcanist.php(257): ArcanistDiffWorkflow-&amp;gt;run()\n#6 {main}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Este registo foi gerado HHVM e a conta engshare sugere uma conta partilhada pelos engeheiros do Facebook.&lt;/p&gt;
+
+&lt;p&gt;Nos outros logs está muito presente o nome de uma biblioteca que será utilizada pela equipa que contém utilitários úteis e funções para ajudar o desenvolvimento.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[25/10/2013] Promoting The Meme Bank (1/1) - Campaign Update Failed: Campaign 6009258279237: Value cannot be null (Value given: null) TAAL[BLAME_files,www/flib/core/utils/enforce.php,www/flib/core/utils/EnforceBase.php]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O nome dessa biblioteca é flib - Facebook Library.&lt;/p&gt;
+
+&lt;p&gt;Outra informação muito relevante, no qual se baseou o artigo que escrevi na Volupio é uma ligação à base de dados. Esta informação parece ter vindo de um print_r() de uma array que acabou por ser enviado para produção hà alguns anos:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;array ( 'ip' =&amp;gt; '10.21.209.92', 'db_name' =&amp;gt; 'insights', 'user' =&amp;gt; 'mark', 'pass' =&amp;gt; 'e5p0nd4', 'mode' =&amp;gt; 'r', 'port' =&amp;gt; 3306, 'cleanup' =&amp;gt; false, 'num_retries' =&amp;gt; 3, 'log_after_num_retries' =&amp;gt; 4, 'reason' =&amp;gt; 'insights', 'cdb' =&amp;gt; true, 'flags' =&amp;gt; 0, 'is_shadow' =&amp;gt; false, 'backoff_retry' =&amp;gt; false, )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;o-que-podemos-aprender-daqui&quot;&gt;O que podemos aprender daqui&lt;/h1&gt;
+
+&lt;p&gt;Quando trabalhei em consultoria sempre fui avisado para a necessidade de ter cuidado com o código que poderia “tirar para fora” da rede interna de desenvolvimento, assim como as cláusulas que podem existir nos contratos em que o trabalhador é responsabilizado por este tipo de conduta.&lt;/p&gt;
+
+&lt;p&gt;Se eu estiver a trabalhar numa tarefa no final do dia de uma Sexta Feira e a empresa estiver fechada no fim de semana, vou ser tentado a acabar o código no Sábado. Para isso passo-o para uma pen, colo-o num serviço como o pastebin, deixo-o na minha conta de email, etc. Entre estas possibilidades existe o privado e público, o caso do pastebin é publico.&lt;/p&gt;
+
+&lt;p&gt;Mesmo em serviços privados eu sempre tive muito medo. Enquanto programador tenho acesso ao código fonte completo daquilo em que estou a trabalhar, e basta perder uma pen ou deixar a sessão ligada no meu PC enquanto vou à casa de banho num café, e pode ser o suficiente para este tipo de fugas acontecerem.&lt;/p&gt;
+
+&lt;p&gt;Neste caso do Facebook foi pior, pois foi colado no pastebin e nem foi protegido com uma password.&lt;/p&gt;
+
+&lt;p&gt;O que podemos aprender daqui? De nada vale um projeto estar protegido por firewalls, pontos de acessos, enfim tudo e mais alguma coisa que possamos imaginar em segurança de redes, se os programadores são negligêntes ao ponto de colarem o próprio código na Internet!&lt;/p&gt;
+
+&lt;p&gt;Link do artigo que escrevi na Volupio: &lt;a href=&quot;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&quot;&gt;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&lt;/a&gt;&lt;/p&gt;
+</description>
+				<pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/seguranca/facebook/2014/12/21/analise-fuga-informacao-facebook.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/facebook/2014/12/21/analise-fuga-informacao-facebook.html</guid>
+			</item>
+		
+			<item>
+				<title>AngularJS - Dependências de módulos diferentes com nomes iguais</title>
+				<description>&lt;h3 id=&quot;angularjs---dependncias-de-mdulos-diferentes-com-nomes-iguais&quot;&gt;AngularJS - Dependências de módulos diferentes com nomes iguais&lt;/h3&gt;
+
+&lt;p&gt;Por norma, os serviços começados com &lt;strong&gt;$&lt;/strong&gt; percentem ao núcleo do AngularJS. Alguns exemplos: $scope, $rootScope, $locationProvider do módulo &lt;code&gt;ngRoute&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Quando existem nomes iguais de um serviço, diretiva, controlador, a injecção é resolvida pela ordem com que são os módulos dependentes. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;angular.module('moduleOne', []).service('bible', function(){});
+
+angular.module('moduleTwo', ]).service('bible', function(){})
+
+angular.module('app', ['moduleOne', 'moduleTwo'])
+		.controller('homeCtrl', ['bible', function(bible) {}])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O serviço &lt;code&gt;bible&lt;/code&gt; injetado no controlador é o do módulo moduleTwo por ele ter sido declarado no array depois do moduleOne. No caso de saber-mos que um serviço com o mesmo nome deve provir de determinado módulo, a posição desse módulo no array deve ser depois dos outros com um serviço com o mesmo nome.&lt;/p&gt;
+
+&lt;p&gt;No entanto este comportanto apesar de ser esperado não é uma boa forma de resolvermos o problema. O ideal é especificar qual o módulo do qual queremos injetar o serviço &lt;code&gt;bible&lt;/code&gt; utilizando o &lt;code&gt;injector()&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;angular.module('app', ['moduleOne', 'moduleTwo'])
+		.controller('homeCtrl', ['$injector', function($injector) {
+				var mod = angular.injector(['moduleOne']);
+				var bible = mod.get('bible');
+			}]);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Fri, 05 Dec 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html</guid>
+			</item>
+		
+			<item>
+				<title>Boas práticas em AngularJS</title>
+				<description>&lt;p&gt;Neste artigo vou demonstrar boas práticas para trabalhar com o AngularJS. O resultado final vai ser este:&lt;/p&gt;
+
+&lt;iframe height=&quot;350&quot; scrolling=&quot;no&quot; src=&quot;http://codepen.io/guilhermecardoso/embed/LEGpmY/&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/guilhermecardoso/pen/LEGpmY/&quot;&gt;LEGpmY&lt;/a&gt; by Guilherme Cardoso (&lt;a href=&quot;http://codepen.io/guilhermecardoso&quot;&gt;@guilhermecardoso&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;
+
+&lt;p&gt;Como os restantes artigos eu vou actualizando à medida que tenho tempo, por isso esta versão inicial pode ser confusa.&lt;/p&gt;
+
+&lt;h3 id=&quot;isolamento&quot;&gt;Isolamento&lt;/h3&gt;
+
+&lt;p&gt;Para isolar ao máximo os contextos, sempre que escrevo um controlador, um serviço, uma directia uso uma expressão de função imediatamente-invocada. Podes ler mais aqui: &lt;a href=&quot;http://www.codigo.ovh/javascript/pattern/2014/09/10/javascript-iife.html&quot;&gt;Expressão de Função Imediatamente-Invocada (IIFE)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tudo que existir dentro da função não está acessível aos contextos parentes, neste caso o global.&lt;/p&gt;
+
+&lt;p&gt;Neste exemplo eu apenas deixo no contexto global a &lt;code&gt;app&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var app = angular.module('web', ['ngRoute']);
+(function(){
+
+})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;problema-de-minificadores&quot;&gt;Problema de minificadores&lt;/h3&gt;
+
+&lt;p&gt;É bastante comum em tutoriais ver-mos exemplos assim:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', function($scope) {
+	$scope.message = 'message';
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Este código não apresenta erros e é válido mas vamos supor que queremos minificar o código com uma ferramenta. Essa ferramenta vai alterar os nomes das variáveis e o resultado será este:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', function(s) {
+	s.message = 'message';
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Agora o AngularJS não vai conseguir injetar a $scope. Isto é esperado e não é nenhum erro, na verdade a ferramenta está a fazer bem o seu trabalho a minificar. &lt;/p&gt;
+
+&lt;p&gt;Uma solução será enviar uma array com as dependências e só no final a função a ser executada.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', ['$scope', function($scope) {
+	$scope.message = 'message';
+}]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Na primeira entrada da array a $scope é passada numa string, o que significa que o minificador vai deixar o valor intacto. Já na variável da função ele vai substituír a $scope mas não há problema, pois o AngularJS sabe que a primeira variável é a $scope, independentemente do nome que a variável tiver. O resutlado é este:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', ['$scope', '$rootScope', function(s, r) {
+	s.message = 'message';
+}]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A variável &lt;code&gt;s&lt;/code&gt; é a $scope e a &lt;code&gt;r&lt;/code&gt; a $rootScope. Quando recebe um array, o AngularJS sabe que o último valor é sempre a função e vai resolver as dependências pelos valores passados no array.&lt;/p&gt;
+
+&lt;h3 id=&quot;outra-estratgia&quot;&gt;Outra estratégia&lt;/h3&gt;
+
+&lt;p&gt;O último exemplo é compatível com o minificador e é válido mas outra alternativa a meu ver mais correta é ao chamar a função &lt;code&gt;controller&lt;/code&gt; passar apenas o nome do controlador e a sua função. As dependências são injetadas na função e declaradas sempre na propriedade &lt;code&gt;$inject&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vamos examinar o exemplo do controller &lt;code&gt;homeCtrl&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(function(){
+  
+  var cntrlFn = function($log, sharedService) {
+    var self = this;
+    self.$log = $log;
+    self.service = sharedService;
+  };
+
+  cntrlFn.$inject = ['$log', 'sharedService'];
+  app.controller('homeCtrl', cntrlFn);
+})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Quando atribuo a função à variável cntrlFn tento criar o método main. Registo as dependências na função com o &lt;code&gt;this&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Todos os métodos que quiser implementar no controller faço-o com o prototype, por exemplo o método refresh e logout:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(function(){
+  
+  var cntrlFn = function($log, sharedService) {
+    var self = this;
+    self.$log = $log;
+    self.service = sharedService;
+  };
+
+  cntrlFn.prototype.refresh = function(){
+  	var self = this;
+  	self.$log('refreshed');
+  };
+
+  cntrlFn.prototype.logout = function(){
+  	window.location = '/logout';
+  };
+
+  cntrlFn.$inject = ['$log', 'sharedService'];
+  app.controller('homeCtrl', cntrlFn);
+})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A documentação é uma das razões pela qual gosto de estruturar assim o código. É mais fácil
+### controllerAs&lt;/p&gt;
+
+&lt;p&gt;Neste exemplo eu não estou a expor os membros do controller na &lt;code&gt;$scope&lt;/code&gt;. Isto começou na versão 1.2 porque a $scope acabava por representar o próprio controller, e torna-se mais intuitívo utilizar o &lt;code&gt;this&lt;/code&gt; no controller para declarar as propriedades e ficarem acessíveis na página.&lt;/p&gt;
+
+&lt;p&gt;Tanto o &lt;code&gt;$routeProvider&lt;/code&gt; como o &lt;code&gt;$stateProvider&lt;/code&gt; do módulo ui-router suportam o controllerAs da seguinte forma:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$routeProvider.when('/', {
+	controller: 'homeCtrl',
+	controllerAs: 'ctrl'
+});
+
+$stateProvider.state('home', {
+	url: '/',
+	controller: 'homeCtrl',
+	controllerAs: 'ctrl'
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;O controller fica acessível através do &lt;code&gt;ctrl&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div ng-bind=&quot;ctrl.message&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/angularjs/2014/12/01/AngularJS.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/01/AngularJS.html</guid>
+			</item>
+		
+			<item>
+				<title>Utiliza emails descartáveis gratuitamente!</title>
+				<description>&lt;p&gt;Mais de metade dos emails de spam que recebo foram serviços que subscrebi apenas para obter algo como fazer um download de um PDF ou receber por email uma activação no site.&lt;/p&gt;
+
+&lt;p&gt;Havia uma altura em que utilizava uma conta de email apenas para estes tipos de registos, ou para outras inscrições em sites menus seguros ou a quem eu não confiasse. &lt;/p&gt;
+
+&lt;p&gt;Uma boa alternativa a ter de gerir mais outro email é usar emails descartáveis! A filosofia é bastante simples: crias uma conta de email por pedido, coma duração de 60 minutos. Para isto podemos usar o Guerrilla Mail https://www.guerrillamail.com&lt;/p&gt;
+
+&lt;p&gt;Com um email temporário podes registar-te em determinado serviço sem te associares a ele. Como as contas têem a duração de 60 minutos não podes partir do princípio que vais voltar acesso à conta, ou seja, após os 60 minutos não podes recuperar passwords, receber emails de confirmação, etc. Mas não é para isso que este tipo de emails servem também.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;entry__image&quot; src=&quot;/media/posts/temporary-mail-1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Algumas finalidades para este serviço:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Registo em sites suspeitos - senão confias na fonte e não queres criar um registo a identificar-te&lt;/li&gt;
+  &lt;li&gt;Registo apenas para receber um email - no caso de downloads de PDFs ou &lt;code&gt;gifts&lt;/code&gt; ocasionais (a estratégia de oferecer uma parte do conteúdo requerendo um registo para a subscrição de newsletters)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;api&quot;&gt;API&lt;/h4&gt;
+
+&lt;p&gt;Um ponto forte deste serviço é o acesso a uma API. Por esta API podemos criar novas contas temporárias, receber e enviar emails. &lt;/p&gt;
+
+&lt;p&gt;Uma das primeiras utilidades que me veio à cabeça foi usar estes emails para registar contas em massa em serviços aos quais consiga ultrapassar a protecção de recaptcha. Como temos acesso à API podemos muito bem interpetrar os emails recebidos e assim confirmar automáticamente as contas. &lt;/p&gt;
+</description>
+				<pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/dicas/2014/11/25/emails-temporarios.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/dicas/2014/11/25/emails-temporarios.html</guid>
+			</item>
+		
+			<item>
+				<title>Como utilizar cantos arredondados e fazer circulos com CSS?</title>
+				<description>&lt;p&gt;Em CSS a propriedade &lt;strong&gt;border-radius&lt;/strong&gt; permite adicionar cantos arredondados a elementos e ficam visíveis quando o elemento tem uma cor de fundo.&lt;/p&gt;
+
+&lt;p&gt;O valor do raio pode ser definido em percentagem. Usando 50% conseguimos criar um circulo&lt;/p&gt;
+
+&lt;iframe height=&quot;350&quot; scrolling=&quot;no&quot; src=&quot;http://codepen.io/guilhermecardoso/embed/bNdKaw/&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/guilhermecardoso/pen/bNdKaw/&quot;&gt;bNdKaw&lt;/a&gt; by Guilherme Cardoso (&lt;a href=&quot;http://codepen.io/guilhermecardoso&quot;&gt;@guilhermecardoso&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;
+
+&lt;p&gt;O valor do border-radius pode ser aplicado de várias formas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 valor - aplicado aos 4 cantos&lt;/li&gt;
+  &lt;li&gt;2 valores - primeiro valor é aplicado aos canto superior esquerdo e inferior direito, segundo valor é aplicado ao canto superior direito e inferior esquerdo.&lt;/li&gt;
+  &lt;li&gt;4 valores - primeiro aplicado ao superior esquerdo, segundo ao superior direito, terceiro ao inferior direito e o quarto ao inferior esquerdo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe height=&quot;350&quot; scrolling=&quot;no&quot; src=&quot;http://codepen.io/guilhermecardoso/embed/bNdKLB/&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/guilhermecardoso/pen/bNdKLB/&quot;&gt;bNdKLB&lt;/a&gt; by Guilherme Cardoso (&lt;a href=&quot;http://codepen.io/guilhermecardoso&quot;&gt;@guilhermecardoso&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;
+
+&lt;p&gt;Sobre a utilização dos prefixos dos vendedores que uso no exemplo recomendo esta leitura: http://css-tricks.com/do-we-need-box-shadow-prefixes/&lt;/p&gt;
+
+&lt;p&gt;É importante referir que a utilização de valores percentuais on Safari apenas é suportado na versão 5.1 para cima e no Opera 11.5 para cima. &lt;/p&gt;
+
+&lt;p&gt;Também existe uma falha em alguns navegadores Android 4+ com a utilização de apenas um valor no border-radius http://stackoverflow.com/questions/17944749/border-radius-style-doesnt-work-in-android-browser&lt;/p&gt;
+
+&lt;p&gt;Recursos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://css-tricks.com/almanac/properties/b/border-radius/&quot;&gt;CSS Tricks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/css/html/2014/11/25/CSS-cantos-arredondados.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/css/html/2014/11/25/CSS-cantos-arredondados.html</guid>
+			</item>
+		
+			<item>
+				<title>PHP e gettext</title>
+				<description>&lt;h3 id=&quot;linux&quot;&gt;Linux&lt;/h3&gt;
+
+&lt;p&gt;Para o gettext funcionar correctamente em Linux é preciso ter o idioma usado instalado no sistema operativo.&lt;/p&gt;
+
+&lt;p&gt;Isto é uma requisição, caso contrário o gettext não funciona. Para instalar novos idiomas em debian em descomento a entrada para o idioma que quero no ficheiro /etc/locale.gen, por exemplo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pt_PT.UTF-8 UTF-8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Para o debian reconfigurar o idioma &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dpkg-reconfigure locales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Isto vai instalar todos os idiomas em uso no /etc/locale.gen&lt;/p&gt;
+
+&lt;h3 id=&quot;php&quot;&gt;PHP&lt;/h3&gt;
+
+&lt;p&gt;Quando desenvolvo uma aplicação em PHP deixo os idiomas na configuração da aplicação. Se já usares uma framework terás de ver a documentação dela para associares um novo dominio.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$language = &quot;pt_PT&quot;;
+$codeset = 'UTF-8';
+$locale = $language . '.' . $codeset;
+$domain = 'messages';
+
+if(defined($locale)) { // linux
+    setlocale(LC_MESSAGES, $locale);
+}
+else {
+    putenv('LC_ALL={$locale}'); // windows
+}
+putenv('LANG={$language}');
+
+bindtextdomain($domain, '../i18n/Locale');
+bind_textdomain_codeset($domain, $codeset);
+textdomain($domain);
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+				<pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/php/2014/11/20/php-gettext.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/php/2014/11/20/php-gettext.html</guid>
+			</item>
+		
+			<item>
+				<title>Dicas para te protegeres de ataques, malware e problemas comuns</title>
+				<description>&lt;p&gt;Série de artigos sobre segurança online&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Passwords&lt;/li&gt;
+  &lt;li&gt;Navegação&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;precauo&quot;&gt;Precaução&lt;/h2&gt;
+
+&lt;p&gt;A prevenção é boa manutenção da máquina é essencial. Não basta apenas instalar programas e esperar que eles por si sejam responsáveis pela segurança.&lt;/p&gt;
+
+&lt;p&gt;Os programas são bons para analisar e detectar mas a prevenção é que dita se ficheiros maliciosos e outras ameaças conseguem alcançar a nossa máquina, temos de adoptar boas práticas e criar hábitos que proporcionem isto.&lt;/p&gt;
+
+&lt;h2 id=&quot;programas&quot;&gt;Programas&lt;/h2&gt;
+
+&lt;p&gt;Uma das formas de distribuir código malicioso e alcançar os utilizadores finais é através de programas. Programas que são instalados para realizarem determinada função mas que traz consigo código com outras intenções, semelhantemente ao cenário do cavalo de troia.&lt;/p&gt;
+
+&lt;p&gt;Neste tipo de programas é mais comum nos deparar-mos com:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Gestor de drivers e actualizações&lt;/li&gt;
+  &lt;li&gt;Anti Virus e programas de segurança&lt;/li&gt;
+  &lt;li&gt;Cracks e patchs&lt;/li&gt;
+  &lt;li&gt;Anexos de emails&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Algo que estes programas têm em comum: têm de ser instalados! Isto também inclui programas instalados como terceiros, ou seja, programas instalados como ofertas, bónus ou promoções durante a instalação de outros.&lt;/p&gt;
+
+&lt;p&gt;Isto normalmente ocorre na aceitação de termos e condições ou na finalização da instalação, e os responsáveis usam truques baixos para levarem as pessoas a instalar. Vamos analisar algumas formas comuns:&lt;/p&gt;
+
+&lt;h4 id=&quot;download&quot;&gt;Download&lt;/h4&gt;
+
+&lt;p&gt;Na página do programa se houver publicidade da Google ou outra intencional, facilmente nos deparamos com 2 ou 3 caixas a dizerm “Download” e ficamos sem saber onde realmente é realizado o download. Isto é um truque utilizador: a publicidade recebe do site informação em relação ao Download e usam-na como referência para o nome do ficheiro ou para aparecer no quadrado de publicidade e levar o utilizador a pensar que é ali o Download.&lt;/p&gt;
+
+&lt;p&gt;O ficheiro descarregado pode ser um programa totalmente diferente do que preendíamos, pode ser um gestor de programas que diz instalar o programa que procuramos ou pode até abrir a instaação normal do programa que queremos mas trazer consigo código malicioso.&lt;/p&gt;
+
+&lt;h4 id=&quot;integridade&quot;&gt;Integridade&lt;/h4&gt;
+
+&lt;p&gt;Integridade neste contexto significa que o ficheiro original que é distribuído e que recebemos não foi modificado. Uma forma utilizada para comprovar a integridade de um programa é verificar a assinatura md5. &lt;/p&gt;
+
+&lt;p&gt;MD5 significa Message-Digest algorithm, um algoritmo de hash desenvolvido pela RSA Data Security inc com 128 bits unidireccional.&lt;/p&gt;
+
+&lt;p&gt;Por ser unidireccional, após ter sido gerado o hash por um texto (por exemplo uma password) não podemos transformar o hash novamente no texto que o originou. Com as passwords guardamos na base de dados encriptadas com MD5 e quando um utilizador se autentica criamos uma hash com a password inserida e comparamos com a hash da base de dados, não podemos desencriptar a hash da base de dados para comparar com a password inserida.&lt;/p&gt;
+
+&lt;h4 id=&quot;processo-de-instalao&quot;&gt;Processo de Instalação&lt;/h4&gt;
+
+&lt;p&gt;Neste exemplo vou instalar o Daemon Tools Lite.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Primeiro passo é aceitar os termos do Daemon Tools Lite. A aceitação dos termos costuma ser dos primeiros passos na instalação.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Esta escolha ainda é relevante ao Daemon Tools Lite. Apesar de ter escolhido a versão gratuíta no site, na instalação icentivam o utilizador a comprar a licença.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Aqui está a primeira tentativa de nos enganar. Quando olhamos para este ecrã partimos do princípio que apenas a opção “Typical installation (recommended)” está disponível pois a opçção “Custom installation (advanced)” está com outra cor e tanto a roda (radio button) como o texto estão desactivados. Fazemos isto a elementos quando o utilizador não os pode utilizar, neste caso é apenas para enganar. De outra forma não estaria “recomended”.&lt;/p&gt;
+
+&lt;p&gt;Com a instalação que nos recomendam vamos instalar o Linkey e todo o malware que venha atrás. Podemos então carregar no “Custom installation (advanced)” &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Uma observação que reforça a intenção de enganar: agora a opção “Typical installation (recommended)” não está desactivada como a opção “Custom installation (advanced)” estava a início. Se não estivesse desactivada para enganar, porque não se desactivou a Typical agora que escolhemos? Removemos todos os vistos neste passo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-5.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Para finalizar ainda levamos com o TuneUp Utilities 2014. De novo a técnica de desactivar a opção “I do not accept”. &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ainda durante a instalação aparece mais um Gadget a ser instalado.&lt;/p&gt;
+
+&lt;h2 id=&quot;anlise&quot;&gt;Análise&lt;/h2&gt;
+
+&lt;h4 id=&quot;processos&quot;&gt;Processos&lt;/h4&gt;
+
+&lt;p&gt;No Windows podemos usar o gestor de tarefas paras consultas os processos em execução. Um programa quando é executado usa um ou mais processos, por vezes conseguimos descubrir problemas com o gestor de tarefas e uma pesquisa no Google para procurar rastos do mesmo processo mas pode ser irrelevante. Pode ser um nome aleatório ou até mesmo código injetado noutro processo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-7.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nos serviços também pode estar algo malicioso que tenha escalado a permissão de administração e criado um serviço do Windows.&lt;/p&gt;
+
+&lt;p&gt;Há programas específicos para analisar processos em execução sem ser o gestor de tarefas.&lt;/p&gt;
+</description>
+				<pubDate>Wed, 19 Nov 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/seguranca/2014/11/19/seguranca-online-intro.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/11/19/seguranca-online-intro.html</guid>
+			</item>
+		
+			<item>
+				<title>Começar a trabalhar como programador</title>
+				<description>&lt;p&gt;Neste artigo vou tentar explicar que vários rumos podes tomar na área da programação, mas também direccionado a quem queira estudar web design ou outras áreas como gestão de base de dados.&lt;/p&gt;
+
+&lt;p&gt;Tudo começa no planeamento que vais criar para a tua carreira enquanto programador. Vou dividir em três níveis&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Baixo - Não investes muito tempo para conhecer a linguagem de programação (ou seja, apenas conheces uma também) e trabalhas em projetos rotinários que não te façam ter de sair da tua zona de conforto. Isto implica que não precises de estudar e avançar mais do nível onde te encontras.&lt;/li&gt;
+  &lt;li&gt;Normal - Além das 8 horas de trabalho investes tempo para te manteres actualizado e tudo que aprendes não é apenas da necessidade dos projetos.&lt;/li&gt;
+  &lt;li&gt;Alto - Estudas e aprendes tecnologias que não usas no teu trabalho, lês teses e projetos com o objetivo de aprendizagem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Algo que sempre gostei em programação é que o teu valor enquanto provedor de serviços (não meramente um empregado) pode ser porpocional ao tempo que dedicas a estudar. Para te tornares um melhor programador não precisas de ir para uma boa faculdade ou ter uma cunha, simplesmente tens de estudar. E para isso é preciso gostar mesmo asério do que vais fazer.&lt;/p&gt;
+
+&lt;p&gt;Dependendo da área onde residas, a tua escolha de te tornares um programador de alto nível pode implicar que tenhas de trabalhar noutro local ou então iniciares-te como freelancer. No caso de Portugal hà boas empresas fora das cidades principais Lisboa, Porto, Coimbra e Braga. No entanto é mais em Lisboa e Porto que o mercado de consultoria está localizado e onde tens mais diversidade de escolha.&lt;/p&gt;
+
+&lt;h3 id=&quot;empresas-de-webdesign&quot;&gt;Empresas de Webdesign&lt;/h3&gt;
+
+&lt;p&gt;Não é a desenvolver websites ou a usar CMS que vão aparecer desafios que te evoluam e criem a necessidade de estudo. Há muitas empresas assim, com serviços como: desenvolvimento de websites, criação de lojas online, criação de portais, etc. Basicamente criam sites. Neste tipo de empresas não tens muita margem para evoluir. Alguns exemplos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;O código que escreves é irrelevante tanto para o cliente como para o teu empregador, pois não tens nenhum chefe de equipa decerta forma a julgar-te e valorizar-te também. Curtos prazos de desenvolvimento são pedidos porque o projeto foi vendido ao preço de umas sapatilhas, e tens de rentabilizar o tempo.&lt;/li&gt;
+  &lt;li&gt;Testes unitários demoram tempo. Na realidade, até podes poupar tempo se souberes desenvolver a escrever testes (TDD) mas isso não interessa para a empresa. Escrever testes = escrever mais código = prazos maiores de desenvolvimento.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Uma empresa assim pode ser boa para começares a trabalhar. Outra alternativa é começar no mercado da consultoria mas isso já requer alguma experiência ou boa teoria.&lt;/p&gt;
+
+&lt;h3 id=&quot;consultoria&quot;&gt;Consultoria&lt;/h3&gt;
+
+&lt;p&gt;Em consultoria o cenário é diferente, muito diferente. O teu empregador pode ser uma empresa com equipas pŕoprias de desenvolvimento que esteja a contratar especificamente para aquele projeto ou pode ser uma empresa que apenas sub contrata.&lt;/p&gt;
+
+&lt;p&gt;Podes ser contratado apenas para um projeto ou assinar mesmo um contrato com uma empresa mas simplesmente trabalhares como consultor. Vais participar em projetos externos, conhecer várias pessoas da área pois lidas com muita coisa mesmo! Na mesma sala pode estar uma equipa de desenvolvimento á medida, outra de SAP.&lt;/p&gt;
+
+&lt;p&gt;Os ambientes são mais formais. Eu gosto disto, trabalhei em sítios onde realmente respeitam o local de trabalho e o silêncio é apreciado. Isto é muito importante porque se fores trabalhar para uma empresa pequena onde tenhas uma pessoa que a função dela não requer atenção e foco na tarefa, basta ser engraçadinho e é o suficiente para te afetar durante o trabalho, não te conseguires concentrar.&lt;/p&gt;
+
+&lt;h4 id=&quot;perfil&quot;&gt;Perfil&lt;/h4&gt;
+
+&lt;p&gt;Em consultoria a procura é específica. Enquanto que numa empresa de webdesign tens de saber HTML, CSS, Javascript e uma linguagem como PHP, neste tipo de projetos procuram profissionais específicos para as linguagens e os requisítios são mais elevados.&lt;/p&gt;
+
+&lt;p&gt;Há requisitos na procura que também justificam os salários mais altos. Por exemplo para um programador C# pode ser pedido:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Desenvolver APIs com a .NET Web API&lt;/li&gt;
+  &lt;li&gt;Validar os serviços com testes unitários&lt;/li&gt;
+  &lt;li&gt;Utilizar GIT ou outro gestor de código&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para um web designer:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Código HTML validado com a W3C&lt;/li&gt;
+  &lt;li&gt;Utilizar LESS ou SASS para gerar o código CSS&lt;/li&gt;
+  &lt;li&gt;Utilizar um padrão em CSS (por exemplo: BEM)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Existem níveis que classificam a tua posição dentro da empresa.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Júnior - programador com menos de 2 anos de experiência&lt;/li&gt;
+  &lt;li&gt;Sénior&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Uma dica: se queres trabalhar em consultoria e queres investir em ti então estuda o que mercado mais procura e valoriza! É escusado dizer que quanto mais precisas de aprender, melhor é a recompensa salarial ;)&lt;/p&gt;
+
+&lt;h3 id=&quot;freelancer&quot;&gt;Freelancer&lt;/h3&gt;
+
+&lt;p&gt;Esta área tem esta mais valia em relaçao a muitas outras profissoes. O mercado recorre muito a freelancers e por isso, se investires mesmo em ti consegues trabalhar como freelancer.&lt;/p&gt;
+
+&lt;p&gt;Há aqueles freelancers que só o são por não conseguirem arranjar emprego.&lt;/p&gt;
+
+&lt;p&gt;Aquele programador que não tem experiência séria, num projeto simples sente-se assustado com novas funcionalidades que desconhece possíveis implementações ou que simplesmente demore demasiado tempo a entregar um produto.&lt;/p&gt;
+
+&lt;p&gt;Todos começamos por algum lado, é preciso é continuar.&lt;/p&gt;
+
+&lt;h4 id=&quot;projeto&quot;&gt;Projeto&lt;/h4&gt;
+
+&lt;p&gt;Para aprender a programar web quer uses php, python, c# tens sempre bibliotecas gratuítas que podes usar e desenvolver um projeto. Na fase inicial é uma mais valia ao portfólio e é tido em conta nas entrevistas.&lt;/p&gt;
+
+&lt;p&gt;Seja para um cliente ou para experiência é sempre preciso estruturar e definir toda a preparação do projeto. Há livros a falar da fase de planeamento de um projeto.&lt;/p&gt;
+
+&lt;p&gt;Eu não levo tão asério. Começo em rascunho numa folha de papel, um esquema UML ou a usar um programa de mockups. Primeiro escolho o domínio daquilo que vou desenvolver. O domínio é formado por entidades, por exemplo para um blog as entidades seriam: Article, Comment, User, Review&lt;/p&gt;
+
+&lt;p&gt;Com estas entidades escrevo serviços que vão fazer operações como: ArticleCreate, CommentSend, ReviewEdit, Register, CommentAprove, ArticlePublish, CommentList&lt;/p&gt;
+
+&lt;p&gt;Serviços comuns como NotificationSend, EmailSend que meto à parte. Este esquema depois serve-me como modelo daquilo que vou desenvolver.&lt;/p&gt;
+
+&lt;p&gt;Podes geriar a parte html usando layouts, páginas parciais. Isto é no lado do servidor seja em PHP, C#, python, há frameworks e bibliotecas que auxiliam.&lt;/p&gt;
+
+&lt;p&gt;Outra alternativa é desenvolveres uma SPA - single page application com uma framework como o AngularJS. A parte do cliente (html, css, javascript) fica separada do código do servidor, o backend. No caso de desenvolver uma SPA o ideal é sempre servi-la com uma API. As linguagens modernas têm frameworks boas para implementar APIs.&lt;/p&gt;
+
+&lt;p&gt;Eu recomendo sempre aprenderem angular! Uma aplicação angular pode servir um website ou uma aplicação android a usar phonegap, ionicframework. Podes escrever toda a lógica, serviços num módulo que partilhes no website e aplicação, e depois desenvolves duas aplicações que consumam esse módulo.&lt;/p&gt;
+
+&lt;p&gt;Além que aprendes javascript e html, mesmo que depois venhas a trabalhar no lado do servidor para fazer isto noutros projetos já sabes boas bases e facilmente te adaptas.&lt;/p&gt;
+
+&lt;p&gt;Isto é javascript mas se sabes programar PHP ou C# também sabes javascript.&lt;/p&gt;
+
+&lt;p&gt;Para desenvolver o código temos de seguir uma arquitectura ou pelo menos alguns padrões que asegurem um bom código.&lt;/p&gt;
+
+&lt;p&gt;Eu gosto muito da arquitectura SOA - arquitectura orientada a serviços mas há outras e depende sempre do que fores desenvolver. Um exemplo de uma aplicação dividida em camadas a utilizar a framework Slim em PHP para servir uma API: https://codig.ovh/software/2014/09/23/arquitectura-padroes.html&lt;/p&gt;
+
+&lt;p&gt;Para implementares funcionalidades como validação de dados, formatação de texto, tratamento de imagens, gestão de ficheiros no sistema podes usar bibliotecas. Cada linguagem tem o seu gestor de dependências como o Nuget em C#, composer em PHP, bower para javascript e css. Ter dependências como bibliotecas geridas por algo assim é melhor, ajuda-te a manter tudo actualizado e torna-se mais fácil a instalação em produção.&lt;/p&gt;
+
+&lt;p&gt;Há serviços que podes contratar como websockets, envio de emails, um sistema de comunicação em grupo. Grande parte das empresas que os prestam vêem de programadores e disponibilizam pacotes gratuítos para projetos startup ou pequenos.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Isto foi escrito pelos Gang Of Four. Não é um livro para um iniciante ler mas se queres aprender a estruturar aplicações e a programar código reutilizável com padrões tens mesmo de ler! - http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Apartir daqui vou escrever mais artigos específicos do que falei&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Plano - roadmap a que te comprometas para começares a programar ou evoluires.&lt;/li&gt;
+  &lt;li&gt;Curriculum - como te podes apresentar a uma empresa&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Começar a programar&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Recursos de aprendizagem&lt;/li&gt;
+  &lt;li&gt;Escolher uma linguagem de programação&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Freelancer&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;O teu primeiro projeto real&lt;/li&gt;
+  &lt;li&gt;Estrutares a base da tua equipa de modo a que outros programadores possam desenvolver e rentabilizar o tempo&lt;/li&gt;
+  &lt;li&gt;Propostas de orçamentos&lt;/li&gt;
+  &lt;li&gt;Divulgação&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Referências Futuras&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://programmer-hek.blogspot.pt/2014/07/which-type-of-it-career-is-best-for-you.html&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
+				<link>http://www.codigo.ovh/programacao/2014/10/28/profissoes.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/programacao/2014/10/28/profissoes.html</guid>
+			</item>
+		
+			<item>
+				<title>Segurança Online - Navegação</title>
+				<description>&lt;h3 id=&quot;tor---navegar-em-annimo&quot;&gt;Tor - Navegar em anônimo&lt;/h3&gt;
+
+&lt;p&gt;Como me dizia um amigo, a “cebolinha”! O Tor é uma rede que podemos utilizar para navegar anonimamente na internet. É a rede utilizada por hackers para realizar ataques, para fazer pagamentos online, autenticar em serviços numa rede pública ou simplesmente enganar aquele sistema de votação online.&lt;/p&gt;
+
+&lt;p&gt;O tráfego é transmitido de forma encriptada e passado entre vários computadores e servidores espalhados pelo mundo.&lt;/p&gt;
+
+&lt;p&gt;Como está licenciado como open source já começam a aparecer mais soluções a utilizar esta comunicação e a tornar-se ainda mais popular.&lt;/p&gt;
+
+&lt;h3 id=&quot;tor-navegadorhttpswwwtorprojectorgprojectstorbrowserhtmlen&quot;&gt;&lt;a href=&quot;https://www.torproject.org/projects/torbrowser.html.en&quot;&gt;Tor Navegador&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Este browser é uma versão modificada do Firefox e está disponível para Windows, Linux e Mac. Há extensões para o Firefox para puderes usar a rede Tor com esse browser, mas se preferires podes usar este.&lt;/p&gt;
+
+&lt;p&gt;Não aconselho instalar extensões no navegador como no fazemos no Chrome por exemplo. Essas extensões têm de estar preparadas para utilizar a rede Tor, e nem todas estão o que implica que o tráfego dessa extensão não é anónimo. O mesmo se aplica a outros programas do computador, apenas o navegador utiliza esta rede para comunicar. &lt;/p&gt;
+
+&lt;h3 id=&quot;orbothttpsguardianprojectinfoappsorbot&quot;&gt;&lt;a href=&quot;https://guardianproject.info/apps/orbot/&quot;&gt;Orbot&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-tor1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Esta aplicação permite utilizar a rede Tor num telemovel. Muito bom!&lt;/p&gt;
+
+&lt;p&gt;Quando utilizar? Se estiveres a procurar o resultado do Benfica - Sporting, certamente não precisas de “esconder” isso. A rede Tor é mais lenta e também não é bom sobre carregá-la sem necessidade. Se fores ao site da Caixa Geral Deposítos realizar uma transferência já seria uma boa ideia usar, assim como se fores entrar no teu email no café apenas para ver se recebes-te algo.&lt;/p&gt;
+
+&lt;h3 id=&quot;http-vs-https&quot;&gt;HTTP vs HTTPS&lt;/h3&gt;
+
+&lt;p&gt;Alguns sites têm um cadeado na barra de tarefas do browser, normalmente verde mas também pode ser amarelo ou vermelho.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-ssl1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Esse cadeado é apresentado em sites com o protocolo https que utiliza SSL para encriptar as comunicações com chaves. Outro exemplo é o facebook, google, spotify, youtube.&lt;/p&gt;
+
+&lt;p&gt;Recentemente foi publicada uma falha neste protocólo que põs em causa a segurança de vários sistemas e muitos se questionaram sobre estes certificados serem ou não uma prova de segurança. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tem preferência por sites com comunicações seguras&lt;/strong&gt;. Certificados SSL não são nenhum investimento gigante para sites, sejam de serviços ou comunidades até. Eu utilizo no meu e não lido com informação importante, considera estranho o facto de um site conhecido não usar nenhum certificado.&lt;/p&gt;
+
+</description>
+				<pubDate>Thu, 16 Oct 2014 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/seguranca/2014/10/16/seguran-online-navegacao.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/10/16/seguran-online-navegacao.html</guid>
+			</item>
+		
+			<item>
+				<title>Segurança Online - Password</title>
+				<description>&lt;p&gt;O problema de passwords fracas é que são facilmente identificadas por ataques brute-force. Uma password que seja construída por sequências ou palavras óbvias torna-se vulnerável a este tipo de ataques. Alguns exemplos para o João Marques nascido a 31/10/1960.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;123_joao_321&lt;/li&gt;
+  &lt;li&gt;asdasd&lt;em&gt;joao&lt;/em&gt;asdasd&lt;/li&gt;
+  &lt;li&gt;qwer123_31_qwe123&lt;/li&gt;
+  &lt;li&gt;1960&lt;em&gt;10&lt;/em&gt;31&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Estas passwords são vulneráveis a brute-force. Se for uma vítima específica, o hacker vai usar as tais palavras óbvias como o nome dos pais, filhos, morada, localidade.&lt;/p&gt;
+
+&lt;p&gt;Também é comum utilizar a mesma password para serviços diferentes e apenas diferir numa palavra que identifique esse serviço. No exemplo de cima, para o Facebook e Google seria:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;123_joao_321-facebook&lt;/li&gt;
+  &lt;li&gt;123_joao_321-google&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Podemos concluír que para descubrir a password um hacker pode tentar várias tentativas até usando palavras chaves que de certa forma se identifiquem a nós.&lt;/p&gt;
+
+&lt;p&gt;Assim a solução para uma password é não utilizar-mos nenhuma sequência ou melhor ainda: uma password que nem nós saibamos! Uma palavra construída por um programa que pode ser instalado no computador ou telemovel, e seja gerada apartir de uma lógica.&lt;/p&gt;
+
+&lt;h2 id=&quot;usuabilidade&quot;&gt;Usuabilidade&lt;/h2&gt;
+
+&lt;p&gt;Quando tens dezenas de contas registadas em serviços como email, redes sociais, portais, o mais comum é a password ser sempre a mesma. Até podes usar diferentes mas cada uma atribúida a níveis diferentes de segurança (mais complexas para serviços mais sensíveis).&lt;/p&gt;
+
+&lt;p&gt;Não é prático termos dezenas de passwords diferentes que tenhamos de decorar sempre. &lt;/p&gt;
+
+&lt;h2 id=&quot;como-utilizar-a-password&quot;&gt;Como utilizar a password&lt;/h2&gt;
+
+&lt;p&gt;O primeiro passo que fazes é sempre autenticares-te. Se for num site como o Facebook, a opção para manter a sessão iniciada após a autenticação pode ser uma vulnerabilidade em redes que não sejam confiáveis. Isto porque esta opção guarda uma espécie de palavra super secreta que pode ser usada durante X dias para entrar no Facebook sem teres de te ligar sempre. Esta palavra expira depois desses dias, são os tokens (no caso do Facebook providos por OAuth 2).&lt;/p&gt;
+
+&lt;p&gt;Se estiveres ligado á internet de tua casa, podes partir do princípio que podes guardar a sessão iniciada. Estás numa rede conhecida e se alguém a invadir a tua conta do Facebook deve ser a menor das preocupações.&lt;/p&gt;
+
+&lt;p&gt;Numa rede pública como um café inverte-se claro. Nessa rede pode aceder qualquer um que tenha o acesso, acesso esse que não é controlado por ti. Podes ser vítima de um roubo da palavra super secreta que falei. Essa palavra está guardada no teu computador (para ser usada para entrar no Facebook sem te autenticares sempre), possivelmente numa cookie facilmente acedida. Quem roubar essa palavra, consegue entrar na tua conta sem precisar de se autenticar.&lt;/p&gt;
+
+&lt;p&gt;**Nunca guardes a sessão iniciada automaticamente numa rede pública. Se procurares mesmo segurança, então nunca a guardes em nenhuma rede.&lt;/p&gt;
+
+&lt;h2 id=&quot;master-password-app&quot;&gt;Master Password App&lt;/h2&gt;
+
+&lt;p&gt;Este é o programa que recomendo para gerires a tua password. Este programa gera uma palavra através de um algoritmo, isto significa que ela não é guardada em nenhum lado.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-pw-1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;O Master Password pode ser instalado como uma aplicação mobile, um programa no computador ou até mesmo usado em código.&lt;/p&gt;
+
+&lt;p&gt;No caso de uma password importante que apenas uses algumas vezes por dia (o acto da autenticação e não o serviço em si), tendo esta aplicação instalada é uma mais valia e evita que guardes passwords.&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo a palavra t33t que facilmente seria descoberta por um hacker, sendo encriptada com o algoritmo transformou-se em w1=rD9YhWahxArZydD8b.&lt;/p&gt;
+
+&lt;h2 id=&quot;google-security-key&quot;&gt;Google Security Key&lt;/h2&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-pw-2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A Google tomou um passo importante ao promover a autenticação de dois passos. Primeiro autenticas-te com a password e depois receber um código de confirmação através de uma sms, chamada de voz ou uma aplicação própria para isso. Esse código de confirmação é o segundo passo na autenticação.&lt;/p&gt;
+
+&lt;p&gt;Além de usar um código de confirmação no segundo passo, agora é possível usar uma pen drive, a chamada &lt;strong&gt;Security Key for 2-Step verification&lt;/strong&gt;. Por enquanto esta autenticação apenas é possível através do Chrome na versão 38 (muito recente ainda).&lt;/p&gt;
+</description>
+				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/seguranca/2014/10/15/seguranca-online-password.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/10/15/seguranca-online-password.html</guid>
+			</item>
+		
+			<item>
+				<title>Variáveis de ambiente e locais no Unix</title>
+				<description>&lt;p&gt;No UNIX os softwares são mais flexíveis que Windows, o comportamente de um programa pode ser alterado apenas por alterar uma variável. Além de caminhos para pastas, as variáveis de ambiente podem ter opções de linha de comandos, ou flags (EMAILS_ENABLED, COMMENTS_ALLOWED).&lt;/p&gt;
+
+&lt;p&gt;As variáveis de ambiente ou globais guardam informação partilhada por programas como caminhos para determinadas pastas (variável HOME com C:\Users\Gui). São sempre escritas em maiúsculas, semelhantemente em linguagens de programação as constantes são escritas em maísculas e podem desempenhar uma função semelhante, apesar de isto ser uma convenção e não uma regra.&lt;/p&gt;
+
+&lt;p&gt;No terminal é indiferente se as variáveis seguem esta com convenção ou não, as de ambiente da shell actual são herdadas por todos os shells filhos. &lt;/p&gt;
+
+&lt;p&gt;Também existem as variáveis são as variáveis do shell, as locais. Estas são escritas em minúsculas e não são herdadas pelos filhos.	&lt;/p&gt;
+
+&lt;h3 id=&quot;principais&quot;&gt;Principais&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;PATH&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Contém o caminho para pastas com ficheiros de sistema (equivalente no Windows ao programa.exe). Os programas que executas na consola, ls, node, grunt, mkdir, tanto podem ter o executável na /usr/local/bin que já está na variável PATH normalmente, ou numa pasta /opt/spotify-client que seria adicionado á PATH.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HOME&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;O caminho absoluto para o teu directorio home, por exemplo /home/maria Programas usam-na para guardarem ficheiros de configuração de cada utilizador do sistema na sua pasta home ou o comando &lt;strong&gt;cd ~&lt;/strong&gt; que usa a variável para ir para a HOME.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;USERNAME&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Nome do utilizador autenticado na shell.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TERM&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tipo de terminal usado para aceder ao sistema&lt;/p&gt;
+
+&lt;h3 id=&quot;como-usar&quot;&gt;Como usar&lt;/h3&gt;
+
+&lt;p&gt;Uma variável é atribuida por VARIAVEL=VALOR&lt;/p&gt;
+
+&lt;p&gt;Por vezes podemos usar o valor da variável para atribuir a um novo valor, exemplo seria adicionar a pasta /opt/bible-king-james á variável PATH.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;dk@localhost:/&lt;span class=&quot;nv&quot;&gt;$ PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:/opt/bible-king-james
+dk@localhost:/&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/GitEye/:/opt/bible-king-james/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Na PATH adicionei o caminho aseguir a $PATH, a variável que com o valor actual dos os restantes caminhos.&lt;/p&gt;
+
+&lt;p&gt;Quando executarmos um programa ele procura primeiro na pasta /usr/local/bin, senão existir na /usr/bin, e consecutivamente. Se adicionasse no início, esse caminho seria o primeiro a ser usado&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/bible-king-james:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+/opt/bible-king-james:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/GitEye/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Se usassemos apenas atribuição com PATH não seria bom, por exemplo: PATH=/opt/bibke-king-james. Ness momento quando executasses um programa no shell ele apenas seria procurado nesse novo caminho. Comandos como cd, ls, não estaríam disponíveis.&lt;/p&gt;
+
+&lt;h3 id=&quot;onde-usar&quot;&gt;Onde usar&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;~/.bashrc apenas são acessível pelo bash em sim como configurações do shell, consola. Aqui não guardamos variáveis utilizadas por programas porque não lêem este ficheiro, apenas o shell do bash.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;~/.profile aplicado á sessão inteira, como programas que são executados no arranque da sessão&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;~/.bash_profile&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
+			</item>
+		
+			<item>
+				<title>Introdução à Firewall</title>
+				<description>&lt;p&gt;Uma firewall é uma solução de segurança de software ou hardware. A firewall analisa o tráfego de repecção e transmissão de uma rede e apartir de um conjunto de regras ou instruções pode bloqueá-lo.&lt;/p&gt;
+
+&lt;h1 id=&quot;regras&quot;&gt;Regras&lt;/h1&gt;
+
+&lt;p&gt;As regras de uma firewall aplicam-se à entrada de tráfego - quando outro computador comunica com o nosso - e á saída de tráfego - quando o nosso computador comunica com outro. Estas ligações são UPD ou TCP.&lt;/p&gt;
+
+&lt;p&gt;Quando confiamos no processo do Microsoft Word e criamos uma regra permanente para ele na firewall partimos do principio que apenas o código seguro da Microsoft vai comunicar por aquela porta. Um hacker pode descubrir uma falha ou vulnerabilidade no programa do Word que lhe permita executar código remotamente.&lt;/p&gt;
+
+&lt;p&gt;Neste exemplo falei de descubrir uma falha no num programa mas grande parte do malware instalado provém de programas que o utilizador instala.&lt;/p&gt;
+
+&lt;p&gt;Programas que desempenham a função: um programa que procure drivers num repositorio publico, faça download e instale (existem dezenas assim quase todos incluindo “driver” no nome, e são malware mas instalam bem as drivers), uma suposta ferramenta que rouba passwords do Facebook mas pede para desactivar o anti-virus (neste caso muito provavelmente iria instalar o código maligno noutro sitio)&lt;/p&gt;
+
+&lt;h1 id=&quot;programas&quot;&gt;Programas&lt;/h1&gt;
+
+&lt;p&gt;A escolha de um programa para firewall parte de funcionalidades e componentes disponíveis de cada um mas é mais importante as regras em si defenidas.&lt;/p&gt;
+
+&lt;p&gt;Para Windows existem várias soluções que gostei de usar como o Comodo Firewall.&lt;/p&gt;
+
+&lt;p&gt;Em Unix é comum aprenderes a configurar uma firewall com o iptables. Apesar de haverem programares com interface gráfica para gerir as regras podes aprendê-las e interagir com o iptables pela linha de comandos.&lt;/p&gt;
+
+&lt;h3 id=&quot;recursos&quot;&gt;Recursos&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http/www.infowester.com/firewall.php&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/seguranca/2014/10/10/firewall-o-que-e.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/10/10/firewall-o-que-e.html</guid>
+			</item>
+		
+	</channel>
+</rss>

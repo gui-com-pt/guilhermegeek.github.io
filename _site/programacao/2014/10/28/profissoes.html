@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+  <head>
+      <meta charset="utf8" />
+      <title>Começar a trabalhar como programador - Codigo </title>
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="Começar a trabalhar como programador">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
+      <!--<meta property="og:image:type" content="image/jpg">-->
+      <meta property="og:url" content="/programacao/2014/10/28/profissoes.html">
+      <meta property="og:title" content="Começar a trabalhar como programador">
+      <meta property="og:description" content="">
+      <link href="/css/bootstrap.css" rel="stylesheet">
+      <script>
+      (function() {
+        var cx = '007144214621793408206:hssvwvk9lwe';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            '//www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+      <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '175461699313531',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      var fbShare = function(url) {
+        FB.ui({
+          method: 'share',
+          href: 'https://developers.facebook.com/docs/',
+        }, function(response){
+
+        });
+
+      };
+      
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-41887317-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link href="//fonts.googleapis.com/css?family=OpenSans:400,700" rel="stylesheet" type="text/css" />
+
+      <style>
+        body {
+          padding-top: 60px;
+          font-family: 'OpenSans';
+          font-size: 16px;
+        }
+        .layout-footer {
+          border-top:solid 1px #ddd;
+          padding-top: 8px;
+          margin-top: 20px;
+          text-align: center;;
+        }
+        .post__thumbnail {
+          max-width: 60px;
+        }
+
+        .media-date {
+          float: right;
+          color: #666666;
+        }
+
+        .post__list {
+          border-bottom: solid 1px #CCCCCC;
+          padding-bottom: 10px;
+        }
+
+        .post__list h4 a, .post__list h4 a:hover, .post__list h4 a:focus {
+          text-decoration: none;
+        }
+
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
+
+        .post-entry__image {
+          max-width: 650px;
+        }
+        /*
+         * syntax.css
+         */
+        .post > .highlight .lineno { color: #ccc; display:inline-block; padding: 0 5px; border-right:1px solid #ccc; }
+        .post > .highlight pre code { display: block; white-space: pre; overflow-x: auto; word-wrap: normal; }
+
+        /*
+         * Bootstrap extensions
+         * i'm too lazy on this one
+         * latter i'll configure grunt and pass all to less
+         */
+         .navbar-default {
+            background-color: #FFFFFF;
+          }
+      </style>
+      <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="/css/syntax.css" rel="stylesheet">
+      <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Publicações</a>
+    </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/feed.xml">RSS</a></li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container" style="max-width: 1200px;">
+  <div class="clearfix">
+<h2 class="content">Começar a trabalhar como programador</h2>
+</div>
+ 
+<p>Neste artigo vou tentar explicar que vários rumos podes tomar na área da programação, mas também direccionado a quem queira estudar web design ou outras áreas como gestão de base de dados.</p>
+
+<p>Tudo começa no planeamento que vais criar para a tua carreira enquanto programador. Vou dividir em três níveis</p>
+
+<ul>
+  <li>Baixo - Não investes muito tempo para conhecer a linguagem de programação (ou seja, apenas conheces uma também) e trabalhas em projetos rotinários que não te façam ter de sair da tua zona de conforto. Isto implica que não precises de estudar e avançar mais do nível onde te encontras.</li>
+  <li>Normal - Além das 8 horas de trabalho investes tempo para te manteres actualizado e tudo que aprendes não é apenas da necessidade dos projetos.</li>
+  <li>Alto - Estudas e aprendes tecnologias que não usas no teu trabalho, lês teses e projetos com o objetivo de aprendizagem</li>
+</ul>
+
+<p>Algo que sempre gostei em programação é que o teu valor enquanto provedor de serviços (não meramente um empregado) pode ser porpocional ao tempo que dedicas a estudar. Para te tornares um melhor programador não precisas de ir para uma boa faculdade ou ter uma cunha, simplesmente tens de estudar. E para isso é preciso gostar mesmo asério do que vais fazer.</p>
+
+<p>Dependendo da área onde residas, a tua escolha de te tornares um programador de alto nível pode implicar que tenhas de trabalhar noutro local ou então iniciares-te como freelancer. No caso de Portugal hà boas empresas fora das cidades principais Lisboa, Porto, Coimbra e Braga. No entanto é mais em Lisboa e Porto que o mercado de consultoria está localizado e onde tens mais diversidade de escolha.</p>
+
+<h3 id="empresas-de-webdesign">Empresas de Webdesign</h3>
+
+<p>Não é a desenvolver websites ou a usar CMS que vão aparecer desafios que te evoluam e criem a necessidade de estudo. Há muitas empresas assim, com serviços como: desenvolvimento de websites, criação de lojas online, criação de portais, etc. Basicamente criam sites. Neste tipo de empresas não tens muita margem para evoluir. Alguns exemplos:</p>
+
+<ul>
+  <li>O código que escreves é irrelevante tanto para o cliente como para o teu empregador, pois não tens nenhum chefe de equipa decerta forma a julgar-te e valorizar-te também. Curtos prazos de desenvolvimento são pedidos porque o projeto foi vendido ao preço de umas sapatilhas, e tens de rentabilizar o tempo.</li>
+  <li>Testes unitários demoram tempo. Na realidade, até podes poupar tempo se souberes desenvolver a escrever testes (TDD) mas isso não interessa para a empresa. Escrever testes = escrever mais código = prazos maiores de desenvolvimento.</li>
+</ul>
+
+<p>Uma empresa assim pode ser boa para começares a trabalhar. Outra alternativa é começar no mercado da consultoria mas isso já requer alguma experiência ou boa teoria.</p>
+
+<h3 id="consultoria">Consultoria</h3>
+
+<p>Em consultoria o cenário é diferente, muito diferente. O teu empregador pode ser uma empresa com equipas pŕoprias de desenvolvimento que esteja a contratar especificamente para aquele projeto ou pode ser uma empresa que apenas sub contrata.</p>
+
+<p>Podes ser contratado apenas para um projeto ou assinar mesmo um contrato com uma empresa mas simplesmente trabalhares como consultor. Vais participar em projetos externos, conhecer várias pessoas da área pois lidas com muita coisa mesmo! Na mesma sala pode estar uma equipa de desenvolvimento á medida, outra de SAP.</p>
+
+<p>Os ambientes são mais formais. Eu gosto disto, trabalhei em sítios onde realmente respeitam o local de trabalho e o silêncio é apreciado. Isto é muito importante porque se fores trabalhar para uma empresa pequena onde tenhas uma pessoa que a função dela não requer atenção e foco na tarefa, basta ser engraçadinho e é o suficiente para te afetar durante o trabalho, não te conseguires concentrar.</p>
+
+<h4 id="perfil">Perfil</h4>
+
+<p>Em consultoria a procura é específica. Enquanto que numa empresa de webdesign tens de saber HTML, CSS, Javascript e uma linguagem como PHP, neste tipo de projetos procuram profissionais específicos para as linguagens e os requisítios são mais elevados.</p>
+
+<p>Há requisitos na procura que também justificam os salários mais altos. Por exemplo para um programador C# pode ser pedido:</p>
+
+<ul>
+  <li>Desenvolver APIs com a .NET Web API</li>
+  <li>Validar os serviços com testes unitários</li>
+  <li>Utilizar GIT ou outro gestor de código</li>
+</ul>
+
+<p>Para um web designer:</p>
+
+<ul>
+  <li>Código HTML validado com a W3C</li>
+  <li>Utilizar LESS ou SASS para gerar o código CSS</li>
+  <li>Utilizar um padrão em CSS (por exemplo: BEM)</li>
+</ul>
+
+<p>Existem níveis que classificam a tua posição dentro da empresa.</p>
+
+<ul>
+  <li>Júnior - programador com menos de 2 anos de experiência</li>
+  <li>Sénior</li>
+</ul>
+
+<p>Uma dica: se queres trabalhar em consultoria e queres investir em ti então estuda o que mercado mais procura e valoriza! É escusado dizer que quanto mais precisas de aprender, melhor é a recompensa salarial ;)</p>
+
+<h3 id="freelancer">Freelancer</h3>
+
+<p>Esta área tem esta mais valia em relaçao a muitas outras profissoes. O mercado recorre muito a freelancers e por isso, se investires mesmo em ti consegues trabalhar como freelancer.</p>
+
+<p>Há aqueles freelancers que só o são por não conseguirem arranjar emprego.</p>
+
+<p>Aquele programador que não tem experiência séria, num projeto simples sente-se assustado com novas funcionalidades que desconhece possíveis implementações ou que simplesmente demore demasiado tempo a entregar um produto.</p>
+
+<p>Todos começamos por algum lado, é preciso é continuar.</p>
+
+<h4 id="projeto">Projeto</h4>
+
+<p>Para aprender a programar web quer uses php, python, c# tens sempre bibliotecas gratuítas que podes usar e desenvolver um projeto. Na fase inicial é uma mais valia ao portfólio e é tido em conta nas entrevistas.</p>
+
+<p>Seja para um cliente ou para experiência é sempre preciso estruturar e definir toda a preparação do projeto. Há livros a falar da fase de planeamento de um projeto.</p>
+
+<p>Eu não levo tão asério. Começo em rascunho numa folha de papel, um esquema UML ou a usar um programa de mockups. Primeiro escolho o domínio daquilo que vou desenvolver. O domínio é formado por entidades, por exemplo para um blog as entidades seriam: Article, Comment, User, Review</p>
+
+<p>Com estas entidades escrevo serviços que vão fazer operações como: ArticleCreate, CommentSend, ReviewEdit, Register, CommentAprove, ArticlePublish, CommentList</p>
+
+<p>Serviços comuns como NotificationSend, EmailSend que meto à parte. Este esquema depois serve-me como modelo daquilo que vou desenvolver.</p>
+
+<p>Podes geriar a parte html usando layouts, páginas parciais. Isto é no lado do servidor seja em PHP, C#, python, há frameworks e bibliotecas que auxiliam.</p>
+
+<p>Outra alternativa é desenvolveres uma SPA - single page application com uma framework como o AngularJS. A parte do cliente (html, css, javascript) fica separada do código do servidor, o backend. No caso de desenvolver uma SPA o ideal é sempre servi-la com uma API. As linguagens modernas têm frameworks boas para implementar APIs.</p>
+
+<p>Eu recomendo sempre aprenderem angular! Uma aplicação angular pode servir um website ou uma aplicação android a usar phonegap, ionicframework. Podes escrever toda a lógica, serviços num módulo que partilhes no website e aplicação, e depois desenvolves duas aplicações que consumam esse módulo.</p>
+
+<p>Além que aprendes javascript e html, mesmo que depois venhas a trabalhar no lado do servidor para fazer isto noutros projetos já sabes boas bases e facilmente te adaptas.</p>
+
+<p>Isto é javascript mas se sabes programar PHP ou C# também sabes javascript.</p>
+
+<p>Para desenvolver o código temos de seguir uma arquitectura ou pelo menos alguns padrões que asegurem um bom código.</p>
+
+<p>Eu gosto muito da arquitectura SOA - arquitectura orientada a serviços mas há outras e depende sempre do que fores desenvolver. Um exemplo de uma aplicação dividida em camadas a utilizar a framework Slim em PHP para servir uma API: https://codig.ovh/software/2014/09/23/arquitectura-padroes.html</p>
+
+<p>Para implementares funcionalidades como validação de dados, formatação de texto, tratamento de imagens, gestão de ficheiros no sistema podes usar bibliotecas. Cada linguagem tem o seu gestor de dependências como o Nuget em C#, composer em PHP, bower para javascript e css. Ter dependências como bibliotecas geridas por algo assim é melhor, ajuda-te a manter tudo actualizado e torna-se mais fácil a instalação em produção.</p>
+
+<p>Há serviços que podes contratar como websockets, envio de emails, um sistema de comunicação em grupo. Grande parte das empresas que os prestam vêem de programadores e disponibilizam pacotes gratuítos para projetos startup ou pequenos.</p>
+
+<ul>
+  <li>Isto foi escrito pelos Gang Of Four. Não é um livro para um iniciante ler mas se queres aprender a estruturar aplicações e a programar código reutilizável com padrões tens mesmo de ler! - http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8</li>
+</ul>
+
+<p>Apartir daqui vou escrever mais artigos específicos do que falei</p>
+
+<ul>
+  <li>Plano - roadmap a que te comprometas para começares a programar ou evoluires.</li>
+  <li>Curriculum - como te podes apresentar a uma empresa</li>
+</ul>
+
+<p>Começar a programar</p>
+
+<ul>
+  <li>Recursos de aprendizagem</li>
+  <li>Escolher uma linguagem de programação</li>
+</ul>
+
+<p>Freelancer</p>
+
+<ul>
+  <li>O teu primeiro projeto real</li>
+  <li>Estrutares a base da tua equipa de modo a que outros programadores possam desenvolver e rentabilizar o tempo</li>
+  <li>Propostas de orçamentos</li>
+  <li>Divulgação</li>
+</ul>
+
+<p>Referências Futuras</p>
+
+<ul>
+  <li>http://programmer-hek.blogspot.pt/2014/07/which-type-of-it-career-is-best-for-you.html</li>
+</ul>
+
+<div class="clearfix">
+	  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+
+<div class="comments">
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guilhermecardoso'; 
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</div>
+
+</div>
+<div class="layout-footer">
+<div class="container">
+este site é livre - <a href="https://github.com/guilhermegeek/guilhermegeek.github.io">guilhermegeek.github.io</a> desenvolvido com <a href="http://jekyllrb.com">Jekyll</a><a href="https://plus.google.com/+GuilhermeCardosoGeek" rel="publisher"></a>
+
+</div>
+</div>
+</body>
+</html>
