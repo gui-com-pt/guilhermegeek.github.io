@@ -2,15 +2,15 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Category archive for html - Codigo </title>
+      <title>AngularJs consumir APIS com o ngResource - Codigo </title>
       <meta name="description" content="">
       <meta name="keywords" content="">
       <meta property="og:locale" content="pt_PT">
-      <meta property="og:site_name" content="Category archive for html">
-      <meta property="og:image" content="">
+      <meta property="og:site_name" content="AngularJs consumir APIS com o ngResource">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/html/index.html">
-      <meta property="og:title" content="Category archive for html">
+      <meta property="og:url" content="/angularjs/2015/04/07/angularjs-consumir-api-ngresource.html">
+      <meta property="og:title" content="AngularJs consumir APIS com o ngResource">
       <meta property="og:description" content="">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
@@ -146,43 +146,78 @@
 </div>
 
 <div class="container" style="max-width: 1200px;">
-  <div class="container">
-	<div class="row">
-		<div class="col-xs-9">
-			<div style="font-size:0.8em; color: #666666;">Artigos da categoria html</div>
-				  <div class="clearfix">
-					
-<div class="media post__list"><div class="media-body"><span class="media-date">25 November 2014</span><h4 class="media-heading"><a href="/css/html/2014/11/25/CSS-cantos-arredondados.html">Como utilizar cantos arredondados e fazer circulos com CSS?</a></h4></div></div>
-
-
-			  	  </div>
-			</div>
-		<div class="col-xs-3">
-		<div class="clearfix">
-  <a href="http://stackoverflow.com/users/365383/guilherme-cardoso">
-  stackoverflow
-  </a>
-  <!--<a href="https://internetdefenseleague.org"><img src="https://internetdefenseleague.org/images/badges/final/shield_badge.png" alt="Member of The Internet Defense League" class="img-responsive"/></a>-->
-  </div>
-  <p><a href="mailto:&#101;&#109;&#097;&#105;&#108;&#064;&#103;&#117;&#105;&#108;&#104;&#101;&#114;&#109;&#101;&#099;&#097;&#114;&#100;&#111;&#115;&#111;&#046;&#112;&#116;">&#101;&#109;&#097;&#105;&#108;&#064;&#103;&#117;&#105;&#108;&#104;&#101;&#114;&#109;&#101;&#099;&#097;&#114;&#100;&#111;&#115;&#111;&#046;&#112;&#116;</a></p>
-  <div class="clearfix" style="text-align: justify;">
-  Sou um jovem programador sem tempo para desenhar este site. Para já apenas vou escrever sobre aquilo que gosto.<br>
-Corrije-me e ajuda-me a melhorar os artigos pelo repositório no <a href="https://github.com/guilhermegeek/guilhermegeek.github.io">Github</a><br><br>
-  </div>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- Dev -->
-  <ins class="adsbygoogle"
-       style="display:inline-block;width:300px;height:250px"
-       data-ad-client="ca-pub-1750926490246398"
-       data-ad-slot="8822148576"></ins>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  <h4>Categorias</h4>
-  <ul><li><a href="/angularjs">angularjs <em>8</em></a></li><li><a href="/seguranca">seguranca <em>7</em></a></li><li><a href="/linux">linux <em>6</em></a></li><li><a href="/software">software <em>5</em></a></li><li><a href="/php">php <em>4</em></a></li><li><a href="/hacking">hacking <em>4</em></a></li><li><a href="/padrao-projeto">padrao-projeto <em>3</em></a></li><li><a href="/css">css <em>3</em></a></li><li><a href="/programacao">programacao <em>2</em></a></li><li><a href="/composer">composer <em>2</em></a></li><li><a href="/git">git <em>2</em></a></li><li><a href="/nginx">nginx <em>1</em></a></li><li><a href="/wordpress">wordpress <em>1</em></a></li><li><a href="/ides">ides <em>1</em></a></li><li><a href="/bitcoin">bitcoin <em>1</em></a></li><li><a href="/ide">ide <em>1</em></a></li><li><a href="/html">html <em>1</em></a></li><li><a href="/webhosting">webhosting <em>1</em></a></li><li><a href="/mono">mono <em>1</em></a></li><li><a href="/c#">c# <em>1</em></a></li><li><a href="/smtp">smtp <em>1</em></a></li><li><a href="/dicas">dicas <em>1</em></a></li><li><a href="/javascript">javascript <em>1</em></a></li><li><a href="/facebook">facebook <em>1</em></a></li><li><a href="/hacklang">hacklang <em>1</em></a></li><li><a href="/less">less <em>1</em></a></li><li><a href="/redis">redis <em>1</em></a></li><li><a href="/bower">bower <em>1</em></a></li></ul>
-		</div>
-	</div>
+  <div class="clearfix">
+<h2 class="content">AngularJs consumir APIS com o ngResource</h2>
 </div>
+ 
+<p>No Angular temos o serviço <strong>$http</strong> para consumir APIs e pedidos HTTP no geral retorando promessas.</p>
+
+<p>Já o <strong>$resource</strong> é distribuído num módulo à parte, o <strong>ngResource</strong>. Dá-te a possibilidade de seguir uma abordagem de modelos de data.</p>
+
+<p>Eu gosto de usar o <strong>$resource</strong> para ligar com os dados no ladod o AngularJS.</p>
+
+<p>O método <strong>query</strong> espera receber um array. Apesar de isto puder ser alterado, este deve de facto ser a implementação a seguir. Este tipo de modelos podes injectar num controlador e através da view acederes a eles. Imagina o seguinte:</p>
+
+<pre><code>&lt;div ng-repeat="verses in bible.verses.query()"&gt;
+	&lt;p ng-bind="verse.message"&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Esta abordagem também permite que objectos implementem métodos próprios e os possamos chamar no exemplo de cima. Neste caso o objecto <strong>verse</strong> teria um método como <strong>verse.findSimilar()</strong>.</p>
+
+<h3 id="transformar-a-resposta">Transformar a resposta</h3>
+
+<p>O mais provável é que a API não retorne um array na resposta em métodos de pesquisa. Há outros campos importantes a incluir na resposta como indicar se há mais resultados, informação recebida  por um mecanismo de pub/sub, etc.</p>
+
+<p>Para esses casos transformamos a resposta de modo a que o <strong>$resource.query</strong> se mantenha como um array e o possamos usar como no exemplo de cima.</p>
+
+<pre><code>var fn = function($resource) {
+    return $resource('/api/bible/:id',
+        {},
+        {
+            'query': {
+                method: 'GET',
+                transformResponse: function(res) {
+                    return angular.fromJson(res).verses || [];
+                },
+                isArray: true
+            }
+        });
+};
+fn.$inject = ['$resource'];
+angular
+    .module('bible')
+    .factory('BibleResource', fn);
+</code></pre>
+
+<div class="clearfix">
+	  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+
+<div class="comments">
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guilhermecardoso'; 
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</div>
+
 </div>
 <div class="layout-footer">
 <div class="container">

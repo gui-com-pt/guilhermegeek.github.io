@@ -7,6 +7,53 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>AngularJs consumir APIS com o ngResource</title>
+				<description>&lt;p&gt;No Angular temos o serviço &lt;strong&gt;$http&lt;/strong&gt; para consumir APIs e pedidos HTTP no geral retorando promessas.&lt;/p&gt;
+
+&lt;p&gt;Já o &lt;strong&gt;$resource&lt;/strong&gt; é distribuído num módulo à parte, o &lt;strong&gt;ngResource&lt;/strong&gt;. Dá-te a possibilidade de seguir uma abordagem de modelos de data.&lt;/p&gt;
+
+&lt;p&gt;Eu gosto de usar o &lt;strong&gt;$resource&lt;/strong&gt; para ligar com os dados no ladod o AngularJS.&lt;/p&gt;
+
+&lt;p&gt;O método &lt;strong&gt;query&lt;/strong&gt; espera receber um array. Apesar de isto puder ser alterado, este deve de facto ser a implementação a seguir. Este tipo de modelos podes injectar num controlador e através da view acederes a eles. Imagina o seguinte:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div ng-repeat=&quot;verses in bible.verses.query()&quot;&amp;gt;
+	&amp;lt;p ng-bind=&quot;verse.message&quot;&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Esta abordagem também permite que objectos implementem métodos próprios e os possamos chamar no exemplo de cima. Neste caso o objecto &lt;strong&gt;verse&lt;/strong&gt; teria um método como &lt;strong&gt;verse.findSimilar()&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;transformar-a-resposta&quot;&gt;Transformar a resposta&lt;/h3&gt;
+
+&lt;p&gt;O mais provável é que a API não retorne um array na resposta em métodos de pesquisa. Há outros campos importantes a incluir na resposta como indicar se há mais resultados, informação recebida  por um mecanismo de pub/sub, etc.&lt;/p&gt;
+
+&lt;p&gt;Para esses casos transformamos a resposta de modo a que o &lt;strong&gt;$resource.query&lt;/strong&gt; se mantenha como um array e o possamos usar como no exemplo de cima.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var fn = function($resource) {
+    return $resource('/api/bible/:id',
+        {},
+        {
+            'query': {
+                method: 'GET',
+                transformResponse: function(res) {
+                    return angular.fromJson(res).verses || [];
+                },
+                isArray: true
+            }
+        });
+};
+fn.$inject = ['$resource'];
+angular
+    .module('bible')
+    .factory('BibleResource', fn);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<pubDate>Tue, 07 Apr 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/angularjs/2015/04/07/angularjs-consumir-api-ngresource.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2015/04/07/angularjs-consumir-api-ngresource.html</guid>
+			</item>
+		
+			<item>
 				<title>Sublime Text 3 Gratuíto</title>
 				<description>&lt;p&gt;Este é um daqueles artigos que em alguns países dava direito a uma “tolada na carola” mas divulgação de informação é bonita e eu apoio.&lt;/p&gt;
 
@@ -1262,39 +1309,6 @@ dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;spa
 				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://www.codigo.ovh/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
-			</item>
-		
-			<item>
-				<title>Introdução à Firewall</title>
-				<description>&lt;p&gt;Uma firewall é uma solução de segurança de software ou hardware. A firewall analisa o tráfego de repecção e transmissão de uma rede e apartir de um conjunto de regras ou instruções pode bloqueá-lo.&lt;/p&gt;
-
-&lt;h1 id=&quot;regras&quot;&gt;Regras&lt;/h1&gt;
-
-&lt;p&gt;As regras de uma firewall aplicam-se à entrada de tráfego - quando outro computador comunica com o nosso - e á saída de tráfego - quando o nosso computador comunica com outro. Estas ligações são UPD ou TCP.&lt;/p&gt;
-
-&lt;p&gt;Quando confiamos no processo do Microsoft Word e criamos uma regra permanente para ele na firewall partimos do principio que apenas o código seguro da Microsoft vai comunicar por aquela porta. Um hacker pode descubrir uma falha ou vulnerabilidade no programa do Word que lhe permita executar código remotamente.&lt;/p&gt;
-
-&lt;p&gt;Neste exemplo falei de descubrir uma falha no num programa mas grande parte do malware instalado provém de programas que o utilizador instala.&lt;/p&gt;
-
-&lt;p&gt;Programas que desempenham a função: um programa que procure drivers num repositorio publico, faça download e instale (existem dezenas assim quase todos incluindo “driver” no nome, e são malware mas instalam bem as drivers), uma suposta ferramenta que rouba passwords do Facebook mas pede para desactivar o anti-virus (neste caso muito provavelmente iria instalar o código maligno noutro sitio)&lt;/p&gt;
-
-&lt;h1 id=&quot;programas&quot;&gt;Programas&lt;/h1&gt;
-
-&lt;p&gt;A escolha de um programa para firewall parte de funcionalidades e componentes disponíveis de cada um mas é mais importante as regras em si defenidas.&lt;/p&gt;
-
-&lt;p&gt;Para Windows existem várias soluções que gostei de usar como o Comodo Firewall.&lt;/p&gt;
-
-&lt;p&gt;Em Unix é comum aprenderes a configurar uma firewall com o iptables. Apesar de haverem programares com interface gráfica para gerir as regras podes aprendê-las e interagir com o iptables pela linha de comandos.&lt;/p&gt;
-
-&lt;h3 id=&quot;recursos&quot;&gt;Recursos&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http/www.infowester.com/firewall.php&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/seguranca/2014/10/10/firewall-o-que-e.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/10/10/firewall-o-que-e.html</guid>
 			</item>
 		
 	</channel>
