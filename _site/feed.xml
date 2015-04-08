@@ -97,34 +97,36 @@ angular
 
 &lt;p&gt;Vamos usar um exemplo:&lt;/p&gt;
 
-&lt;p&gt;class House {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class House {
+	
+}
+class HouseFactory {
+  build(name = 'House name') {
+    return new House();
+  }
+}
 
-&lt;p&gt;}
-  class HouseFactory {
-    build(name = ‘House name’) {
-      return new House();
-    }
-  }&lt;/p&gt;
-
-&lt;p&gt;var factory = new HouseFactory();
-  var house = factory.build();&lt;/p&gt;
+var factory = new HouseFactory();
+var house = factory.build();
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Este código será convertido em:&lt;/p&gt;
 
-&lt;p&gt;var House = function House() {
-    “use strict”;
-  };
-  ($traceurRuntime.createClass)(House, {}, {});
-  var HouseFactory = function HouseFactory() {
-    “use strict”;
-  };
-  ($traceurRuntime.createClass)(HouseFactory, {build: function() {
-      “use strict”;
-      var name = arguments[0] !== (void 0) ? arguments[0] : ‘House name’;
-      return new House();
-    }}, {});
-  var factory = new HouseFactory();
-  var house = factory.build();&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var House = function House() {
+  &quot;use strict&quot;;
+};
+($traceurRuntime.createClass)(House, {}, {});
+var HouseFactory = function HouseFactory() {
+  &quot;use strict&quot;;
+};
+($traceurRuntime.createClass)(HouseFactory, {build: function() {
+    &quot;use strict&quot;;
+    var name = arguments[0] !== (void 0) ? arguments[0] : 'House name';
+    return new House();
+  }}, {});
+var factory = new HouseFactory();
+var house = factory.build();
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Existem dois métodos para compilar o código: em tempo de execução ou compilar o programa Traceur e usá-lo pela linha de comandos. Podes puxar o repositório do GitHub e compilar o programa com &lt;strong&gt;make&lt;/strong&gt;. Assim podes aceder às funcionalidades pela linha de comandos e também facilita a utilização de scripts para automatização de tarefas.&lt;/p&gt;
 
