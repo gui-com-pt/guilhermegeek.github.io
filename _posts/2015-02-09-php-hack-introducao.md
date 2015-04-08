@@ -63,3 +63,18 @@ Ele também permite utilizar as extensões do PHP que não estã integradas sem 
 ````
 hhvm.enable_zend_compat = true
 ````
+
+### Escrever Código ###
+
+Se fores daquele tipo de programadores que só consegue escrever código com um IDE pesado a completar-te todos os nomes das funções então o hacklang para já pode tornar-se complicado.
+
+Ele é compatível com o PHP mas ainda não existe nenhum IDE a dar suporte ao hacklang a nível de depuração por exemplo. Para a escrita inteligente tens extensões para o [Atom Editor](https://github.com/steelbrain/atom-hack) e [Sublime Text](https://github.com/SiebelsTim/hack-sublime).
+
+
+### Outros problemas ###
+
+Infelizmente ainda há muitas questões por resolver para o hacklang se tornar "acessível" a programadores iniciantes. A depuração é uma delas, se como eu dependeres de testes para desenvolver código pode parecer-te estranho não depurar a aplicação com o teu IDE XPTO favorito. No entanto podes usar o VIM para isso!
+
+Uma dificuldade que estou a enfrentar é conseguir interpolar bibliotecas escritas para PHP com Hacklang. Um exemplo é uma ferramenta para gerar documentação do código fonte como o phpdox ou apigen. Ambos entram em conflito ou por causa de código estranho (no caso dos atributos por exemplo), ou porque o código está a ser inserido com **<?hh** e elas requerem obrigatóriamente **<?php** (o que não é problema pois o hhvm corre à mesma).
+
+A documentação também ainda é fresca. No entanto, no blog oficial do HHVM há artigos de ouro escrito por eles. Vale a pena conferires!

@@ -27,7 +27,7 @@
 
 &lt;p&gt;O verdadeiro poder do Sublime ou o Atom Editor são as extensões que podes instalar. São IDEs leves sem grande tralha instalada no núcleo mas podes aprefeiçoá-lo às tuas necessidades quer seja a nível de linguagem de programação, ferramentas como o gulp, exemplos de código, etc.&lt;/p&gt;
 
-&lt;p&gt;A instalação é simples e está bem detalhada no site do Package Controll. Instala-lo primeiro, depois usa- para instalar pacotes: https://sublime.wbond.net/installation&lt;/p&gt;
+&lt;p&gt;A instalação é simples e está bem detalhada no site do Package Control. Instala-o e usa-o para instalar pacotes: https://sublime.wbond.net/installation&lt;/p&gt;
 
 &lt;h3 id=&quot;sidebar-enchancements&quot;&gt;SideBar Enchancements&lt;/h3&gt;
 
@@ -426,6 +426,20 @@ hhclient
 &lt;p&gt;&lt;code&gt;
 hhvm.enable_zend_compat = true
 &lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;escrever-cdigo&quot;&gt;Escrever Código&lt;/h3&gt;
+
+&lt;p&gt;Se fores daquele tipo de programadores que só consegue escrever código com um IDE pesado a completar-te todos os nomes das funções então o hacklang para já pode tornar-se complicado.&lt;/p&gt;
+
+&lt;p&gt;Ele é compatível com o PHP mas ainda não existe nenhum IDE a dar suporte ao hacklang a nível de depuração por exemplo. Para a escrita inteligente tens extensões para o &lt;a href=&quot;https://github.com/steelbrain/atom-hack&quot;&gt;Atom Editor&lt;/a&gt; e &lt;a href=&quot;https://github.com/SiebelsTim/hack-sublime&quot;&gt;Sublime Text&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;outros-problemas&quot;&gt;Outros problemas&lt;/h3&gt;
+
+&lt;p&gt;Infelizmente ainda há muitas questões por resolver para o hacklang se tornar “acessível” a programadores iniciantes. A depuração é uma delas, se como eu dependeres de testes para desenvolver código pode parecer-te estranho não depurar a aplicação com o teu IDE XPTO favorito. No entanto podes usar o VIM para isso!&lt;/p&gt;
+
+&lt;p&gt;Uma dificuldade que estou a enfrentar é conseguir interpolar bibliotecas escritas para PHP com Hacklang. Um exemplo é uma ferramenta para gerar documentação do código fonte como o phpdox ou apigen. Ambos entram em conflito ou por causa de código estranho (no caso dos atributos por exemplo), ou porque o código está a ser inserido com &lt;strong&gt;&amp;lt;?hh&lt;/strong&gt; e elas requerem obrigatóriamente &lt;strong&gt;&amp;lt;?php&lt;/strong&gt; (o que não é problema pois o hhvm corre à mesma).&lt;/p&gt;
+
+&lt;p&gt;A documentação também ainda é fresca. No entanto, no blog oficial do HHVM há artigos de ouro escrito por eles. Vale a pena conferires!&lt;/p&gt;
 </description>
 				<pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/php/hacklang/2015/02/09/php-hack-introducao.html</link>

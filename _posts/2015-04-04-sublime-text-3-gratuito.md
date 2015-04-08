@@ -24,7 +24,7 @@ Em Linux e Mac não te esqueças de corrigir as permissões do ficheiro com
 
 O verdadeiro poder do Sublime ou o Atom Editor são as extensões que podes instalar. São IDEs leves sem grande tralha instalada no núcleo mas podes aprefeiçoá-lo às tuas necessidades quer seja a nível de linguagem de programação, ferramentas como o gulp, exemplos de código, etc.
 
-A instalação é simples e está bem detalhada no site do Package Controll. Instala-lo primeiro, depois usa- para instalar pacotes: https://sublime.wbond.net/installation
+A instalação é simples e está bem detalhada no site do Package Control. Instala-o e usa-o para instalar pacotes: https://sublime.wbond.net/installation
 
 ### SideBar Enchancements
 
