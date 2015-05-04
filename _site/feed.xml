@@ -7,6 +7,117 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Ionic - Desenvolver aplicações mobile para Android, IOS e Windows</title>
+				<description>&lt;p&gt;Quem está ligado ao .NET e trabalha com aplicações mobile certamente já ouviu falar da empresa Xamarim que disponibiliza uma framework e SDK para desenvolver aplicações compatíveis nestes três plataformas: Android, IOS e Windows. Estas aplicações são desenvolvidas em C#.&lt;/p&gt;
+
+&lt;p&gt;Eu gosto de C# mas não gosto da Xamarim. Outra alternativa é o Ionic. Uma solução que te permite desenvolver aplicações compatíveis mas ao invés de usar Java ou C# utilizamos Javascript e HTML/CSS. Sim, apenas tecnologias do lado do cliente!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/posts/ionic-showcase1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ionic&quot;&gt;Ionic&lt;/h2&gt;
+
+&lt;p&gt;O Ionic é distribuído como um pacote Node.js. É através do Cordova que o Ionic consegue fazer a sua magia, e como ambos estão licenciados com Apache não temos problemas de licensiamentos como temos com a Xamarim (sim, eles são caros se fores freelancer).&lt;/p&gt;
+
+&lt;p&gt;Ele baseia-se no AngularJS e é constituído por vários módulos. Esses módulos permitem-nos aceder a directivas e serviços já disponibilizados pelo Ionic sendo os mais importantes a &lt;strong&gt;view&lt;/strong&gt;, a &lt;strong&gt;navegação&lt;/strong&gt; e o &lt;strong&gt;content&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se realmente queres compreender como funciona o Ionic aconselho-te a veres um dos temas já instalados como tabs ou sidemenu. Estes temas usam posições absolutas para organizar os elementos.&lt;/p&gt;
+
+&lt;p&gt;Para facilitares o processo de distribuição da aplicação deves seguir a estrutura utilizada pelos temas do Ionic.&lt;/p&gt;
+
+&lt;h3 id=&quot;css&quot;&gt;CSS&lt;/h3&gt;
+
+&lt;p&gt;Os componentes CSS disponibilizados são costumizados através do template usado pelo AngularJs e dos estilos CSS.&lt;/p&gt;
+
+&lt;p&gt;Certamente que com o tempo vão aparecer mais componentes mas para já existem os suficentes para pudermos desenvolver uma aplicação avançada:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cabeçalho&lt;/li&gt;
+  &lt;li&gt;Conteúdo&lt;/li&gt;
+  &lt;li&gt;Rodapé&lt;/li&gt;
+  &lt;li&gt;Botões&lt;/li&gt;
+  &lt;li&gt;Lista&lt;/li&gt;
+  &lt;li&gt;Cartões&lt;/li&gt;
+  &lt;li&gt;Formulários&lt;/li&gt;
+  &lt;li&gt;Alternador&lt;/li&gt;
+  &lt;li&gt;Caixa de verificação&lt;/li&gt;
+  &lt;li&gt;Botões de escolha&lt;/li&gt;
+  &lt;li&gt;Botão de extensão (range)&lt;/li&gt;
+  &lt;li&gt;Selector&lt;/li&gt;
+  &lt;li&gt;Abas&lt;/li&gt;
+  &lt;li&gt;Grelha&lt;/li&gt;
+  &lt;li&gt;Utilitários&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Os componentes CSS poupam-te muito tempo senão dominares CSS.&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript&quot;&gt;Javascript&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Folha de acção&lt;/li&gt;
+  &lt;li&gt;Cortina de fundo (backdrop)&lt;/li&gt;
+  &lt;li&gt;Conteúdo&lt;/li&gt;
+  &lt;li&gt;Elementos de formulário&lt;/li&gt;
+  &lt;li&gt;Gestos e Eventos&lt;/li&gt;
+  &lt;li&gt;Cabeçários/Rodapés&lt;/li&gt;
+  &lt;li&gt;Teclado&lt;/li&gt;
+  &lt;li&gt;Listas&lt;/li&gt;
+  &lt;li&gt;Carregamento&lt;/li&gt;
+  &lt;li&gt;Modal&lt;/li&gt;
+  &lt;li&gt;Navegação&lt;/li&gt;
+  &lt;li&gt;Plataforma&lt;/li&gt;
+  &lt;li&gt;Popover&lt;/li&gt;
+  &lt;li&gt;Caixa de diálogo&lt;/li&gt;
+  &lt;li&gt;Scroll&lt;/li&gt;
+  &lt;li&gt;Menus laterais&lt;/li&gt;
+  &lt;li&gt;Caixa que desliza&lt;/li&gt;
+  &lt;li&gt;Giratório&lt;/li&gt;
+  &lt;li&gt;Abas&lt;/li&gt;
+  &lt;li&gt;Tap/Click&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O &lt;strong&gt;Tap&lt;/strong&gt; é essencial para a aplicação. Enquanto que num website típico existe um atraso de 300ms por parte dos navegadores, numa aplicação não vamos querer este atraso. Componentes como o &lt;a href=&quot;https://docs.angularjs.org/api/ngTouch&quot;&gt;ngTouch&lt;/a&gt; fazem isto mas o Ionic já inclui o &lt;strong&gt;Tap&lt;/strong&gt; que juntamente com o &lt;strong&gt;Scroll&lt;/strong&gt; melhoram a navegação do utilizador.&lt;/p&gt;
+
+&lt;p&gt;Componentes como Popover, caixa de diálogo, abas, etc são já conhecidos por frameworks como o Bootstrap ou Foundation.&lt;/p&gt;
+
+&lt;h3 id=&quot;ngcordova&quot;&gt;ngCordova&lt;/h3&gt;
+
+&lt;p&gt;Sem dúvida vais precisar de conhecer isto! Extensões desenvolvidas para aceder às funcionalidades nativas do dispositivo. Por exemplo:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mostrar notificações&lt;/li&gt;
+  &lt;li&gt;Caixas confirmação&lt;/li&gt;
+  &lt;li&gt;Preferências&lt;/li&gt;
+  &lt;li&gt;Aceder à Webcam&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;comparao-com-aplicaes-tradicionais&quot;&gt;Comparação com aplicações tradicionais&lt;/h2&gt;
+
+&lt;p&gt;Uma das primeiras questões que me fiz foi se não seria mais rápida uma solução em Javascript do invés de Java e a resposta é não. Depende muito da forma como escrevemos a aplicação.&lt;/p&gt;
+
+&lt;p&gt;Uma aplicação AngularJs torna-se bastante lenta quando perdemos o controlo dos dados ligados de forma vinculativa. Se uma lista tiver 500 entradas e cada uma delas com várias propriedades a serem verificadas sempre que há uma alteração no contexto da scope a aplicação torna-se lenta.&lt;/p&gt;
+
+&lt;p&gt;O ideal para escrever aplicações Ionic rápidas é aprenderes mesmo boas práticas de AngularJs. Uma leva à outra.&lt;/p&gt;
+
+&lt;h2 id=&quot;programar&quot;&gt;Programar&lt;/h2&gt;
+
+&lt;p&gt;E programar em Javascript? Uma razão para não usar o Ionic costuma ser “não compares Javascript com linguagens como Java ou C objectivo”. Está certo, mas vamos falar da evolução do Javascript.&lt;/p&gt;
+
+&lt;p&gt;O &lt;a href=&quot;http://codigo.ovh/git/2015/03/02/ECMAScript6-converter-em-javascript-compativel.html&quot;&gt;ECMAScript 6&lt;/a&gt; está mesmo à porta e vem mudar bastante a forma como escrevemos javascript com classes e objectos. O AngularJs 2 vai ser uma mudança forte para quem tem de migrar aplicações 1.3x, vamos ter de refacturar muito código.&lt;/p&gt;
+
+&lt;p&gt;A tecnologia do Ionic vai acompanhar estas mudanças. A equipa do Ionic tem proximidade com a equipa do Angular, e há pouco tempo anunciaram que se estão a preparar para o ES6. Óptimas notícias!&lt;/p&gt;
+
+&lt;p&gt;Num curto perído de tempo vamos puder desenvolver aplicações com o ECMAScript 6. O próprio Angular vai beneficiar bastante ao reduzir o tempo de execução.&lt;/p&gt;
+
+&lt;h2 id=&quot;onde-comear&quot;&gt;Onde começar?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://learn.ionicframework.com/&quot;&gt;http://learn.ionicframework.com&lt;/a&gt;&lt;/p&gt;
+</description>
+				<pubDate>Thu, 09 Apr 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/angularjs/ionic/mobile/2015/04/09/ionic-angularjs-aplicacoes-mobile-ios-android-windows.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/ionic/mobile/2015/04/09/ionic-angularjs-aplicacoes-mobile-ios-android-windows.html</guid>
+			</item>
+		
+			<item>
 				<title>AngularJs consumir APIS com o ngResource</title>
 				<description>&lt;p&gt;No Angular temos o serviço &lt;strong&gt;$http&lt;/strong&gt; para consumir APIs e pedidos HTTP no geral retorando promessas.&lt;/p&gt;
 
@@ -1244,73 +1355,6 @@ textdomain($domain);
 				<pubDate>Wed, 15 Oct 2014 00:00:00 +0100</pubDate>
 				<link>http://www.codigo.ovh/seguranca/2014/10/15/seguranca-online-password.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/10/15/seguranca-online-password.html</guid>
-			</item>
-		
-			<item>
-				<title>Variáveis de ambiente e locais no Unix</title>
-				<description>&lt;p&gt;No UNIX os softwares são mais flexíveis que Windows, o comportamente de um programa pode ser alterado apenas por alterar uma variável. Além de caminhos para pastas, as variáveis de ambiente podem ter opções de linha de comandos, ou flags (EMAILS_ENABLED, COMMENTS_ALLOWED).&lt;/p&gt;
-
-&lt;p&gt;As variáveis de ambiente ou globais guardam informação partilhada por programas como caminhos para determinadas pastas (variável HOME com C:\Users\Gui). São sempre escritas em maiúsculas, semelhantemente em linguagens de programação as constantes são escritas em maísculas e podem desempenhar uma função semelhante, apesar de isto ser uma convenção e não uma regra.&lt;/p&gt;
-
-&lt;p&gt;No terminal é indiferente se as variáveis seguem esta com convenção ou não, as de ambiente da shell actual são herdadas por todos os shells filhos. &lt;/p&gt;
-
-&lt;p&gt;Também existem as variáveis são as variáveis do shell, as locais. Estas são escritas em minúsculas e não são herdadas pelos filhos.	&lt;/p&gt;
-
-&lt;h3 id=&quot;principais&quot;&gt;Principais&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;PATH&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Contém o caminho para pastas com ficheiros de sistema (equivalente no Windows ao programa.exe). Os programas que executas na consola, ls, node, grunt, mkdir, tanto podem ter o executável na /usr/local/bin que já está na variável PATH normalmente, ou numa pasta /opt/spotify-client que seria adicionado á PATH.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HOME&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;O caminho absoluto para o teu directorio home, por exemplo /home/maria Programas usam-na para guardarem ficheiros de configuração de cada utilizador do sistema na sua pasta home ou o comando &lt;strong&gt;cd ~&lt;/strong&gt; que usa a variável para ir para a HOME.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;USERNAME&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Nome do utilizador autenticado na shell.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TERM&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Tipo de terminal usado para aceder ao sistema&lt;/p&gt;
-
-&lt;h3 id=&quot;como-usar&quot;&gt;Como usar&lt;/h3&gt;
-
-&lt;p&gt;Uma variável é atribuida por VARIAVEL=VALOR&lt;/p&gt;
-
-&lt;p&gt;Por vezes podemos usar o valor da variável para atribuir a um novo valor, exemplo seria adicionar a pasta /opt/bible-king-james á variável PATH.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;dk@localhost:/&lt;span class=&quot;nv&quot;&gt;$ PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:/opt/bible-king-james
-dk@localhost:/&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
-/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/GitEye/:/opt/bible-king-james/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Na PATH adicionei o caminho aseguir a $PATH, a variável que com o valor actual dos os restantes caminhos.&lt;/p&gt;
-
-&lt;p&gt;Quando executarmos um programa ele procura primeiro na pasta /usr/local/bin, senão existir na /usr/bin, e consecutivamente. Se adicionasse no início, esse caminho seria o primeiro a ser usado&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/bible-king-james:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
-dk@localhost:/opt/sublime&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
-/opt/bible-king-james:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/GitEye/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Se usassemos apenas atribuição com PATH não seria bom, por exemplo: PATH=/opt/bibke-king-james. Ness momento quando executasses um programa no shell ele apenas seria procurado nesse novo caminho. Comandos como cd, ls, não estaríam disponíveis.&lt;/p&gt;
-
-&lt;h3 id=&quot;onde-usar&quot;&gt;Onde usar&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;~/.bashrc apenas são acessível pelo bash em sim como configurações do shell, consola. Aqui não guardamos variáveis utilizadas por programas porque não lêem este ficheiro, apenas o shell do bash.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;~/.profile aplicado á sessão inteira, como programas que são executados no arranque da sessão&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;~/.bash_profile&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-				<pubDate>Fri, 10 Oct 2014 00:00:00 +0100</pubDate>
-				<link>http://www.codigo.ovh/linux/2014/10/10/linux-variaveis-de-ambiente.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/linux/2014/10/10/linux-variaveis-de-ambiente.html</guid>
 			</item>
 		
 	</channel>

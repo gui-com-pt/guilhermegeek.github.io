@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+  <head>
+      <meta charset="utf8" />
+      <title>Ionic - Desenvolver aplicações mobile para Android, IOS e Windows - Codigo </title>
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+      <meta property="og:locale" content="pt_PT">
+      <meta property="og:site_name" content="Ionic - Desenvolver aplicações mobile para Android, IOS e Windows">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
+      <!--<meta property="og:image:type" content="image/jpg">-->
+      <meta property="og:url" content="/angularjs/ionic/mobile/2015/04/09/ionic-angularjs-aplicacoes-mobile-ios-android-windows.html">
+      <meta property="og:title" content="Ionic - Desenvolver aplicações mobile para Android, IOS e Windows">
+      <meta property="og:description" content="">
+      <link href="/css/bootstrap.css" rel="stylesheet">
+      <script>
+      (function() {
+        var cx = '007144214621793408206:hssvwvk9lwe';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            '//www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+      <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '175461699313531',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      var fbShare = function(url) {
+        FB.ui({
+          method: 'share',
+          href: 'https://developers.facebook.com/docs/',
+        }, function(response){
+
+        });
+
+      };
+
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-41887317-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link href="//fonts.googleapis.com/css?family=OpenSans:400,700" rel="stylesheet" type="text/css" />
+
+      <style>
+        body {
+          padding-top: 60px;
+          font-family: 'OpenSans';
+          font-size: 16px;
+        }
+        .layout-footer {
+          border-top:solid 1px #ddd;
+          padding-top: 8px;
+          margin-top: 20px;
+          text-align: center;;
+        }
+        .post__thumbnail {
+          max-width: 60px;
+        }
+
+        .media-date {
+          float: right;
+          color: #666666;
+        }
+
+        .post__list {
+          border-bottom: solid 1px #CCCCCC;
+          padding-bottom: 10px;
+        }
+
+        .post__list h4 a, .post__list h4 a:hover, .post__list h4 a:focus {
+          text-decoration: none;
+        }
+
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
+
+        .post-entry__image {
+          max-width: 650px;
+        }
+        /*
+         * syntax.css
+         */
+        .post > .highlight .lineno { color: #ccc; display:inline-block; padding: 0 5px; border-right:1px solid #ccc; }
+        .post > .highlight pre code { display: block; white-space: pre; overflow-x: auto; word-wrap: normal; }
+
+        /*
+         * Bootstrap extensions
+         * i'm too lazy on this one
+         * latter i'll configure grunt and pass all to less
+         */
+         .navbar-default {
+            background-color: #FFFFFF;
+          }
+      </style>
+      <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="/css/syntax.css" rel="stylesheet">
+      <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Publicações</a>
+    </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/feed.xml">RSS</a></li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container" style="max-width: 1200px;">
+  <div class="clearfix">
+<h2 class="content">Ionic - Desenvolver aplicações mobile para Android, IOS e Windows</h2>
+</div>
+ 
+<p>Quem está ligado ao .NET e trabalha com aplicações mobile certamente já ouviu falar da empresa Xamarim que disponibiliza uma framework e SDK para desenvolver aplicações compatíveis nestes três plataformas: Android, IOS e Windows. Estas aplicações são desenvolvidas em C#.</p>
+
+<p>Eu gosto de C# mas não gosto da Xamarim. Outra alternativa é o Ionic. Uma solução que te permite desenvolver aplicações compatíveis mas ao invés de usar Java ou C# utilizamos Javascript e HTML/CSS. Sim, apenas tecnologias do lado do cliente!</p>
+
+<p><img src="/media/posts/ionic-showcase1.png" /></p>
+
+<h2 id="ionic">Ionic</h2>
+
+<p>O Ionic é distribuído como um pacote Node.js. É através do Cordova que o Ionic consegue fazer a sua magia, e como ambos estão licenciados com Apache não temos problemas de licensiamentos como temos com a Xamarim (sim, eles são caros se fores freelancer).</p>
+
+<p>Ele baseia-se no AngularJS e é constituído por vários módulos. Esses módulos permitem-nos aceder a directivas e serviços já disponibilizados pelo Ionic sendo os mais importantes a <strong>view</strong>, a <strong>navegação</strong> e o <strong>content</strong>.</p>
+
+<p>Se realmente queres compreender como funciona o Ionic aconselho-te a veres um dos temas já instalados como tabs ou sidemenu. Estes temas usam posições absolutas para organizar os elementos.</p>
+
+<p>Para facilitares o processo de distribuição da aplicação deves seguir a estrutura utilizada pelos temas do Ionic.</p>
+
+<h3 id="css">CSS</h3>
+
+<p>Os componentes CSS disponibilizados são costumizados através do template usado pelo AngularJs e dos estilos CSS.</p>
+
+<p>Certamente que com o tempo vão aparecer mais componentes mas para já existem os suficentes para pudermos desenvolver uma aplicação avançada:</p>
+
+<ul>
+  <li>Cabeçalho</li>
+  <li>Conteúdo</li>
+  <li>Rodapé</li>
+  <li>Botões</li>
+  <li>Lista</li>
+  <li>Cartões</li>
+  <li>Formulários</li>
+  <li>Alternador</li>
+  <li>Caixa de verificação</li>
+  <li>Botões de escolha</li>
+  <li>Botão de extensão (range)</li>
+  <li>Selector</li>
+  <li>Abas</li>
+  <li>Grelha</li>
+  <li>Utilitários</li>
+</ul>
+
+<p>Os componentes CSS poupam-te muito tempo senão dominares CSS.</p>
+
+<h3 id="javascript">Javascript</h3>
+
+<ul>
+  <li>Folha de acção</li>
+  <li>Cortina de fundo (backdrop)</li>
+  <li>Conteúdo</li>
+  <li>Elementos de formulário</li>
+  <li>Gestos e Eventos</li>
+  <li>Cabeçários/Rodapés</li>
+  <li>Teclado</li>
+  <li>Listas</li>
+  <li>Carregamento</li>
+  <li>Modal</li>
+  <li>Navegação</li>
+  <li>Plataforma</li>
+  <li>Popover</li>
+  <li>Caixa de diálogo</li>
+  <li>Scroll</li>
+  <li>Menus laterais</li>
+  <li>Caixa que desliza</li>
+  <li>Giratório</li>
+  <li>Abas</li>
+  <li>Tap/Click</li>
+</ul>
+
+<p>O <strong>Tap</strong> é essencial para a aplicação. Enquanto que num website típico existe um atraso de 300ms por parte dos navegadores, numa aplicação não vamos querer este atraso. Componentes como o <a href="https://docs.angularjs.org/api/ngTouch">ngTouch</a> fazem isto mas o Ionic já inclui o <strong>Tap</strong> que juntamente com o <strong>Scroll</strong> melhoram a navegação do utilizador.</p>
+
+<p>Componentes como Popover, caixa de diálogo, abas, etc são já conhecidos por frameworks como o Bootstrap ou Foundation.</p>
+
+<h3 id="ngcordova">ngCordova</h3>
+
+<p>Sem dúvida vais precisar de conhecer isto! Extensões desenvolvidas para aceder às funcionalidades nativas do dispositivo. Por exemplo:</p>
+
+<ul>
+  <li>Mostrar notificações</li>
+  <li>Caixas confirmação</li>
+  <li>Preferências</li>
+  <li>Aceder à Webcam</li>
+</ul>
+
+<h2 id="comparao-com-aplicaes-tradicionais">Comparação com aplicações tradicionais</h2>
+
+<p>Uma das primeiras questões que me fiz foi se não seria mais rápida uma solução em Javascript do invés de Java e a resposta é não. Depende muito da forma como escrevemos a aplicação.</p>
+
+<p>Uma aplicação AngularJs torna-se bastante lenta quando perdemos o controlo dos dados ligados de forma vinculativa. Se uma lista tiver 500 entradas e cada uma delas com várias propriedades a serem verificadas sempre que há uma alteração no contexto da scope a aplicação torna-se lenta.</p>
+
+<p>O ideal para escrever aplicações Ionic rápidas é aprenderes mesmo boas práticas de AngularJs. Uma leva à outra.</p>
+
+<h2 id="programar">Programar</h2>
+
+<p>E programar em Javascript? Uma razão para não usar o Ionic costuma ser “não compares Javascript com linguagens como Java ou C objectivo”. Está certo, mas vamos falar da evolução do Javascript.</p>
+
+<p>O <a href="http://codigo.ovh/git/2015/03/02/ECMAScript6-converter-em-javascript-compativel.html">ECMAScript 6</a> está mesmo à porta e vem mudar bastante a forma como escrevemos javascript com classes e objectos. O AngularJs 2 vai ser uma mudança forte para quem tem de migrar aplicações 1.3x, vamos ter de refacturar muito código.</p>
+
+<p>A tecnologia do Ionic vai acompanhar estas mudanças. A equipa do Ionic tem proximidade com a equipa do Angular, e há pouco tempo anunciaram que se estão a preparar para o ES6. Óptimas notícias!</p>
+
+<p>Num curto perído de tempo vamos puder desenvolver aplicações com o ECMAScript 6. O próprio Angular vai beneficiar bastante ao reduzir o tempo de execução.</p>
+
+<h2 id="onde-comear">Onde começar?</h2>
+
+<p><a href="http://learn.ionicframework.com/">http://learn.ionicframework.com</a></p>
+
+<div class="clearfix">
+	  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+
+<div class="comments">
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guilhermecardoso'; 
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</div>
+
+</div>
+<div class="layout-footer">
+<div class="container">
+este site é livre - <a href="https://github.com/guilhermegeek/guilhermegeek.github.io">guilhermegeek.github.io</a> desenvolvido com <a href="http://jekyllrb.com">Jekyll</a><a href="https://plus.google.com/+GuilhermeCardosoGeek" rel="publisher"></a>
+
+</div>
+</div>
+</body>
+</html>
