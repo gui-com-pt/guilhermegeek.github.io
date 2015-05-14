@@ -89,6 +89,7 @@ Agora precisamos de uma forma de observar o estado da base de dados para actuali
 
 O mais fácil é implementar uma tarefa num intervalo de tempo através do crontab.
 
+````
 class WatcherDatabaseState() {
 	
 	protected $cache; 
@@ -113,8 +114,6 @@ class WatcherDatabaseState() {
 		$this->cache->get('DB_STATE', true);
 	}
 }
-
-// ...
 
 new WatcherDatabaseState()->verify();
 ````
