@@ -14,9 +14,9 @@ O PHPUnit tem a "particularidade" de consumir muita memória RAM. É claro que a
 
 No caso de enfrentares este problema uma solução rápida e que eu gosto bastante é usar reflecção para limpar as problema. Esta solução foi [sugerida aqui](http://kriswallsmith.net/post/18029585104/faster-phpunit) e é bastante simples: no final e cada teste procuramos as propriedades da classe que não sejam estáticas nem tenham sido declaradas pelo PHPunit, ao atríbuir null o GC não vai ter mais referências e é libertada melhorando bastante a performance dos testes, comparando a redução do tempo no geral com o tempo durante a execução da reflecção de cada teste é ridiculo! Muito melhor
 
-A menos que tenhas uma valente confução de código nos testes (referências ciclicas entre os proprios testes por exemplo) ela deve ser logo libertada. 
+A menos que tenhas uma valente confução de código nos testes (referências ciclicas entre os proprios testes por exemplo) ela deve ser logo libertada.
 
-````
+{% highlight php %}
 abstract class BaseTestCase extends PHPUnit_Framework_TestCase
 {
     protected function tearDown()
@@ -30,9 +30,10 @@ abstract class BaseTestCase extends PHPUnit_Framework_TestCase
         }
     }
 }
-````
+{% endhighlight %}
 
 Outra solução seria fazer `unset` individualmente no final do teste mas credo, isso não!
 
-Referências
+**Referências**
+
 * [http://kriswallsmith.net/post/18029585104/faster-phpunit](http://kriswallsmith.net/post/18029585104/faster-phpunit)
