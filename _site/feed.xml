@@ -25,6 +25,7 @@
 
 &lt;span class=&quot;x&quot;&gt;  	public function updateUserInformation($firstName, $website)&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;  	{&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;      $db = $this-&amp;gt;database; // de futuro isto vai ser escusado no hhvm!&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;  		$fn = function($queryCommand) use($db) {&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;  			// o código a ser executado&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;  			$db-&amp;gt;connect();&lt;/span&gt;
@@ -34,7 +35,7 @@
 &lt;span class=&quot;x&quot;&gt;  		$this-&amp;gt;retry(9, $fn(array(&amp;#39;firstName&amp;#39; =&amp;gt; $firstName, &amp;#39;website&amp;#39; =&amp;gt; $website)));&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;  	}&lt;/span&gt;
 
-&lt;span class=&quot;x&quot;&gt;  	function retry($retries, $retryFn, $recreate = false)&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  	protected function retry($retries, $retryFn, $recreate = false)&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;  	{&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;  		if($retries &amp;lt; 1){&lt;/span&gt;
 &lt;span class=&quot;x&quot;&gt;  		  return $retryFn();&lt;/span&gt;

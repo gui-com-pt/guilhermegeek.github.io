@@ -23,6 +23,7 @@ Em PHP há um padrão comum para lidar com tentativas, este exemplo seria da cam
 
   	public function updateUserInformation($firstName, $website)
   	{
+      $db = $this->database; // de futuro isto vai ser escusado no hhvm!
   		$fn = function($queryCommand) use($db) {
   			// o código a ser executado
   			$db->connect();
@@ -32,7 +33,7 @@ Em PHP há um padrão comum para lidar com tentativas, este exemplo seria da cam
   		$this->retry(9, $fn(array('firstName' => $firstName, 'website' => $website)));
   	}
 
-  	function retry($retries, $retryFn, $recreate = false)
+  	protected function retry($retries, $retryFn, $recreate = false)
   	{
   		if($retries < 1){
   		  return $retryFn();

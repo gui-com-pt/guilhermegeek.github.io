@@ -167,6 +167,7 @@
 
 <span class="x">  	public function updateUserInformation($firstName, $website)</span>
 <span class="x">  	{</span>
+<span class="x">      $db = $this-&gt;database; // de futuro isto vai ser escusado no hhvm!</span>
 <span class="x">  		$fn = function($queryCommand) use($db) {</span>
 <span class="x">  			// o código a ser executado</span>
 <span class="x">  			$db-&gt;connect();</span>
@@ -176,7 +177,7 @@
 <span class="x">  		$this-&gt;retry(9, $fn(array(&#39;firstName&#39; =&gt; $firstName, &#39;website&#39; =&gt; $website)));</span>
 <span class="x">  	}</span>
 
-<span class="x">  	function retry($retries, $retryFn, $recreate = false)</span>
+<span class="x">  	protected function retry($retries, $retryFn, $recreate = false)</span>
 <span class="x">  	{</span>
 <span class="x">  		if($retries &lt; 1){</span>
 <span class="x">  		  return $retryFn();</span>
