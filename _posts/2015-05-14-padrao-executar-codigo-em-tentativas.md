@@ -65,7 +65,7 @@ A excepção invocada pelo método `updateUser` só seria invocada para fora des
 
 Este exemplo pode solucionar alguns problemas. Vamos ver outro
 
-#### Padrão de Disjuntor
+## Padrão de Disjuntor
 
 A utilização mais comum é para verificar o estado de disponibilidade de um serviço (no nosso exemplo a base de dados). Seja qual for a utilidade ele deve ser (quase) sempre aplicado de forma assíncrona. Se for uma operação normal que bloqueie todas as outras conecções acaba por não realizar a sua tarefa que é informar independentemente da situação do serviço o estado dele. Mesmo que o servidor da base de dados tenha pegado fogo, ele vai ter de avisar à mesma!
 
