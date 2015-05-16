@@ -7,6 +7,159 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Abordagem rápida a Injecção de Dependências</title>
+				<description>&lt;p&gt;Este tema é muito familiar a qualquer programador, seja de Javascript ou C++&lt;/p&gt;
+
+&lt;p&gt;Existem várias bibliotecas para resolver a injecção de dependências. Aqui a linguagem com que programamos influencia bastante as abordagens tomadas até agora&lt;/p&gt;
+
+&lt;p&gt;Em C# raramente escreves um texto com o nome da classe, a menos que queiras atribuir um nome novo. Simplesmente passas o tipo como anónimo. Como o código em C# é rodeado de interfaces para libertar a memória como a &lt;code&gt;IDisposable&lt;/code&gt; a injecção de dependências leva outro nível.&lt;/p&gt;
+
+&lt;h2 id=&quot;php&quot;&gt;PHP&lt;/h2&gt;
+
+&lt;p&gt;Em PHP a conversa é outra! Mesmo sendo uma linguagem dinâmica é possível resolver os tipos com reflecção, anotações da documentação, ficheiros de configuração ou como eu prefiro: no construtor do objecto.&lt;/p&gt;
+
+&lt;p&gt;O que me tenho apercebido é que no final de contas a inversão de controlo torna-se má graças ao que escrevemos.&lt;/p&gt;
+
+&lt;p&gt;Em vários casos deparo-me comigo em situações deste caso:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;+---------+      +---------+
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    A    &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&amp;lt;-----&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    B    &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;-----&amp;gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
++---------+      +---------+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Por exemplo um objecto que guarda informações dos objectos ligados com a biblioteca da base de dados (nome das tabelas, associações, etc) e outro que guarda colecções de alterações (inserções, actualizações, etc) e realizadas em BATCH.&lt;/p&gt;
+
+&lt;p&gt;Em muitos casos reparo-me no caso da referência circular como neste exemplo. Ambos os objectos dependem do outro. O mais engraçado é que existe uma regra que &lt;strong&gt;se aplica mesmo&lt;/strong&gt;. Em situações destas eu sei que está-me a faltar um terceiro objecto no mínimo.&lt;/p&gt;
+
+&lt;p&gt;Se há tanta dependência entre duas classes talvez uma tenha apenas alguns métodos para auxiliar a outra. É sempre uma má decisão nossa do design da aplicação!&lt;/p&gt;
+
+&lt;p&gt;A sugestão é simples: compara os métodos da Classe A usados pela A e da B usados pela A. Depois o inverso, e o que tiver a lista mais pequena essa é a tua terceira classe.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;+---------+      +---------+
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    A    &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&amp;lt;-----&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;  B      &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;  +-+ &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;  +-&amp;gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;------+----&amp;gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     +-+ &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  +---------+      +---------+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Isto permite-nos identificar a classe nova &lt;strong&gt;C&lt;/strong&gt;. É comum chamar-lhe de classe escondida, pois sempre esteve embutida na trapalhada da B e nós não reparávamos sequer senão fosse por um stackoverflow do injector ou outro erro que fosse ocorrer.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;+---------+
+  +---------+              &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    B    &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    A    &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&amp;lt;-------------&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;              &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    +---+     &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;---&amp;gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; C &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&amp;lt;----&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    +---+     +---------+
+  +---------+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Por isso mesmo a maioria das bibliotecas em PHP até recomendam mesmo a usar um ficheiro de configuração. A linguagem não é estática, há que tratá-la como tal&lt;/p&gt;
+
+&lt;h2 id=&quot;hhvm-e-implementaes&quot;&gt;HHVM e Implementações&lt;/h2&gt;
+
+&lt;p&gt;O Hacklang ainda vai trazer mais novidades ao mundo “novo” paralelo ao PHP normal. Apesar de já implentar genéricos eles não são como seríamos de esperar em C#.&lt;/p&gt;
+
+&lt;p&gt;O HHVM não é estático como o C# e isso é a razão porque estes problemas ocorrem mas a equipa do Facebook já garantiu que esse dia vai chegar. É uma implentação com um nome confuso (vi numa resposta no Stackoverflow de um programador deles) e que não é prioritária por isso não será para breve.&lt;/p&gt;
+
+&lt;p&gt;No entanto já podemos fazer muita coisa com esta implementação de genéricos. Na reflecção temos a propriedade &lt;strong&gt;typed_hint&lt;/strong&gt; que nesta implementação de IOC nos permite agrupar as dependências por tipos e categorias. O tipo real criado em tempo de execução não dá para resolver (exemplo: TRepository, TValidator, etc).&lt;/p&gt;
+
+&lt;p&gt;A minha implementação favorita para IOC com HHVM é usar a injecção no construtor dos Serviços. Não deve ser no Controlador porque isso garante o fim total da portabilidade.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Referências&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://misko.hevery.com/2008/08/01/circular-dependency-in-constructors-and-dependency-injection/&quot;&gt;http://misko.hevery.com/2008/08/01/circular-dependency-in-constructors-and-dependency-injection/&lt;/a&gt;Dos meus textos favoritos da matéria, simples e pode ajudar muito programador. E já lá vão uns anitos!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Fri, 15 May 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/php/hhvm/2015/05/15/injecao-de-dependencias.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/php/hhvm/2015/05/15/injecao-de-dependencias.html</guid>
+			</item>
+		
+			<item>
+				<title>Padrões de Carregamento Lento e Construtor</title>
+				<description>&lt;p&gt;Isto é algo bastante interessante para mim. Por ainda não conhecer como quero o GC do PHP e também do C#, o tópico de disposição de recursos atrai-me sempre bastante.&lt;/p&gt;
+
+&lt;h3 id=&quot;carregamento-lento-lazy-loading&quot;&gt;Carregamento Lento (lazy loading)&lt;/h3&gt;
+
+&lt;p&gt;Este é daquele padrão que se encontra em todo o tipo de código&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;class FileService {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  private FileCollection $files;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  public function getCollection()&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    if(isset($this-&amp;gt;files === false)) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;      $this-&amp;gt;files = new FilesCollection();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    }&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  }&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  public function recursive()&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    foreach($this-&amp;gt;paths as $path) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;      $this-getCollection()-&amp;gt;scan();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    }&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  }&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Imagina este cenário: quando escreves este serviço sabes que vais logo usar determinados objectos e são construídos no constructor. Mais tarde vais reutilizá-lo noutro código onde esses objectos não tenham razão para ser criados ou mesmo extenderes o serviço e implementar outras funcionalidades.&lt;/p&gt;
+
+&lt;p&gt;A classe &lt;code&gt;FileService&lt;/code&gt; dentro do método &lt;code&gt;recursive&lt;/code&gt; está a encapsular a responsabilidade de atribuir uma instacia do objecto. Até que este método seja invocado a classe não é criada.&lt;/p&gt;
+
+&lt;h3 id=&quot;construtor-buider&quot;&gt;Construtor (buider)&lt;/h3&gt;
+
+&lt;p&gt;Noutros casos a responsabilidade de criar o objecto deve percenter a um Construtor a seguir o padrão Builder. O objectivo é permitir manter separada a construção do objecto da sua representação. Assim o mesmo processo de construção pode criar representações diferentes.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;// O diretor que é responsável por criar o objecto usando um Construtor&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;class Mp3Reader {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  public function builder(Builder $builder){ }&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;// O Construtor&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;class Mp3Scanner {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  public function scanFiles()&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    // duas opçoes:&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    // - guardamos o resultado numa propriedade da classe e o método getResult usa a propriedade&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    // - invocamos o método getResult passando o resultado. Em alguns casos o getResult é sempre o seguimento do scanFiles e pode ter lógica&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  }&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  // Método a ser implementado para dar as várias representações que falei em cima&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  public abstract function getResult();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;class Mp3XmlScanner extends Mp3Scanner {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  public function getResult()&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  }&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;class Mp3HtmlScanner extends Mp3Scanner {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  public function getResult()&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;  {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;  }&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ainda sobre a injecção de dependências e o HHVM, há outras funcionalidades como operações assíncronas, atributos, etc. Esta mudança para muitos programadores até é prejudicial para o ambiente do PHP e foi mal lançada pelo Facebook mas para quem está mesmo habituado a outras linguagens são funcionalidades que já deviam ter vindo há bastante!&lt;/p&gt;
+
+&lt;p&gt;O próprio PHP ainda há pouco tempo foi “abanado” com a implementação para carregar automáticamente as classes necessárias, o autoloading. Era normal veres circulos a incluirem ficheiros php baseados no estado da aplicação, da camada onde se encontrava, etc. Ou os métodos anônimos.&lt;/p&gt;
+
+&lt;p&gt;Quanto mais conheço o PHP e HHVM mais gosto disto.&lt;/p&gt;
+</description>
+				<pubDate>Fri, 15 May 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/less/css/2015/05/15/PHP-objectos-que-a-partida-nao-serao-executados.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/less/css/2015/05/15/PHP-objectos-que-a-partida-nao-serao-executados.html</guid>
+			</item>
+		
+			<item>
 				<title>Padrão em formato de tentativas para executar código que possivelmente irá falhar</title>
 				<description>&lt;p&gt;Para explicar este padrão vamos ver o problema. Quando ocorre uma excepção, à partida nós queremos lidar com os detalhes, guardá-los e se possível continuar com a operação. Tirando as excepções que invocadas com outro objectivo.&lt;/p&gt;
 
@@ -1178,241 +1331,6 @@ textdomain($domain);
 				<pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/php/2014/11/20/php-gettext.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/php/2014/11/20/php-gettext.html</guid>
-			</item>
-		
-			<item>
-				<title>Dicas para te protegeres de ataques, malware e problemas comuns</title>
-				<description>&lt;p&gt;Série de artigos sobre segurança online&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Passwords&lt;/li&gt;
-  &lt;li&gt;Navegação&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;precauo&quot;&gt;Precaução&lt;/h2&gt;
-
-&lt;p&gt;A prevenção é boa manutenção da máquina é essencial. Não basta apenas instalar programas e esperar que eles por si sejam responsáveis pela segurança.&lt;/p&gt;
-
-&lt;p&gt;Os programas são bons para analisar e detectar mas a prevenção é que dita se ficheiros maliciosos e outras ameaças conseguem alcançar a nossa máquina, temos de adoptar boas práticas e criar hábitos que proporcionem isto.&lt;/p&gt;
-
-&lt;h2 id=&quot;programas&quot;&gt;Programas&lt;/h2&gt;
-
-&lt;p&gt;Uma das formas de distribuir código malicioso e alcançar os utilizadores finais é através de programas. Programas que são instalados para realizarem determinada função mas que traz consigo código com outras intenções, semelhantemente ao cenário do cavalo de troia.&lt;/p&gt;
-
-&lt;p&gt;Neste tipo de programas é mais comum nos deparar-mos com:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Gestor de drivers e actualizações&lt;/li&gt;
-  &lt;li&gt;Anti Virus e programas de segurança&lt;/li&gt;
-  &lt;li&gt;Cracks e patchs&lt;/li&gt;
-  &lt;li&gt;Anexos de emails&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Algo que estes programas têm em comum: têm de ser instalados! Isto também inclui programas instalados como terceiros, ou seja, programas instalados como ofertas, bónus ou promoções durante a instalação de outros.&lt;/p&gt;
-
-&lt;p&gt;Isto normalmente ocorre na aceitação de termos e condições ou na finalização da instalação, e os responsáveis usam truques baixos para levarem as pessoas a instalar. Vamos analisar algumas formas comuns:&lt;/p&gt;
-
-&lt;h4 id=&quot;download&quot;&gt;Download&lt;/h4&gt;
-
-&lt;p&gt;Na página do programa se houver publicidade da Google ou outra intencional, facilmente nos deparamos com 2 ou 3 caixas a dizerm “Download” e ficamos sem saber onde realmente é realizado o download. Isto é um truque utilizador: a publicidade recebe do site informação em relação ao Download e usam-na como referência para o nome do ficheiro ou para aparecer no quadrado de publicidade e levar o utilizador a pensar que é ali o Download.&lt;/p&gt;
-
-&lt;p&gt;O ficheiro descarregado pode ser um programa totalmente diferente do que preendíamos, pode ser um gestor de programas que diz instalar o programa que procuramos ou pode até abrir a instaação normal do programa que queremos mas trazer consigo código malicioso.&lt;/p&gt;
-
-&lt;h4 id=&quot;integridade&quot;&gt;Integridade&lt;/h4&gt;
-
-&lt;p&gt;Integridade neste contexto significa que o ficheiro original que é distribuído e que recebemos não foi modificado. Uma forma utilizada para comprovar a integridade de um programa é verificar a assinatura md5. &lt;/p&gt;
-
-&lt;p&gt;MD5 significa Message-Digest algorithm, um algoritmo de hash desenvolvido pela RSA Data Security inc com 128 bits unidireccional.&lt;/p&gt;
-
-&lt;p&gt;Por ser unidireccional, após ter sido gerado o hash por um texto (por exemplo uma password) não podemos transformar o hash novamente no texto que o originou. Com as passwords guardamos na base de dados encriptadas com MD5 e quando um utilizador se autentica criamos uma hash com a password inserida e comparamos com a hash da base de dados, não podemos desencriptar a hash da base de dados para comparar com a password inserida.&lt;/p&gt;
-
-&lt;h4 id=&quot;processo-de-instalao&quot;&gt;Processo de Instalação&lt;/h4&gt;
-
-&lt;p&gt;Neste exemplo vou instalar o Daemon Tools Lite.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-1.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Primeiro passo é aceitar os termos do Daemon Tools Lite. A aceitação dos termos costuma ser dos primeiros passos na instalação.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-2.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Esta escolha ainda é relevante ao Daemon Tools Lite. Apesar de ter escolhido a versão gratuíta no site, na instalação icentivam o utilizador a comprar a licença.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-3.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Aqui está a primeira tentativa de nos enganar. Quando olhamos para este ecrã partimos do princípio que apenas a opção “Typical installation (recommended)” está disponível pois a opçção “Custom installation (advanced)” está com outra cor e tanto a roda (radio button) como o texto estão desactivados. Fazemos isto a elementos quando o utilizador não os pode utilizar, neste caso é apenas para enganar. De outra forma não estaria “recomended”.&lt;/p&gt;
-
-&lt;p&gt;Com a instalação que nos recomendam vamos instalar o Linkey e todo o malware que venha atrás. Podemos então carregar no “Custom installation (advanced)” &lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-4.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Uma observação que reforça a intenção de enganar: agora a opção “Typical installation (recommended)” não está desactivada como a opção “Custom installation (advanced)” estava a início. Se não estivesse desactivada para enganar, porque não se desactivou a Typical agora que escolhemos? Removemos todos os vistos neste passo.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-5.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Para finalizar ainda levamos com o TuneUp Utilities 2014. De novo a técnica de desactivar a opção “I do not accept”. &lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-6.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Ainda durante a instalação aparece mais um Gadget a ser instalado.&lt;/p&gt;
-
-&lt;h2 id=&quot;anlise&quot;&gt;Análise&lt;/h2&gt;
-
-&lt;h4 id=&quot;processos&quot;&gt;Processos&lt;/h4&gt;
-
-&lt;p&gt;No Windows podemos usar o gestor de tarefas paras consultas os processos em execução. Um programa quando é executado usa um ou mais processos, por vezes conseguimos descubrir problemas com o gestor de tarefas e uma pesquisa no Google para procurar rastos do mesmo processo mas pode ser irrelevante. Pode ser um nome aleatório ou até mesmo código injetado noutro processo.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/posts/seguranca-intro-7.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Nos serviços também pode estar algo malicioso que tenha escalado a permissão de administração e criado um serviço do Windows.&lt;/p&gt;
-
-&lt;p&gt;Há programas específicos para analisar processos em execução sem ser o gestor de tarefas.&lt;/p&gt;
-</description>
-				<pubDate>Wed, 19 Nov 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/seguranca/2014/11/19/seguranca-online-intro.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/2014/11/19/seguranca-online-intro.html</guid>
-			</item>
-		
-			<item>
-				<title>Começar a trabalhar como programador</title>
-				<description>&lt;p&gt;Neste artigo vou tentar explicar que vários rumos podes tomar na área da programação, mas também direccionado a quem queira estudar web design ou outras áreas como gestão de base de dados.&lt;/p&gt;
-
-&lt;p&gt;Tudo começa no planeamento que vais criar para a tua carreira enquanto programador. Vou dividir em três níveis&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Baixo - Não investes muito tempo para conhecer a linguagem de programação (ou seja, apenas conheces uma também) e trabalhas em projetos rotinários que não te façam ter de sair da tua zona de conforto. Isto implica que não precises de estudar e avançar mais do nível onde te encontras.&lt;/li&gt;
-  &lt;li&gt;Normal - Além das 8 horas de trabalho investes tempo para te manteres actualizado e tudo que aprendes não é apenas da necessidade dos projetos.&lt;/li&gt;
-  &lt;li&gt;Alto - Estudas e aprendes tecnologias que não usas no teu trabalho, lês teses e projetos com o objetivo de aprendizagem&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Algo que sempre gostei em programação é que o teu valor enquanto provedor de serviços (não meramente um empregado) pode ser porpocional ao tempo que dedicas a estudar. Para te tornares um melhor programador não precisas de ir para uma boa faculdade ou ter uma cunha, simplesmente tens de estudar. E para isso é preciso gostar mesmo asério do que vais fazer.&lt;/p&gt;
-
-&lt;p&gt;Dependendo da área onde residas, a tua escolha de te tornares um programador de alto nível pode implicar que tenhas de trabalhar noutro local ou então iniciares-te como freelancer. No caso de Portugal hà boas empresas fora das cidades principais Lisboa, Porto, Coimbra e Braga. No entanto é mais em Lisboa e Porto que o mercado de consultoria está localizado e onde tens mais diversidade de escolha.&lt;/p&gt;
-
-&lt;h3 id=&quot;empresas-de-webdesign&quot;&gt;Empresas de Webdesign&lt;/h3&gt;
-
-&lt;p&gt;Não é a desenvolver websites ou a usar CMS que vão aparecer desafios que te evoluam e criem a necessidade de estudo. Há muitas empresas assim, com serviços como: desenvolvimento de websites, criação de lojas online, criação de portais, etc. Basicamente criam sites. Neste tipo de empresas não tens muita margem para evoluir. Alguns exemplos:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;O código que escreves é irrelevante tanto para o cliente como para o teu empregador, pois não tens nenhum chefe de equipa decerta forma a julgar-te e valorizar-te também. Curtos prazos de desenvolvimento são pedidos porque o projeto foi vendido ao preço de umas sapatilhas, e tens de rentabilizar o tempo.&lt;/li&gt;
-  &lt;li&gt;Testes unitários demoram tempo. Na realidade, até podes poupar tempo se souberes desenvolver a escrever testes (TDD) mas isso não interessa para a empresa. Escrever testes = escrever mais código = prazos maiores de desenvolvimento.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Uma empresa assim pode ser boa para começares a trabalhar. Outra alternativa é começar no mercado da consultoria mas isso já requer alguma experiência ou boa teoria.&lt;/p&gt;
-
-&lt;h3 id=&quot;consultoria&quot;&gt;Consultoria&lt;/h3&gt;
-
-&lt;p&gt;Em consultoria o cenário é diferente, muito diferente. O teu empregador pode ser uma empresa com equipas pŕoprias de desenvolvimento que esteja a contratar especificamente para aquele projeto ou pode ser uma empresa que apenas sub contrata.&lt;/p&gt;
-
-&lt;p&gt;Podes ser contratado apenas para um projeto ou assinar mesmo um contrato com uma empresa mas simplesmente trabalhares como consultor. Vais participar em projetos externos, conhecer várias pessoas da área pois lidas com muita coisa mesmo! Na mesma sala pode estar uma equipa de desenvolvimento á medida, outra de SAP.&lt;/p&gt;
-
-&lt;p&gt;Os ambientes são mais formais. Eu gosto disto, trabalhei em sítios onde realmente respeitam o local de trabalho e o silêncio é apreciado. Isto é muito importante porque se fores trabalhar para uma empresa pequena onde tenhas uma pessoa que a função dela não requer atenção e foco na tarefa, basta ser engraçadinho e é o suficiente para te afetar durante o trabalho, não te conseguires concentrar.&lt;/p&gt;
-
-&lt;h4 id=&quot;perfil&quot;&gt;Perfil&lt;/h4&gt;
-
-&lt;p&gt;Em consultoria a procura é específica. Enquanto que numa empresa de webdesign tens de saber HTML, CSS, Javascript e uma linguagem como PHP, neste tipo de projetos procuram profissionais específicos para as linguagens e os requisítios são mais elevados.&lt;/p&gt;
-
-&lt;p&gt;Há requisitos na procura que também justificam os salários mais altos. Por exemplo para um programador C# pode ser pedido:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Desenvolver APIs com a .NET Web API&lt;/li&gt;
-  &lt;li&gt;Validar os serviços com testes unitários&lt;/li&gt;
-  &lt;li&gt;Utilizar GIT ou outro gestor de código&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Para um web designer:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Código HTML validado com a W3C&lt;/li&gt;
-  &lt;li&gt;Utilizar LESS ou SASS para gerar o código CSS&lt;/li&gt;
-  &lt;li&gt;Utilizar um padrão em CSS (por exemplo: BEM)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Existem níveis que classificam a tua posição dentro da empresa.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Júnior - programador com menos de 2 anos de experiência&lt;/li&gt;
-  &lt;li&gt;Sénior&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Uma dica: se queres trabalhar em consultoria e queres investir em ti então estuda o que mercado mais procura e valoriza! É escusado dizer que quanto mais precisas de aprender, melhor é a recompensa salarial ;)&lt;/p&gt;
-
-&lt;h3 id=&quot;freelancer&quot;&gt;Freelancer&lt;/h3&gt;
-
-&lt;p&gt;Esta área tem esta mais valia em relaçao a muitas outras profissoes. O mercado recorre muito a freelancers e por isso, se investires mesmo em ti consegues trabalhar como freelancer.&lt;/p&gt;
-
-&lt;p&gt;Há aqueles freelancers que só o são por não conseguirem arranjar emprego.&lt;/p&gt;
-
-&lt;p&gt;Aquele programador que não tem experiência séria, num projeto simples sente-se assustado com novas funcionalidades que desconhece possíveis implementações ou que simplesmente demore demasiado tempo a entregar um produto.&lt;/p&gt;
-
-&lt;p&gt;Todos começamos por algum lado, é preciso é continuar.&lt;/p&gt;
-
-&lt;h4 id=&quot;projeto&quot;&gt;Projeto&lt;/h4&gt;
-
-&lt;p&gt;Para aprender a programar web quer uses php, python, c# tens sempre bibliotecas gratuítas que podes usar e desenvolver um projeto. Na fase inicial é uma mais valia ao portfólio e é tido em conta nas entrevistas.&lt;/p&gt;
-
-&lt;p&gt;Seja para um cliente ou para experiência é sempre preciso estruturar e definir toda a preparação do projeto. Há livros a falar da fase de planeamento de um projeto.&lt;/p&gt;
-
-&lt;p&gt;Eu não levo tão asério. Começo em rascunho numa folha de papel, um esquema UML ou a usar um programa de mockups. Primeiro escolho o domínio daquilo que vou desenvolver. O domínio é formado por entidades, por exemplo para um blog as entidades seriam: Article, Comment, User, Review&lt;/p&gt;
-
-&lt;p&gt;Com estas entidades escrevo serviços que vão fazer operações como: ArticleCreate, CommentSend, ReviewEdit, Register, CommentAprove, ArticlePublish, CommentList&lt;/p&gt;
-
-&lt;p&gt;Serviços comuns como NotificationSend, EmailSend que meto à parte. Este esquema depois serve-me como modelo daquilo que vou desenvolver.&lt;/p&gt;
-
-&lt;p&gt;Podes geriar a parte html usando layouts, páginas parciais. Isto é no lado do servidor seja em PHP, C#, python, há frameworks e bibliotecas que auxiliam.&lt;/p&gt;
-
-&lt;p&gt;Outra alternativa é desenvolveres uma SPA - single page application com uma framework como o AngularJS. A parte do cliente (html, css, javascript) fica separada do código do servidor, o backend. No caso de desenvolver uma SPA o ideal é sempre servi-la com uma API. As linguagens modernas têm frameworks boas para implementar APIs.&lt;/p&gt;
-
-&lt;p&gt;Eu recomendo sempre aprenderem angular! Uma aplicação angular pode servir um website ou uma aplicação android a usar phonegap, ionicframework. Podes escrever toda a lógica, serviços num módulo que partilhes no website e aplicação, e depois desenvolves duas aplicações que consumam esse módulo.&lt;/p&gt;
-
-&lt;p&gt;Além que aprendes javascript e html, mesmo que depois venhas a trabalhar no lado do servidor para fazer isto noutros projetos já sabes boas bases e facilmente te adaptas.&lt;/p&gt;
-
-&lt;p&gt;Isto é javascript mas se sabes programar PHP ou C# também sabes javascript.&lt;/p&gt;
-
-&lt;p&gt;Para desenvolver o código temos de seguir uma arquitectura ou pelo menos alguns padrões que asegurem um bom código.&lt;/p&gt;
-
-&lt;p&gt;Eu gosto muito da arquitectura SOA - arquitectura orientada a serviços mas há outras e depende sempre do que fores desenvolver. Um exemplo de uma aplicação dividida em camadas a utilizar a framework Slim em PHP para servir uma API: https://codig.ovh/software/2014/09/23/arquitectura-padroes.html&lt;/p&gt;
-
-&lt;p&gt;Para implementares funcionalidades como validação de dados, formatação de texto, tratamento de imagens, gestão de ficheiros no sistema podes usar bibliotecas. Cada linguagem tem o seu gestor de dependências como o Nuget em C#, composer em PHP, bower para javascript e css. Ter dependências como bibliotecas geridas por algo assim é melhor, ajuda-te a manter tudo actualizado e torna-se mais fácil a instalação em produção.&lt;/p&gt;
-
-&lt;p&gt;Há serviços que podes contratar como websockets, envio de emails, um sistema de comunicação em grupo. Grande parte das empresas que os prestam vêem de programadores e disponibilizam pacotes gratuítos para projetos startup ou pequenos.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Isto foi escrito pelos Gang Of Four. Não é um livro para um iniciante ler mas se queres aprender a estruturar aplicações e a programar código reutilizável com padrões tens mesmo de ler! - http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Apartir daqui vou escrever mais artigos específicos do que falei&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Plano - roadmap a que te comprometas para começares a programar ou evoluires.&lt;/li&gt;
-  &lt;li&gt;Curriculum - como te podes apresentar a uma empresa&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Começar a programar&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Recursos de aprendizagem&lt;/li&gt;
-  &lt;li&gt;Escolher uma linguagem de programação&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Freelancer&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;O teu primeiro projeto real&lt;/li&gt;
-  &lt;li&gt;Estrutares a base da tua equipa de modo a que outros programadores possam desenvolver e rentabilizar o tempo&lt;/li&gt;
-  &lt;li&gt;Propostas de orçamentos&lt;/li&gt;
-  &lt;li&gt;Divulgação&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Referências Futuras&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://programmer-hek.blogspot.pt/2014/07/which-type-of-it-career-is-best-for-you.html&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-				<pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/programacao/2014/10/28/profissoes.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/programacao/2014/10/28/profissoes.html</guid>
 			</item>
 		
 	</channel>

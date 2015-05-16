@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+  <head>
+      <meta charset="utf8" />
+      <title>Padrões de Carregamento Lento e Construtor - Codigo </title>
+      <meta name="description" content="Aprende a utilizar o Bootstrap com LESS! Configura um tema e reparoveita o teu código">
+      <meta name="keywords" content="">
+      <meta property="og:locale" content="pt_PT">
+      <meta property="og:site_name" content="Padrões de Carregamento Lento e Construtor">
+      <meta property="og:image" content="/media/less.jpg">
+      <!--<meta property="og:image:type" content="image/jpg">-->
+      <meta property="og:url" content="/less/css/2015/05/15/PHP-objectos-que-a-partida-nao-serao-executados.html">
+      <meta property="og:title" content="Padrões de Carregamento Lento e Construtor">
+      <meta property="og:description" content="Aprende a utilizar o Bootstrap com LESS! Configura um tema e reparoveita o teu código">
+      <link href="/css/bootstrap.css" rel="stylesheet">
+      <script>
+      (function() {
+        var cx = '007144214621793408206:hssvwvk9lwe';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            '//www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+      <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '175461699313531',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      var fbShare = function(url) {
+        FB.ui({
+          method: 'share',
+          href: 'https://developers.facebook.com/docs/',
+        }, function(response){
+
+        });
+
+      };
+
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-41887317-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link href="//fonts.googleapis.com/css?family=OpenSans:400,700" rel="stylesheet" type="text/css" />
+
+      <style>
+        body {
+          padding-top: 60px;
+          font-family: 'OpenSans';
+          font-size: 16px;
+        }
+        .layout-footer {
+          border-top:solid 1px #ddd;
+          padding-top: 8px;
+          margin-top: 20px;
+          text-align: center;;
+        }
+        .post__thumbnail {
+          max-width: 60px;
+        }
+
+        .media-date {
+          float: right;
+          color: #666666;
+        }
+
+        .post__list {
+          border-bottom: solid 1px #CCCCCC;
+          padding-bottom: 10px;
+        }
+
+        .post__list h4 a, .post__list h4 a:hover, .post__list h4 a:focus {
+          text-decoration: none;
+        }
+
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
+
+        .post-entry__image {
+          max-width: 650px;
+        }
+        /*
+         * syntax.css
+         */
+        .post > .highlight .lineno { color: #ccc; display:inline-block; padding: 0 5px; border-right:1px solid #ccc; }
+        .post > .highlight pre code { display: block; white-space: pre; overflow-x: auto; word-wrap: normal; }
+
+        /*
+         * Bootstrap extensions
+         * i'm too lazy on this one
+         * latter i'll configure grunt and pass all to less
+         */
+         .navbar-default {
+            background-color: #FFFFFF;
+          }
+      </style>
+      <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="/css/syntax.css" rel="stylesheet">
+      <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Publicações</a>
+    </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/feed.xml">RSS</a></li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container" style="max-width: 1200px;">
+  <div class="clearfix">
+<h2 class="content">Padrões de Carregamento Lento e Construtor</h2>
+</div>
+ 
+<p>Isto é algo bastante interessante para mim. Por ainda não conhecer como quero o GC do PHP e também do C#, o tópico de disposição de recursos atrai-me sempre bastante.</p>
+
+<h3 id="carregamento-lento-lazy-loading">Carregamento Lento (lazy loading)</h3>
+
+<p>Este é daquele padrão que se encontra em todo o tipo de código</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">class FileService {</span>
+
+<span class="x">  private FileCollection $files;</span>
+
+<span class="x">  public function getCollection()</span>
+<span class="x">  {</span>
+<span class="x">    if(isset($this-&gt;files === false)) {</span>
+<span class="x">      $this-&gt;files = new FilesCollection();</span>
+<span class="x">    }</span>
+<span class="x">  }</span>
+
+<span class="x">  public function recursive()</span>
+<span class="x">  {</span>
+<span class="x">    foreach($this-&gt;paths as $path) {</span>
+<span class="x">      $this-getCollection()-&gt;scan();</span>
+<span class="x">    }</span>
+<span class="x">  }</span>
+<span class="x">}</span></code></pre></div>
+
+<p>Imagina este cenário: quando escreves este serviço sabes que vais logo usar determinados objectos e são construídos no constructor. Mais tarde vais reutilizá-lo noutro código onde esses objectos não tenham razão para ser criados ou mesmo extenderes o serviço e implementar outras funcionalidades.</p>
+
+<p>A classe <code>FileService</code> dentro do método <code>recursive</code> está a encapsular a responsabilidade de atribuir uma instacia do objecto. Até que este método seja invocado a classe não é criada.</p>
+
+<h3 id="construtor-buider">Construtor (buider)</h3>
+
+<p>Noutros casos a responsabilidade de criar o objecto deve percenter a um Construtor a seguir o padrão Builder. O objectivo é permitir manter separada a construção do objecto da sua representação. Assim o mesmo processo de construção pode criar representações diferentes.</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">// O diretor que é responsável por criar o objecto usando um Construtor</span>
+<span class="x">class Mp3Reader {</span>
+<span class="x">  public function builder(Builder $builder){ }</span>
+<span class="x">}</span>
+
+<span class="x">// O Construtor</span>
+<span class="x">class Mp3Scanner {</span>
+
+<span class="x">  public function scanFiles()</span>
+<span class="x">  {</span>
+<span class="x">    // duas opçoes:</span>
+<span class="x">    // - guardamos o resultado numa propriedade da classe e o método getResult usa a propriedade</span>
+<span class="x">    // - invocamos o método getResult passando o resultado. Em alguns casos o getResult é sempre o seguimento do scanFiles e pode ter lógica</span>
+<span class="x">  }</span>
+
+<span class="x">  // Método a ser implementado para dar as várias representações que falei em cima</span>
+<span class="x">  public abstract function getResult();</span>
+<span class="x">}</span>
+
+<span class="x">class Mp3XmlScanner extends Mp3Scanner {</span>
+
+<span class="x">  public function getResult()</span>
+<span class="x">  {</span>
+
+<span class="x">  }</span>
+<span class="x">}</span>
+
+<span class="x">class Mp3HtmlScanner extends Mp3Scanner {</span>
+
+<span class="x">  public function getResult()</span>
+<span class="x">  {</span>
+
+<span class="x">  }</span>
+<span class="x">}</span></code></pre></div>
+
+<p>Ainda sobre a injecção de dependências e o HHVM, há outras funcionalidades como operações assíncronas, atributos, etc. Esta mudança para muitos programadores até é prejudicial para o ambiente do PHP e foi mal lançada pelo Facebook mas para quem está mesmo habituado a outras linguagens são funcionalidades que já deviam ter vindo há bastante!</p>
+
+<p>O próprio PHP ainda há pouco tempo foi “abanado” com a implementação para carregar automáticamente as classes necessárias, o autoloading. Era normal veres circulos a incluirem ficheiros php baseados no estado da aplicação, da camada onde se encontrava, etc. Ou os métodos anônimos.</p>
+
+<p>Quanto mais conheço o PHP e HHVM mais gosto disto.</p>
+
+<div class="clearfix">
+	  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+
+<div class="comments">
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guilhermecardoso'; 
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</div>
+
+</div>
+<div class="layout-footer">
+<div class="container">
+este site é livre - <a href="https://github.com/guilhermegeek/guilhermegeek.github.io">guilhermegeek.github.io</a> desenvolvido com <a href="http://jekyllrb.com">Jekyll</a><a href="https://plus.google.com/+GuilhermeCardosoGeek" rel="publisher"></a>
+
+</div>
+</div>
+</body>
+</html>
