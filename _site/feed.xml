@@ -7,12 +7,16 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Google PT SSL expired?</title>
+				<title>Google Portuguese domain cerficate expired?</title>
 				<description>&lt;p&gt;A few days ago i’ve read somewhere that Google left expire a few domains. I’ve noticed that the one used at &lt;strong&gt;google.com.pt&lt;/strong&gt; was about to expire but i didn’t expect it to happen as Google fixed the others cases.&lt;/p&gt;
 
-&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/googlesslpt.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/media/googlesslpt.jpg&quot;&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/googlesslpt.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;This is ridiculous, what would be the reason for letting another certificate expire?&lt;/p&gt;
+&lt;p&gt;This is ridiculous, what would be the reason for letting another certificate expire after they were warned about that? &lt;/p&gt;
+
+&lt;p&gt;A lot of people are unaware of the porpuse of SSL certificates and i know too many stranges cases of people acessing services like Portuguese Finances and others gov institutions and receiving certificate errors. One had happended &lt;strong&gt;withing the Finances employes intranet&lt;/strong&gt;!  &lt;/p&gt;
+
+&lt;p&gt;It seems it’s easy to bypass info here these days..&lt;/p&gt;
 </description>
 				<pubDate>Thu, 21 May 2015 00:00:00 +0100</pubDate>
 				<link>http://www.codigo.ovh/security/2015/05/21/google-com-pt-ssl-expired.html</link>
