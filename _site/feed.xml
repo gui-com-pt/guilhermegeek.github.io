@@ -7,6 +7,19 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Google PT SSL expired?</title>
+				<description>&lt;p&gt;A few days ago i’ve read somewhere that Google left expire a few domains. I’ve noticed that the one used at &lt;strong&gt;google.com.pt&lt;/strong&gt; was about to expire but i didn’t expect it to happen as Google fixed the others cases.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;post-entry__image&quot; src=&quot;/media/googlesslpt.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is ridiculous, what would be the reason for letting another certificate expire?&lt;/p&gt;
+</description>
+				<pubDate>Thu, 21 May 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/security/2015/05/21/google-com-pt-ssl-expired.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/security/2015/05/21/google-com-pt-ssl-expired.html</guid>
+			</item>
+		
+			<item>
 				<title>Abordagem rápida a Injecção de Dependências</title>
 				<description>&lt;p&gt;Este tema é muito familiar a qualquer programador, seja de Javascript ou C++&lt;/p&gt;
 
@@ -1285,52 +1298,6 @@ $stateProvider.state('home', {
 				<pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/css/html/2014/11/25/CSS-cantos-arredondados.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/css/html/2014/11/25/CSS-cantos-arredondados.html</guid>
-			</item>
-		
-			<item>
-				<title>PHP e gettext</title>
-				<description>&lt;h3 id=&quot;linux&quot;&gt;Linux&lt;/h3&gt;
-
-&lt;p&gt;Para o gettext funcionar correctamente em Linux é preciso ter o idioma usado instalado no sistema operativo.&lt;/p&gt;
-
-&lt;p&gt;Isto é uma requisição, caso contrário o gettext não funciona. Para instalar novos idiomas em debian em descomento a entrada para o idioma que quero no ficheiro /etc/locale.gen, por exemplo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pt_PT.UTF-8 UTF-8
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Para o debian reconfigurar o idioma &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dpkg-reconfigure locales
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Isto vai instalar todos os idiomas em uso no /etc/locale.gen&lt;/p&gt;
-
-&lt;h3 id=&quot;php&quot;&gt;PHP&lt;/h3&gt;
-
-&lt;p&gt;Quando desenvolvo uma aplicação em PHP deixo os idiomas na configuração da aplicação. Se já usares uma framework terás de ver a documentação dela para associares um novo dominio.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$language = &quot;pt_PT&quot;;
-$codeset = 'UTF-8';
-$locale = $language . '.' . $codeset;
-$domain = 'messages';
-
-if(defined($locale)) { // linux
-    setlocale(LC_MESSAGES, $locale);
-}
-else {
-    putenv('LC_ALL={$locale}'); // windows
-}
-putenv('LANG={$language}');
-
-bindtextdomain($domain, '../i18n/Locale');
-bind_textdomain_codeset($domain, $codeset);
-textdomain($domain);
-&lt;/code&gt;&lt;/pre&gt;
-
-</description>
-				<pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/php/2014/11/20/php-gettext.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/php/2014/11/20/php-gettext.html</guid>
 			</item>
 		
 	</channel>
