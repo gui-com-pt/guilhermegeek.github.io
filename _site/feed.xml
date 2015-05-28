@@ -7,6 +7,125 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>AngularJS - Directiva a usar o ngModel (exemplo de envio de imagem)</title>
+				<description>&lt;p&gt;O atributo &lt;strong&gt;ng-model&lt;/strong&gt; permite ligar um valor do controller à view numa ligação de 2 pontos - se alterar a view no controlador altera, e vice versa.&lt;/p&gt;
+
+&lt;p&gt;Quando se trata de formulários é costume ter os campos do formulário no mesmo objecto, por exemplo &lt;code&gt;ng-model=&quot;addModel.firstName&quot;&lt;/code&gt;. Podemos criar directivas que para usar o ngModel.&lt;/p&gt;
+
+&lt;p&gt;Neste exemplo vamos dar a opção da nossa directiva indicar um template novo a ser usado. Em casos em que posso ou não substituir o template da directiva (não falo do replace: true que usamos na directiva, esse substitui o elemento completo da directiva) uso uma técnica simples: incluir o template por atributos, e usar o ngInclude para o fazer dinâmicamente.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;use strict&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UploadThumbnail&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Upload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;linkFn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;attrs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ngModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;attrs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$observe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ngModel&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Got ng-model bind path here&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$watch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
+                  &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;thumbnailSrc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ngModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$viewValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ngModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$viewValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/images/default-image.jpg&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+           &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$watch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;files&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;upload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;upload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+                        &lt;span class=&quot;nx&quot;&gt;Upload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;upload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+                            &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/api/images&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;progress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;evt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uploadProgress&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;100.0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;evt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;evt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;nx&quot;&gt;ngModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$setViewValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                            &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;thumbnailSrc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getTemplate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isUndefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attrs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;piTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;attrs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;piTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/html/upload-thumbnail.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;^ngModel&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;linkFn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;ng-include class=&amp;quot;upload-thumbnail&amp;quot; src=&amp;quot;getTemplate()&amp;quot;&amp;gt;&amp;lt;/ng-include&amp;gt;&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;UploadThumbnail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$inject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Upload&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;web&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;directive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;uploadThumbnail&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UploadThumbnail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Este exemplo é de uma directiva que envia imagens para um serviço externo usando o &lt;strong&gt;Upload&lt;/strong&gt; e mantém o URL da imagem no ngModel.&lt;/p&gt;
+
+&lt;p&gt;Há várias formas de alcançar isto. Neste caso observamos o próprio valor do atributo ngModel para saber quando actualizar o valor da thumbnailSrc na scope da directiva. Prefiro ter o valor na scope e lidar com ele na directiva assim do que aceder directamente ao ngModel.&lt;/p&gt;
+
+&lt;p&gt;Um exemplo para a utilização da directiva seria:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;form-group&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;createModel.thumbnailSrc&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;upload-thumbnail&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Enviar Miniatura&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{createModel.thumbnailSrc}}&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;form-group&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;createModel.firstName&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;form-group&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;createModel.lastName&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+				<pubDate>Thu, 28 May 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/angular/2015/05/28/angularjs-directiva-usar-o-ngmodel.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/angular/2015/05/28/angularjs-directiva-usar-o-ngmodel.html</guid>
+			</item>
+		
+			<item>
+				<title>qBittorrent - gerir torrents remotamente</title>
+				<description>&lt;p&gt;Em Windows existem demasiados clientes torrents a distribuir malware pelos utilizadores. Apesar da grande parte manter-se legal no que diz ao respeito de aceitação de privacidades para instalar programas terceiros, eles aproveitam-se de formulários com botões que passam despercebidos, metem pré seleccionadas as opções para instalar os programas, etc.&lt;/p&gt;
+
+&lt;p&gt;O qBittorrent é uma pérola. Corre em MAC, Linux, Windows e é distribuído como opensource. O que mais gosto neste programa é mesmo a transparência no que diz respeito ao malware que referi em cima.&lt;/p&gt;
+
+&lt;p&gt;Além do programa executável existe uma interface web que te permite aceder ao cliente torrent apartir de outro computador. Isto não é muito direccionado talvez aos utilizadores normais, mas por exemplo:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Se alugares uma VPS a 25 euros mensais com 2TB de armazenamento e 32GB de RAM, dá-te para armazenar cerca de 1800 filmes. Ou seja, podes programar um script para ordenar os torrents por data de adição, copiar o link magnético e adicionar automáticamente no qBittorrent! Continuando, 250 euros mensais seriam 20 TB e 18.000 filmes em 1080.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;/media/posts/qbittorrent.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;É fácil programar scripts destes, e facilmente podes criar a tua rede de streamming privada.&lt;/p&gt;
+
+&lt;p&gt;Na Wheezy do Debian e outras versões mais antigas, há problemas reportados por causa da encriptação. Se tiveres uma distribuição recente não há problema, se for esse o caso podes sempre compilar o programa em vez de instalares as versões desactualizadas distribuídas.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Referências&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/qbittorrent/qBittorrent/wiki/Running-qBittorrent-without-X-server&quot;&gt;https://github.com/qbittorrent/qBittorrent/wiki/Running-qBittorrent-without-X-server&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+				<pubDate>Sat, 23 May 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/qbittorrent/linux/2015/05/23/qbittorrent-gerir-torrents-remotamente.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/qbittorrent/linux/2015/05/23/qbittorrent-gerir-torrents-remotamente.html</guid>
+			</item>
+		
+			<item>
 				<title>Google Portuguese domain cerficate expired?</title>
 				<description>&lt;p&gt;A few days ago i’ve read somewhere that Google left expire a few domains. I’ve noticed that the one used at &lt;strong&gt;google.com.pt&lt;/strong&gt; was about to expire but i didn’t expect it to happen as Google fixed the others cases.&lt;/p&gt;
 
@@ -1235,73 +1354,6 @@ $stateProvider.state('home', {
 				<pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/angularjs/2014/12/01/AngularJS.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/01/AngularJS.html</guid>
-			</item>
-		
-			<item>
-				<title>Utiliza emails descartáveis gratuitamente!</title>
-				<description>&lt;p&gt;Mais de metade dos emails de spam que recebo foram serviços que subscrebi apenas para obter algo como fazer um download de um PDF ou receber por email uma activação no site.&lt;/p&gt;
-
-&lt;p&gt;Havia uma altura em que utilizava uma conta de email apenas para estes tipos de registos, ou para outras inscrições em sites menus seguros ou a quem eu não confiasse. &lt;/p&gt;
-
-&lt;p&gt;Uma boa alternativa a ter de gerir mais outro email é usar emails descartáveis! A filosofia é bastante simples: crias uma conta de email por pedido, coma duração de 60 minutos. Para isto podemos usar o Guerrilla Mail https://www.guerrillamail.com&lt;/p&gt;
-
-&lt;p&gt;Com um email temporário podes registar-te em determinado serviço sem te associares a ele. Como as contas têem a duração de 60 minutos não podes partir do princípio que vais voltar acesso à conta, ou seja, após os 60 minutos não podes recuperar passwords, receber emails de confirmação, etc. Mas não é para isso que este tipo de emails servem também.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;entry__image&quot; src=&quot;/media/posts/temporary-mail-1.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Algumas finalidades para este serviço:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Registo em sites suspeitos - senão confias na fonte e não queres criar um registo a identificar-te&lt;/li&gt;
-  &lt;li&gt;Registo apenas para receber um email - no caso de downloads de PDFs ou &lt;code&gt;gifts&lt;/code&gt; ocasionais (a estratégia de oferecer uma parte do conteúdo requerendo um registo para a subscrição de newsletters)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;api&quot;&gt;API&lt;/h4&gt;
-
-&lt;p&gt;Um ponto forte deste serviço é o acesso a uma API. Por esta API podemos criar novas contas temporárias, receber e enviar emails. &lt;/p&gt;
-
-&lt;p&gt;Uma das primeiras utilidades que me veio à cabeça foi usar estes emails para registar contas em massa em serviços aos quais consiga ultrapassar a protecção de recaptcha. Como temos acesso à API podemos muito bem interpetrar os emails recebidos e assim confirmar automáticamente as contas. &lt;/p&gt;
-</description>
-				<pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/dicas/2014/11/25/emails-temporarios.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/dicas/2014/11/25/emails-temporarios.html</guid>
-			</item>
-		
-			<item>
-				<title>Como utilizar cantos arredondados e fazer circulos com CSS?</title>
-				<description>&lt;p&gt;Em CSS a propriedade &lt;strong&gt;border-radius&lt;/strong&gt; permite adicionar cantos arredondados a elementos e ficam visíveis quando o elemento tem uma cor de fundo.&lt;/p&gt;
-
-&lt;p&gt;O valor do raio pode ser definido em percentagem. Usando 50% conseguimos criar um circulo&lt;/p&gt;
-
-&lt;iframe height=&quot;350&quot; scrolling=&quot;no&quot; src=&quot;http://codepen.io/guilhermecardoso/embed/bNdKaw/&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/guilhermecardoso/pen/bNdKaw/&quot;&gt;bNdKaw&lt;/a&gt; by Guilherme Cardoso (&lt;a href=&quot;http://codepen.io/guilhermecardoso&quot;&gt;@guilhermecardoso&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/iframe&gt;
-
-&lt;p&gt;O valor do border-radius pode ser aplicado de várias formas:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1 valor - aplicado aos 4 cantos&lt;/li&gt;
-  &lt;li&gt;2 valores - primeiro valor é aplicado aos canto superior esquerdo e inferior direito, segundo valor é aplicado ao canto superior direito e inferior esquerdo.&lt;/li&gt;
-  &lt;li&gt;4 valores - primeiro aplicado ao superior esquerdo, segundo ao superior direito, terceiro ao inferior direito e o quarto ao inferior esquerdo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;iframe height=&quot;350&quot; scrolling=&quot;no&quot; src=&quot;http://codepen.io/guilhermecardoso/embed/bNdKLB/&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/guilhermecardoso/pen/bNdKLB/&quot;&gt;bNdKLB&lt;/a&gt; by Guilherme Cardoso (&lt;a href=&quot;http://codepen.io/guilhermecardoso&quot;&gt;@guilhermecardoso&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/iframe&gt;
-
-&lt;p&gt;Sobre a utilização dos prefixos dos vendedores que uso no exemplo recomendo esta leitura: http://css-tricks.com/do-we-need-box-shadow-prefixes/&lt;/p&gt;
-
-&lt;p&gt;É importante referir que a utilização de valores percentuais on Safari apenas é suportado na versão 5.1 para cima e no Opera 11.5 para cima. &lt;/p&gt;
-
-&lt;p&gt;Também existe uma falha em alguns navegadores Android 4+ com a utilização de apenas um valor no border-radius http://stackoverflow.com/questions/17944749/border-radius-style-doesnt-work-in-android-browser&lt;/p&gt;
-
-&lt;p&gt;Recursos:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://css-tricks.com/almanac/properties/b/border-radius/&quot;&gt;CSS Tricks&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-				<pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/css/html/2014/11/25/CSS-cantos-arredondados.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/css/html/2014/11/25/CSS-cantos-arredondados.html</guid>
 			</item>
 		
 	</channel>
