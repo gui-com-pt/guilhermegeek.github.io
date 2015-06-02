@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.codigo.ovh/nodejs/web/2015/06/01/nodejs-servidor-web-para-desenvolvimento.html</loc>
+    <lastmod>2015-06-01T00:00:00+01:00</lastmod>
+  </url>
+  <url>
     <loc>http://www.codigo.ovh/angular/2015/05/28/angularjs-directiva-usar-o-ngmodel.html</loc>
     <lastmod>2015-05-28T00:00:00+01:00</lastmod>
   </url>
@@ -238,147 +242,155 @@
   </url>
   <url>
     <loc>http://www.codigo.ovh/archive.html</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/bower/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/angularjs/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/less/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/css/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/git/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/javascript/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/padrao-projeto/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/smtp/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/c#/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/mono/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/webhosting/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/php/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/seguranca/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/bitcoin/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/hacking/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/wordpress/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/ides/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/software/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/ide/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/programacao/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/linux/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/composer/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/html/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/dicas/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/facebook/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/hacklang/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/redis/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/nginx/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/ionic/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/mobile/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/hhvm/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/security/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/qbittorrent/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/angular/</loc>
-    <lastmod>2015-05-28T09:26:36+01:00</lastmod>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
+  </url>
+  <url>
+    <loc>http://www.codigo.ovh/nodejs/</loc>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
+  </url>
+  <url>
+    <loc>http://www.codigo.ovh/web/</loc>
+    <lastmod>2015-06-02T15:55:26+01:00</lastmod>
   </url>
   <url>
     <loc>http://www.codigo.ovh/media/A Development Infrastructure for PHP.html</loc>

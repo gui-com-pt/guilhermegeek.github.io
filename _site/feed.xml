@@ -7,6 +7,29 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>NodeJS - Servidor web para desenvolvimento</title>
+				<description>&lt;p&gt;Neste artigo vou mostrar um servidor Web que tenho usado bastante. Quando comecei a desenvolver plataformas reparei-me que várias vezes queria testar os produtos em versões diferentes, correr em ambientes diferentes, com estados diferentes do sistema, etc.&lt;/p&gt;
+
+&lt;p&gt;Durante algum tempo copiava e colava as configurações do &lt;strong&gt;nginx&lt;/strong&gt;, alterava os hostname e os directórios principais e assim testava a coisa.&lt;/p&gt;
+
+&lt;p&gt;Há relativamente pouco tempo procurei por uma solução mais rápida. Existem centenas de programas deste tipo mas o &lt;a href=&quot;https://www.npmjs.com/package/http-server&quot;&gt;&lt;strong&gt;http-server&lt;/strong&gt;&lt;/a&gt; é o meu favorito. O ideal é instalares globalmente com o NodeJS para puderes usar em qualquer sítio.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;npm install http-server -g&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Respeitando a norma comum que num directório de um projeto, o código a ser distrubuído está na pasta &lt;strong&gt;public&lt;/strong&gt; ele primeiro tenta servir os pedidos através da pasta &lt;strong&gt;./public&lt;/strong&gt; e apenas senão existirem é que serve do directório onde está a ser corrido &lt;strong&gt;./&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;http-server&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;O proveito que tiro deste servidor web é muitas vezes clonar projetos de um repositório e configurar logo o servidor web em apenas um comando, sem ter de me preocupar com outras configurações. Como a maioria dos produtos PHP que testo desconhecem ao máximo o ambiente em que são corridos, pormenores como cabeçários, formato do pedido HTTP, etc não se tormam um problema.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/posts/nodejs-http-server.png&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Mon, 01 Jun 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/nodejs/web/2015/06/01/nodejs-servidor-web-para-desenvolvimento.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/nodejs/web/2015/06/01/nodejs-servidor-web-para-desenvolvimento.html</guid>
+			</item>
+		
+			<item>
 				<title>AngularJS - Directiva a usar o ngModel (exemplo de envio de imagem)</title>
 				<description>&lt;p&gt;O atributo &lt;strong&gt;ng-model&lt;/strong&gt; permite ligar um valor do controller à view numa ligação de 2 pontos - se alterar a view no controlador altera, e vice versa.&lt;/p&gt;
 
@@ -1223,137 +1246,6 @@ angular.module('app', ['moduleOne', 'moduleTwo'])
 				<pubDate>Fri, 05 Dec 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html</guid>
-			</item>
-		
-			<item>
-				<title>Boas práticas em AngularJS</title>
-				<description>&lt;p&gt;Neste artigo vou demonstrar boas práticas para trabalhar com o AngularJS. O resultado final vai ser este:&lt;/p&gt;
-
-&lt;iframe height=&quot;350&quot; scrolling=&quot;no&quot; src=&quot;http://codepen.io/guilhermecardoso/embed/LEGpmY/&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; style=&quot;width: 100%;&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/guilhermecardoso/pen/LEGpmY/&quot;&gt;LEGpmY&lt;/a&gt; by Guilherme Cardoso (&lt;a href=&quot;http://codepen.io/guilhermecardoso&quot;&gt;@guilhermecardoso&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/iframe&gt;
-
-&lt;p&gt;Como os restantes artigos eu vou actualizando à medida que tenho tempo, por isso esta versão inicial pode ser confusa.&lt;/p&gt;
-
-&lt;h3 id=&quot;isolamento&quot;&gt;Isolamento&lt;/h3&gt;
-
-&lt;p&gt;Para isolar ao máximo os contextos, sempre que escrevo um controlador, um serviço, uma directia uso uma expressão de função imediatamente-invocada. Podes ler mais aqui: &lt;a href=&quot;http://www.codigo.ovh/javascript/pattern/2014/09/10/javascript-iife.html&quot;&gt;Expressão de Função Imediatamente-Invocada (IIFE)&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Tudo que existir dentro da função não está acessível aos contextos parentes, neste caso o global.&lt;/p&gt;
-
-&lt;p&gt;Neste exemplo eu apenas deixo no contexto global a &lt;code&gt;app&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var app = angular.module('web', ['ngRoute']);
-(function(){
-
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;problema-de-minificadores&quot;&gt;Problema de minificadores&lt;/h3&gt;
-
-&lt;p&gt;É bastante comum em tutoriais ver-mos exemplos assim:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', function($scope) {
-	$scope.message = 'message';
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Este código não apresenta erros e é válido mas vamos supor que queremos minificar o código com uma ferramenta. Essa ferramenta vai alterar os nomes das variáveis e o resultado será este:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', function(s) {
-	s.message = 'message';
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Agora o AngularJS não vai conseguir injetar a $scope. Isto é esperado e não é nenhum erro, na verdade a ferramenta está a fazer bem o seu trabalho a minificar. &lt;/p&gt;
-
-&lt;p&gt;Uma solução será enviar uma array com as dependências e só no final a função a ser executada.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', ['$scope', function($scope) {
-	$scope.message = 'message';
-}]);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Na primeira entrada da array a $scope é passada numa string, o que significa que o minificador vai deixar o valor intacto. Já na variável da função ele vai substituír a $scope mas não há problema, pois o AngularJS sabe que a primeira variável é a $scope, independentemente do nome que a variável tiver. O resutlado é este:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module('web').controller('homeCtrl', ['$scope', '$rootScope', function(s, r) {
-	s.message = 'message';
-}]);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A variável &lt;code&gt;s&lt;/code&gt; é a $scope e a &lt;code&gt;r&lt;/code&gt; a $rootScope. Quando recebe um array, o AngularJS sabe que o último valor é sempre a função e vai resolver as dependências pelos valores passados no array.&lt;/p&gt;
-
-&lt;h3 id=&quot;outra-estratgia&quot;&gt;Outra estratégia&lt;/h3&gt;
-
-&lt;p&gt;O último exemplo é compatível com o minificador e é válido mas outra alternativa a meu ver mais correta é ao chamar a função &lt;code&gt;controller&lt;/code&gt; passar apenas o nome do controlador e a sua função. As dependências são injetadas na função e declaradas sempre na propriedade &lt;code&gt;$inject&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Vamos examinar o exemplo do controller &lt;code&gt;homeCtrl&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;(function(){
-  
-  var cntrlFn = function($log, sharedService) {
-    var self = this;
-    self.$log = $log;
-    self.service = sharedService;
-  };
-
-  cntrlFn.$inject = ['$log', 'sharedService'];
-  app.controller('homeCtrl', cntrlFn);
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Quando atribuo a função à variável cntrlFn tento criar o método main. Registo as dependências na função com o &lt;code&gt;this&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Todos os métodos que quiser implementar no controller faço-o com o prototype, por exemplo o método refresh e logout:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;(function(){
-  
-  var cntrlFn = function($log, sharedService) {
-    var self = this;
-    self.$log = $log;
-    self.service = sharedService;
-  };
-
-  cntrlFn.prototype.refresh = function(){
-  	var self = this;
-  	self.$log('refreshed');
-  };
-
-  cntrlFn.prototype.logout = function(){
-  	window.location = '/logout';
-  };
-
-  cntrlFn.$inject = ['$log', 'sharedService'];
-  app.controller('homeCtrl', cntrlFn);
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A documentação é uma das razões pela qual gosto de estruturar assim o código. É mais fácil
-### controllerAs&lt;/p&gt;
-
-&lt;p&gt;Neste exemplo eu não estou a expor os membros do controller na &lt;code&gt;$scope&lt;/code&gt;. Isto começou na versão 1.2 porque a $scope acabava por representar o próprio controller, e torna-se mais intuitívo utilizar o &lt;code&gt;this&lt;/code&gt; no controller para declarar as propriedades e ficarem acessíveis na página.&lt;/p&gt;
-
-&lt;p&gt;Tanto o &lt;code&gt;$routeProvider&lt;/code&gt; como o &lt;code&gt;$stateProvider&lt;/code&gt; do módulo ui-router suportam o controllerAs da seguinte forma:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$routeProvider.when('/', {
-	controller: 'homeCtrl',
-	controllerAs: 'ctrl'
-});
-
-$stateProvider.state('home', {
-	url: '/',
-	controller: 'homeCtrl',
-	controllerAs: 'ctrl'
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;O controller fica acessível através do &lt;code&gt;ctrl&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div ng-bind=&quot;ctrl.message&quot;&amp;gt;&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-				<pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/angularjs/2014/12/01/AngularJS.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/01/AngularJS.html</guid>
 			</item>
 		
 	</channel>
