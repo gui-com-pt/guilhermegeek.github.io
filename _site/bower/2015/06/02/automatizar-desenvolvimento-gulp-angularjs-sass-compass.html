@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+  <head>
+      <meta charset="utf8" />
+      <title>Automatizar o desenvolvimento - Gulp + AngularJS + SASS Compass - Codigo </title>
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+      <meta property="og:locale" content="pt_PT">
+      <meta property="og:site_name" content="Automatizar o desenvolvimento - Gulp + AngularJS + SASS Compass">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
+      <!--<meta property="og:image:type" content="image/jpg">-->
+      <meta property="og:url" content="/bower/2015/06/02/automatizar-desenvolvimento-gulp-angularjs-sass-compass.html">
+      <meta property="og:title" content="Automatizar o desenvolvimento - Gulp + AngularJS + SASS Compass">
+      <meta property="og:description" content="">
+      <link href="/css/bootstrap.css" rel="stylesheet">
+      <script>
+      (function() {
+        var cx = '007144214621793408206:hssvwvk9lwe';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            '//www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+      <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '175461699313531',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      var fbShare = function(url) {
+        FB.ui({
+          method: 'share',
+          href: 'https://developers.facebook.com/docs/',
+        }, function(response){
+
+        });
+
+      };
+
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-41887317-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link href="//fonts.googleapis.com/css?family=OpenSans:400,700" rel="stylesheet" type="text/css" />
+
+      <style>
+        body {
+          padding-top: 60px;
+          font-family: 'OpenSans';
+          font-size: 16px;
+        }
+        .layout-footer {
+          border-top:solid 1px #ddd;
+          padding-top: 8px;
+          margin-top: 20px;
+          text-align: center;;
+        }
+        .post__thumbnail {
+          max-width: 60px;
+        }
+
+        .media-date {
+          float: right;
+          color: #666666;
+        }
+
+        .post__list {
+          border-bottom: solid 1px #CCCCCC;
+          padding-bottom: 10px;
+        }
+
+        .post__list h4 a, .post__list h4 a:hover, .post__list h4 a:focus {
+          text-decoration: none;
+        }
+
+        .post-entry__thumbnail {
+          float: right;
+          max-height: 75px;
+        }
+
+        .post-entry__image {
+          max-width: 650px;
+        }
+        /*
+         * syntax.css
+         */
+        .post > .highlight .lineno { color: #ccc; display:inline-block; padding: 0 5px; border-right:1px solid #ccc; }
+        .post > .highlight pre code { display: block; white-space: pre; overflow-x: auto; word-wrap: normal; }
+
+        /*
+         * Bootstrap extensions
+         * i'm too lazy on this one
+         * latter i'll configure grunt and pass all to less
+         */
+         .navbar-default {
+            background-color: #FFFFFF;
+          }
+      </style>
+      <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="/css/syntax.css" rel="stylesheet">
+      <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Publicações</a>
+    </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/feed.xml">RSS</a></li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+</div>
+
+<div class="container" style="max-width: 1200px;">
+  <div class="clearfix">
+<h2 class="content">Automatizar o desenvolvimento - Gulp + AngularJS + SASS Compass</h2>
+</div>
+ 
+<p>Neste artigo vou explicar como acelerar a distribuição dos recursos públicos, automatizar as tarefas usando o gulp e outras dicas.</p>
+
+<p>Primeiro temos de instalar o gulp como um pacote do nodejs. A alternativa é o grunt mas tenho visto mais ferramentas recentes no gulp e parece ser o substituto óbvio do grunt. Vamos instalar algumas bibliotecas:</p>
+
+<ul>
+  <li>gulp</li>
+  <li>gulp-concat</li>
+  <li>gulp-angular-templatecache</li>
+</ul>
+
+<h3 id="sasscompass">SASS/Compass</h3>
+
+<p>Neste artigo refiro o SASS mas LESS seria o mesmo. Apesar de haverem pacotes também para lidar com o SASS eu prefiro fazê-lo usando a ferramenta nativa do compass. Para isso temos de configurar esta parte em ruby, no ficheiro <strong>config.rb</strong></p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;susy&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;normalize-scss&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;breakpoint&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;animate-sass&#39;</span>
+
+<span class="n">project_type</span> <span class="o">=</span> <span class="ss">:stand_alone</span>
+<span class="n">preferred_syntax</span> <span class="o">=</span> <span class="ss">:scss</span>
+<span class="n">output_style</span> <span class="o">=</span> <span class="ss">:expanded</span>
+<span class="n">relative_assets</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">css_dir</span> <span class="o">=</span> <span class="s2">&quot;public/assets/stylesheets&quot;</span>
+<span class="n">sass_dir</span> <span class="o">=</span> <span class="s2">&quot;src/sass&quot;</span></code></pre></div>
+
+<p>Nada de especial. Requiro algumas bibliotecas escritas em Ruby e indico o destino no <strong>css_dir</strong>. </p>
+
+<h3 id="html">HTML</h3>
+<p>Quem está habituado a frameworks XPTOs que lidam com os recursos públicos certamente não se depara com estes problemas mas no mundo do PHP é bem conhecido. Vamos analisar a estrutura típica de um projecto</p>
+
+<ul>
+  <li>src</li>
+  <li>public</li>
+  <li>stylesheets</li>
+  <li>scripts</li>
+  <li>html</li>
+</ul>
+
+<p>O código é mantido na pasta src (source) e queremos que a pasta public contenha todos os recursos. É ridículo referenciar isto mas também evita estar código PHP disponível na pasta publica, e mais tarde alguém alterar as permissões para 777 para corrigir um erro e derepente algo mau acontece…</p>
+
+<p>O AngularJS é uma framework excelente. Os temas em HTML são servidos apartir de uma cache disponível pelo serviço <code>$templateCache</code>. Isto pode parecer demasiado estranho mas na realidade a apresentação é renderização do HTML é sempre feita em javascript, e assim podemos criar os templates usando javascript. </p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span><span class="p">(</span><span class="nx">$templateCache</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">$templateCache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">&quot;home.html&quot;</span><span class="p">,</span><span class="s2">&quot;&lt;div&gt;The homepage&lt;/div&gt;&quot;</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Que proveito podemos tirar daqui? Idealiza a situação em que tems 300 ficheiros html (algo fácil de alcançar com muitas directivas). Se estes ficheiros forem distribuídos no servidor web como ficheiros individuais, o utilizador vai realizar 300 pedidos ao servidor para obter todos os templates.</p>
+
+<p>E se todos os ficheiros html fossem injectados no angularjs através de o mesmo ficheiro javascript? Um grande ficheiro podes pensar, mas divido devidamente em modulos e o angular só os carrega quando necessário!</p>
+
+<h4 id="gulp-angular-templatecache">gulp-angular-templatecache</h4>
+
+<p>Vamos configurar este processo com o pacote <strong>gulp-angular-templatecache</strong>. </p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;templates&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="s1">&#39;./src/html/*.html&#39;</span><span class="p">,</span> <span class="s1">&#39;./src/html/**/*.html&#39;</span><span class="p">,</span> <span class="s1">&#39;./src/html/**/**/*.html&#39;</span><span class="p">])</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">templateCache</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;./public/assets&#39;</span><span class="p">));</span>
+<span class="p">});</span></code></pre></div>
+
+<p>Vai ser criado o ficheiro <strong>templates.js</strong> na pasta <strong>public/assets</strong>. Este ficheiro injeta os templates com o <strong>$templateCache</strong> no módulo <strong>templates</strong>. Vamos criar este módulo e carregá-lo no módulo da nossa aplicação.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;templates&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ourWebsite&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;templates&#39;</span><span class="p">]);</span></code></pre></div>
+
+<h3 id="gulp">Gulp</h3>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">),</span>
+    <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-concat&#39;</span><span class="p">),</span>
+    <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-uglifyjs&#39;</span><span class="p">),</span>
+    <span class="nx">templateCache</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-angular-templatecache&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">appModules</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s1">&#39;./src/javascript/*.mdl.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/*.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/**/*.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/common/*.mdl.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/common/**/*.mdl.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/common/**/**/*.mdl.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/common/*.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/common/**/*.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/common/**/**/*.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/core/*.mdl.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/core/**/*.mdl.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/core/**/**/*.mdl.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/core/*.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/core/**/*.js&#39;</span><span class="p">,</span>
+<span class="s1">&#39;./src/javascript/core/**/**/*.js&#39;</span>
+<span class="p">];</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;templates&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="s1">&#39;./src/html/*.html&#39;</span><span class="p">,</span> <span class="s1">&#39;./src/html/**/*.html&#39;</span><span class="p">,</span> <span class="s1">&#39;./src/html/**/**/*.html&#39;</span><span class="p">])</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">templateCache</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;./public/assets&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;scripts&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+   
+   <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">appModules</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s1">&#39;app.js&#39;</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;./public/assets/scripts&#39;</span><span class="p">));</span>
+
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="s1">&#39;./bower_components/angular/angular.js&#39;</span><span class="p">,</span> <span class="s1">&#39;./bower_components/angular-i18n/angular-locale_pt.js&#39;</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s1">&#39;angular.js&#39;</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;./public/assets/scripts&#39;</span><span class="p">));</span>
+
+   <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+       <span class="s1">&#39;./bower_components/ui-router/release/angular-ui-router.js&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;./bower_components/underscore/underscore.js&#39;</span>
+        <span class="p">])</span>
+       <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s1">&#39;dependencies.js&#39;</span><span class="p">))</span>
+       <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;./public/assets/scripts&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;scripts&#39;</span><span class="p">,</span> <span class="s1">&#39;templates&#39;</span><span class="p">]);</span></code></pre></div>
+
+<p>Na tarefa scripts eu eu começo por concatenar os ficheiros da aplicação:</p>
+
+<ul>
+  <li>uso prefixos sempre que possível: mdl para módulos, drv para directivas, ctrl para controladores, srv para serviços, rsc para recursos. </li>
+  <li>no core está todo o código aplicacional, este código consome diversas dependências e tento sempre manter os diferentes tipos de código (html, javascript e sass) dentro da mesma pasta.</li>
+  <li>o angularjs precisa de primeiro executar os ficheiros com as declarações dos módulos e só depois o código que os utiliza. daí no array <strong>appModules</strong> procurar primeiro por padrões <strong>.mdl.js</strong> para os puder inserir na ordem correcta.</li>
+  <li>os nomes dos controladores, serviços, etc também são prefixos. Isto para evitar colições</li>
+</ul>
+
+<p>O diretório src ficaria assim:</p>
+
+<ul>
+  <li>sass
+    <ul>
+      <li>site.scss - este ficheiro vai importar todos os ficheiros scss do core e common. como os restantes são prefixos com <strong>_</strong>, apenas o ficheiro site.css é gerado</li>
+    </ul>
+  </li>
+  <li>app.mdl.js </li>
+  <li>core
+    <ul>
+      <li>core.mdl.js</li>
+      <li>layout.html - o ficheiro que vai servir como index.html e template no angular</li>
+      <li>home
+        <ul>
+          <li>home.ctrl.js - ‘app.core.homeCtrl’</li>
+          <li>home-highlight.drv.js - ‘app.core.homeHighlight’</li>
+          <li>home.html</li>
+          <li>home.scss</li>
+        </ul>
+      </li>
+      <li>users
+        <ul>
+          <li>users.mdl.js</li>
+          <li>users.ctrl.js - ‘app.core.users.usersCtrl’</li>
+          <li>users.html</li>
+          <li>users.scss</li>
+          <li>user-details
+            <ul>
+              <li>user-details.ctrl.js - ‘app.core.users.userDetailsCtrl’</li>
+              <li>user-details.sass</li>
+              <li>user-details.html</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>common
+    <ul>
+      <li>common.mdl.js</li>
+      <li>directives
+        <ul>
+          <li>directives.mdl.js </li>
+          <li>facebook-share.drv.js - ‘app.common.directives.facebookShare’</li>
+        </ul>
+      </li>
+      <li>services
+        <ul>
+          <li>services.mdl.js</li>
+          <li>http-utils.srv.js - ‘app.common.services.httpUtils’</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>É com esta estrutura que desenvolvo aplicações em angularjs. Durante o desenvolvimento podes utilizar bibliotecas com a função <strong>watch</strong> para correr as tarefas do gulp sempre que hajam alterações nos ficheiros javascript, html e sass e assim tudo é mais automatizado. No caso do sass uso o <strong>compass watch</strong> que utiliza a configuração ruby para publicar correctamente.</p>
+
+<p>O que me agrada nesta abordagem é ter este directório <strong>public</strong></p>
+
+<ul>
+  <li>assets
+    <ul>
+      <li>scripts
+        <ul>
+          <li>angular.js</li>
+          <li>dependencies.js</li>
+          <li>app.js</li>
+        </ul>
+      </li>
+      <li>stylesheets
+        <ul>
+          <li>site.css</li>
+        </ul>
+      </li>
+      <li>templates.js</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Outras tarefas depois são adicionadas para melhorar o código distribuído, como a remoção de comentários, contatenação, um uglifyjs para o código ficar mais leve, etc.</p>
+
+<h2 id="um-exemplo">Um exemplo</h2>
+
+<p>Podes ver um exemplo de uma aplicação que publiquei no github e que segue esta abordagem: <a href="https://github.com/guilhermegeek/marijuana-app">https://github.com/guilhermegeek/marijuana-app</a> </p>
+
+<div class="clearfix">
+	  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+
+<div class="comments">
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guilhermecardoso'; 
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</div>
+
+</div>
+<div class="layout-footer">
+<div class="container">
+este site é livre - <a href="https://github.com/guilhermegeek/guilhermegeek.github.io">guilhermegeek.github.io</a> desenvolvido com <a href="http://jekyllrb.com">Jekyll</a><a href="https://plus.google.com/+GuilhermeCardosoGeek" rel="publisher"></a>
+
+</div>
+</div>
+</body>
+</html>

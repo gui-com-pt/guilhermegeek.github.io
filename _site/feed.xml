@@ -7,6 +7,226 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Automatizar o desenvolvimento - Gulp + AngularJS + SASS Compass</title>
+				<description>&lt;p&gt;Neste artigo vou explicar como acelerar a distribuição dos recursos públicos, automatizar as tarefas usando o gulp e outras dicas.&lt;/p&gt;
+
+&lt;p&gt;Primeiro temos de instalar o gulp como um pacote do nodejs. A alternativa é o grunt mas tenho visto mais ferramentas recentes no gulp e parece ser o substituto óbvio do grunt. Vamos instalar algumas bibliotecas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;gulp&lt;/li&gt;
+  &lt;li&gt;gulp-concat&lt;/li&gt;
+  &lt;li&gt;gulp-angular-templatecache&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sasscompass&quot;&gt;SASS/Compass&lt;/h3&gt;
+
+&lt;p&gt;Neste artigo refiro o SASS mas LESS seria o mesmo. Apesar de haverem pacotes também para lidar com o SASS eu prefiro fazê-lo usando a ferramenta nativa do compass. Para isso temos de configurar esta parte em ruby, no ficheiro &lt;strong&gt;config.rb&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;susy&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;normalize-scss&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;breakpoint&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;animate-sass&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;project_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:stand_alone&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;preferred_syntax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:scss&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;output_style&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:expanded&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;relative_assets&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;css_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;public/assets/stylesheets&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sass_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;src/sass&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Nada de especial. Requiro algumas bibliotecas escritas em Ruby e indico o destino no &lt;strong&gt;css_dir&lt;/strong&gt;. &lt;/p&gt;
+
+&lt;h3 id=&quot;html&quot;&gt;HTML&lt;/h3&gt;
+&lt;p&gt;Quem está habituado a frameworks XPTOs que lidam com os recursos públicos certamente não se depara com estes problemas mas no mundo do PHP é bem conhecido. Vamos analisar a estrutura típica de um projecto&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;src&lt;/li&gt;
+  &lt;li&gt;public&lt;/li&gt;
+  &lt;li&gt;stylesheets&lt;/li&gt;
+  &lt;li&gt;scripts&lt;/li&gt;
+  &lt;li&gt;html&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O código é mantido na pasta src (source) e queremos que a pasta public contenha todos os recursos. É ridículo referenciar isto mas também evita estar código PHP disponível na pasta publica, e mais tarde alguém alterar as permissões para 777 para corrigir um erro e derepente algo mau acontece…&lt;/p&gt;
+
+&lt;p&gt;O AngularJS é uma framework excelente. Os temas em HTML são servidos apartir de uma cache disponível pelo serviço &lt;code&gt;$templateCache&lt;/code&gt;. Isto pode parecer demasiado estranho mas na realidade a apresentação é renderização do HTML é sempre feita em javascript, e assim podemos criar os templates usando javascript. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$templateCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;$templateCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;home.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;div&amp;gt;The homepage&amp;lt;/div&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Que proveito podemos tirar daqui? Idealiza a situação em que tems 300 ficheiros html (algo fácil de alcançar com muitas directivas). Se estes ficheiros forem distribuídos no servidor web como ficheiros individuais, o utilizador vai realizar 300 pedidos ao servidor para obter todos os templates.&lt;/p&gt;
+
+&lt;p&gt;E se todos os ficheiros html fossem injectados no angularjs através de o mesmo ficheiro javascript? Um grande ficheiro podes pensar, mas divido devidamente em modulos e o angular só os carrega quando necessário!&lt;/p&gt;
+
+&lt;h4 id=&quot;gulp-angular-templatecache&quot;&gt;gulp-angular-templatecache&lt;/h4&gt;
+
+&lt;p&gt;Vamos configurar este processo com o pacote &lt;strong&gt;gulp-angular-templatecache&lt;/strong&gt;. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;templates&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/html/*.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/html/**/*.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/html/**/**/*.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;templateCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./public/assets&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Vai ser criado o ficheiro &lt;strong&gt;templates.js&lt;/strong&gt; na pasta &lt;strong&gt;public/assets&lt;/strong&gt;. Este ficheiro injeta os templates com o &lt;strong&gt;$templateCache&lt;/strong&gt; no módulo &lt;strong&gt;templates&lt;/strong&gt;. Vamos criar este módulo e carregá-lo no módulo da nossa aplicação.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;templates&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ourWebsite&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;templates&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;gulp&quot;&gt;Gulp&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-concat&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;uglify&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-uglifyjs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;templateCache&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-angular-templatecache&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;appModules&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/*.mdl.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/**/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/common/*.mdl.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/common/**/*.mdl.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/common/**/**/*.mdl.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/common/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/common/**/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/common/**/**/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/core/*.mdl.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/core/**/*.mdl.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/core/**/**/*.mdl.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/core/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/core/**/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/javascript/core/**/**/*.js&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;templates&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/html/*.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/html/**/*.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;./src/html/**/**/*.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;templateCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./public/assets&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+   
+   &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appModules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./public/assets/scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./bower_components/angular/angular.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;./bower_components/angular-i18n/angular-locale_pt.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;angular.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./public/assets/scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+   &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+       &lt;span class=&quot;s1&quot;&gt;&amp;#39;./bower_components/ui-router/release/angular-ui-router.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;s1&quot;&gt;&amp;#39;./bower_components/underscore/underscore.js&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;dependencies.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./public/assets/scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;templates&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Na tarefa scripts eu eu começo por concatenar os ficheiros da aplicação:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;uso prefixos sempre que possível: mdl para módulos, drv para directivas, ctrl para controladores, srv para serviços, rsc para recursos. &lt;/li&gt;
+  &lt;li&gt;no core está todo o código aplicacional, este código consome diversas dependências e tento sempre manter os diferentes tipos de código (html, javascript e sass) dentro da mesma pasta.&lt;/li&gt;
+  &lt;li&gt;o angularjs precisa de primeiro executar os ficheiros com as declarações dos módulos e só depois o código que os utiliza. daí no array &lt;strong&gt;appModules&lt;/strong&gt; procurar primeiro por padrões &lt;strong&gt;.mdl.js&lt;/strong&gt; para os puder inserir na ordem correcta.&lt;/li&gt;
+  &lt;li&gt;os nomes dos controladores, serviços, etc também são prefixos. Isto para evitar colições&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O diretório src ficaria assim:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sass
+    &lt;ul&gt;
+      &lt;li&gt;site.scss - este ficheiro vai importar todos os ficheiros scss do core e common. como os restantes são prefixos com &lt;strong&gt;_&lt;/strong&gt;, apenas o ficheiro site.css é gerado&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;app.mdl.js &lt;/li&gt;
+  &lt;li&gt;core
+    &lt;ul&gt;
+      &lt;li&gt;core.mdl.js&lt;/li&gt;
+      &lt;li&gt;layout.html - o ficheiro que vai servir como index.html e template no angular&lt;/li&gt;
+      &lt;li&gt;home
+        &lt;ul&gt;
+          &lt;li&gt;home.ctrl.js - ‘app.core.homeCtrl’&lt;/li&gt;
+          &lt;li&gt;home-highlight.drv.js - ‘app.core.homeHighlight’&lt;/li&gt;
+          &lt;li&gt;home.html&lt;/li&gt;
+          &lt;li&gt;home.scss&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;users
+        &lt;ul&gt;
+          &lt;li&gt;users.mdl.js&lt;/li&gt;
+          &lt;li&gt;users.ctrl.js - ‘app.core.users.usersCtrl’&lt;/li&gt;
+          &lt;li&gt;users.html&lt;/li&gt;
+          &lt;li&gt;users.scss&lt;/li&gt;
+          &lt;li&gt;user-details
+            &lt;ul&gt;
+              &lt;li&gt;user-details.ctrl.js - ‘app.core.users.userDetailsCtrl’&lt;/li&gt;
+              &lt;li&gt;user-details.sass&lt;/li&gt;
+              &lt;li&gt;user-details.html&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;common
+    &lt;ul&gt;
+      &lt;li&gt;common.mdl.js&lt;/li&gt;
+      &lt;li&gt;directives
+        &lt;ul&gt;
+          &lt;li&gt;directives.mdl.js &lt;/li&gt;
+          &lt;li&gt;facebook-share.drv.js - ‘app.common.directives.facebookShare’&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;services
+        &lt;ul&gt;
+          &lt;li&gt;services.mdl.js&lt;/li&gt;
+          &lt;li&gt;http-utils.srv.js - ‘app.common.services.httpUtils’&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;É com esta estrutura que desenvolvo aplicações em angularjs. Durante o desenvolvimento podes utilizar bibliotecas com a função &lt;strong&gt;watch&lt;/strong&gt; para correr as tarefas do gulp sempre que hajam alterações nos ficheiros javascript, html e sass e assim tudo é mais automatizado. No caso do sass uso o &lt;strong&gt;compass watch&lt;/strong&gt; que utiliza a configuração ruby para publicar correctamente.&lt;/p&gt;
+
+&lt;p&gt;O que me agrada nesta abordagem é ter este directório &lt;strong&gt;public&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;assets
+    &lt;ul&gt;
+      &lt;li&gt;scripts
+        &lt;ul&gt;
+          &lt;li&gt;angular.js&lt;/li&gt;
+          &lt;li&gt;dependencies.js&lt;/li&gt;
+          &lt;li&gt;app.js&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;stylesheets
+        &lt;ul&gt;
+          &lt;li&gt;site.css&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;templates.js&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Outras tarefas depois são adicionadas para melhorar o código distribuído, como a remoção de comentários, contatenação, um uglifyjs para o código ficar mais leve, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;um-exemplo&quot;&gt;Um exemplo&lt;/h2&gt;
+
+&lt;p&gt;Podes ver um exemplo de uma aplicação que publiquei no github e que segue esta abordagem: &lt;a href=&quot;https://github.com/guilhermegeek/marijuana-app&quot;&gt;https://github.com/guilhermegeek/marijuana-app&lt;/a&gt; &lt;/p&gt;
+</description>
+				<pubDate>Tue, 02 Jun 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/bower/2015/06/02/automatizar-desenvolvimento-gulp-angularjs-sass-compass.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/bower/2015/06/02/automatizar-desenvolvimento-gulp-angularjs-sass-compass.html</guid>
+			</item>
+		
+			<item>
 				<title>NodeJS - Servidor web para desenvolvimento</title>
 				<description>&lt;p&gt;Neste artigo vou mostrar um servidor Web que tenho usado bastante. Quando comecei a desenvolver plataformas reparei-me que várias vezes queria testar os produtos em versões diferentes, correr em ambientes diferentes, com estados diferentes do sistema, etc.&lt;/p&gt;
 
@@ -1214,38 +1434,6 @@ HipHop Fatal error: Uncaught exception exception 'PhutilBootloaderException' wit
 				<pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/seguranca/facebook/2014/12/21/analise-fuga-informacao-facebook.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/facebook/2014/12/21/analise-fuga-informacao-facebook.html</guid>
-			</item>
-		
-			<item>
-				<title>AngularJS - Dependências de módulos diferentes com nomes iguais</title>
-				<description>&lt;h3 id=&quot;angularjs---dependncias-de-mdulos-diferentes-com-nomes-iguais&quot;&gt;AngularJS - Dependências de módulos diferentes com nomes iguais&lt;/h3&gt;
-
-&lt;p&gt;Por norma, os serviços começados com &lt;strong&gt;$&lt;/strong&gt; percentem ao núcleo do AngularJS. Alguns exemplos: $scope, $rootScope, $locationProvider do módulo &lt;code&gt;ngRoute&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Quando existem nomes iguais de um serviço, diretiva, controlador, a injecção é resolvida pela ordem com que são os módulos dependentes. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module('moduleOne', []).service('bible', function(){});
-
-angular.module('moduleTwo', ]).service('bible', function(){})
-
-angular.module('app', ['moduleOne', 'moduleTwo'])
-		.controller('homeCtrl', ['bible', function(bible) {}])
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;O serviço &lt;code&gt;bible&lt;/code&gt; injetado no controlador é o do módulo moduleTwo por ele ter sido declarado no array depois do moduleOne. No caso de saber-mos que um serviço com o mesmo nome deve provir de determinado módulo, a posição desse módulo no array deve ser depois dos outros com um serviço com o mesmo nome.&lt;/p&gt;
-
-&lt;p&gt;No entanto este comportanto apesar de ser esperado não é uma boa forma de resolvermos o problema. O ideal é especificar qual o módulo do qual queremos injetar o serviço &lt;code&gt;bible&lt;/code&gt; utilizando o &lt;code&gt;injector()&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;angular.module('app', ['moduleOne', 'moduleTwo'])
-		.controller('homeCtrl', ['$injector', function($injector) {
-				var mod = angular.injector(['moduleOne']);
-				var bible = mod.get('bible');
-			}]);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-				<pubDate>Fri, 05 Dec 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/angularjs/2014/12/05/dependencias-de-modulos-diferentes-com-nomes-iguais.html</guid>
 			</item>
 		
 	</channel>
