@@ -2,7 +2,7 @@
 title: Instalar softwares em Linux
 layout: post_entry
 image: /media/linux_logo.png
-excerpt: 
+description: Explicação de instalação de programas em Linux
 categories:
  linux
 ---

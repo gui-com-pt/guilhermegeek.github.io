@@ -2,7 +2,7 @@
 title: AngularJS - Introdução
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: Uma introdução não muito simples ao AngularJS. Recomendado a quem já usa esta framework mas ainda não conseguiu entender bem a arquitectura
+description: Uma introdução não muito simples ao AngularJS. Recomendado a quem já usa esta framework mas ainda não conseguiu entender bem a arquitectura
 categories:
  angularjs
 ---

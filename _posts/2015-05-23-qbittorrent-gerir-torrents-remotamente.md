@@ -2,7 +2,7 @@
 title: qBittorrent - gerir torrents remotamente
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: QBitTorrent - monta um servidor de torrents e gere-os por um website
 categories:
  qbittorrent linux
 ---

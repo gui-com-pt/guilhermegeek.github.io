@@ -2,6 +2,7 @@
 title: Composer - Resolver o problema cannot allocate memory
 layout: post_entry
 excerpt: 
+description: Resolver um erro comum no composer: cannot allocate memory
 categories:
  composer
 ---

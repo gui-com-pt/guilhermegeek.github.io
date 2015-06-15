@@ -2,14 +2,21 @@
 title: AngularJS and dynamic forms
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: A pattern i use to include dynamic forms in angularjs
+description: Um padrão em AngularJS para implementar formulários dinamicamente
 categories:
  angularjs
 ---
 
-There're situations where i have to do things dynamically in angular.
 
-I'll show a simple example. We've a contact form, billing form and delivery form. Both forms have common fields. I want to copy the common data from contact to others forms
+Existem situações em que tenho de lidar com dados dinamicamente no angularjs.
+
+Vou mostrar um exemplo. Temos:
+
+ - formulário de contacto
+ - formulário de pagamento
+ - formulário de entrega
+
+Todos têm campos em comum. Nome, morada, BI, etc podem variar na mesma encomenda entre os três formulários. Quero copiar essa informação em comum.
 
 {% highlight html %}
 <h3>Contact</h3>
@@ -72,3 +79,5 @@ $scope.copyContactForm = function(){
     });
 };
 {% endhighlight %}
+
+Idealmente isto seria disponibilizado num serviço passando o formulário primário e os principais, opções como capitalização dos nomes dos campos e uniformização, etc.

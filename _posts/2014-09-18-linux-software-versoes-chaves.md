@@ -2,7 +2,7 @@
 title: Repositório de software
 layout: post_entry
 image: /media/linux_logo.png
-excerpt: 
+description: Linux - repositórios de software, chaves de encriptação e origens
 categories:
  ide software
 ---

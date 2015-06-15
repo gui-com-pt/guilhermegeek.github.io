@@ -3,6 +3,7 @@ title: Bower - gerir projectos
 layout: post_entry
 image: /media/angular-thumb.jpg
 excerpt: 
+
 categories:
  bower
 ---

@@ -2,7 +2,7 @@
 title: C#, Mono e Linux
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: Uma introdução ao Mongo, a linguagem que te permite escrever código livre em C#!
 categories:
  c# mono
 ---

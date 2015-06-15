@@ -1,7 +1,7 @@
 ---
 title: Ataque brute force
 layout: post_entry
-excerpt: Estudo de um ataque bruteforce
+description: Estudo de um ataque bruteforce
 image: /media/hacker1.jpg
 categories: hack
 description: Aprende o que é um ataque bruteforce

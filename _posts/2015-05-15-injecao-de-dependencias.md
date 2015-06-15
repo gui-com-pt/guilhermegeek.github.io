@@ -3,7 +3,7 @@ title: Abordagem rápida a Injecção de Dependências
 layout: post_entry
 image: /media/hacker1.jpg
 categories: hack
-description: Abordagem rápida a Injecção de Dependências
+description: Abordagem rápida a Injecção de Dependências em linguagens de programação
 categories: php hhvm
 ---
 

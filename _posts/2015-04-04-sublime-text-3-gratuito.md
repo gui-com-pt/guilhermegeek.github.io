@@ -3,6 +3,7 @@ title: Sublime Text 3 Gratuíto
 excerpt: Sublime Text 3 Gratuíto
 layout: post_entry
 image: /media/python.png
+description: Sublime Text 3 gratuíto para Mac, Windows e Unix
 categories: software
 ---
 

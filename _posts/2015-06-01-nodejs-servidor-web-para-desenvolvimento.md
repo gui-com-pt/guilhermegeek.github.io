@@ -2,7 +2,7 @@
 title: NodeJS - Servidor web para desenvolvimento 
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: NodeJS - Servidor HTTP rápido para desenvolvimento e testes
 categories:
  nodejs web
 ---

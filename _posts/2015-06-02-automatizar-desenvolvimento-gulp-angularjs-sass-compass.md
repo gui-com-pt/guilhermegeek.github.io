@@ -2,7 +2,7 @@
 title: Automatizar o desenvolvimento - Gulp + AngularJS + SASS Compass 
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: Aprende a usar o gulp, angularjs e sass para automatizares o teu ambiente de desenvolvimento. Poupa mais tempo e organiza melhor as tuas aplicações AngularJS!
 categories:
  bower
 ---

@@ -2,7 +2,7 @@
 title: Lidar com erros e excepções
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt:
+description: PHP - Lidar com erros e excepções
 categories:
  software
 ---

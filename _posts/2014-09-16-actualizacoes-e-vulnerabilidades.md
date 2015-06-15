@@ -2,7 +2,7 @@
 title: Actualizações do Sistema Operativo e Softwares
 layout: post_entry
 image: /media/hacker1.jpg
-excerpt: Qual a necessidade de manter actualizado o sistema operativo e softwares como java e flash?
+description: Qual a necessidade de manter actualizado o sistema operativo e softwares como java e flash?
 categories:
  seguranca
 ---

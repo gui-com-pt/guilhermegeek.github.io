@@ -7,6 +7,53 @@
 		<atom:link href="http://www.codigo.ovh/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Nginx - Proteger pastas e urls com autenticação HTTP</title>
+				<description>&lt;p&gt;Este tutorial mostra-te como podes proteger uma pasta ou um segmento de URL com utilizador-password.&lt;/p&gt;
+
+&lt;p&gt;Proteger uma pasta com este tipo de autenticação não é muito comum em ambientes com este servidor web. O nginx não é só conhecido pela sua performance vs Apache2, a escabilidade e melhorias de performance que proporciona é através de módulos, hacks como scripts em LUA e Redis (sem ter de passar pelo código PHP, exemplo: Auth). Em ambientes assim raramente a autenticação provém de um .htpasswd.&lt;/p&gt;
+
+&lt;p&gt;O nginx não tem nenhuma ferramenta para gerar a autenticação e encriptar a password. Ela está distribuída nos utilitários do Apache (não tens de instalar o apache2!).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install apache2-utils
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;criar-utilizador-e-password&quot;&gt;Criar Utilizador e Password&lt;/h2&gt;
+
+&lt;p&gt;Vamos guardar as credenciais na pasta **/etc/nginx/.htpasswd&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo htpasswd -c /etc/nginx/.htpasswd utilizador
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ele pergunta a password&lt;/p&gt;
+
+&lt;p&gt;New password:
+Re-type new password:
+Adding password for user utilizador&lt;/p&gt;
+
+&lt;p&gt;Á partida o directório &lt;strong&gt;/etc/nginx&lt;/strong&gt; tem as permissões certas. Senão for esse o caso garante-las&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chown nginx /etc/nginx/.htpasswd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;configurao&quot;&gt;Configuração&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;server &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  listen       80&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  server_name  localhost&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  location / &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      root   /var/www/exemplo&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      index  index.html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      auth_basic &lt;span class=&quot;s2&quot;&gt;&amp;quot;Restricted&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      auth_basic_user_file /etc/nginx/.htpasswd&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+				<pubDate>Mon, 15 Jun 2015 00:00:00 +0100</pubDate>
+				<link>http://www.codigo.ovh/nginx/2015/06/15/nginx-proteger-pastas-e-urls-com-autenticacao-http.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/nginx/2015/06/15/nginx-proteger-pastas-e-urls-com-autenticacao-http.html</guid>
+			</item>
+		
+			<item>
 				<title>Automatizar o desenvolvimento - Gulp + AngularJS + SASS Compass</title>
 				<description>&lt;p&gt;Neste artigo vou explicar como acelerar a distribuição dos recursos públicos, automatizar as tarefas usando o gulp e outras dicas.&lt;/p&gt;
 
@@ -950,7 +997,7 @@ var house = factory.build();
 			</item>
 		
 			<item>
-				<title>Composer - Resolver o problema cannot allocate memory</title>
+				<title>Composer Cannot Allocate Memory</title>
 				<description>&lt;pre&gt;&lt;code&gt;Uncaught exception 'ErrorException' with message 'proc_open(): fork failed - Cannot allocate memory'
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -968,8 +1015,8 @@ var house = factory.build();
 &lt;p&gt;Este problema é comum em VPS de 512 de RAM ou menos, em computadores mais potentes possivelmente nunca te irás confrontar com isto.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 24 Feb 2015 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/composer/2015/02/24/composer-cannot-allocate-memory.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/composer/2015/02/24/composer-cannot-allocate-memory.html</guid>
+				<link>http://www.codigo.ovh/2015/02/24/composer-cannot-allocate-memory.html</link>
+				<guid isPermaLink="true">http://www.codigo.ovh/2015/02/24/composer-cannot-allocate-memory.html</guid>
 			</item>
 		
 			<item>
@@ -1356,84 +1403,6 @@ hhvm.enable_zend_compat = true
 				<pubDate>Sun, 08 Feb 2015 00:00:00 +0000</pubDate>
 				<link>http://www.codigo.ovh/linux/2015/02/08/distribuicoes-linux-gerir-pacotes-e-versoes-de-programas.html</link>
 				<guid isPermaLink="true">http://www.codigo.ovh/linux/2015/02/08/distribuicoes-linux-gerir-pacotes-e-versoes-de-programas.html</guid>
-			</item>
-		
-			<item>
-				<title>Análise da fuga de informação da equipa do Facebook</title>
-				<description>&lt;h1 id=&quot;anlise&quot;&gt;Análise&lt;/h1&gt;
-
-&lt;p&gt;Escrevi na Volupio &lt;a href=&quot;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&quot;&gt;um artigo sobre a fuga de informação da responsabilidade de trabalhadores do Facebook&lt;/a&gt;, aqui vou tentar analisar mais detalhadamente a informação recolhida.&lt;/p&gt;
-
-&lt;p&gt;Tudo começa na publicação de Malcom, que &lt;a href=&quot;http://sintheticlabs.com/blog/a-look-inside-facebooks-source-code.html&quot;&gt;pode ser lida aqui&lt;/a&gt;. Malcom estava a lidar com erros do Phabricator, uma plataforma de código aberto lançada pela equipa do Facebook. Quando eu elogio o Facebook por contribuir para o código de fonte aberta é exactamente por isto, bibliotecas, plataformas e até uma linguagem de programação que a equipa desenvolveu e distribuíu. Para quem programa em PHP, o &lt;a href=&quot;http://hacklang.org/&quot;&gt;PHP Hack&lt;/a&gt; é um grande exemplo de um passo dado pelo Facebook para levar o PHP mais além, e para mim enquanto programador C# foi uma razão para gostar ainda mais de PHP.&lt;/p&gt;
-
-&lt;p&gt;Como é uma plataforma relativamente recente e utilizada internamente pela equipa, é de esperar que as conversas e registos que se encontrem pelo Google provenham deles mesmos. Foi isso que aconteceu quando o Malcom pesquisa no Google e se deparou com código colado no pastebin que continha referências ao Phabricator e estava directamente relacionado com a plataforma do Facebook.&lt;/p&gt;
-
-&lt;p&gt;Vamos ver um exemplo: &lt;a href=&quot;http://pastebin.com/DMjWQ0cJ&quot;&gt;http://pastebin.com/DMjWQ0cJ&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Index: flib/core/db/queryf.php
-===================================================================
---- flib/core/db/queryf.php
-+++ flib/core/db/queryf.php
-@@ -1104,11 +1104,12 @@
-  *  @author rmcelroy
-  */
- function mysql_query_all($sql, $ok_sql, $conn, $params) {
-+  FBTraceDB::rqsend($ok_sql);
-   switch (SQLQueryType::parse($sql)) {
-     case SQLQueryType::READ:
-       $t_start = microtime(true);
-       $result = mysql_query_read($ok_sql, $conn);
-       $t_end = microtime(true);
-       $t_delta = $t_end - $t_start;
-       if ($t_delta &amp;gt; ProfilingThresholds::$queryReadDuration) {
-         ProfilingThresholds::recordDurationError('mysql.queryReadDuration',
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A informação colada nesse pastebin foi publicada por um visitante dia 17 deste mês. Pela formatação do código conseguimos ver que provem de uma consulta com o GIT, possivelmente um diff. É uma função simples que executada instruções SQL, e muito possivelmente o trabalhador do Facebook colou isto para passar a outro.&lt;/p&gt;
-
-&lt;p&gt;Isto é muito comum, dou por mim a partilhar erros e registos com outros utilizadores (seja no Mirc ou comunidades como StackOverflow) neste tipo de serviços mas sempre informação que não considero priveligiada, caso contrário não pode ir para um domínio publico que ainda por cima é indexado pela Google!&lt;/p&gt;
-
-&lt;p&gt;Continuando com a análise, este é apenas um pedaço da informação. No artigo, o Malcom recolheu muito mais código e inclusive arquivou tudo num ficheiro .zip e disponibilizou no seu site. Nesse arquivo, além de registos de erros está também pedaços de código e também de testes.&lt;/p&gt;
-
-&lt;p&gt;Algo interessante a realçar é o facto de a equipa usar o PHPUnit para realizar testes. &lt;/p&gt;
-
-&lt;p&gt;Pelos caminhos indicados em alguns registos também podemos saber o nome das contas utilizadas por alguns trabalhadores. Por exemplo&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Running unit tests...
-HipHop Fatal error: Uncaught exception exception 'PhutilBootloaderException' with message 'The phutil library '' has not been loaded!' in /home/engshare/devtools/libphutil/src/__phutil_library_init__.php:124\nStack trace:\n#0 /home/engshare/devtools/libphutil/src/__phutil_library_init__.php(177): PhutilBootloader-&amp;gt;getLibraryRoot()\n#1 /home/engshare/devtools/arcanist/src/unit/engine/phutil/PhutilUnitTestEngine.php(53): PhutilBootloader-&amp;gt;moduleExists()\n#2 /home/engshare/devtools/arcanist/src/workflow/unit/ArcanistUnitWorkflow.php(113): PhutilUnitTestEngine-&amp;gt;run()\n#3 /home/engshare/devtools/arcanist/src/workflow/diff/ArcanistDiffWorkflow.php(1172): ArcanistUnitWorkflow-&amp;gt;run()\n#4 /home/engshare/devtools/arcanist/src/workflow/diff/ArcanistDiffWorkflow.php(225): ArcanistDiffWorkflow-&amp;gt;runUnit()\n#5 /home/engshare/devtools/arcanist/scripts/arcanist.php(257): ArcanistDiffWorkflow-&amp;gt;run()\n#6 {main}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Este registo foi gerado HHVM e a conta engshare sugere uma conta partilhada pelos engeheiros do Facebook.&lt;/p&gt;
-
-&lt;p&gt;Nos outros logs está muito presente o nome de uma biblioteca que será utilizada pela equipa que contém utilitários úteis e funções para ajudar o desenvolvimento.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[25/10/2013] Promoting The Meme Bank (1/1) - Campaign Update Failed: Campaign 6009258279237: Value cannot be null (Value given: null) TAAL[BLAME_files,www/flib/core/utils/enforce.php,www/flib/core/utils/EnforceBase.php]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;O nome dessa biblioteca é flib - Facebook Library.&lt;/p&gt;
-
-&lt;p&gt;Outra informação muito relevante, no qual se baseou o artigo que escrevi na Volupio é uma ligação à base de dados. Esta informação parece ter vindo de um print_r() de uma array que acabou por ser enviado para produção hà alguns anos:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;array ( 'ip' =&amp;gt; '10.21.209.92', 'db_name' =&amp;gt; 'insights', 'user' =&amp;gt; 'mark', 'pass' =&amp;gt; 'e5p0nd4', 'mode' =&amp;gt; 'r', 'port' =&amp;gt; 3306, 'cleanup' =&amp;gt; false, 'num_retries' =&amp;gt; 3, 'log_after_num_retries' =&amp;gt; 4, 'reason' =&amp;gt; 'insights', 'cdb' =&amp;gt; true, 'flags' =&amp;gt; 0, 'is_shadow' =&amp;gt; false, 'backoff_retry' =&amp;gt; false, )
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;o-que-podemos-aprender-daqui&quot;&gt;O que podemos aprender daqui&lt;/h1&gt;
-
-&lt;p&gt;Quando trabalhei em consultoria sempre fui avisado para a necessidade de ter cuidado com o código que poderia “tirar para fora” da rede interna de desenvolvimento, assim como as cláusulas que podem existir nos contratos em que o trabalhador é responsabilizado por este tipo de conduta.&lt;/p&gt;
-
-&lt;p&gt;Se eu estiver a trabalhar numa tarefa no final do dia de uma Sexta Feira e a empresa estiver fechada no fim de semana, vou ser tentado a acabar o código no Sábado. Para isso passo-o para uma pen, colo-o num serviço como o pastebin, deixo-o na minha conta de email, etc. Entre estas possibilidades existe o privado e público, o caso do pastebin é publico.&lt;/p&gt;
-
-&lt;p&gt;Mesmo em serviços privados eu sempre tive muito medo. Enquanto programador tenho acesso ao código fonte completo daquilo em que estou a trabalhar, e basta perder uma pen ou deixar a sessão ligada no meu PC enquanto vou à casa de banho num café, e pode ser o suficiente para este tipo de fugas acontecerem.&lt;/p&gt;
-
-&lt;p&gt;Neste caso do Facebook foi pior, pois foi colado no pastebin e nem foi protegido com uma password.&lt;/p&gt;
-
-&lt;p&gt;O que podemos aprender daqui? De nada vale um projeto estar protegido por firewalls, pontos de acessos, enfim tudo e mais alguma coisa que possamos imaginar em segurança de redes, se os programadores são negligêntes ao ponto de colarem o próprio código na Internet!&lt;/p&gt;
-
-&lt;p&gt;Link do artigo que escrevi na Volupio: &lt;a href=&quot;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&quot;&gt;http://volupio.com/falha-de-programadores-facebook-revela-demasiado/&lt;/a&gt;&lt;/p&gt;
-</description>
-				<pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
-				<link>http://www.codigo.ovh/seguranca/facebook/2014/12/21/analise-fuga-informacao-facebook.html</link>
-				<guid isPermaLink="true">http://www.codigo.ovh/seguranca/facebook/2014/12/21/analise-fuga-informacao-facebook.html</guid>
 			</item>
 		
 	</channel>

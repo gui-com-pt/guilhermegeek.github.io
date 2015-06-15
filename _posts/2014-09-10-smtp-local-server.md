@@ -2,6 +2,7 @@
 title: SMTP local mail server
 layout: post_entry
 excerpt: Create a local smtp mail server for testing porpuses
+description: Create a local smtp mail server for testing porpuses
 image: /media/python.png
 categories: smtp
 ---

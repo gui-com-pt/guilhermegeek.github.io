@@ -2,7 +2,7 @@
 title: Bitcoin
 layout: post_entry
 image: /media/bitcoin.png
-excerpt: Método de pagamento Bitcoin - o que é, para que serve e como usar?
+description: Método de pagamento Bitcoin - o que é, para que serve e como usar?
 categories:
  bitcoin
 ---

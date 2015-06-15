@@ -2,7 +2,7 @@
 title: Invadir um site Wordpress - métodos e exemplos
 layout: post_entry
 image: /media/hacker1.jpg
-excerpt: Exemplos de como um site Wordpress pode ser invadido.
+description: Exemplos de como um site Wordpress pode ser invadido.
 categories: hacking wordpress
 ---
 

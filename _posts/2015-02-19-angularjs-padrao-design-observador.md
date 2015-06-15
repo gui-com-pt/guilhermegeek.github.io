@@ -2,7 +2,7 @@
 title: AngularJS - Padrão de Design do Observador
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: AngularJS - padrão de design Observador para observar alterações nos objectos
 categories:
  angularjs
 ---

@@ -2,6 +2,7 @@
 title: AngularJS - Extender um provedor injectando um serviço
 layout: post_entry
 keywords: angularjs
+description: Aprende a extender um provedor injectando um serviço. Neste exemplo lida com o tratamento de erros
 categories:
  angularjs
 ---

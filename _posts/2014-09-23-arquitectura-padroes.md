@@ -2,7 +2,7 @@
 title: Arquitecturas e Padrões em software
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt:
+description: Exemplos de padrões a implementar 
 author: Guilherme Cardoso <email@guilhermecardoso.pt>
 categories:
  software padrao-projeto

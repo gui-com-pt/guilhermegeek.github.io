@@ -2,7 +2,7 @@
 title: Padrão em formato de tentativas para executar código que possivelmente irá falhar
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt:
+description: Um padrão para aplicares quando estás a contar que o código tenha erros e queres lidar com a excepção
 categories:
  php hacklang
 ---

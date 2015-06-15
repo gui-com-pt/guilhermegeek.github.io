@@ -2,7 +2,7 @@
 title: Scripts shell 
 layout: post_entry
 image: /media/linux_logo.png
-excerpt: Uma introdução a scripts shell com Bash
+description: Uma introdução a scripts shell com Bash
 categories:
  linux
 ---

@@ -2,7 +2,7 @@
 title: Herdar controllers no AngularJS
 layout: post_entry
 image: /media/javascript.png
-excerpt: Herdar controllers e extender a $scope
+description: Herdar controllers e extender a $scope para reduzir código repetido
 categories:
  angularjs
 ---

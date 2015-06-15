@@ -1,7 +1,7 @@
 ---
 title: Google Portuguese domain cerficate expired?
 layout: post_entry
-excerpt: 
+description: Dominio google.pt expirado
 categories:
  security
 ---

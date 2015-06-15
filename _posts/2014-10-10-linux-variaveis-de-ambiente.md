@@ -2,7 +2,7 @@
 title: Variáveis de ambiente e locais no Unix
 layout: post_entry
 image: /media/linux_logo.png
-excerpt: 
+description: Variáveis de ambiente e locais em Linux, o que são e para que servem?
 categories:
  linux
 ---

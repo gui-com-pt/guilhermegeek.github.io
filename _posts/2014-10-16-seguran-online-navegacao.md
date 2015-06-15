@@ -2,7 +2,7 @@
 title: Segurança Online - Navegação
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: Navegar em segurança na internet
+description: Navegar em segurança na internet
 categories:
  seguranca
 ---

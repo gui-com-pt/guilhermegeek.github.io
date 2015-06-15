@@ -2,7 +2,7 @@
 title: Google Hacking Database
 layout: post_entry
 image: /media/hacker1.jpg
-excerpt: Utilizar o Google para encontrar técnicos idiotas
+description: Utilizar o Google para encontrar técnicos idiotas
 categories:
  hacking
 ---

@@ -2,7 +2,7 @@
 title: Encurtador de URL com o redis e nginx - super rápido!
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: Encurtador de URL com o redis e nginx - super rápido!
+description: Encurtador de URL com o redis e nginx - super rápido!
 categories:
  redis nginx
 ---

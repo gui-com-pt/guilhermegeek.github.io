@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf8" />
       <title>AngularJS and dynamic forms - Codigo </title>
-      <meta name="description" content="">
+      <meta name="description" content="Um padrão em AngularJS para implementar formulários dinamicamente">
       <meta name="keywords" content="">
       <meta property="og:locale" content="pt_PT">
       <meta property="og:site_name" content="AngularJS and dynamic forms">
@@ -11,7 +11,7 @@
       <!--<meta property="og:image:type" content="image/jpg">-->
       <meta property="og:url" content="/angularjs/2014/09/10/angularjs-dynamic-forms.html">
       <meta property="og:title" content="AngularJS and dynamic forms">
-      <meta property="og:description" content="">
+      <meta property="og:description" content="Um padrão em AngularJS para implementar formulários dinamicamente">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
       (function() {
@@ -150,9 +150,17 @@
 <h2 class="content">AngularJS and dynamic forms</h2>
 </div>
  
-<p>There’re situations where i have to do things dynamically in angular.</p>
+<p>Existem situações em que tenho de lidar com dados dinamicamente no angularjs.</p>
 
-<p>I’ll show a simple example. We’ve a contact form, billing form and delivery form. Both forms have common fields. I want to copy the common data from contact to others forms</p>
+<p>Vou mostrar um exemplo. Temos:</p>
+
+<ul>
+  <li>formulário de contacto</li>
+  <li>formulário de pagamento</li>
+  <li>formulário de entrega</li>
+</ul>
+
+<p>Todos têm campos em comum. Nome, morada, BI, etc podem variar na mesma encomenda entre os três formulários. Quero copiar essa informação em comum.</p>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h3&gt;</span>Contact<span class="nt">&lt;/h3&gt;</span>
 <span class="nt">&lt;form</span> <span class="na">novalidate</span><span class="nt">&gt;</span>
@@ -210,6 +218,8 @@
         <span class="p">});</span>
     <span class="p">});</span>
 <span class="p">};</span></code></pre></div>
+
+<p>Idealmente isto seria disponibilizado num serviço passando o formulário primário e os principais, opções como capitalização dos nomes dos campos e uniformização, etc.</p>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>

@@ -2,7 +2,7 @@
 title: PHP e gettext
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+excerpt: PHP e GetText - Instalar em Linux
 categories:
  php
 ---

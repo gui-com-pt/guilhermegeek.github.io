@@ -2,6 +2,7 @@
 title: AngularJs consumir APIS com o ngResource
 layout: post_entry
 image: /media/angular-thumb.jpg
+description: AngularJS - Utilizar o ngResource para consumir APIs Rest e configurar o $http
 excerpt: 
 categories:
  angularjs

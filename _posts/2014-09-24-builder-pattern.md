@@ -2,7 +2,7 @@
 title: Padrão Builder 
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: Padrão Factory Method e Creator
 categories:
  padrao-projeto
 ---

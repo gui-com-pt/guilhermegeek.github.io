@@ -2,7 +2,7 @@
 title: Começar a trabalhar como programador
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt:
+description: Introdução ao mercado profisional de programação
 categories:
  programacao
 ---

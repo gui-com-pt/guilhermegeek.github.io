@@ -2,7 +2,7 @@
 title: AngularJS - Directiva a usar o ngModel (exemplo de envio de imagem)
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: AngularJS - Utiliza o ng-model nas tuas directivas para facilmente partilhares o valor
 categories:
  angular
 ---

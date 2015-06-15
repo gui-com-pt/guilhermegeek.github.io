@@ -2,7 +2,7 @@
 title: Segurança Online - Password
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: Segurança Online - protege a tua password
 categories:
  seguranca
 ---

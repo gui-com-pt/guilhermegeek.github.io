@@ -2,7 +2,7 @@
 title: Introdução à Firewall
 excerpt: Introdução à Firewall
 layout: post_entry
-image: /media/python.png
+description: Introdução ao Firewall explicando o seu significado
 categories: seguranca
 ---
 

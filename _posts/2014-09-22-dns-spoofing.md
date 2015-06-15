@@ -2,7 +2,7 @@
 title: DNS Spoofing
 layout: post_entry
 image: /media/php.jpg
-excerpt: 
+description: Introdução á técnica DNS spoofing
 categories:
  hacking
 ---

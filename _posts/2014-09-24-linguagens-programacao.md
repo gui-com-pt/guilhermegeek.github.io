@@ -2,7 +2,7 @@
 title: Programação - Introdução
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: 
+description: Introdução ás linguagens de programação e emprego como programador
 categories:
  programacao
 ---

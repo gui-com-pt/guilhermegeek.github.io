@@ -3,7 +3,6 @@ title: Como utilizar cantos arredondados e fazer circulos com CSS?
 layout: post_entry
 image: /media/javascript.png
 description: Aprende a fazer circulos apenas com CSS sem usares nenhum plugin 
-
 categories:
  css html
 ---

@@ -2,7 +2,7 @@
 title: Gerir um servidor de alojamento
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt: Gerir um serviço de alojamento web e instalar softwares como PHP, MySQL e extensões mais utilizadas. Dicas de segurança e manutenção
+description: Gerir um serviço de alojamento web e instalar softwares como PHP, MySQL e extensões mais utilizadas. Dicas de segurança e manutenção
 categories: webhosting
 ---
 

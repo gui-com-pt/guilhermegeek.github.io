@@ -2,6 +2,7 @@
 title: Distribuições Linux - gerir pacotes e versões de programas
 layout: post_entry
 image: /media/angular-thumb.jpg
+description: Distribuições em Linux, diferenças, comparações, gestão de software e exemplos
 excerpt: Nem todas as distribuições são indicadas para determinadas tarefas. Aprende as diferenças na gestão de pacotes
 categories:
  linux

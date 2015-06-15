@@ -2,16 +2,16 @@
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf8" />
-      <title>Composer - Resolver o problema cannot allocate memory - Codigo </title>
-      <meta name="description" content="">
+      <title>Nginx - Proteger pastas e urls com autenticação HTTP - Codigo </title>
+      <meta name="description" content="Nginx - Este tutorial mostra-te como podes proteger uma pasta ou um segmento de URL com utilizador-password.">
       <meta name="keywords" content="">
       <meta property="og:locale" content="pt_PT">
-      <meta property="og:site_name" content="Composer - Resolver o problema cannot allocate memory">
-      <meta property="og:image" content="">
+      <meta property="og:site_name" content="Nginx - Proteger pastas e urls com autenticação HTTP">
+      <meta property="og:image" content="/media/angular-thumb.jpg">
       <!--<meta property="og:image:type" content="image/jpg">-->
-      <meta property="og:url" content="/composer/2015/02/24/composer-cannot-allocate-memory.html">
-      <meta property="og:title" content="Composer - Resolver o problema cannot allocate memory">
-      <meta property="og:description" content="">
+      <meta property="og:url" content="/nginx/2015/06/15/nginx-proteger-pastas-e-urls-com-autenticacao-http.html">
+      <meta property="og:title" content="Nginx - Proteger pastas e urls com autenticação HTTP">
+      <meta property="og:description" content="Nginx - Este tutorial mostra-te como podes proteger uma pasta ou um segmento de URL com utilizador-password.">
       <link href="/css/bootstrap.css" rel="stylesheet">
       <script>
       (function() {
@@ -147,24 +147,48 @@
 
 <div class="container" style="max-width: 1200px;">
   <div class="clearfix">
-<h2 class="content">Composer - Resolver o problema cannot allocate memory</h2>
+<h2 class="content">Nginx - Proteger pastas e urls com autenticação HTTP</h2>
 </div>
  
-<pre><code>Uncaught exception 'ErrorException' with message 'proc_open(): fork failed - Cannot allocate memory'
+<p>Este tutorial mostra-te como podes proteger uma pasta ou um segmento de URL com utilizador-password.</p>
+
+<p>Proteger uma pasta com este tipo de autenticação não é muito comum em ambientes com este servidor web. O nginx não é só conhecido pela sua performance vs Apache2, a escabilidade e melhorias de performance que proporciona é através de módulos, hacks como scripts em LUA e Redis (sem ter de passar pelo código PHP, exemplo: Auth). Em ambientes assim raramente a autenticação provém de um .htpasswd.</p>
+
+<p>O nginx não tem nenhuma ferramenta para gerar a autenticação e encriptar a password. Ela está distribuída nos utilitários do Apache (não tens de instalar o apache2!).</p>
+
+<pre><code>sudo apt-get install apache2-utils
 </code></pre>
 
-<p>Este erro já me tinha aparecido antes quando tentava actualizar as depedências de uma plataforma que desenvolvi em PHP, ele reside no facto da máquina não ter espaço suficiente na memória SWAP. Esta plataforma tem poucas dependências e leves, mas duas principais foram desenvolvidas por mim e são as bibliotecas em que ela se baseia e já são maiores.</p>
+<h2 id="criar-utilizador-e-password">Criar Utilizador e Password</h2>
 
-<p>Da primeira vez assustou-me o facto de o PHP não ter memória livre para o composer conseguir actualizar as dependências e fiz ur ama actualização ao hardware da VPS onde ela estava alojada. Hoje voltou-me a acontecer mas numa VPS com 200MB livres e não me pareceu que uma actualização ao hardware fosse uma boa solução.</p>
+<p>Vamos guardar as credenciais na pasta **/etc/nginx/.htpasswd</p>
 
-<p>Assim aprendi a aumentar o espaço dedicado à memória SWAP. Apesar de ser suficiente parar alguns processos mais pesados, correr a actualização do composer e voltar a iniciar os processos, aumentar o espaço dedicado à memória SWAP é mais eficiente.</p>
-
-<pre><code>/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
-/sbin/mkswap /var/swap.1
-/sbin/swapon /var/swap.1
+<pre><code>sudo htpasswd -c /etc/nginx/.htpasswd utilizador
 </code></pre>
 
-<p>Este problema é comum em VPS de 512 de RAM ou menos, em computadores mais potentes possivelmente nunca te irás confrontar com isto.</p>
+<p>Ele pergunta a password</p>
+
+<p>New password:
+Re-type new password:
+Adding password for user utilizador</p>
+
+<p>Á partida o directório <strong>/etc/nginx</strong> tem as permissões certas. Senão for esse o caso garante-las</p>
+
+<pre><code>chown nginx /etc/nginx/.htpasswd
+</code></pre>
+
+<h2 id="configurao">Configuração</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+  listen       80<span class="p">;</span>
+  server_name  localhost<span class="p">;</span>
+  location / <span class="o">{</span>
+      root   /var/www/exemplo<span class="p">;</span>
+      index  index.html<span class="p">;</span>
+      auth_basic <span class="s2">&quot;Restricted&quot;</span><span class="p">;</span>
+      auth_basic_user_file /etc/nginx/.htpasswd<span class="p">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 
 <div class="clearfix">
 	  <div id="disqus_thread"></div>

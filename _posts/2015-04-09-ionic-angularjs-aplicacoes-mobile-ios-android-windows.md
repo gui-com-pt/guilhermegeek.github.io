@@ -2,7 +2,7 @@
 title: Ionic - Desenvolver aplicações mobile para Android, IOS e Windows
 layout: post_entry
 image: /media/angular-thumb.jpg
-excerpt:
+description: Ionic Framework - Aprende a desenvolver aplicações mobile para Android, IOS e Windows com HTML5, Javascript e CSS!
 categories:
  angularjs ionic mobile
 ---
